@@ -188,7 +188,7 @@
             var fader = document.getElementById('faderhome');
             fader.classList.add('fade-out');
         }
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('pageshow', function () {
             if (!window.AnimationEvent) { return; }
             var anchors = document.getElementsByTagName('a');
             for (var idx = 0; idx < anchors.length; idx += 1) {
