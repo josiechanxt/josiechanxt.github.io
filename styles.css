@@ -1,0 +1,325 @@
+@font-face {
+    font-family: Quicksand;
+    src: url(Quicksand/Quicksand-VariableFont_wght.ttf);
+}
+
+html {
+    cursor: url('images/Pencil.png'), auto;
+    font-family: Quicksand;
+}
+
+nav {
+    z-index: 999999;
+}
+#faderhome {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+    pointer-events: none;
+    background: white;
+    animation-duration: 500ms;
+    animation-timing-function: ease-in-out;
+}
+
+#fader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+    pointer-events: none;
+    background: white;
+    animation-duration: 500ms;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes fade-out {
+    from { opacity: 1 }
+      to { opacity: 0 }
+}
+
+@keyframes fade-in {
+    from { opacity: 0 }
+      to { opacity: 1 }
+}
+
+#fader.fade-out {
+    opacity: 0;
+    animation-name: fade-out;
+}
+
+#fader.fade-in {
+    opacity: 1;
+    animation-name: fade-in;
+}
+
+#faderhome.fade-out {
+    opacity: 0;
+    animation-name: fade-out;
+}
+
+#faderhome.fade-in {
+    opacity: 1;
+    animation-name: fade-in;
+}
+
+.logo {
+    height: 70px;
+    width: 70px;
+}
+
+.navbar {
+    font-family: "Quicksand", sans-serif;
+    font-weight: bold;
+    color: rgb(60, 60, 60);
+}
+
+
+.container-fluid {
+    background-color: rgb(255, 255, 255);
+}
+
+.main-content {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-family: "Poetsen One", sans-serif;
+    font-size: 32pt;
+    color: rgb(40, 40, 40);
+}
+
+.main-content2 {
+    padding-top: 1rem;
+    padding-bottom: 5rem;
+    font-family: "Quicksand", sans-serif;
+    font-size: 16pt;
+    color: rgb(40, 40, 40);
+}
+
+.images {
+    width: 100%;
+}
+
+.imagesbnw {
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+  transition: 0.5s all; 
+}
+
+.imagesbnw:hover {
+    -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(0%);
+}
+
+.images2 {
+    width: 100%;
+    border: 0.5px solid rgb(0, 0, 0);
+}
+
+
+.square {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.square:before {
+    display: block;
+    padding-top: 75%;
+}
+
+.port-image:hover .overlay {
+    opacity: 0.7;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: rgb(0, 0, 0);
+}
+
+.port-image .text {
+    color: white;
+    font-size: 20px;
+    font-family: "Quicksand", sans-serif;
+    font-size: 18pt;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+
+/* PAGES */
+
+/* For project title headings */
+.main-content3 {
+    padding-top: 5rem;
+    padding-bottom: 0;
+
+    font-family: "Quicksand", sans-serif;
+    font-size: 24pt;
+    font-weight: bold;
+    color: rgb(40, 40, 40);
+}
+
+
+/* For project body copy */
+.main-content4 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    font-family: "Quicksand", sans-serif;
+    font-size: 12pt;
+    color: rgb(40, 40, 40);
+}
+
+.main-content5 {
+    /* padding-top: 1rem; */
+    padding-bottom: 2rem;
+    font-family: "Quicksand", sans-serif;
+    font-style: italic;
+    font-size: 12pt;
+    color: rgb(142, 142, 142);
+}
+
+/* For subhead */
+.main-content6 {
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    font-family: "Quicksand", sans-serif;
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 16pt;
+    color: rgb(40, 40, 40);
+}
+
+.maincontent7 {
+    border-radius: 20px;
+    border: 1.5px solid black;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: "Quicksand", sans-serif;
+    font-size: 12pt;
+}
+
+.main-content8 {
+    /* padding-top: 1rem; */
+    /* padding-bottom: 1rem; */
+    font-family: "Quicksand", sans-serif;
+    font-style: italic;
+    font-size: 16pt;
+    color: rgb(142, 142, 142);
+}
+
+.video-player {
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    width: 100%;
+}
+
+.nav-a {
+    padding: 1px;
+}
+
+.nav-button-active {
+    border-radius: 10px;
+    border: 1.5px solid black;
+}
+
+.nav-button {
+    padding: 2px;
+}
+
+.no-pad {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* infinite banner scroll */
+.bannercontainer {
+    width: 100%;
+    overflow: hidden;
+    /* margin: 50px auto; */
+    user-select: none;
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  .banner {
+    height: 20px;
+    width: 3500px;
+    margin-bottom: 20px;  
+    user-select: none;
+  }
+  
+  .box {
+    display: inline-block;
+    width: 200px;
+    height: 20px;
+    margin: 0;
+    padding: 0.1rem;
+    user-select: none;
+  }
+  
+  /*keyframe animations*/
+  .box:first-child {
+    animation: bannermove 50s linear infinite;
+  }
+  
+  @keyframes bannermove {
+   0% {
+    margin-left: -35px;
+    transform: translateX(0);
+   }
+   100% {
+      margin-left: -1869px;
+   }
+  
+  }
+
+.word-image {
+    height: 35px;
+    padding: 7px;
+}
+
+.worms {
+    position: relative;
+    height: 11rem;
+    padding: 8px;
+    top: 0;
+    transition: top ease 0.3s;
+}
+
+.worms:hover {
+    top: -25px;
+}
+
+.pens {
+    position: relative;
+    height: 11rem;
+    padding: 8px;
+    top: 0;
+    transition: top ease 0.3s;
+}
+
+.pens:hover {
+    top: -25px;
+}
+
