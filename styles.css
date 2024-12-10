@@ -120,6 +120,11 @@ nav {
     border: 0.5px solid rgb(0, 0, 0);
 }
 
+.images3 {
+    width: 100%;
+    border: 1.2px solid rgb(222, 222, 222);
+}
+
 
 .square {
     padding-left: 0;
