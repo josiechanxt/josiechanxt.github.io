@@ -131,7 +131,6 @@
             </div>   
         </div>
         
-        
 
 
         <div class="row justify-content-center">
@@ -427,6 +426,13 @@
         <!-- RESEARCH  -->
 
       
+             <!-- FAB Button -->
+    <div id="fab-button" class="fab-container">
+        <div class="fab">
+          <svg xmlns="http://www.w3.org/2000/svg" height="42px" viewBox="0 -960 960 960" width="42px" fill="gray"><path d="M480-545.33 287.33-352.67 240-400l240-240 240 240-47.33 47.33L480-545.33Z"/></svg>
+        </div>
+    </div>
+    
 
        <div class="row justify-content-center pb-5 pr-4 pt-5">
         <ul>
@@ -526,6 +532,33 @@
                     });
                 }
             });
+
+                          /* FAB */
+      // --- New Scroll to Top Functionality ---
+      const fabButton = document.getElementById('fab-button');
+      const SCROLL_THRESHOLD = 300; // Pixels to scroll down before the button appears
+
+      // Function to handle showing/hiding the button on scroll
+      const toggleFabVisibility = () => {
+          if (window.scrollY > SCROLL_THRESHOLD) {
+              fabButton.classList.remove('fab-hidden');
+          } else {
+              fabButton.classList.add('fab-hidden');
+          }
+      };
+
+      // Event listener for window scroll to show/hide the button
+      window.addEventListener('scroll', toggleFabVisibility);
+
+      // Event listener for button click to scroll to the top
+      fabButton.addEventListener('click', () => {
+          window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+          });
+      });
+
+      // *FAB END*//
 
         </script>
 

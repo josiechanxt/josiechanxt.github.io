@@ -524,3 +524,62 @@ nav {
     font-weight: 400;
     color: rgb(40, 40, 40);
 }
+
+/* FAB */
+/* .fab {
+    background-color: lightgray;
+    opacity: 0.8;
+}
+
+.fab:hover {
+    opacity: 1;
+}
+
+.fab:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(39, 39, 39, 0.5);
+}
+
+.fab-icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.btn-fab-lg {
+    width: 64px;
+    height: 64px;
+    padding: 0;
+    line-height: 1;
+} */
+
+.fab-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000; /* Ensure it stays on top */
+}
+
+.fab {
+    width: 60px;
+    height: 60px;
+    background-color: lightgray; /* Primary blue color */
+    opacity: 0.5;
+    color: white;
+    border-radius: 50%; /* Makes it a perfect circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em; /* Size of the icon/text inside */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.fab:hover {
+    opacity: 0.8;
+}
+
+.fab-hidden {
+    display: none; /* Hides the FAB */
+}

@@ -142,7 +142,7 @@
             </li>
             <br />
             <li>
-              My Contributions: Branding art direction for website, user
+              My Contributions: Setting Art direction for website, providing 10+ illustrations, user
               testing, synthesising data, doing up Figma frames
             </li>
           </h3>
@@ -167,37 +167,54 @@
             <br />
             <br />
             👉 View site here:
-            <a
-              href="https://a11y.tech.gov.sg/"
-              style="color: black"
-              target="_blank"
-              >https://a11y.tech.gov.sg/</a
-            >
+
+              <a href="https://a11y.tech.gov.sg/" target="_blank">https://a11y.tech.gov.sg/</a>
+
+            <br />
+            <br />
+            <br />
+            📰 News Coverage:
+
+              <a href="https://www.straitstimes.com/tech/govtech-launches-website-to-help-organisations-build-more-accessible-and-inclusive-digital-services" target="_blank">Straits Times</a>,
+              <a href="https://www.zaobao.com.sg/news/singapore/story20250729-7242702" target="_blank">Lian He Zao Bao</a>
+
           </h3>
         </div>
       </div>
 
       <div class="row justify-content-center pb-5 pt-5">
-        <div class="col-md-8 col-xs-12 p-1 pt-0 pl-0">
-          <img class="images" src="images/GovTech/20.jpg" alt="worm" />
+        <div class="col-md-8 col-xs-12 p-1 pt-0 pl-0 pb-5">
+          <img class="images" src="images/GovTech/A11y.gif" alt="worm" />
         </div>
       </div>
 
       <section style="background-color: #f4f4f4; padding: 0">
         <div class="row justify-content-center">
-          <div class="col-md-8 col-xs-12 pt-5 pb-4">
+          <div class="col-md-6 col-xs-12 pt-5 pb-0">
             <h3 class="text-center main-content3">
               Setting the Art direction for A11y Playground
+            </h3>
+             <h3 class="text-center main-content6 pb-5">
+              (Providing 10+ animated illustrations from scratch)
             </h3>
           </div>
         </div>
 
+
+         <!-- <div class="pt-2 pb-5">
+          <div class="justify-content-center row">
+            <div class="col-md-8 col-xs-12 pl-3 pt-0">
+              <h3 class="main-content4d pr-2 pt-0">
+                I helped set the art direction for the A11y Playground, providing 10+ illustrations, done from scratch from the ideation stage to the final high-fidelity animated designs. The illustrations were designed to be used across the website, including the hero section, practitioner checklist, and resources section.
+              </h3>
+            </div>
+          </div>
+        </div> -->
+        
+
         <div class="pt-5 pb-5">
           <div class="justify-content-center row">
             <div class="col-md-3 col-xs-12 pl-3 pt-0">
-              <h3 class="main-content6 pr-2 pt-0 pb-4">
-                Searching for Inspiration
-              </h3>
               <h3 class="main-content4d pr-2 pt-0">
                 Initially, I brainstormed by finding different styles, including
                 line art, vector shapes, and various other creative treatments.
@@ -403,6 +420,7 @@
           <div class="col-md-6 col-xs-12 pl-3 pt-0">
             <h3 class="main-content4d pr-2 pt-0">
            I also assisted with other tasks, such as creating Figma frames for the "Principle of Accessibility: Top 10 Issues" pages. I designed these with a "large screen" first, given that the website is primarily viewed on laptops.
+           <br />  <br /> <i>(Had more experience doing up Figma screen flows in another project, but it's confidential)</i>
             </h3>
           </div>
         </div>
@@ -514,11 +532,12 @@
         </div>
       </div>
 
-        <div class="pt-5 pb-5">
+      <div class="pt-5 pb-5">
         <div class="justify-content-center row">
           <div class="col-md-6 col-xs-12 pl-3 pt-0">
             <h3 class="main-content4d pr-2 pt-0">
               I also participated in <u>desk checks</u> with the Software Engineers to ensure the UI aligned with our Figma prototype. During these checks, I noted some concerns, such as the lack of contrast and similarity in the checklist labels' colors, sizing of the illustrations, and inconsistencies in the breadcrumbs. Fortunately, all these issues were rectified afterwards.
+            </h3>
           </div>
         </div>
       </div>
@@ -546,6 +565,13 @@ Overall, my key takeaway from this internship was the importance of digital acce
           </div>
         </div>
       </div>
+
+      <!-- FAB Button -->
+    <div id="fab-button" class="fab-container">
+        <div class="fab">
+          <svg xmlns="http://www.w3.org/2000/svg" height="42px" viewBox="0 -960 960 960" width="42px" fill="gray"><path d="M480-545.33 287.33-352.67 240-400l240-240 240 240-47.33 47.33L480-545.33Z"/></svg>
+        </div>
+    </div>
 
       <!-- FOOTER -->
 
@@ -649,6 +675,34 @@ Overall, my key takeaway from this internship was the importance of digital acce
         }
       });
       window.onunload = function () {};
+
+      /* FAB */
+      // --- New Scroll to Top Functionality ---
+      const fabButton = document.getElementById('fab-button');
+      const SCROLL_THRESHOLD = 300; // Pixels to scroll down before the button appears
+
+      // Function to handle showing/hiding the button on scroll
+      const toggleFabVisibility = () => {
+          if (window.scrollY > SCROLL_THRESHOLD) {
+              fabButton.classList.remove('fab-hidden');
+          } else {
+              fabButton.classList.add('fab-hidden');
+          }
+      };
+
+      // Event listener for window scroll to show/hide the button
+      window.addEventListener('scroll', toggleFabVisibility);
+
+      // Event listener for button click to scroll to the top
+      fabButton.addEventListener('click', () => {
+          window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+          });
+      });
+
+      // *FAB END*//
+
     </script>
 
     <script
