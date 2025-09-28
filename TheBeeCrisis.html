@@ -110,7 +110,7 @@
             class="text-center main-content4 pt-2 pb-0"
             style="font-size: 16px"
           >
-            <u>Project Brief</u>
+            <b>Project Brief</b>
           </h3>
 
           <h3 class="text-left main-content4 pb-2 pt-3">
@@ -120,7 +120,7 @@
             on a single theme.
           </h3>
 
-          <h3 class="text-left main-content4 pb-2 pt-3">
+          <h3 class="text-left main-content4 pb-2 pt-3 pl-3">
             <li>Under the guidance of Professor R. Brian Stone</li>
             <br />
             <li>Timeline: 13 Weeks</li>
@@ -130,7 +130,10 @@
             <li>Key skills: Storytelling, Art Direction, Graphic Design</li>
           </h3>
           <h3 class="text-left main-content4 pb-2 pt-3">
-            <i>Exhibited during Singapore Design Week 2025, under the theme "Envision"</i>
+            <i
+              >Exhibited during Singapore Design Week 2025, under the theme
+              "Envision"</i
+            >
           </h3>
         </div>
       </div>
@@ -533,23 +536,35 @@
           <div class="col-md-8 col-xs-12 p-1 borderbottom"></div>
         </div>
 
-         <div class="row justify-content-center">
+        <div class="row justify-content-center">
           <div class="col-md-8 col-xs-12 pb-3">
-            <h3 class="text-center main-content3">Singapore Design Week 2025 Exhibition</h3>
+            <h3 class="text-center main-content3">
+              Singapore Design Week 2025 Exhibition
+            </h3>
           </div>
         </div>
 
-          <div class="row justify-content-center">
-          <div class="col-md-8 col-xs-12 pb-3">
-            <h3 class="text-center main-content4">(In progress: More pictures to be taken~)</h3>
+
+        <div class="row justify-content-center pt-3 pb-0">
+          <div class="col-md-8 col-xs-12 p-1 pt-0 pb-0 pl-0">
+            <img
+              class="images"
+              src="images/The Bee Crisis/Bee1.jpg"
+              alt="worm"
+            />
           </div>
         </div>
-
-        
-        
-
+           <div class="row justify-content-center pt-3 pb-0">
+          <div class="col-md-8 col-xs-12 p-1 pt-0 pb-0 pl-0">
+            <img
+              class="images"
+              src="images/The Bee Crisis/Bee2.jpg"
+              alt="worm"
+            />
+          </div>
+        </div>
         <div class="row justify-content-center pt-3 pb-5">
-          <div class="col-md-8 col-xs-12 p-1 pt-0 pb-5 pl-0">
+          <div class="col-md-8 col-xs-12 p-1 pt-1 pb-5 pl-0">
             <img
               class="images"
               src="images/The Bee Crisis/SDW.jpeg"
@@ -557,7 +572,7 @@
             />
           </div>
         </div>
-          <div class="row justify-content-center pt-3 pb-5">
+        <!-- <div class="row justify-content-center pt-0 pb-5">
           <div class="col-md-8 col-xs-12 p-1 pt-0 pb-5 pl-0">
             <img
               class="images"
@@ -565,15 +580,10 @@
               alt="worm"
             />
           </div>
-        </div>
+        </div> -->
 
-        <div class="row justify-content-center">
-          <div class="col-md-8 col-xs-12 pb-5">
-            <h3 class="text-center main-content3">Printed A1 Posters</h3>
-          </div>
-        </div>
 
-        <div class="row justify-content-center pt-3 pb-5">
+        <!-- <div class="row justify-content-center pt-3 pb-5">
           <div class="col-md-8 col-xs-12 p-1 pt-0 pb-5 pl-0">
             <img
               class="images"
@@ -581,17 +591,25 @@
               alt="worm"
             />
           </div>
-        </div>
-       
+        </div> -->
       </section>
 
-           <!-- FAB Button -->
-    <div id="fab-button" class="fab-container">
+      <!-- FAB Button -->
+      <div id="fab-button" class="fab-container">
         <div class="fab">
-          <svg xmlns="http://www.w3.org/2000/svg" height="42px" viewBox="0 -960 960 960" width="42px" fill="gray"><path d="M480-545.33 287.33-352.67 240-400l240-240 240 240-47.33 47.33L480-545.33Z"/></svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="42px"
+            viewBox="0 -960 960 960"
+            width="42px"
+            fill="gray"
+          >
+            <path
+              d="M480-545.33 287.33-352.67 240-400l240-240 240 240-47.33 47.33L480-545.33Z"
+            />
+          </svg>
         </div>
-    </div>
-
+      </div>
 
       <!-- FOOTER -->
 
@@ -696,29 +714,29 @@
       });
       window.onunload = function () {};
 
-        /* FAB */
+      /* FAB */
       // --- New Scroll to Top Functionality ---
-      const fabButton = document.getElementById('fab-button');
+      const fabButton = document.getElementById("fab-button");
       const SCROLL_THRESHOLD = 300; // Pixels to scroll down before the button appears
 
       // Function to handle showing/hiding the button on scroll
       const toggleFabVisibility = () => {
-          if (window.scrollY > SCROLL_THRESHOLD) {
-              fabButton.classList.remove('fab-hidden');
-          } else {
-              fabButton.classList.add('fab-hidden');
-          }
+        if (window.scrollY > SCROLL_THRESHOLD) {
+          fabButton.classList.remove("fab-hidden");
+        } else {
+          fabButton.classList.add("fab-hidden");
+        }
       };
 
       // Event listener for window scroll to show/hide the button
-      window.addEventListener('scroll', toggleFabVisibility);
+      window.addEventListener("scroll", toggleFabVisibility);
 
       // Event listener for button click to scroll to the top
-      fabButton.addEventListener('click', () => {
-          window.scrollTo({
-              top: 0,
-              behavior: 'smooth'
-          });
+      fabButton.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
       });
 
       // *FAB END*//
