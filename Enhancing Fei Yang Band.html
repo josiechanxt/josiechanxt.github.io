@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Carattere&family=IBM+Plex+Sans:ital,wdth,wght@0,75..100,100..700;1,75..100,100..700&"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .wf-loading * {
+      opacity: 0;
+    }
+
+    /* Navigation */
+    .navbar {
+      padding: 1rem 2rem;
+      background: #ffffff;
+      border-bottom: 1px solid #eaeaea;
+    }
+
+    .nav-link {
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover,
+    .nav-button-active .nav-link {
+      color: #007bff !important;
+    }
+
+    /* --- CUSTOM HAMBURGER TO "X" ANIMATION --- */
+    .navbar-toggler {
+      border: none;
+      padding: 10px 10px;
+      outline: none !important;
+    }
+
+    .toggler-icon {
+      width: 24px;
+      height: 2px;
+      background-color: #007bff;
+      display: block;
+      transition: all 0.3s ease-in-out;
+      position: relative;
+    }
+
+    .toggler-icon::before,
+    .toggler-icon::after {
+      content: '';
+      width: 24px;
+      height: 2px;
+      background-color: #007bff;
+      display: block;
+      transition: all 0.3s ease-in-out;
+      position: absolute;
+    }
+
+    .toggler-icon::before {
+      top: -8px;
+    }
+
+    .toggler-icon::after {
+      bottom: -8px;
+    }
+
+    /* Animation to X */
+    .navbar-toggler:not(.collapsed) .toggler-icon {
+      background-color: transparent;
+    }
+
+    .navbar-toggler:not(.collapsed) .toggler-icon::before {
+      transform: rotate(45deg);
+      top: 0;
+    }
+
+    .navbar-toggler:not(.collapsed) .toggler-icon::after {
+      transform: rotate(-45deg);
+      bottom: 0;
+    }
+
+    /* Custom Light Grey Footer */
+    .footer-dark {
+      background-color: #ececec;
+      padding: 2rem 0 3rem;
+      text-align: center;
+      color: #007bff;
+    }
+
+    .footer-text {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      font-family: 'IBM Plex Sans', sans-serif;
+      color: #666;
+    }
+
+    .social-icons a {
+      margin: 0 12px;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .social-icons a:hover {
+      opacity: 0.7;
+      transform: translateY(-3px);
+    }
+
+    .social-icons img {
+      width: 30px;
+      height: 30px;
+      /* CSS Filter to change black icons to #007bff */
+      filter: invert(31%) sepia(94%) saturate(4120%) hue-rotate(211deg) brightness(101%) contrast(85%);
+    }
+
+    .copyright-bar {
+      border-top: 1px solid #d1d1d1;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      color: #666;
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    /* Solid Colour Pill Buttons */
+    .btn-outline-work {
+      padding: 8px 16px;
+      margin: 8px;
+      border-radius: 50px !important;
+      /* Forces the fully rounded ends */
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #ffffff !important;
+      /* Forces white text for legibility on solid backgrounds */
+      /* transition: all 0.3s ease; */
+      text-decoration: none !important;
+      display: inline-block;
+      border: none;
+      /* Removes the outline to keep it a solid block */
+    }
+
+    /* Assigning Solid Colours based on project brandings */
+    .btn-outline-work:nth-child(1) {
+      background-color: #07846b;
+    }
+
+    /* Mandai X */
+    .btn-outline-work:nth-child(2) {
+      background-color: #785ef0;
+    }
+
+    /* GovTech */
+    .btn-outline-work:nth-child(3) {
+      background-color: #4270ce;
+    }
+
+    /* Motion Graphics */
+    .btn-outline-work:nth-child(4) {
+      background-color: #e68700;
+    }
+
+    /* The Bee Crisis */
+    .btn-outline-work:nth-child(5) {
+      background-color: #ea474a;
+    }
+
+    /* Enhancing Fei Yang Band */
+    .btn-outline-work:nth-child(6) {
+      background-color: #e03e70;
+    }
+
+    /* miss carry D.I.Y. */
+    .btn-outline-work:nth-child(7) {
+      background-color: #a04d31;
+    }
+
+    /* Underrated Trash Snackers */
+
+    /* Hover State: Deepen the colour and add a lift effect */
+    .btn-outline-work:hover {
+      transform: translateY(-2px);
+      /* box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); */
+      filter: brightness(80%);
+      /* Slightly darkens the solid colour on hover */
+      color: #ffffff !important;
+    }
+
+    .gap-3 {
+      gap: 1rem;
+    }
+
+     h3.accordion-body {
+      padding-top: 0.5rem !important;
+      padding-bottom: 1rem !important;
+      padding-right: 0 !important;
+      margin: 0 !important;
+      font-size: 14px !important;
+      font-weight: 350 !important;
+      line-height: 1.3 !important;
+      color: #666 !important;
+      font-family: "IBM Plex Sans", sans-serif !important;
+      font-style: italic !important;
+    }
+  </style>
+  <title>Enhancing Fei Yang Band</title>
+</head>
+
+<body>
+
+  <svg id="fader"></svg>
+
+  <!-- Nav bar -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <a class="navbar-brand" href="Work.html">
+      <img src="images/Logo2.svg" alt="Josie Logo" height="50" />
+    </a>
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item nav-button-active active">
+          <a class="nav-link px-3" href="Work.html">Work</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3" href="Others.html">Others</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3" href="About.html">About</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link px-3" href="Contact.html">Contact</a>
+        </li> -->
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container-fluid">
+
+    <div class="row justify-content-center">
+      <div class="col-12 p-0">
+        <img class="images-header w-100 img-fluid" src="images/Enhancing Feel Young/Enhancing Feel Young_Thumbnail.png"
+          alt="worm" />
+      </div>
+    </div>
+
+    <div class="row justify-content-center pt-4 px-3">
+      <div class="col-md-7 col-12">
+        <h1 class="text-center projecttitle projecttitle--enhancing">Enhancing Feel Young (飞扬) Band</h1>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pb-3 pt-3 px-3">
+      <div class="tag-container">
+        <span class="tag" style="background: #ea474a; color: #ffffff">Service Design</span>
+        <span class="tag" style="background: #ea474a; color: #ffffff">Branding</span>
+        <span class="tag" style="background: #ea474a; color: #ffffff">Community</span>
+        <span class="tag" style="background: #ea474a; color: #ffffff">2025</span>
+      </div>
+    </div>
+
+    <!-- <div class="row justify-content-center pb-4 pt-3 px-3">
+        <h4 class="maincontent5 text-center mx-3" 
+        style="border: 2px solid #EA474A; padding: 10px; border-radius: 30px; color: #EA474A; font-size: 18px;"> Design for Community • Service Design • Branding • 2026</h4>
+      </div> -->
+
+    <div class="row justify-content-center pt-3">
+      <div class="col-md-5 col-12 px-4">
+        <h3 class="text-md-left text-center main-content3 pb-4 pt-3" style="color: #EA474A;">
+          "Observing and identifying daily friction points to develop design-led improvements.”
+        </h3>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pt-4 pb-5 px-3">
+      <div class="col-md-6 col-12" style="border: 2px solid #EA474A; padding: 20px; border-radius: 10px">
+        <h3 class="text-left main-content4 pb-3 pt-3">
+          We were tasked with identifying friction points in daily life and applying design thinking to improve them.
+          Through acute observation of societal behaviors and routines, we developed holistic solutions to address our
+          targeted challenges.
+        </h3>
+
+        <div class="row">
+          <div class="col-md-6 col-12 mb-4 mb-md-0">
+              <h3
+                class="text-left main-content4 pt-2 pb-0"
+                style="font-size: 16px; color: #EA474A"
+              >
+                <b style="font-weight: 500">My Contributions</b>
+              </h3>
+
+            <h3 class="text-left accordion-body  pb-2 pt-2 pl-3">
+              <li>Acted as the main art director, establishing the art direction and designed branding assets for the
+                project</li>
+              <br />
+              <li>Aided in concept ideation process brainstorming</li>
+              <br />
+              <li>Talking to the Feel Young Band every Saturday to iterate on concept and engage in
+                photography/videography</li>
+              <br />
+              <li>Hands-on making of physical deliverables</li>
+              <br />
+              <li>Edited the final video in Premiere Pro</li>
+            </h3>
+          </div>
+
+          <div class="col-md-6 col-12">
+            <h3
+                class="text-left main-content4 pt-2 pb-0"
+                style="font-size: 16px; color: #EA474A"
+              >
+                <b style="font-weight: 500">Timeline</b>
+              </h3>
+
+            <h3 class="text-left accordion-body  pb-2 pt-2 pl-3">
+              <li>13 Weeks</li>
+            </h3>
+             <h3
+                class="text-left main-content4 pt-2 pb-0"
+                style="font-size: 16px; color: #EA474A"
+              >
+                <b style="font-weight: 500">Team members</b>
+              </h3>
+
+            <h3 class="text-left accordion-body  pb-2 pt-2 pl-3">
+              <li>Damian Lim, Carina Yak</li>
+              <br />
+              <li>Under the supervision of Professor Dr. Christian Gilles Boucharenc</li>
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="row justify-content-center px-3">
+      <div class="col-md-6 col-12 pt-2 pb-5">
+        <h3 class="text-center main-content3" style="color: #EA474A;">
+          Featuring "Feel Young (飞扬) Band"...
+        </h3>
+      </div>
+    </div>
+
+    <div class="pt-1 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
+            Every week at 6:30 pm, a humble group of seniors congregates behind Chinatown Exit A. They gather to play
+            instruments, sing, and dance, displaying a vibrant community spirit.
+            While passersby might see them at dinnertime, there is a much deeper story behind this group. We spent ten
+            weeks with the band every Saturday. We followed them, going from strangers,
+            learning about their values of aging gracefully to being part of their community. We were deeply moved by
+            their hospitality and openness, allowing us to collaborate closely with them on
+            prototypes and concept iterations, ultimately <u>incorporating a brand identity into their everyday
+              routine</u> that truly captures who they are.</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pb-5">
+      <div class="col-md-8 col-xs-12 p-1 pl-0 pb-5" style="aspect-ratio: 16/9;">
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/9Q3pka0t8qY?si=KE5aBVGc53-MoAVj"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </div>
+
+
+  </div>
+
+  <section class="container-fluid" style="background-color: #f4f4f4;">
+    <div class="row justify-content-center px-3">
+      <div class="col-md-8 col-12 pt-5 pb-5">
+        <h3 class="text-center main-content3" style="color: #EA474A;">Initial observation of seniors' routines</h3>
+      </div>
+    </div>
+
+    <div class="pt-1 pb-3 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
+            We began with a brainstorming session to shortlist everyday scenarios where design could make an impact.
+            Our initial ideas were diverse, ranging from product design projects like improving the hygienic function
+            of dog pee trays.
+            Ultimately, we were drawn to the lives of the seniors, a poignant and relevant topic, as ageing is often
+            overlooked.
+            To identify specific opportunities, we headed to Chinatown, a place known for its vibrant heritage, and a
+            favourite gathering spot
+            for seniors where we could observe their routines. This fieldwork allowed us to identify authentic
+            opportunities for improvement.</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pb-3 pt-5 px-3">
+      <div class="col-md-8 col-12 p-2 pt-0">
+        <img class="images img-fluid w-100" src="images/Enhancing Feel Young/1_EFY.png" alt="worm" />
+      </div>
+    </div>
+
+    <div class="pt-5 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-3 col-12 pt-0">
+          <h3 class="main-content6 pr-2 pt-0 pb-4" style="color: #EA474A;">
+            Chatting with seniors, learning about their values and routines
+          </h3>
+          <h3 class="main-content4d pr-2 pt-0">
+            We spent time chatting with various seniors, who welcomed us with stories and life lessons.
+            These interviews helped us understand the delicate balance they maintain between their hobbies, families,
+            and past careers.
+            We translated these conversations into categorised personas, using their quotes and routines to ground our
+            design process in authentic human experience.
+          </h3>
+        </div>
+        <div class="col-md-5 col-12 pl-md-3 pt-4 pt-md-0">
+          <img class="images img-fluid w-100" src="images/Enhancing Feel Young/2_EFY.png" alt="worm" />
+        </div>
+      </div>
+
+      <div class="row justify-content-center pb-2 pt-5 px-3">
+        <div class="col-md-8 col-12 p-1 pt-0">
+          <img class="images img-fluid w-100" src="images/Enhancing Feel Young/3_EFY.png" alt="worm" />
+        </div>
+      </div>
+
+      <div class="row justify-content-center px-3">
+        <div class="col-md-8 col-12 pt-0 pb-5">
+          <h3 class="text-center main-content3" style="color: #EA474A;">Insight: A daily routine for ageing gracefully
+          </h3>
+        </div>
+      </div>
+
+      <div class="pt-1 pb-3 px-3">
+        <div class="justify-content-center row">
+          <div class="col-md-6 col-12 pl-md-3 pt-0">
+            <h3 class="main-content4d pr-md-2 pt-0 text-left">
+              Our interviews revealed that 'ageing gracefully' is reflected in daily routines. Seniors maintain their
+              dignity by staying active and finding community, which in turn allows them to step back and give their
+              adult children the space to grow.</h3>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="row justify-content-center pb-3 pt-5 px-3">
+        <div class="col-md-8 col-12 p-1 pt-0">
+          <img class="images img-fluid w-100" src="images/Enhancing Feel Young/4_EFY.png" alt="worm" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container-fluid">
+
+    <div class="row justify-content-center px-3">
+      <div class="col-md-6 col-12 pt-5 pb-5">
+        <h3 class="text-center main-content3" style="color: #EA474A;">
+          The “Chinatown Band” is a community of passionate seniors.
+        </h3>
+      </div>
+    </div>
+
+    <div class="pt-1 pb-3 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
+            After one of the interviews with Mr Lok, he mentioned he liked to go listen to the senior band at 5.30pm,
+            hence we followed him there as we were curious. It was a memorable sight, with a group of senior musicians
+            playing instruments at Chinatown Exit A. We found this significant because, upon further observation, we saw
+            them displaying great community spirit, such as buying food for one another. Over the following weeks, we
+            decided
+            to work with them to discover how design could aid them and their routines. They told us they have a name,
+            though not known to public: “Feel Young (飞扬) Band.”
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pb-0 pt-5 px-3">
+      <div class="col-md-8 col-12 p-1 pt-0">
+        <img class="images img-fluid w-100" src="images/Enhancing Feel Young/Band photo.png" alt="worm" />
+      </div>
+    </div>
+
+    <div class="row justify-content-center pb-0 pt-1 px-3">
+      <div class="col-md-8 col-12 p-1 pt-0">
+        <img class="images img-fluid w-100" src="images/Enhancing Feel Young/EFY_pic4.png" alt="worm" />
+      </div>
+    </div>
+
+    <div class="row justify-content-center px-3">
+      <div class="col-md-6 col-12 pt-5 pb-1">
+        <h3 class="text-center main-content3" style="color: #EA474A;">
+          The “Feel Young”(飞扬) Spirit.
+        </h3>
+      </div>
+    </div>
+
+    <!-- <div class="pt-1 pb-3 px-3">
+        <div class="justify-content-center row">
+          <div class="col-md-6 col-12 pl-md-3 pt-0">
+            <h3 class="main-content4d pr-md-2 pt-0 text-left">
+        <i>“We perform here every week to spread joy to other seniors, so they can join us in having fun too. Sometimes we perform in Old Folks homes or Temples too to bring them happiness.“ 
+            </br></br>- Wendy Lai (Co-Leader of Feel Young)</i>
+            </h3>
+          </div>
+        </div>
+      </div> -->
+
+    <div class="row justify-content-center pb-3 pt-1">
+      <div class="col-md-6 col-xs-12 pt-0">
+        <h3 class="text-center main-content6 pb-3 pt-5">
+          <i>“We perform here every week to spread joy to other seniors, so they can join us in having fun too.
+            Sometimes we perform in Old Folks homes or Temples too to bring them happiness.“
+            </br></br>- Wendy Lai (Co-Leader of Feel Young)</i>
+        </h3>
+      </div>
+    </div>
+
+    <div class="pt-1 pb-3 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
+            As the sun sets, the band gathers. No fancy stage, just shared laughter, and a love for making people smile.
+            Everyone contributes, in small ways that mean everything, such as buying food for each other, or simply
+            pasting the tape on the floor before performing. They are not there for fame or money, but to bring joy to
+            the people around them, which includes other senior or passerbys.
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pb-0 pt-5 px-3">
+      <div class="col-md-8 col-12 p-1 pt-0">
+        <img class="images img-fluid w-100" src="images/Enhancing Feel Young/5_EFY.png" alt="worm" />
+      </div>
+    </div>
+    <div class="row justify-content-center pb-3 pt-1 px-3">
+      <div class="col-md-8 col-12 p-1 pt-0">
+        <img class="images img-fluid w-100" src="images/Enhancing Feel Young/6_EFY.png" alt="worm" />
+      </div>
+    </div>
+
+    <div class="row justify-content-center px-3">
+      <div class="col-md-6 col-12 pt-5 pb-5">
+        <h3 class="text-center main-content3" style="color: #EA474A;">
+          The Conflict.
+        </h3>
+      </div>
+    </div>
+
+    <div class="pt-1 pb-3 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
+            Yet, sometimes joy is misunderstood. One evening, the police were called over a noise complaint.
+            They told us it was not the first time they had come. They even tried compromising, by switching to smaller,
+            quieter speakers, but they were told to leave.
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pb-0 pt-5 px-3">
+      <div class="col-md-8 col-12 p-1 pt-0">
+        <img class="images img-fluid w-100" src="images/Enhancing Feel Young/7_EFY.png" alt="worm" />
+      </div>
+    </div>
+    <div class="row justify-content-center pb-3 pt-1 px-3">
+      <div class="col-md-8 col-12 p-1 pt-0">
+        <img class="images img-fluid w-100" src="images/Enhancing Feel Young/8_EFY.png" alt="worm" />
+      </div>
+    </div>
+
+    <div class="row justify-content-center px-3">
+      <div class="col-md-6 col-12 pt-5 pb-5">
+        <h3 class="text-center main-content3" style="color: #EA474A;">
+          Their goal was just to make others happy, and that’s it.
+        </h3>
+      </div>
+    </div>
+
+    <div class="pt-1 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
+            We interviewed Mr Poh, a Co-Leader of Feel Young, and he emotionally mentioned they only wanted to have a
+            fun time with each other, by playing music together and sharing this passion and joy to the people around
+            them. They felt wronged that they were treated as "noisemakers".
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center pb-3 pt-1 px-3">
+      <div class="col-md-8 col-12 p-1 pt-0">
+        <img class="images img-fluid w-100" src="images/Enhancing Feel Young/9_EFY.png" alt="worm" />
+      </div>
+    </div>
+
+    <div class="row justify-content-center px-3">
+      <div class="col-md-6 col-12 pt-5 pb-5">
+        <h3 class="text-center main-content3" style="color: #EA474A;">
+          Opportunity: Co-creation of Band Identity.
+        </h3>
+      </div>
+    </div>
+
+    <div class="pt-1 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
+            As designers, we thought this presented a valuable opportunity, where we could improve their public
+            recognition
+            by creating a strong band identity that articulates their value. An identity that embodies their spirit, so
+            people would know who they are and what they stand for at first glance, reducing misunderstanding. </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center pb-3 pt-1 px-3">
+    <div class="col-md-8 col-12 p-1 pt-0">
+      <img class="images img-fluid w-100" src="images/Enhancing Feel Young/Cocreation.png" alt="worm" />
+    </div>
+  </div>
+
+  <div class="pt-5 pb-0 px-3">
+    <div class="justify-content-center row">
+      <div class="col-md-6 col-12 pl-md-3 pt-0">
+        <h3 class="main-content6 pr-md-2 pt-0 text-left pl-2" style="color: #EA474A;">
+          The <u>individuality</u> of each member.</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="pt-2 pb-3 px-3">
+    <div class="justify-content-center row">
+      <div class="col-md-6 col-12 pl-md-3 pt-0">
+        <h3 class="main-content4d pr-md-2 pt-0 text-left">
+          We settled on flowers, a symbol that deeply resonates wth them, which is also a metaphor for personality
+          and a blossoming community. Each member chose a flower that reflected who they are, their personality,
+          their character and their spirit. </h3>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center pb-5 pt-3 px-3">
+    <div class="col-md-7 col-12 p-1 pt-0">
+      <img class="images img-fluid w-100" src="images/Enhancing Feel Young/10_EFY.svg" alt="worm" />
+    </div>
+  </div>
+
+  <div class="pt-5 pb-5 px-3">
+    <div class="justify-content-center row">
+      <div class="col-md-6 col-12 pl-md-3 pt-0">
+        <h3 class="main-content4d pr-md-2 pt-0 text-left">
+          Each member also contributes their passion and talent in the band. A variation of secondary motifs were
+          designed to complement the flower chosen.</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center pb-3 pt-2 px-3">
+    <div class="col-md-8 col-12 p-1 pt-0">
+      <img class="images img-fluid w-100" src="images/Enhancing Feel Young/11_EFY.png" alt="worm" />
+    </div>
+  </div>
+
+  <div class="pt-5 pb-0 px-3">
+    <div class="justify-content-center row">
+      <div class="col-md-6 col-12 pl-md-3 pt-0">
+        <h3 class="main-content6 pr-md-2 pt-0 text-left pl-2" style="color: #EA474A;">
+          A <u>bouquet</u> of individuals.</h3>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="pt-2 pb-3 px-3">
+    <div class="justify-content-center row">
+      <div class="col-md-6 col-12 pl-md-3 pt-0">
+        <h3 class="main-content4d pr-md-2 pt-0 text-left">
+          Together, they form a visual identity that celebrates both individual spirit and collective joy.</h3>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row justify-content-center pb-5 pt-1 px-3">
+    <div class="col-md-6 col-12 p-1 pt-0">
+      <img class="images img-fluid w-100" src="images/Enhancing Feel Young/12_EFY.svg" alt="worm" />
+    </div>
+  </div>
+
+  <div class="pt-2 pb-3 px-3">
+    <div class="justify-content-center row">
+      <div class="col-md-6 col-12 pl-md-3 pt-0">
+        <h3 class="main-content4d pr-md-2 pt-0 text-left">
+          Each motif holds a personal story. Together, they form a <u><b>cohesive identity</b></u>.</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center px-3">
+    <div class="col-md-6 col-12 pt-5 pb-5">
+      <h3 class="text-center main-content3" style="color: #EA474A;">
+        Creating low-cost, familiar, high-impact items.
+      </h3>
+    </div>
+  </div>
+
+  <div class="pt-1 pb-3 px-3">
+    <div class="justify-content-center row">
+      <div class="col-md-6 col-12 pl-md-3 pt-0">
+        <h3 class="main-content4d pr-md-2 pt-0 text-left">
+          We designed from their routine, and identified familiar and recognisable everyday objects that they
+          already
+          use in their performances. We translated their identity onto these items we created and kept it vintage,
+          ensuring our design belongs naturally in their hands and environment.</h3>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center pb-3 pt-5 px-3">
+    <div class="col-md-8 col-12 p-1 pt-0">
+      <img class="images img-fluid w-100" src="images/Enhancing Feel Young/13_EFY.png" alt="worm" />
+    </div>
+  </div>
+
+  <div class="row justify-content-center pb-3 pt-2 px-3">
+    <div class="col-md-8 col-12 p-1 pt-0">
+      <img class="images img-fluid w-100" src="images/Enhancing Feel Young/New Products.png" alt="worm" />
+    </div>
+  </div>
+
+  <div class="row justify-content-center px-3">
+    <div class="col-md-6 col-12 pt-5 pb-5">
+      <h3 class="text-center main-content3" style="color: #EA474A;">
+        Our designs in the environment.
+      </h3>
+    </div>
+  </div>
+
+  <div class="row justify-content-center pb-0 pt-2 px-3">
+    <div class="col-md-4 col-12 p-1 pt-0">
+      <img class="images img-fluid w-100" src="images/Enhancing Feel Young/Pic 1.png" alt="worm" />
+    </div>
+    <div class="col-md-4 col-12 p-1 pt-0">
+      <img class="images img-fluid w-100" src="images/Enhancing Feel Young/Pic 2.png" alt="worm" />
+    </div>
+  </div>
+  <div class="row justify-content-center pb-5 pt-2 px-3">
+    <div class="col-md-4 col-12 p-1 pt-0">
+      <img class="images img-fluid w-100" src="images/Enhancing Feel Young/Pic 3.png" alt="worm" />
+    </div>
+    <div class="col-md-4 col-12 p-1 pt-0">
+      <img class="images img-fluid w-100" src="images/Enhancing Feel Young/Pic 4.png" alt="worm" />
+    </div>
+  </div>
+
+
+  <!-- BACK AND NEXT BUTTONS -->
+  <!-- <div class="row justify-content-center pt-5 pb-5 px-3">
+    <div class="col-md-8 col-12 d-flex justify-content-between align-items-center">
+      <a href="#" class="btn nav-button-custom"
+        style="background: none; color: rgba(0, 0, 0, .5); font-family: 'IBM Plex Sans', cursive;">← Back</a>
+      <a href="#" class="btn nav-button-custom"
+        style="background: none; color: rgba(0, 0, 0, .5); font-family: 'IBM Plex Sans', cursive;">Next →</a>
+    </div>
+  </div> -->
+
+
+  <div id="fab-button" class="fab-container">
+    <div class="fab">
+      <svg xmlns="http://www.w3.org/2000/svg" height="42px" viewBox="0 -960 960 960" width="42px" fill="gray">
+        <path d="M480-545.33 287.33-352.67 240-400l240-240 240 240-47.33 47.33L480-545.33Z" />
+      </svg>
+    </div>
+  </div>
+
+    <div class="row justify-content-center pb-5 pt-5 px-3">
+      <div class="col-6 text-center pt-5 pb-5">
+        <h3 class="mb-4" style="color: #555; font-size: 18px;">View other works 👀</h3>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+          <a href="MandaiX.html" class="btn btn-outline-work">Mandai X</a>
+          <a href="GovTech.html" class="btn btn-outline-work">GovTech Singapore</a>
+          <a href="Animations.html" class="btn btn-outline-work">Motion Graphics</a>
+          <a href="TheBeeCrisis.html" class="btn btn-outline-work">The Bee Crisis</a>
+          <a href="Enhancing Fei Yang Band.html" class="btn btn-outline-work">Enhancing Fei Yang Band</a>
+          <a href="misscarry.html" class="btn btn-outline-work">miss carry D.I.Y.</a>
+          <a href="underratedtrashsnackers.html" class="btn btn-outline-work">Underrated Trash Snackers</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- FOOTER -->
+
+
+  <footer class="footer-dark">
+    <div class="container">
+      <div class="footer-text">
+        Let's work together :)
+      </div>
+
+      <div class="social-icons">
+        <a href="https://linkedin.com/in/josiechanxt" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png" alt="LinkedIn">
+        </a>
+        <a href="mailto:jochanxt@gmail.com">
+          <img src="https://cdn-icons-png.flaticon.com/512/542/542689.png" alt="Email">
+        </a>
+        <a href="https://instagram.com/jo.cgraphics" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/1384/1384015.png" alt="Instagram">
+        </a>
+      </div>
+
+      <div class="copyright-bar">
+        <p>Copyright © 2026 Josie Chan. Built with HTML & CSS.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    fadeInPage();
+
+    function fadeInPage() {
+      if (!window.AnimationEvent) {
+        return;
+      }
+      var fader = document.getElementById("fader");
+      fader.classList.add("fade-out");
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+      if (!window.AnimationEvent) {
+        return;
+      }
+      var anchors = document.getElementsByTagName("a");
+      for (var idx = 0; idx < anchors.length; idx += 1) {
+        if (
+          anchors[idx].hostname !== window.location.hostname ||
+          anchors[idx].pathname === window.location.pathname
+        ) {
+          continue;
+        }
+        anchors[idx].addEventListener("click", function (event) {
+          var fader = document.getElementById("fader"),
+            anchor = event.currentTarget;
+
+          var listener = function () {
+            window.location = anchor.href;
+            fader.removeEventListener("animationend", listener);
+          };
+          fader.addEventListener("animationend", listener);
+
+          event.preventDefault();
+          fader.classList.add("fade-in");
+        });
+      }
+    });
+    window.onunload = function () { };
+
+    /* FAB */
+    // --- New Scroll to Top Functionality ---
+    const fabButton = document.getElementById('fab-button');
+    const SCROLL_THRESHOLD = 300; // Pixels to scroll down before the button appears
+
+    // Function to handle showing/hiding the button on scroll
+    const toggleFabVisibility = () => {
+      if (window.scrollY > SCROLL_THRESHOLD) {
+        fabButton.classList.remove('fab-hidden');
+      } else {
+        fabButton.classList.add('fab-hidden');
+      }
+    };
+
+    // Event listener for window scroll to show/hide the button
+    window.addEventListener('scroll', toggleFabVisibility);
+
+    // Event listener for button click to scroll to the top
+    fabButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // *FAB END*//
+
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

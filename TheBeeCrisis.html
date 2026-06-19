@@ -1,149 +1,532 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
-      .wf-loading * {
-        opacity: 0;
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Carattere&family=IBM+Plex+Sans:ital,wdth,wght@0,75..100,100..700;1,75..100,100..700&"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .wf-loading * {
+      opacity: 0;
+    }
+
+    /* Navigation */
+    .navbar {
+      padding: 1rem 2rem;
+      background: #ffffff;
+      border-bottom: 1px solid #eaeaea;
+    }
+
+    .nav-link {
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover,
+    .nav-button-active .nav-link {
+      color: #007bff !important;
+    }
+
+    /* --- CUSTOM HAMBURGER TO "X" ANIMATION --- */
+    .navbar-toggler {
+      border: none;
+      padding: 10px 10px;
+      outline: none !important;
+    }
+
+    .toggler-icon {
+      width: 24px;
+      height: 2px;
+      background-color: #007bff;
+      display: block;
+      transition: all 0.3s ease-in-out;
+      position: relative;
+    }
+
+    .toggler-icon::before,
+    .toggler-icon::after {
+      content: '';
+      width: 24px;
+      height: 2px;
+      background-color: #007bff;
+      display: block;
+      transition: all 0.3s ease-in-out;
+      position: absolute;
+    }
+
+    .toggler-icon::before {
+      top: -8px;
+    }
+
+    .toggler-icon::after {
+      bottom: -8px;
+    }
+
+    /* Animation to X */
+    .navbar-toggler:not(.collapsed) .toggler-icon {
+      background-color: transparent;
+    }
+
+    .navbar-toggler:not(.collapsed) .toggler-icon::before {
+      transform: rotate(45deg);
+      top: 0;
+    }
+
+    .navbar-toggler:not(.collapsed) .toggler-icon::after {
+      transform: rotate(-45deg);
+      bottom: 0;
+    }
+
+    /* Custom Light Grey Footer */
+    .footer-dark {
+      background-color: #ececec;
+      padding: 2rem 0 3rem;
+      text-align: center;
+      color: #007bff;
+    }
+
+    .footer-text {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      font-family: 'IBM Plex Sans', sans-serif;
+      color: #666;
+    }
+
+    .social-icons a {
+      margin: 0 12px;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .social-icons a:hover {
+      opacity: 0.7;
+      transform: translateY(-3px);
+    }
+
+    .social-icons img {
+      width: 30px;
+      height: 30px;
+      /* CSS Filter to change black icons to #007bff */
+      filter: invert(31%) sepia(94%) saturate(4120%) hue-rotate(211deg) brightness(101%) contrast(85%);
+    }
+
+    .copyright-bar {
+      border-top: 1px solid #d1d1d1;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      color: #666;
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    /* Solid Colour Pill Buttons */
+    .btn-outline-work {
+      padding: 8px 16px;
+      margin: 8px;
+      border-radius: 50px !important;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #ffffff !important;
+      text-decoration: none !important;
+      display: inline-block;
+      border: none;
+    }
+
+    /* Assigning Solid Colours based on project brandings */
+    .btn-outline-work:nth-child(1) {
+      background-color: #07846b;
+    }
+
+    .btn-outline-work:nth-child(2) {
+      background-color: #785ef0;
+    }
+
+    .btn-outline-work:nth-child(3) {
+      background-color: #4270ce;
+    }
+
+    .btn-outline-work:nth-child(4) {
+      background-color: #e68700;
+    }
+
+    .btn-outline-work:nth-child(5) {
+      background-color: #ea474a;
+    }
+
+    .btn-outline-work:nth-child(6) {
+      background-color: #e03e70;
+    }
+
+    .btn-outline-work:nth-child(7) {
+      background-color: #a04d31;
+    }
+
+    .btn-outline-work:hover {
+      transform: translateY(-2px);
+      filter: brightness(80%);
+      color: #ffffff !important;
+    }
+
+    .gap-3 {
+      gap: 1rem;
+    }
+
+    h3.accordion-body {
+      padding-top: 0.5rem !important;
+      padding-bottom: 1rem !important;
+      padding-right: 0 !important;
+      margin: 0 !important;
+      font-size: 14px !important;
+      font-weight: 350 !important;
+      line-height: 1.3 !important;
+      color: #666 !important;
+      font-family: "IBM Plex Sans", sans-serif !important;
+      font-style: italic !important;
+    }
+
+    /* Image Slider Styles */
+    .image-slider-container {
+      max-width: 100%;
+      margin: 0 auto;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+    }
+
+    .slider-images-region {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr;
+      background: #f5f5f5;
+      border-radius: 12px 12px 0 0;
+    }
+
+    .slider-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      background: #f5f5f5;
+      overflow: hidden;
+      border-radius: 12px 12px 0 0;
+    }
+
+    .slider-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slider-image {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+
+    /* Text panels region */
+    .slider-panels-region {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr;
+      background: white;
+      border-radius: 0 0 12px 12px;
+    }
+
+    .slider-panel {
+      grid-column: 1;
+      grid-row: 1;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      padding: 25px;
+      text-align: left;
+    }
+
+    .slider-panel.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .slider-title {
+      font-size: 22px;
+      font-weight: 600;
+      margin: 0 0 8px 0;
+      color: #1a1a1a;
+      font-family: 'IBM Plex Sans', sans-serif;
+    }
+
+    .slider-description {
+      font-size: 14px;
+      font-weight: 400;
+      margin: 0;
+      color: #666;
+      line-height: 1.4;
+      font-family: 'IBM Plex Sans', sans-serif;
+    }
+
+    .slider-nav {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      transform: translateY(-50%);
+      display: flex;
+      justify-content: space-between;
+      pointer-events: none;
+      z-index: 20;
+      padding: 0 15px;
+      box-sizing: border-box;
+    }
+
+    .slider-arrow {
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: all;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      color: #E68A00;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .slider-arrow:hover {
+      background: white;
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .slider-arrow-left::after {
+      content: '\2039';
+      font-size: 32px;
+      margin-right: 3px;
+    }
+
+    .slider-arrow-right::after {
+      content: '\203a';
+      font-size: 32px;
+      margin-left: 3px;
+    }
+
+    /* Dots */
+    .slider-dots {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      z-index: 30;
+      padding: 0;
+      background: transparent;
+      pointer-events: all;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.55);
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+      flex-shrink: 0;
+    }
+
+    .dot.active {
+      background: #E68A00;
+      transform: scale(1.3);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+    }
+
+    .dot:hover {
+      background: #E68A00;
+    }
+
+    .slider-slide {
+      grid-column: 1;
+      grid-row: 1;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .slider-slide.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    @media (max-width: 768px) {
+      .slider-title {
+        font-size: 18px;
       }
-    </style>
 
-    <!-- FONTS -->
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap"
-    />
-    <!-- <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poetsen+One&family=Quicksand:wght@300..700&display=swap"
-        rel="stylesheet"> -->
-    <!-- <style>
-        body {
-            font-family: "Poetsen One", sans-serif;
-            font-family: Quicksand, sans-serif;
-        }
-    </style> -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="styles.css" />
-    <title>The Bee Crisis</title>
-  </head>
+      .slider-description {
+        font-size: 12px;
+      }
 
-  <body>
-    <div class="container-fluid">
-      <svg id="fader"></svg>
-      <!-- Nav bar -->
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <a href="index.html"
-          ><img class="navbar-brand logo" src="images/Logo2.svg" alt="worm"
-        /></a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+      .slider-arrow {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+      }
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto topnav">
-            <li class="nav-item text-center">
-              <div class="nav-button-active active">
-                <a class="nav-link nav-a" href="index.html">Work</a>
-              </div>
-            </li>
-            <li class="nav-item text-center">
-              <div class="nav-button">
-                <a class="nav-link nav-a" href="Illustrations.html">Others</a>
-              </div>
-            </li>
-            <li class="nav-item text-center">
-              <div class="nav-button">
-                <a class="nav-link nav-a" href="About.html">About</a>
-              </div>
-            </li>
-            <li class="nav-item text-center">
-              <div class="nav-button">
-                <a class="nav-link nav-a" href="Contact.html">Contact</a>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </nav>
+      .slider-panel {
+        padding: 20px 15px;
+      }
 
-      <!-- ------------------- -->
+      .dot {
+        width: 8px;
+        height: 8px;
+      }
+    }
+  </style>
+  <title>TheBeeCrisis</title>
+</head>
 
-      <div class="row justify-content-center">
-        <div class="col-12 p-0"></div>
-        <img
-          class="images w-100"
-          src="images/The Bee Crisis/TheBeeCrisis_Header.jpg"
-          alt="worm"
-        />
+<body>
+
+  <svg id="fader"></svg>
+
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <a class="navbar-brand" href="Work.html">
+      <img src="images/Logo2.svg" alt="Josie Logo" height="50" />
+    </a>
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item nav-button-active active">
+          <a class="nav-link px-3" href="Work.html">Work</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3" href="Others.html">Others</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3" href="About.html">About</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link px-3" href="Contact.html">Contact</a>
+        </li> -->
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container-fluid">
+
+    <div class="row justify-content-center">
+      <div class="col-12 p-0">
+        <img class="images-header w-100 img-fluid" src="images/The Bee Crisis/TheBeeCrisis_Header.jpg" alt="worm" />
       </div>
+    </div>
 
-      <div class="row justify-content-center">
-        <div class="col-md-7 col-xs-12">
-          <h1 class="text-center projecttitle">The Bee Crisis</h1>
-
-          <h3 class="text-center main-content5">Informational Posters</h3>
-        </div>
+    <div class="row justify-content-center pt-4 px-3">
+      <div class="col-md-7 col-12">
+        <h1 class="text-center projecttitle projecttitle--beec">The Bee Crisis</h1>
       </div>
+    </div>
 
-      <div class="row justify-content-center pb-4">
-        <h4 class="maincontent7">School Project • 2025</h4>
+    <div class="row justify-content-center pb-4 pt-3 px-3">
+      <h4 class="maincontent5 text-center mx-3"
+        style="border: 2px solid #E68A00; padding: 10px; border-radius: 30px; color: #E68A00; font-size: 18px;"> Data
+        Visualisation • Storytelling • 2026</h4>
+    </div>
+
+    <div class="row justify-content-center pt-3">
+      <div class="col-md-5 col-12 px-4">
+        <h3 class="text-md-left text-center main-content3 pb-4 pt-3" style="color: #E68A00;">
+          "Design and develop a set of two-panel posters that visually tell a story of either a sequence, evolution, or
+          cycle.”
+        </h3>
       </div>
+    </div>
 
-      <div class="row justify-content-center pt-4 pb-5">
-        <div
-          class="col-md-6 col-xs-12"
-          style="border: 1.5px solid black; padding: 20px; border-radius: 10px"
-        >
-          <h3
-            class="text-center main-content4 pt-2 pb-0"
-            style="font-size: 16px"
-          >
-            <b>Project Brief</b>
-          </h3>
+    <div class="row justify-content-center pt-4 pb-5 px-3">
+      <div class="col-md-6 col-12" style="border: 2px solid #E68A00; padding: 20px; border-radius: 10px">
+        <h3 class="text-left main-content4 pb-3 pt-3">
+          Developed as part of the Informative Narratives module during my second year of University, this project
+          involved translating raw complex data
+          into structured information through 2D visualisation. I utilised graphic storytelling to create a series of
+          visual narratives, focusing on form,
+          colour and hierarchy to ensure the message was both legible and engaging for the target audience.
+        </h3>
 
-          <h3 class="text-left main-content4 pb-2 pt-3">
-            To design and develop a set of two-panel posters that visually tell
-            a story of either a sequence, evolution, or cycle.
-            <br />The panels can contrast or enhance each other and should focus
-            on a single theme.
-          </h3>
+        <div class="row">
+          <div class="col-md-6 col-12 mb-4 mb-md-0">
+            <h3 class="text-left main-content4 pt-2 pb-0" style="font-size: 16px; color: #E68A00;">
+              <b style="font-weight: 500">Key Skills</b>
+            </h3>
 
-          <h3 class="text-left main-content4 pb-2 pt-3 pl-3">
-            <li>Under the guidance of Professor R. Brian Stone</li>
-            <br />
-            <li>Timeline: 13 Weeks</li>
-            <br />
-            <li>Collaborator(s): Solo Project</li>
-            <br />
-            <li>Key skills: Storytelling, Art Direction, Graphic Design</li>
-          </h3>
-          <h3 class="text-left main-content4 pb-2 pt-3">
-            <i
-              >Exhibited during Singapore Design Week 2025, under the theme
-              "Envision"</i
-            >
-          </h3>
+            <h3 class="text-left accordion-body  pb-2 pt-2 pl-3">
+              <li>Graphic Storytelling</li>
+              <br />
+              <li>Conceptualising a clear and engaging narrative</li>
+              <br />
+              <li>Idea-sketching and visual iterations</li>
+            </h3>
+          </div>
+
+          <div class="col-md-6 col-12">
+            <h3 class="text-left main-content4 pt-2 pb-0" style="font-size: 16px; color: #E68A00;">
+              <b style="font-weight: 500">Timeline</b>
+            </h3>
+
+            <h3 class="text-left accordion-body  pb-2 pt-2 pl-3">
+              <li>13 Weeks</li>
+            </h3>
+            <h3 class="text-left main-content4 pt-2 pb-0" style="font-size: 16px; color: #E68A00;">
+              <b style="font-weight: 500">Team members</b>
+            </h3>
+
+            <h3 class="text-left accordion-body  pb-2 pt-2 pl-3">
+              <li>Individual</li>
+              <br />
+              <li>Under the supervision of Professor R. Brian Stone</li>
+            </h3>
+          </div>
         </div>
       </div>
+    </div>
 
-      <!-- ------------------- -->
+    <div class="row justify-content-center px-3">
+      <div class="col-md-6 col-12 pt-3 pb-5">
+        <h3 class="text-center main-content3" style="color: #E68A00;">
+          The Narrative
+        </h3>
+      </div>
+    </div>
 
-      <div class="row justify-content-center pt-5">
-        <div class="col-md-6 col-xs-12">
-          <h1 class="text-center main-content3">The Narrative</h1>
-          <h3 class="text-left main-content4 pb-4 pt-3">
+    <div class="pt-1 pb-3 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
             I've chosen to focus on the bee crisis, highlighting the significant
             issue of bee population decline that has been affecting the world
             for some time. The posters aim to raise awareness about the
@@ -152,610 +535,582 @@
           </h3>
         </div>
       </div>
+    </div>
 
-      <div class="row justify-content-center pb-3 pt-5">
-        <div class="col-md-8 col-xs-12 p-1 pt-0 pl-0">
-          <img
-            class="images"
-            src="images/The Bee Crisis/Beecrisis-10.jpg"
-            alt="worm"
-          />
-        </div>
-        <div class="col-md-8 col-xs-12 p-1 pl-0">
-          <img
-            class="images"
-            src="images/The Bee Crisis/Beecrisis-11.jpg"
-            alt="worm"
-          />
-        </div>
-        <div class="col-md-8 col-xs-12 p-1 pb-5">
-          <img
-            class="images"
-            src="images/The Bee Crisis/Beecrisis-12.jpg"
-            alt="worm"
-          />
-        </div>
+    <div class="row justify-content-center pb-3 pt-5 px-3">
+      <div class="col-md-8 col-12 p-1 pt-0">
+        <img class="images img-fluid w-100" src="images/The Bee Crisis/Beecrisis-10.jpg" alt="worm" />
       </div>
-
-      <div class="row justify-content-center pt-5 pb-5">
-        <div class="col-md-8 col-xs-12 p-1 borderbottom"></div>
+      <div class="col-md-8 col-12 p-1">
+        <img class="images img-fluid w-100" src="images/The Bee Crisis/Beecrisis-11.jpg" alt="worm" />
       </div>
-
-      <div class="row justify-content-center pt-5 pb-3">
-        <div class="col-md-6 col-xs-12">
-          <h3 class="text-center main-content3 p-0">Final Poster Set</h3>
-        </div>
+      <div class="col-md-8 col-12 p-1 pb-5">
+        <img class="images img-fluid w-100" src="images/The Bee Crisis/Beecrisis-12.jpg" alt="worm" />
       </div>
+    </div>
 
-      <div class="row justify-content-center pb-5 pt-5">
-        <div class="col-md-8 col-xs-12 p-1 pl-0">
-          <img
-            class="images"
-            src="images/The Bee Crisis/A0277590R_JosieChanXinTian_Mockup.jpg"
-            alt="worm"
-          />
-        </div>
+    <div class="row justify-content-center px-3">
+      <div class="col-md-6 col-12 pt-5 pb-5">
+        <h3 class="text-center main-content3" style="color: #E68A00;">
+          Final Poster Set
+        </h3>
       </div>
+    </div>
 
-      <div class="row justify-content-center pt-5 pb-5">
-        <div class="col-md-6 col-xs-12">
-          <h3 class="text-left main-content4 pb-5 pt-3">
+    <div class="pt-1 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
             A <u>SEQUENTIAL</u> visual narrative was opted to illustrate the key
             factors driving bee population decline in the U.S. and Europe, and
             its subsequent impact on ecosystems and crops.
           </h3>
         </div>
       </div>
+    </div>
 
-      <div class="row justify-content-center pb-5">
-        <div class="col-md-8 col-xs-12 p-1 pl-0">
-          <img
-            class="images"
-            src="images/The Bee Crisis/Beecrisis-16.jpg"
-            alt="worm"
-          />
-        </div>
-        <div class="col-md-8 col-xs-12 p-1 pl-0">
-          <img
-            class="images"
-            src="images/The Bee Crisis/A0277590R_JosieChanXinTian_Poster_1.jpg"
-            alt="worm"
-          />
-        </div>
-        <div class="col-md-8 col-xs-12 p-1 pl-0 pb-5">
-          <img
-            class="images"
-            src="images/The Bee Crisis/A0277590R_JosieChanXinTian_Poster_2.jpg"
-            alt="worm"
-          />
+    <div class="row justify-content-center pt-2 pb-5 px-3">
+      <div class="col-md-8 col-12 p-1">
+        <img class="images img-fluid w-100" src="images/The Bee Crisis/A0277590R_JosieChanXinTian_Mockup.jpg"
+          alt="worm" />
+      </div>
+      <div class="col-md-8 col-12 p-1">
+        <img class="images img-fluid w-100" src="images/The Bee Crisis/Beecrisis-16.jpg" alt="worm" />
+      </div>
+      <div class="col-md-8 col-12 p-1">
+        <img class="images img-fluid w-100" src="images/The Bee Crisis/A0277590R_JosieChanXinTian_Poster_1.jpg"
+          alt="worm" />
+      </div>
+      <div class="col-md-8 col-12 p-1 pb-5">
+        <img class="images img-fluid w-100" src="images/The Bee Crisis/A0277590R_JosieChanXinTian_Poster_2.jpg"
+          alt="worm" />
+      </div>
+    </div>
+  </div>
+
+  <section class="container-fluid" style="background-color: #f4f4f4;">
+      <div class="row justify-content-center px-3">
+        <div class="col-md-8 col-12 pt-5 pb-4">
+          <h3 class="text-center main-content3" style="color: #E68A00;">Process & Iterations</h3>
         </div>
       </div>
 
-      <section style="background-color: #f4f4f4; padding: 0">
-        <div class="row justify-content-center">
-          <div class="col-md-8 col-xs-12 pt-5 pb-4">
-            <h3 class="text-center main-content3">Process & Iterations</h3>
-          </div>
-        </div>
-
-        <div class="pt-5 pb-5">
-          <div class="justify-content-center row">
-            <div class="col-md-3 col-xs-12 pl-3 pt-0">
-              <h3 class="main-content6 pr-2 pt-0 pb-4">
-                Phase 1: Secondary Research
-              </h3>
-              <h3 class="main-content4d pr-2 pt-0">
-                I conducted secondary research on the bee crisis, including
-                understanding the issue, its causes, and its impact on the
-                environment. I also looked into the role of bees in pollination
-                and their importance to the ecosystem. This research helped me
-                understand the urgency of the situation and the need for
-                awareness.
-              </h3>
-            </div>
-            <div class="col-md-5 col-xs-12 pl-md-3 pt-0">
-              <img
-                class="images"
-                src="images/The Bee Crisis/Beecrisis-19.jpg"
-                alt="worm"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="pt-5 pb-5">
-          <div class="justify-content-center row">
-            <div class="col-md-3 col-xs-12 pl-3 pt-0">
-              <h3 class="main-content6 pr-2 pt-0 pb-4">
-                Phase 2: Organising Data
-              </h3>
-              <h3 class="main-content4d pr-2 pt-0">
-                The data was intepreted to determine the sequence and
-                storytelling. This included both qualitative aspects, touching
-                upon people's emotions, and quantitative aspects, which are more
-                factual. To maintain clarity, an objective, micro-view as well
-                and the macro-view was planned out. This process provides better
-                insight on how to present the information and storytelling
-                effectively.
-              </h3>
-            </div>
-            <div class="col-md-5 col-xs-12 pl-md-3 pt-0">
-              <img
-                class="images"
-                src="images/The Bee Crisis/Beecrisis-20.jpg"
-                alt="worm"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="pt-1 pb-5">
-          <div class="justify-content-center row">
-            <div class="col-md-3 col-xs-12 pl-3 pt-0">
-              <h3 class="main-content6 pr-2 pt-0 pb-4">
-                Phase 3: Synthesising Data
-              </h3>
-              <h3 class="main-content4d pr-2 pt-0">
-                Using more facts I have gathered, I visualised individual key
-                facts from my research through sketches in forms of charts,
-                graphs and maps to experiment how to present the information.
-              </h3>
-            </div>
-            <div class="col-md-5 col-xs-12 pl-md-3 pt-0">
-              <img
-                class="images"
-                src="images/The Bee Crisis/Beecrisis-21.jpg"
-                alt="worm"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="pt-1 pb-5">
-          <div class="justify-content-center row">
-            <div class="col-md-3 col-xs-12 pl-3 pt-0">
-              <h3 class="main-content6 pr-2 pt-0 pb-4">
-                Phase 4: Crafting storytelling with visuals
-              </h3>
-              <h3 class="main-content4d pr-2 pt-0">
-                The sketches were then integrated into a cohesive visual
-                narrative, allowing better understanding of the content that
-                goes into each poster panel.
-              </h3>
-            </div>
-            <div class="col-md-5 col-xs-12 pl-md-3 pt-0">
-              <img
-                class="images"
-                src="images/The Bee Crisis/Beecrisis-22.jpg"
-                alt="worm"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="row justify-content-center pt-5">
-          <div class="col-md-8 col-xs-12 p-1 borderbottom"></div>
-        </div>
-
-        <div class="row justify-content-center">
-          <div class="col-md-6 col-xs-12 pt-5 pb-5">
-            <h3 class="text-center main-content3">High Fidelity Iterations</h3>
-          </div>
-        </div>
-
-        <div class="pt-1 pb-5">
-          <div class="justify-content-center row pt-4">
-            <div class="col-md-3 col-xs-12 pl-3">
-              <h3 class="main-content6 pr-2 pt-0 pb-4">Iteration #1</h3>
-              <h3 class="main-content4d pr-2 pt-0">
-                Vector graphics was used to create the first draft. My initial
-                concept was for both posters to be cohesive, so I employed a bee
-                visual to achieve this. The first half showed live bees, while
-                the second depicted dead bees falling, symbolising the negative
-                consequences. <br />
-                <br />
-                *The colours was too contrasted with the layout being too
-                complicated.
-              </h3>
-            </div>
-            <div class="col-md-5 col-xs-12 pl-md-3 pt-0">
-              <img
-                class="images"
-                src="images/The Bee Crisis/Beecrisis-24.jpg"
-                alt="worm"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="pt-1 pb-5">
-          <div class="justify-content-center row">
-            <div class="col-md-3 col-xs-12 pl-3 pt-0">
-              <h3 class="main-content6 pr-2 pt-0 pb-4">Iteration #2</h3>
-              <h3 class="main-content4d pr-2 pt-0">
-                Here, I simplified the design by using a more more bee-themed
-                colour palette. Inspired by National Geographic's use of real
-                images, I referenced that and opted for more realistic images
-                instead as it feels more impactful.
-              </h3>
-            </div>
-            <div class="col-md-5 col-xs-12 pl-md-3 pt-0">
-              <img
-                class="images"
-                src="images/The Bee Crisis/Beecrisis-25.jpg"
-                alt="worm"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="pt-1 pb-5">
-          <div class="justify-content-center row">
-            <div class="col-md-3 col-xs-12 pl-3 pt-0">
-              <h3 class="main-content6 pr-2 pt-0 pb-4">Iteration #3</h3>
-              <h3 class="main-content4d pr-2 pt-0">
-                By reducing the text and making the images more prominent, I
-                amplified the qualitative aspect through the visuals. I explored
-                using a half-and-half imagery technique to ensure the two panels
-                still felt connected. The hierarchy was also improved on.
-              </h3>
-            </div>
-            <div class="col-md-5 col-xs-12 pl-md-3 pt-0">
-              <img
-                class="images"
-                src="images/The Bee Crisis/Beecrisis-26.jpg"
-                alt="worm"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="pt-1 pb-5">
-          <div class="justify-content-center row">
-            <div class="col-md-3 col-xs-12 pl-3 pt-0">
-              <h3 class="main-content6 pr-2 pt-0 pb-4">Iteration #4</h3>
-              <h3 class="main-content4d pr-2 pt-0">
-                More negative space was added to the design, content of
-                infertilisation of crops was also added.
-              </h3>
-            </div>
-            <div class="col-md-5 col-xs-12 pl-md-3 pt-0">
-              <img
-                class="images"
-                src="images/The Bee Crisis/Beecrisis-27.jpg"
-                alt="worm"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="pt-1 pb-5">
-          <div class="justify-content-center row">
-            <div class="col-md-3 col-xs-12 pl-3 pt-0">
-              <h3 class="main-content6 pr-2 pt-0 pb-4">Iteration #5</h3>
-              <h3 class="main-content4d pr-2 pt-0">
-                I simplified the hexagon design in the first panel because it
-                felt too cluttered. Instead, elements like the images, year, and
-                title was separated for better readability, but the result felt
-                too simplistic.
-              </h3>
-            </div>
-            <div class="col-md-5 col-xs-12 pl-md-3 pt-0">
-              <img
-                class="images"
-                src="images/The Bee Crisis/Beecrisis-28.jpg"
-                alt="worm"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="pt-1 pb-5">
-          <div class="justify-content-center row">
-            <div class="col-md-3 col-xs-12 pl-3 pt-0">
-              <h3 class="main-content6 pr-2 pt-0 pb-4">
-                Opting for a Landscape Layout
-              </h3>
-              <h3 class="main-content4d pr-2 pt-0">
-                The current layout felt too restrictive, so I decided to change
-                the layout to a landscape format.
-              </h3>
-            </div>
-            <div class="col-md-5 col-xs-12 pl-md-3 pt-0">
-              <img
-                class="images"
-                src="images/The Bee Crisis/Beecrisis-29.jpg"
-                alt="worm"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="pt-1 pb-5">
-          <div class="justify-content-center row">
-            <div class="col-md-3 col-xs-12 pl-3 pt-0">
-              <h3 class="main-content6 pr-2 pt-0 pb-4">Iteration #6</h3>
-              <h3 class="main-content4d pr-2 pt-0">
-                Indeed, the landscape layout felt more spacious, allowing the
-                various elements room to breathe and drawing more focus. I was
-                also able to easily improve the visuals.
-              </h3>
-            </div>
-            <div class="col-md-5 col-xs-12 pl-md-3 pt-0">
-              <img
-                class="images"
-                src="images/The Bee Crisis/Beecrisis-30.jpg"
-                alt="worm"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="pt-1 pb-5">
-          <div class="justify-content-center row">
-            <div class="col-md-3 col-xs-12 pl-3 pt-0">
-              <h3 class="main-content6 pr-2 pt-0 pb-4">Guest Critique</h3>
-              <h3 class="main-content4d pr-2 pt-0">
-                The guest critique was very helpful in providing feedback on the
-                design from people who have never seen my work before. I took in
-                their suggestions and made changes to the design.
-              </h3>
-            </div>
-            <div class="col-md-5 col-xs-12 pl-md-3 pt-0">
-              <img
-                class="images"
-                src="images/The Bee Crisis/Guest critque.jpg"
-                alt="worm"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="pt-1 pb-5">
-          <div class="justify-content-center row">
-            <div class="col-md-3 col-xs-12 pl-3 pt-0">
-              <h3 class="main-content6 pr-2 pt-0 pb-4">Iteration #7</h3>
-              <h3 class="main-content4d pr-2 pt-0">
-                Using the feedback from the guest critique, I made final changes
-                to the design, mainly improving on the reading flow and
-                improving the consistency of the style with the colours and
-                fonts.
-              </h3>
-            </div>
-            <div class="col-md-5 col-xs-12 pl-md-3 pt-0">
-              <img
-                class="images"
-                src="images/The Bee Crisis/Beecrisis-31.jpg"
-                alt="worm"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="row justify-content-center pt-5 pb-5">
-          <div class="col-md-8 col-xs-12 p-1 borderbottom"></div>
-        </div>
-
-        <div class="row justify-content-center">
-          <div class="col-md-8 col-xs-12 pb-3">
-            <h3 class="text-center main-content3">
-              Singapore Design Week 2025 Exhibition
+      <div class="pt-5 pb-0 px-3">
+        <div class="justify-content-center row">
+          <div class="col-md-6 col-12 pl-md-3 pt-0 text-center text-md-center">
+            <h3 class="main-content6 pr-md-2 pt-0 pb-2" style="color: #E68A00;">
+              Idea Conceptualisation👇
             </h3>
           </div>
         </div>
+      </div>
 
+      <!-- IMAGE SLIDER 1 -->
 
-        <div class="row justify-content-center pt-3 pb-0">
-          <div class="col-md-8 col-xs-12 p-1 pt-0 pb-0 pl-0">
-            <img
-              class="images"
-              src="images/The Bee Crisis/Bee1.jpg"
-              alt="worm"
-            />
-          </div>
-        </div>
-           <div class="row justify-content-center pt-3 pb-0">
-          <div class="col-md-8 col-xs-12 p-1 pt-0 pb-0 pl-0">
-            <img
-              class="images"
-              src="images/The Bee Crisis/Bee2.jpg"
-              alt="worm"
-            />
-          </div>
-        </div>
-        <div class="row justify-content-center pt-3 pb-5">
-          <div class="col-md-8 col-xs-12 p-1 pt-1 pb-5 pl-0">
-            <img
-              class="images"
-              src="images/The Bee Crisis/SDW.jpeg"
-              alt="worm"
-            />
-          </div>
-        </div>
-        <!-- <div class="row justify-content-center pt-0 pb-5">
-          <div class="col-md-8 col-xs-12 p-1 pt-0 pb-5 pl-0">
-            <img
-              class="images"
-              src="images/The Bee Crisis/SDW2.jpeg"
-              alt="worm"
-            />
-          </div>
-        </div> -->
+      <div class="row justify-content-center pb-5 pt-4 px-3">
+        <div class="col-md-8 col-12 pl-md-0">
+          <div class="image-slider-container">
 
+            <div class="slider-images-region">
+              <div class="slider-slide active">
+                <div class="slider-wrapper">
+                  <div class="slider-content">
+                    <img class="slider-image" src="images/The Bee Crisis/Beecrisis-19.jpg"
+                      alt="Phase 1: Secondary Research" />
+                  </div>
+                  <div class="slider-nav">
+                    <button class="slider-arrow slider-arrow-left" aria-label="Previous slide"></button>
+                    <button class="slider-arrow slider-arrow-right" aria-label="Next slide"></button>
+                  </div>
+                </div>
+              </div>
 
-        <!-- <div class="row justify-content-center pt-3 pb-5">
-          <div class="col-md-8 col-xs-12 p-1 pt-0 pb-5 pl-0">
-            <img
-              class="images"
-              src="images/The Bee Crisis/Posterhang.jpg"
-              alt="worm"
-            />
+              <div class="slider-slide">
+                <div class="slider-wrapper">
+                  <div class="slider-content">
+                    <img class="slider-image" src="images/The Bee Crisis/Beecrisis-20.jpg"
+                      alt="Phase 2: Organising Data" />
+                  </div>
+                  <div class="slider-nav">
+                    <button class="slider-arrow slider-arrow-left" aria-label="Previous slide"></button>
+                    <button class="slider-arrow slider-arrow-right" aria-label="Next slide"></button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="slider-slide">
+                <div class="slider-wrapper">
+                  <div class="slider-content">
+                    <img class="slider-image" src="images/The Bee Crisis/Beecrisis-21.jpg"
+                      alt="Phase 3: Synthesising Data" />
+                  </div>
+                  <div class="slider-nav">
+                    <button class="slider-arrow slider-arrow-left" aria-label="Previous slide"></button>
+                    <button class="slider-arrow slider-arrow-right" aria-label="Next slide"></button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="slider-slide">
+                <div class="slider-wrapper">
+                  <div class="slider-content">
+                    <img class="slider-image" src="images/The Bee Crisis/Beecrisis-22.jpg"
+                      alt="Phase 4: Crafting storytelling with visuals" />
+                  </div>
+                  <div class="slider-nav">
+                    <button class="slider-arrow slider-arrow-left" aria-label="Previous slide"></button>
+                    <button class="slider-arrow slider-arrow-right" aria-label="Next slide"></button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="slider-dots"></div>
+            </div>
+
+            <div class="slider-panels-region">
+              <div class="slider-panel active">
+                <h3 class="slider-title">Phase 1: Secondary Research</h3>
+                <p class="slider-description">I conducted secondary research on the bee crisis, including understanding
+                  the issue, its causes, and its impact on the environment. I also looked into the role of bees in
+                  pollination and their importance to the ecosystem.</p>
+              </div>
+
+              <div class="slider-panel">
+                <h3 class="slider-title">Phase 2: Organising Data</h3>
+                <p class="slider-description">The data was interpreted to determine the sequence and storytelling. This
+                  included both qualitative aspects, touching upon people's emotions, and quantitative aspects, which
+                  are more factual.</p>
+              </div>
+
+              <div class="slider-panel">
+                <h3 class="slider-title">Phase 3: Synthesising Data</h3>
+                <p class="slider-description">Using more facts I have gathered, I visualised individual key facts from
+                  my research through sketches in forms of charts, graphs and maps to experiment how to present the
+                  information.</p>
+              </div>
+
+              <div class="slider-panel">
+                <h3 class="slider-title">Phase 4: Crafting Storytelling with Visuals</h3>
+                <p class="slider-description">The sketches were then integrated into a cohesive visual narrative,
+                  allowing better understanding of the content that goes into each poster panel.</p>
+              </div>
+            </div>
+
           </div>
-        </div> -->
-      </section>
-
-      <!-- FAB Button -->
-      <div id="fab-button" class="fab-container">
-        <div class="fab">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="42px"
-            viewBox="0 -960 960 960"
-            width="42px"
-            fill="gray"
-          >
-            <path
-              d="M480-545.33 287.33-352.67 240-400l240-240 240 240-47.33 47.33L480-545.33Z"
-            />
-          </svg>
         </div>
       </div>
 
-      <!-- FOOTER -->
-
-      <div class="row justify-content-center pb-5 pr-4 pt-5">
-        <ul>
-          <li class="text-center link">
-            <a href="GovTech.html" style="color: black">GovTech Singapore</a>
-          </li>
-          <li class="text-center link">
-            <a href="BeoBloom.html" style="color: black">BeoBloom</a>
-          </li>
-          <li class="text-center link">
-            <a href="TheBeeCrisis.html" style="color: black">The Bee Crisis</a>
-          </li>
-          <li class="text-center link">
-            <a href="SuperSnacks.html" style="color: black"
-              >SuperSnacks Revamp</a
-            >
-          </li>
-          <li class="text-center link">
-            <a href="BetweenPastAndProgress.html" style="color: black"
-              >Between Past and Progress: A walk from Chinatown to Tanjong
-              Pagar.
-            </a>
-          </li>
-          <li class="text-center link">
-            <a href="misscarry.html" style="color: black">miss carry D.I.Y.</a>
-          </li>
-          <li class="text-center link">
-            <a href="underratedtrashsnackers.html" style="color: black"
-              >Underrated Trash Snackers</a
-            >
-          </li>
-          <li class="text-center link">
-            <a href="Isozoo.html" style="color: black">ISOZOO App</a>
-          </li>
-          <li class="text-center link">
-            <a href="DownToFlix.html" style="color: black"
-              >Netflix: Down To Flix</a
-            >
-          </li>
-          <li class="text-center link">
-            <a href="PH.html" style="color: black">Pizza Hut Singapore</a>
-          </li>
-          <li class="text-center link">
-            <a href="SiangPackaging.html" style="color: black"
-              >Siang Pure Repackaging</a
-            >
-          </li>
-          <li class="text-center link">
-            <a href="RespectfulRelationships.html" style="color: black"
-              >Singapore Polytechnic Respectful Relationships</a
-            >
-          </li>
-        </ul>
+        <div class="pt-5 pb-0 px-3">
+        <div class="justify-content-center row">
+          <div class="col-md-6 col-12 pl-md-3 pt-0 text-center text-md-center">
+            <h3 class="main-content6 pr-md-2 pt-0 pb-2" style="color: #E68A00;">
+              Hi-Fidelity Mockups & Design👇
+            </h3>
+          </div>
+        </div>
       </div>
 
-      <div class="row justify-content-center pb-5 pt-5">
-        <div class="col-md-7 col-xs-12 pb-3 pt-5">
-          <h3 class="text-center main-content5">
-            Copyright © 2025 Josie Chan. Built with html & css.
+      <div class="row justify-content-center pb-5 pt-4 px-3">
+        <div class="col-md-8 col-12 pl-md-0">
+          <div class="image-slider-container">
+
+            <div class="slider-images-region">
+              <div class="slider-slide active">
+                <div class="slider-wrapper">
+                  <div class="slider-content">
+                    <img class="slider-image" src="images/The Bee Crisis/Beecrisis-24.jpg" alt="Iteration #1" />
+                  </div>
+                  <div class="slider-nav">
+                    <button class="slider-arrow slider-arrow-left" aria-label="Previous slide"></button>
+                    <button class="slider-arrow slider-arrow-right" aria-label="Next slide"></button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="slider-slide">
+                <div class="slider-wrapper">
+                  <div class="slider-content">
+                    <img class="slider-image" src="images/The Bee Crisis/Beecrisis-25.jpg" alt="Iteration #2" />
+                  </div>
+                  <div class="slider-nav">
+                    <button class="slider-arrow slider-arrow-left" aria-label="Previous slide"></button>
+                    <button class="slider-arrow slider-arrow-right" aria-label="Next slide"></button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="slider-slide">
+                <div class="slider-wrapper">
+                  <div class="slider-content">
+                    <img class="slider-image" src="images/The Bee Crisis/Beecrisis-26.jpg" alt="Iteration #3" />
+                  </div>
+                  <div class="slider-nav">
+                    <button class="slider-arrow slider-arrow-left" aria-label="Previous slide"></button>
+                    <button class="slider-arrow slider-arrow-right" aria-label="Next slide"></button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="slider-slide">
+                <div class="slider-wrapper">
+                  <div class="slider-content">
+                    <img class="slider-image" src="images/The Bee Crisis/Beecrisis-27.jpg" alt="Iteration #4" />
+                  </div>
+                  <div class="slider-nav">
+                    <button class="slider-arrow slider-arrow-left" aria-label="Previous slide"></button>
+                    <button class="slider-arrow slider-arrow-right" aria-label="Next slide"></button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="slider-slide">
+                <div class="slider-wrapper">
+                  <div class="slider-content">
+                    <img class="slider-image" src="images/The Bee Crisis/Beecrisis-28.jpg" alt="Iteration #5" />
+                  </div>
+                  <div class="slider-nav">
+                    <button class="slider-arrow slider-arrow-left" aria-label="Previous slide"></button>
+                    <button class="slider-arrow slider-arrow-right" aria-label="Next slide"></button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="slider-slide">
+                <div class="slider-wrapper">
+                  <div class="slider-content">
+                    <img class="slider-image" src="images/The Bee Crisis/Beecrisis-29.jpg"
+                      alt="Opting for a Landscape Layout" />
+                  </div>
+                  <div class="slider-nav">
+                    <button class="slider-arrow slider-arrow-left" aria-label="Previous slide"></button>
+                    <button class="slider-arrow slider-arrow-right" aria-label="Next slide"></button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="slider-slide">
+                <div class="slider-wrapper">
+                  <div class="slider-content">
+                    <img class="slider-image" src="images/The Bee Crisis/Beecrisis-30.jpg" alt="Iteration #6" />
+                  </div>
+                  <div class="slider-nav">
+                    <button class="slider-arrow slider-arrow-left" aria-label="Previous slide"></button>
+                    <button class="slider-arrow slider-arrow-right" aria-label="Next slide"></button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="slider-slide">
+                <div class="slider-wrapper">
+                  <div class="slider-content">
+                    <img class="slider-image" src="images/The Bee Crisis/Guest critque.jpg" alt="Guest Critique" />
+                  </div>
+                  <div class="slider-nav">
+                    <button class="slider-arrow slider-arrow-left" aria-label="Previous slide"></button>
+                    <button class="slider-arrow slider-arrow-right" aria-label="Next slide"></button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="slider-slide">
+                <div class="slider-wrapper">
+                  <div class="slider-content">
+                    <img class="slider-image" src="images/The Bee Crisis/Beecrisis-31.jpg" alt="Iteration #7" />
+                  </div>
+                  <div class="slider-nav">
+                    <button class="slider-arrow slider-arrow-left" aria-label="Previous slide"></button>
+                    <button class="slider-arrow slider-arrow-right" aria-label="Next slide"></button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="slider-dots"></div>
+            </div>
+            
+
+            <div class="slider-panels-region">
+              <div class="slider-panel active">
+                <h3 class="slider-title">Iteration #1</h3>
+                <p class="slider-description">Vector graphics was used to create the first draft. My initial concept was
+                  for both posters to be cohesive, using a bee visual — live bees on the first panel, dead bees falling
+                  on the second. *The colours were too contrasted and the layout too complicated.</p>
+              </div>
+
+              <div class="slider-panel">
+                <h3 class="slider-title">Iteration #2</h3>
+                <p class="slider-description">I simplified the design using a more bee-themed colour palette. Inspired
+                  by National Geographic's use of real images, I opted for more realistic imagery as it feels more
+                  impactful.</p>
+              </div>
+
+              <div class="slider-panel">
+                <h3 class="slider-title">Iteration #3</h3>
+                <p class="slider-description">By reducing text and making images more prominent, I amplified the
+                  qualitative aspect through visuals. I explored using a half-and-half imagery technique to keep the two
+                  panels connected.</p>
+              </div>
+
+              <div class="slider-panel">
+                <h3 class="slider-title">Iteration #4</h3>
+                <p class="slider-description">More negative space was added to the design, and content about
+                  infertilisation of crops was also included.</p>
+              </div>
+
+              <div class="slider-panel">
+                <h3 class="slider-title">Iteration #5</h3>
+                <p class="slider-description">I simplified the hexagon design in the first panel as it felt too
+                  cluttered. Elements like the images, year, and title were separated for better readability — but the
+                  result felt too simplistic.</p>
+              </div>
+
+              <div class="slider-panel">
+                <h3 class="slider-title">Opting for a Landscape Layout</h3>
+                <p class="slider-description">The portrait layout felt too restrictive, so I decided to change to a
+                  landscape format to give elements more room to breathe.</p>
+              </div>
+
+              <div class="slider-panel">
+                <h3 class="slider-title">Iteration #6</h3>
+                <p class="slider-description">The landscape layout felt more spacious, allowing the various elements
+                  room to breathe and drawing more focus. I was also able to easily improve the visuals.</p>
+              </div>
+
+              <div class="slider-panel">
+                <h3 class="slider-title">Guest Critique</h3>
+                <p class="slider-description">The guest critique was very helpful in providing fresh feedback on the
+                  design from people who had never seen my work before. I took in their suggestions and made changes
+                  accordingly.</p>
+              </div>
+
+              <div class="slider-panel">
+                <h3 class="slider-title">Iteration #7</h3>
+                <p class="slider-description">Using feedback from the guest critique, I made final changes to the design
+                  — mainly improving the reading flow and ensuring consistency of style with colours and fonts.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <div class="container-fluid">
+
+    <div class="row justify-content-center pt-5 px-3">
+      <div class="col-md-8 col-12 pb-5">
+        <h3 class="text-center main-content3" style="color: #E68A00;">
+          Singapore Design Week 2025 Exhibition
+        </h3>
+      </div>
+    </div>
+    <div class="pt-1 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
+            As part of Singapore Design Week 2025, My project was exhibited at the Singapore Science Park–Shopee Lobby,
+            part of a themed exhibition titled "Envision". Singapore Design Week is one of the region's premier design
+            festivals, organised by the DesignSingapore Council.
           </h3>
         </div>
       </div>
     </div>
-    <script>
-      fadeInPage();
 
-      function fadeInPage() {
-        if (!window.AnimationEvent) {
-          return;
-        }
-        var fader = document.getElementById("fader");
-        fader.classList.add("fade-out");
-      }
-      document.addEventListener("DOMContentLoaded", function () {
-        if (!window.AnimationEvent) {
-          return;
-        }
-        var anchors = document.getElementsByTagName("a");
-        for (var idx = 0; idx < anchors.length; idx += 1) {
-          if (
-            anchors[idx].hostname !== window.location.hostname ||
-            anchors[idx].pathname === window.location.pathname
-          ) {
-            continue;
+    <div class="row justify-content-center pb-3 pt-5 px-3">
+      <div class="col-md-8 col-12 p-1 pt-0">
+        <img class="images img-fluid w-100" src="images/The Bee Crisis/Bee2.jpg" alt="worm" />
+      </div>
+      <div class="col-md-8 col-12 p-1 pb-5">
+        <img class="images img-fluid w-100" src="images/The Bee Crisis/SDW.jpeg" alt="worm" />
+      </div>
+    </div>
+
+  </div>
+
+  <div class="container-fluid">
+
+    <div id="fab-button" class="fab-container">
+      <div class="fab">
+        <svg xmlns="http://www.w3.org/2000/svg" height="42px" viewBox="0 -960 960 960" width="42px" fill="gray">
+          <path d="M480-545.33 287.33-352.67 240-400l240-240 240 240-47.33 47.33L480-545.33Z" />
+        </svg>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pb-5 pt-5 px-3">
+      <div class="col-6 text-center pt-5 pb-5">
+        <h3 class="mb-4" style="color: #555; font-size: 18px;">View other works 👀</h3>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+          <a href="MandaiX.html" class="btn btn-outline-work">Mandai X</a>
+          <a href="GovTech.html" class="btn btn-outline-work">GovTech Singapore</a>
+          <a href="Animations.html" class="btn btn-outline-work">Motion Graphics</a>
+          <a href="TheBeeCrisis.html" class="btn btn-outline-work">The Bee Crisis</a>
+          <a href="Enhancing Fei Yang Band.html" class="btn btn-outline-work">Enhancing Fei Yang Band</a>
+          <a href="misscarry.html" class="btn btn-outline-work">miss carry D.I.Y.</a>
+          <a href="underratedtrashsnackers.html" class="btn btn-outline-work">Underrated Trash Snackers</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer-dark">
+    <div class="container">
+      <div class="footer-text">
+        Let's work together :)
+      </div>
+
+      <div class="social-icons">
+        <a href="https://linkedin.com/in/josiechanxt" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png" alt="LinkedIn">
+        </a>
+        <a href="mailto:jochanxt@gmail.com">
+          <img src="https://cdn-icons-png.flaticon.com/512/542/542689.png" alt="Email">
+        </a>
+        <a href="https://instagram.com/jo.cgraphics" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/1384/1384015.png" alt="Instagram">
+        </a>
+      </div>
+
+      <div class="copyright-bar">
+        <p>Copyright © 2026 Josie Chan. Built with HTML & CSS.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Universal Multi-Slider Initialization
+    function initSliders() {
+      const sliderContainers = document.querySelectorAll('.image-slider-container');
+
+      sliderContainers.forEach((container) => {
+        const slides = container.querySelectorAll('.slider-slide');
+        const panels = container.querySelectorAll('.slider-panel');
+        const dotsContainer = container.querySelector('.slider-dots');
+
+        let currentSlide = 0;
+        const totalSlides = slides.length;
+
+        // Populate dots specifically for this slider instance
+        if (dotsContainer) {
+          dotsContainer.innerHTML = ''; // Clear layout residue
+          for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('button');
+            dot.className = 'dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
           }
-          anchors[idx].addEventListener("click", function (event) {
-            var fader = document.getElementById("fader"),
-              anchor = event.currentTarget;
-
-            var listener = function () {
-              window.location = anchor.href;
-              fader.removeEventListener("animationend", listener);
-            };
-            fader.addEventListener("animationend", listener);
-
-            event.preventDefault();
-            fader.classList.add("fade-in");
-          });
         }
+
+        function updateSlider() {
+          slides.forEach((slide, idx) => slide.classList.toggle('active', idx === currentSlide));
+          panels.forEach((panel, idx) => panel.classList.toggle('active', idx === currentSlide));
+
+          const activeSlide = slides[currentSlide];
+          const leftArrow = activeSlide.querySelector('.slider-arrow-left');
+          const rightArrow = activeSlide.querySelector('.slider-arrow-right');
+
+          if (leftArrow) leftArrow.style.visibility = (currentSlide === 0) ? 'hidden' : 'visible';
+          if (rightArrow) rightArrow.style.visibility = (currentSlide === totalSlides - 1) ? 'hidden' : 'visible';
+
+          if (dotsContainer) {
+            const dots = dotsContainer.querySelectorAll('.dot');
+            dots.forEach((dot, idx) => dot.classList.toggle('active', idx === currentSlide));
+          }
+        }
+
+        function nextSlide() {
+          if (currentSlide < totalSlides - 1) { currentSlide++; updateSlider(); }
+        }
+
+        function previousSlide() {
+          if (currentSlide > 0) { currentSlide--; updateSlider(); }
+        }
+
+        function goToSlide(index) {
+          currentSlide = index;
+          updateSlider();
+        }
+
+        container.querySelectorAll('.slider-arrow-left').forEach(btn => btn.addEventListener('click', previousSlide));
+        container.querySelectorAll('.slider-arrow-right').forEach(btn => btn.addEventListener('click', nextSlide));
+
+        updateSlider();
       });
-      window.onunload = function () {};
+    }
 
-      /* FAB */
-      // --- New Scroll to Top Functionality ---
-      const fabButton = document.getElementById("fab-button");
-      const SCROLL_THRESHOLD = 300; // Pixels to scroll down before the button appears
+    document.addEventListener('DOMContentLoaded', initSliders);
 
-      // Function to handle showing/hiding the button on scroll
-      const toggleFabVisibility = () => {
-        if (window.scrollY > SCROLL_THRESHOLD) {
-          fabButton.classList.remove("fab-hidden");
-        } else {
-          fabButton.classList.add("fab-hidden");
+    fadeInPage();
+
+    function fadeInPage() {
+      if (!window.AnimationEvent) {
+        return;
+      }
+      var fader = document.getElementById("fader");
+      fader.classList.add("fade-out");
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+      if (!window.AnimationEvent) {
+        return;
+      }
+      var anchors = document.getElementsByTagName("a");
+      for (var idx = 0; idx < anchors.length; idx += 1) {
+        if (
+          anchors[idx].hostname !== window.location.hostname ||
+          anchors[idx].pathname === window.location.pathname
+        ) {
+          continue;
         }
-      };
+        anchors[idx].addEventListener("click", function (event) {
+          var fader = document.getElementById("fader"),
+            anchor = event.currentTarget;
 
-      // Event listener for window scroll to show/hide the button
-      window.addEventListener("scroll", toggleFabVisibility);
+          var listener = function () {
+            window.location = anchor.href;
+            fader.removeEventListener("animationend", listener);
+          };
+          fader.addEventListener("animationend", listener);
 
-      // Event listener for button click to scroll to the top
-      fabButton.addEventListener("click", () => {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
+          event.preventDefault();
+          fader.classList.add("fade-in");
         });
+      }
+    });
+    window.onunload = function () { };
+
+    /* FAB */
+    const fabButton = document.getElementById('fab-button');
+    const SCROLL_THRESHOLD = 300;
+
+    const toggleFabVisibility = () => {
+      if (window.scrollY > SCROLL_THRESHOLD) {
+        fabButton.classList.remove('fab-hidden');
+      } else {
+        fabButton.classList.add('fab-hidden');
+      }
+    };
+
+    window.addEventListener('scroll', toggleFabVisibility);
+
+    fabButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
       });
+    });
+  </script>
 
-      // *FAB END*//
-    </script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
 
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"
-    ></script>
-  </body>
 </html>
+

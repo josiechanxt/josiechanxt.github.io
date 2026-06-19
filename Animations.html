@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    .wf-loading * {
+      opacity: 0;
+    }
+
+    /* --- CUSTOM HAMBURGER TO "X" ANIMATION --- */
+    .navbar-toggler {
+      border: none;
+      padding: 10px 10px;
+      outline: none !important;
+    }
+
+    .toggler-icon {
+      width: 24px;
+      height: 2px;
+      background-color: #007bff;
+      display: block;
+      transition: all 0.3s ease-in-out;
+      position: relative;
+    }
+
+    .toggler-icon::before,
+    .toggler-icon::after {
+      content: '';
+      width: 24px;
+      height: 2px;
+      background-color: #007bff;
+      display: block;
+      transition: all 0.3s ease-in-out;
+      position: absolute;
+    }
+
+    .toggler-icon::before {
+      top: -8px;
+    }
+
+    .toggler-icon::after {
+      bottom: -8px;
+    }
+
+    /* Animation to X */
+    .navbar-toggler:not(.collapsed) .toggler-icon {
+      background-color: transparent;
+    }
+
+    .navbar-toggler:not(.collapsed) .toggler-icon::before {
+      transform: rotate(45deg);
+      top: 0;
+    }
+
+    .navbar-toggler:not(.collapsed) .toggler-icon::after {
+      transform: rotate(-45deg);
+      bottom: 0;
+    }
+
+     /* Custom Light Grey Footer */
+    .footer-dark {
+      background-color: #ececec;
+      padding: 2rem 0 3rem;
+      text-align: center;
+      color: #007bff;
+    }
+
+    .footer-text {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      font-family: 'IBM Plex Sans', sans-serif;
+      color: #666;
+    }
+
+    .social-icons a {
+      margin: 0 12px;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .social-icons a:hover {
+      opacity: 0.7;
+      transform: translateY(-3px);
+    }
+
+    .social-icons img {
+      width: 30px;
+      height: 30px;
+      /* CSS Filter to change black icons to #007bff */
+      filter: invert(31%) sepia(94%) saturate(4120%) hue-rotate(211deg) brightness(101%) contrast(85%);
+    }
+
+    .copyright-bar {
+      border-top: 1px solid #d1d1d1;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      color: #666;
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    /* Solid Colour Pill Buttons */
+    .btn-outline-work {
+      padding: 8px 16px;
+      margin: 8px;
+      border-radius: 50px !important;
+      /* Forces the fully rounded ends */
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #ffffff !important;
+      /* Forces white text for legibility on solid backgrounds */
+      /* transition: all 0.3s ease; */
+      text-decoration: none !important;
+      display: inline-block;
+      border: none;
+      /* Removes the outline to keep it a solid block */
+    }
+
+    /* Assigning Solid Colours based on project brandings */
+    .btn-outline-work:nth-child(1) {
+      background-color: #07846b;
+    }
+
+    /* Mandai X */
+    .btn-outline-work:nth-child(2) {
+      background-color: #785ef0;
+    }
+
+    /* GovTech */
+    .btn-outline-work:nth-child(3) {
+      background-color: #4270ce;
+    }
+
+    /* Motion Graphics */
+    .btn-outline-work:nth-child(4) {
+      background-color: #e68700;
+    }
+
+    /* The Bee Crisis */
+    .btn-outline-work:nth-child(5) {
+      background-color: #ea474a;
+    }
+
+    /* Enhancing Fei Yang Band */
+    .btn-outline-work:nth-child(6) {
+      background-color: #e03e70;
+    }
+
+    /* miss carry D.I.Y. */
+    .btn-outline-work:nth-child(7) {
+      background-color: #a04d31;
+    }
+
+    /* Underrated Trash Snackers */
+
+    /* Hover State: Deepen the colour and add a lift effect */
+    .btn-outline-work:hover {
+      transform: translateY(-2px);
+      /* box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); */
+      filter: brightness(80%);
+      /* Slightly darkens the solid colour on hover */
+      color: #ffffff !important;
+    }
+
+    .gap-3 {
+      gap: 1rem;
+    }
+
+     h3.accordion-body {
+      padding-top: 0.5rem !important;
+      padding-bottom: 1rem !important;
+      padding-right: 0 !important;
+      margin: 0 !important;
+      font-size: 14px !important;
+      font-weight: 350 !important;
+      line-height: 1.3 !important;
+      color: #666 !important;
+      font-family: "IBM Plex Sans", sans-serif !important;
+      font-style: italic !important;
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Carattere&family=IBM+Plex+Sans:ital,wdth,wght@0,75..100,100..700;1,75..100,100..700&"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <title>Motion Graphics</title>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <a class="navbar-brand" href="Work.html">
+      <img src="images/Logo2.svg" alt="Josie Logo" height="50" />
+    </a>
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item nav-button-active active">
+          <a class="nav-link px-3" href="Work.html">Work</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3" href="Others.html">Others</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3" href="About.html">About</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link px-3" href="Contact.html">Contact</a>
+        </li> -->
+      </ul>
+    </div>
+  </nav>
+
+
+  <div class="container-fluid">
+    <svg id="fader"></svg>
+
+    <!-- <nav class="navbar navbar-expand-lg sticky-top">
+    <a class="navbar-brand" href="Work.html">
+      <img src="images/Logo2.svg" alt="Josie Logo" height="50" />
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item nav-button-active active">
+          <a class="nav-link px-3" href="Work.html">Work</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3" href="Others.html">Others</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3" href="About.html">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3" href="Contact.html">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav> -->
+
+    <div class="row justify-content-center">
+      <div class="col-12 p-0">
+        <img class="images-header w-100 img-fluid" src="images/Animations/MotionGraphics_Thumbnail.jpg" alt="worm" />
+      </div>
+    </div>
+
+    <div class="row justify-content-center pt-4 px-3">
+      <div class="col-md-7 col-12">
+        <h1 class="text-center projecttitle projecttitle--animations">Motion Graphics & Animations
+        </h1>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pb-3 pt-3 px-3">
+      <div class="tag-container">
+        <span class="tag" style="background: #4270ce; color: #ffffff">2D Motion Graphics</span>
+        <span class="tag" style="background: #4270ce; color: #ffffff">Storyboarding</span>
+      </div>
+    </div>
+
+    <!-- 
+      <div class="row justify-content-center pb-4 pt-3 px-3">
+        <h4 class="maincontent5 text-center mx-3" 
+        style="border: 2px solid #4270ce; padding: 10px; border-radius: 30px; color: #4270ce; font-size: 18px;"> 2D Motion Graphics • Storyboarding </h4>
+      </div> -->
+
+    <div class="row justify-content-center pt-3">
+      <div class="col-md-5 col-12 px-4">
+        <h3 class="text-md-left text-center main-content3 pb-4 pt-3" style="color: #4270ce;">
+          “Conceptualised and executed motion graphics for various projects (UX/UI, advertising)”
+        </h3>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pt-4 pb-5 px-3">
+      <div class="col-md-6 col-12" style="border: 2px solid #4270ce; padding: 20px; border-radius: 10px">
+        <h3 class="text-left main-content4 pb-3 pt-3">
+          My background as a Junior Art Director in the advertising industry provided me with a strong foundation
+          in conceptualising art direction and executing 2D motion design. I now apply these skills in my UX/UI
+          projects,
+          such as when designing micro-interactions, to elevate interactivity and ensure the final product is a both
+          functional
+          and delightful experience for the user. </h3>
+
+        <div class="row">
+          <div class="col-md-6 col-12 mb-4 mb-md-0">
+            <h3 class="text-left main-content4 pt-2 pb-0" style="font-size: 16px; color: #4270ce;">
+              <b style="color: #4270ce; font-weight: 500;">My Contributions</b>
+            </h3>
+
+              <h3 class="text-left accordion-body pb-2 pt-2 pl-3">
+              <li>Software used: Adobe After Effects, Illustrator, Photoshop, Procreate, Lottiefile/Bodymovin</li>
+            </h3>
+          </div>
+
+          <div class="col-md-6 col-12">
+            <h3 class="text-left main-content4 pt-2 pb-0" style="font-size: 16px; color: #4270ce;">
+              <b style="color: #4270ce; font-weight: 500;">Timeline</b>
+            </h3>
+
+            <h3 class="text-left accordion-body pb-2 pt-2 pl-3">
+              <li>N.I.L</li>
+            </h3>
+            <!-- <b>Team members</b>
+            
+            <h3 class="text-left main-content4 pb-2 pt-2 pl-3">
+              <li>XXX</li>
+            <br />
+             <li>XXX</li>
+            </h3> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+
+    <div class="row justify-content-center px-3">
+      <div class="col-md-6 col-12 pt-5 pb-2">
+        <h3 class="text-center main-content3" style="color: #4270ce;">
+          GovTech Search Bar microinteraction
+        </h3>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pb-4 pt-2 px-3">
+      <h4 class="maincontent5 text-center mx-3" style="color: #4270ce; font-size: 18px;"> Industry Project • 2025 </h4>
+    </div>
+
+    <div class="pt-3 pb-4 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-2 col-12 pl-md-0 pt-0 text-center">
+          <img class="images img-fluid" src="images/Animations/Govtech.webp" alt="worm" />
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-1 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
+            During my time at GovTech, I illustrated and animated a custom micro-interaction for
+            an internal staff directory. To ensure fast web performance without sacrificing visual quality,
+            I hand-drew the assets from scratch in procreate, vectorised it in Illustrator and animated them
+            in After Effects, exporting the final result via Bodymovin (Lottiefile) as a JSON file for a scalable
+            implementation.
+
+            <br><br>
+            <b style="font-weight: 500">Pushing beyond my comfort zone in hand-drawn animation, I created a responsive
+              character that reacts to user behaviour:</b>
+            <br><br><br>
+            1️⃣ <b style="color: #4270ce; font-weight: 500">Hover:</b> The character turns to face the user, creating an
+            inviting "hello" moment.
+            <br><br>
+            2️⃣ <b style="color: #4270ce; font-weight: 500">Unhover:</b> She spins back to her original position.
+            <br><br>
+            3️⃣ <b style="color: #4270ce; font-weight: 500">Typing:</b> She looks down at the search bar, as the user
+            types.
+            <br><br>
+            4️⃣ <b style="color: #4270ce; font-weight: 500">Idle:</b> She looks back up, ready for the next interaction.
+            <br><br><br>
+            This project has reached over 4,000 employees, teaching me how thoughtful, "quirky" details can humanise a
+            digital interface and delight users at scale.
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-1 pb-2 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-5 col-12 pl-md-0 pt-0 text-center">
+          <img class="images img-fluid" src="images/Animations/GIF/Govmirrorport.gif" alt="worm" />
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pt-5 px-3">
+      <div class="col-md-8 col-12 p-1 borderbottom"></div>
+    </div>
+
+    <div class="row justify-content-center px-3">
+      <div class="col-md-6 col-12 pt-5 pb-2">
+        <h3 class="text-center main-content3" style="color: #4270ce;">
+          "GoKakis" Interactive Projector game interface
+        </h3>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pb-4 pt-2 px-3">
+      <h4 class="maincontent5 text-center mx-3" style="color: #4270ce; font-size: 18px;"> School Project • 2025 </h4>
+    </div>
+
+    <div class="pt-1 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
+            GoKakis is an interactive projection system with an old-school charm that turns the long waiting time of
+            elderly’s
+            rehabilitation appointments into an opportunity of social interaction and fun, while gamifying
+            physiotherapy.
+            Housed in a compact, A4-sized projector, the system turns any floor into a 'playground of memories'
+            featuring
+            nostalgic Singaporean games like “Chapteh” and “Longkang Fishing”. Our goal is to foster spontaneous play
+            and
+            reduce staff dependency to set up equipment.
+            <br><br>
+            In this project, I led the art direction, designed the game interface,
+            and animated the interactive game elements to ensure a seamless, engaging experience for seniors.
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-1 pb-1 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-3 col-12 pl-md-0 pt-0 text-center">
+          <img class="images img-fluid" src="images/Animations/GIF/Gokaki_Chapteh Game.gif" alt="worm" />
+        </div>
+        <div class="col-md-3 col-12 pl-md-0 pt-0 text-center">
+          <img class="images img-fluid" src="images/Animations/GIF/Gokaki_Long Kang Fishing.gif" alt="worm" />
+        </div>
+      </div>
+    </div>
+    <div class="pt-1 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-0 pt-0 text-center">
+          <img class="images img-fluid" src="images/Animations/GIF/Gokaki_Spatial Chapteh.gif" alt="worm" />
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pt-5 px-3">
+      <div class="col-md-8 col-12 p-1 borderbottom"></div>
+    </div>
+
+    <div class="row justify-content-center px-3">
+      <div class="col-md-6 col-12 pt-5 pb-2">
+        <h3 class="text-center main-content3" style="color: #4270ce;">
+          Singlife Logo Animation
+        </h3>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pb-4 pt-2 px-3">
+      <h4 class="maincontent5 text-center mx-3" style="color: #4270ce; font-size: 18px;"> Industry Project • 2022 </h4>
+    </div>
+
+    <div class="pt-1 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
+            I designed and animated a closing logo sequence for a series of Singlife brand videos.
+            I focused on creating a smooth, fluid motion of the thumbprint morphing into the Singlife logo, providing a
+            professional finish for their assets.
+          </h3>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="pt-1 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-0 pt-2 text-center">
+          <img class="images img-fluid" src="images/Animations/GIF/Singlife animation.gif" alt="worm" />
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pt-5 px-3">
+      <div class="col-md-8 col-12 p-1 borderbottom"></div>
+    </div>
+
+
+    <div class="row justify-content-center px-3">
+      <div class="col-md-6 col-12 pt-5 pb-2">
+        <h3 class="text-center main-content3" style="color: #4270ce;">
+          Maybank Anti-Scam TVC
+        </h3>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pb-4 pt-2 px-3">
+      <h4 class="maincontent5 text-center mx-3" style="color: #4270ce; font-size: 18px;"> Industry Project • 2022 </h4>
+    </div>
+
+    <div class="pt-1 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
+            I layout the storyboard and animated a 30-second video for Maybank to educate their customers on how to
+            avoid scams.
+            Since it was information-heavy, I focused on pacing the animation such that it was easily digestable.
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center px-3 pb-5">
+      <div class="col-md-6 col-12 p-1" style="aspect-ratio: 16/9;">
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/dJuwrkRL3aI?si=3dyfDMwVixsQUcI2"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pt-5 px-3">
+      <div class="col-md-8 col-12 p-1 borderbottom"></div>
+    </div>
+
+
+    <div class="row justify-content-center px-3">
+      <div class="col-md-6 col-12 pt-5 pb-2">
+        <h3 class="text-center main-content3" style="color: #4270ce;">
+          Social Media Posts
+        </h3>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pb-4 pt-2 px-3">
+      <h4 class="maincontent5 text-center mx-3" style="color: #4270ce; font-size: 18px;"> Industry Project • 2022 </h4>
+    </div>
+
+    <div class="pt-1 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
+            I also had experience animating social media content for global brands like Red Bull and Yoyic.
+            Each post took around 30 minutes to 1.5 hours of animation time.
+            <br><br>
+            For Red Bull, I was given static Photoshop and Illustrator assets that I was tasked with turning into
+            animations.
+            By deconstructing the artwork into individual layers and thinking in frames, I created fast-paced, impactful
+            motion that aligned with the brand's high-energy, powerful identity. I learnt the importance of pacing the
+            animation as it needs to be under 10 seconds to capture the viewer’s attention, while still ensuring the
+            clarity of copy for smooth reading.
+          </h3>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="pt-1 pb-4 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-1 col-8 pl-md-0 pt-0 text-center">
+          <img class="images img-fluid" src="images/Animations/RedBullEnergyDrinklogo.svg" alt="worm" />
+        </div>
+      </div>
+    </div>
+
+
+    <div class="pt-1 pb-1 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-2 col-12 pl-md-0 pt-2 text-center">
+          <img class="images img-fluid" src="images/Animations/GIF/Red Bull_Tetris social post.gif" alt="worm" />
+        </div>
+        <div class="col-md-2 col-12 pl-md-0 pt-2 text-center">
+          <img class="images img-fluid" src="images/Animations/GIF/Redbull_bashthrough.gif" alt="worm" />
+        </div>
+        <div class="col-md-2 col-12 pl-md-0 pt-2 text-center">
+          <img class="images img-fluid" src="images/Animations/GIF/Redbull_hari Raya.gif" alt="worm" />
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="row justify-content-center px-3">
+        <div class="col-md-6 col-12 pt-5 pb-5">
+          <h3 class="text-center main-content3" style="color: #4270ce;">
+            Yoyic Social Posts
+          </h3>
+        </div>
+      </div> -->
+    <!-- 
+      <div class="pt-1 pb-5 px-3">
+        <div class="justify-content-center row">
+          <div class="col-md-6 col-12 pl-md-3 pt-0">
+            <h3 class="main-content4d pr-md-2 pt-0 text-left">
+            Xxx
+          <h3>
+          </div>
+        </div>
+      </div> -->
+
+    <div class="pt-1 pb-2 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="main-content4d pr-md-2 pt-5 text-left">
+            Additionally, my work for Yoyic involved a more end-to-end creative process.
+            I brainstormed the storytelling of the posts and created vector illustrations that matched the brand’s flat
+            graphic aesthetic before bringing them to life through animation.
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-5 pb-4 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-1 col-8 pl-md-0 pt-0 text-center">
+          <img class="images img-fluid" src="images/Animations/Yoyiclogo.png" alt="worm" />
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-1 pb-1 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-0 pt-2 text-center">
+          <img class="images img-fluid" src="images/Animations/Yoyic Social.gif" alt="worm" />
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-1 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-2 col-12 pl-md-0 pt-2 text-center">
+          <img class="images img-fluid" src="images/Animations/GIF/Yoyic_FB_TT_Fight Bad Bacteria.gif" alt="worm" />
+        </div>
+        <div class="col-md-2 col-12 pl-md-0 pt-2 text-center">
+          <img class="images img-fluid" src="images/Animations/GIF/Yoyic_Guess the weight.gif" alt="worm" />
+        </div>
+        <div class="col-md-2 col-12 pl-md-0 pt-2 text-center">
+          <img class="images img-fluid" src="images/Animations/GIF/Yoyic_KnockOutTheNasties.gif" alt="worm" />
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- BACK AND NEXT BUTTONS -->
+    <!-- <div class="row justify-content-center pt-5 pb-5 px-3">
+        <div class="col-md-8 col-12 d-flex justify-content-between align-items-center">
+          <a href="#" class="btn nav-button-custom" style="background: none; color: rgba(0, 0, 0, .5); font-family: 'Delius', cursive;">← Back</a>
+          <a href="#" class="btn nav-button-custom" style="background: none; color: rgba(0, 0, 0, .5); font-family: 'Delius', cursive;">Next →</a>
+        </div>
+      </div> -->
+
+
+    <div id="fab-button" class="fab-container">
+      <div class="fab">
+        <svg xmlns="http://www.w3.org/2000/svg" height="42px" viewBox="0 -960 960 960" width="42px" fill="gray">
+          <path d="M480-545.33 287.33-352.67 240-400l240-240 240 240-47.33 47.33L480-545.33Z" />
+        </svg>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pb-5 pt-5 px-3">
+      <div class="col-6 text-center pt-5 pb-5">
+        <h3 class="mb-4" style="color: #555; font-size: 18px;">View other works 👀</h3>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+          <a href="MandaiX.html" class="btn btn-outline-work">Mandai X</a>
+          <a href="GovTech.html" class="btn btn-outline-work">GovTech Singapore</a>
+          <a href="Animations.html" class="btn btn-outline-work">Motion Graphics</a>
+          <a href="TheBeeCrisis.html" class="btn btn-outline-work">The Bee Crisis</a>
+          <a href="Enhancing Fei Yang Band.html" class="btn btn-outline-work">Enhancing Fei Yang Band</a>
+          <a href="misscarry.html" class="btn btn-outline-work">miss carry D.I.Y.</a>
+          <a href="underratedtrashsnackers.html" class="btn btn-outline-work">Underrated Trash Snackers</a>
+        </div>
+      </div>
+    </div>
+
+        </div>
+
+        <!-- FOOTER -->
+
+  <footer class="footer-dark">
+    <div class="container">
+      <div class="footer-text">
+        Let's work together :)
+      </div>
+
+      <div class="social-icons">
+        <a href="https://linkedin.com/in/josiechanxt" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png" alt="LinkedIn">
+        </a>
+        <a href="mailto:jochanxt@gmail.com">
+          <img src="https://cdn-icons-png.flaticon.com/512/542/542689.png" alt="Email">
+        </a>
+        <a href="https://instagram.com/jo.cgraphics" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/1384/1384015.png" alt="Instagram">
+        </a>
+      </div>
+
+      <div class="copyright-bar">
+        <p>Copyright © 2026 Josie Chan. Built with HTML & CSS.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    fadeInPage();
+
+    function fadeInPage() {
+      if (!window.AnimationEvent) {
+        return;
+      }
+      var fader = document.getElementById("fader");
+      fader.classList.add("fade-out");
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+      if (!window.AnimationEvent) {
+        return;
+      }
+      var anchors = document.getElementsByTagName("a");
+      for (var idx = 0; idx < anchors.length; idx += 1) {
+        if (
+          anchors[idx].hostname !== window.location.hostname ||
+          anchors[idx].pathname === window.location.pathname
+        ) {
+          continue;
+        }
+        anchors[idx].addEventListener("click", function (event) {
+          var fader = document.getElementById("fader"),
+            anchor = event.currentTarget;
+
+          var listener = function () {
+            window.location = anchor.href;
+            fader.removeEventListener("animationend", listener);
+          };
+          fader.addEventListener("animationend", listener);
+
+          event.preventDefault();
+          fader.classList.add("fade-in");
+        });
+      }
+    });
+    window.onunload = function () { };
+
+    /* FAB */
+    // --- New Scroll to Top Functionality ---
+    const fabButton = document.getElementById('fab-button');
+    const SCROLL_THRESHOLD = 300; // Pixels to scroll down before the button appears
+
+    // Function to handle showing/hiding the button on scroll
+    const toggleFabVisibility = () => {
+      if (window.scrollY > SCROLL_THRESHOLD) {
+        fabButton.classList.remove('fab-hidden');
+      } else {
+        fabButton.classList.add('fab-hidden');
+      }
+    };
+
+    // Event listener for window scroll to show/hide the button
+    window.addEventListener('scroll', toggleFabVisibility);
+
+    // Event listener for button click to scroll to the top
+    fabButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // *FAB END*//
+
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

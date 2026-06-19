@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Josie Chan | UI/UX Designer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;700&display=swap"
+    rel="stylesheet" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Carattere&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+  <style>
+    /* Layout fixes to push footer to bottom and eliminate white space */
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      cursor: url("images/Pencil.png"), auto;
+      font-family: "IBM Plex Sans", sans-serif;
+    }
+
+    body {
+      color: #1a1a1a;
+      background-color: #fafafa;
+      background-image: url('images/Dots.svg');
+      background-attachment: fixed;
+      background-size: 70%;
+      background-repeat: repeat;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Navigation */
+    .navbar {
+      padding: 1rem 2rem;
+      background: #ffffff;
+      border-bottom: 1px solid #eaeaea;
+    }
+
+    .nav-link {
+      color: #555 !important;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover,
+    .nav-button-active .nav-link {
+      color: #007bff !important;
+    }
+
+    /* --- CUSTOM HAMBURGER TO "X" ANIMATION --- */
+    .navbar-toggler {
+      border: none;
+      padding: 10px 10px;
+      outline: none !important;
+    }
+
+    .toggler-icon {
+      width: 24px;
+      height: 2px;
+      background-color: #007bff;
+      display: block;
+      transition: all 0.3s ease-in-out;
+      position: relative;
+    }
+
+    .toggler-icon::before,
+    .toggler-icon::after {
+      content: "";
+      width: 24px;
+      height: 2px;
+      background-color: #007bff;
+      display: block;
+      transition: all 0.3s ease-in-out;
+      position: absolute;
+    }
+
+    .toggler-icon::before {
+      top: -8px;
+    }
+
+    .toggler-icon::after {
+      bottom: -8px;
+    }
+
+    /* Animation to X */
+    .navbar-toggler:not(.collapsed) .toggler-icon {
+      background-color: transparent;
+    }
+
+    .navbar-toggler:not(.collapsed) .toggler-icon::before {
+      transform: rotate(45deg);
+      top: 0;
+    }
+
+    .navbar-toggler:not(.collapsed) .toggler-icon::after {
+      transform: rotate(-45deg);
+      bottom: 0;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      padding: 6rem 0 4rem;
+    }
+
+    .hero-title {
+      font-size: 4rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .hero-subtitle {
+      font-size: 1.5rem;
+      color: #555;
+      font-weight: 400;
+      max-width: 700px;
+      line-height: 1.5;
+    }
+
+    /* Marquee Banner */
+    .bannercontainer {
+      width: 100%;
+      overflow: hidden;
+      background: #fff;
+      padding: 20px 0;
+      border-top: 1px solid #eaeaea;
+      border-bottom: 1px solid #eaeaea;
+    }
+
+    .banner {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      animation: scroll 20s linear infinite;
+      width: calc(100px * 17);
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* Portfolio Cards */
+    .port-card {
+      margin-bottom: 3rem;
+    }
+
+    .port-card a {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .img-wrapper {
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      background-color: #f4f4f4;
+      margin-bottom: 1.5rem;
+      aspect-ratio: 4/3;
+      border-width: 3px;
+      border-style: solid;
+    }
+
+    .img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .port-card:hover .img-wrapper img {
+      transform: scale(1.04);
+    }
+
+    .project-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .tag-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .tag {
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #ffffff;
+    }
+
+    .project-desc {
+      color: #666;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* Page Transition */
+    #faderhome {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      z-index: 9999;
+      pointer-events: none;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .fade-out {
+      opacity: 0;
+    }
+
+    .fade-in {
+      opacity: 1;
+    }
+
+    /* Main content wrapper grows to fill empty layout space */
+    .container-fluid {
+      flex: 1 0 auto;
+    }
+
+    /* Custom Light Grey Footer */
+    .footer-dark {
+      flex-shrink: 0;
+      background-color: #ececec;
+      padding: 2rem 0 3rem;
+      text-align: center;
+      color: #007bff;
+    }
+
+    .footer-text {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      font-family: "IBM Plex Sans", sans-serif;
+      color: #666;
+    }
+
+    .social-icons a {
+      margin: 0 12px;
+      text-decoration: none;
+      display: inline-block;
+      transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+    }
+
+    .social-icons a:hover {
+      opacity: 0.7;
+      transform: translateY(-3px);
+    }
+
+    .social-icons img {
+      width: 30px;
+      height: 30px;
+      /* CSS Filter to change black icons to #007bff */
+      filter: invert(31%) sepia(94%) saturate(4120%) hue-rotate(211deg) brightness(101%) contrast(85%);
+    }
+
+    .copyright-bar {
+      border-top: 1px solid #d1d1d1;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      color: #666;
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    /* Reset Bootstrap bottom margin on paragraph tags */
+    .copyright-bar p {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="faderhome"></div>
+
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <a class="navbar-brand" href="Work.html">
+      <img src="images/Logo2.svg" alt="Josie Logo" height="50" />
+    </a>
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item nav-button-active active">
+          <a class="nav-link px-3" href="Work.html">Work</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3" href="Others.html">Others</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3" href="About.html">About</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container-fluid px-0">
+    <div class="container">
+      <div class="hero-section text-center text-md-left">
+        <h1 class="hero-title mb-1">
+          Hello! I am
+          <span style="
+                color: #007bff;
+                font-family: 'Caveat', cursive;
+                font-size: 6rem;
+                font-weight: 500;
+              ">Josie</span>
+          <img src="images/Work/Pencil.gif" alt="Pencil Icon" style="
+                height: 130px;
+                vertical-align: middle;
+                transform: translateY(-10px);
+              " />
+        </h1>
+        <p class="hero-subtitle mx-auto mx-md-0">
+          A multidisciplinary UX/UI designer merging graphic design with UX
+          research to create high-impact digital experiences.
+        </p>
+      </div>
+    </div>
+
+    <div class="container pb-5">
+      <div class="row pt-4">
+        <div class="col-md-6 port-card pr-md-4">
+          <a href="MandaiX.html">
+            <div class="img-wrapper" style="border-color: #07846b">
+              <img src="images/Mandai X/Mandai X_Thumbnail.jpg" alt="Mandai X" />
+            </div>
+            <h3 class="project-title">Mandai X Ranger Buddies</h3>
+            <div class="tag-container">
+              <span class="tag" style="background: #07846b">UX/UI</span>
+              <span class="tag" style="background: #07846b">B2C Edutainment</span>
+              <span class="tag" style="background: #07846b">Research</span>
+              <span class="tag" style="background: #07846b">2026</span>
+            </div>
+            <p class="project-desc">W.I.P.</p>
+          </a>
+        </div>
+
+        <div class="col-md-6 port-card pl-md-4">
+          <a href="GovTech.html">
+            <div class="img-wrapper" style="border-color: #785ef0">
+              <img src="images/Govtech_Thumbnail.jpg" alt="GovTech" />
+            </div>
+            <h3 class="project-title">GovTech a11y Playground</h3>
+            <div class="tag-container">
+              <span class="tag" style="background: #785ef0">UX/UI</span>
+              <span class="tag" style="background: #785ef0">Art Direction</span>
+              <span class="tag" style="background: #785ef0">User Testing</span>
+              <span class="tag" style="background: #785ef0">2025</span>
+            </div>
+            <p class="project-desc">
+              Branded the PWD accessibility site's visual identity with
+              original illustrations and animations. Leveraged user research
+              interviews to refine the site's end-to-end experience for
+              digital service professionals.
+            </p>
+          </a>
+        </div>
+      </div>
+
+      <div class="row pt-4">
+        <div class="col-md-6 port-card pr-md-4">
+          <a href="TheBeeCrisis.html">
+            <div class="img-wrapper" style="border-color: #e68700">
+              <img src="images/The Bee Crisis/TheBeeCrisis_Thumbnail.jpg" alt="The Bee Crisis" />
+            </div>
+            <h3 class="project-title">The Bee Crisis</h3>
+            <div class="tag-container">
+              <span class="tag" style="background: #e68700">Data Visualisation</span>
+              <span class="tag" style="background: #e68700">Storytelling</span>
+              <span class="tag" style="background: #e68700">2025</span>
+            </div>
+            <p class="project-desc">
+              Utilised graphic storytelling to create a series of visual
+              narratives about the bee population decline and it's
+              consequences. Featured during "Singapore Design Week" 2025.
+            </p>
+          </a>
+        </div>
+
+        <div class="col-md-6 port-card pl-md-4">
+          <a href="Enhancing Fei Yang Band.html">
+            <div class="img-wrapper" style="border-color: #ea474a">
+              <img src="images/Enhancing Feel Young/Feel Young_Thumbnail_White.jpg" alt="Feel Young Band" />
+            </div>
+            <h3 class="project-title">Enhancing Feel Young (飞扬) Band</h3>
+            <div class="tag-container">
+              <span class="tag" style="background: #ea474a">Design for Community</span>
+              <span class="tag" style="background: #ea474a">Service Design</span>
+              <span class="tag" style="background: #ea474a">Branding</span>
+              <span class="tag" style="background: #ea474a">2025</span>
+            </div>
+            <p class="project-desc">
+              Collaborated with a local senior band in Chinatown to elevate
+              their public image and deepen audience connection by developing
+              a relatable brand identity that represents their spirit.
+            </p>
+          </a>
+        </div>
+      </div>
+
+      <div class="row pt-4">
+        <div class="col-md-6 port-card pr-md-4">
+          <a href="GoKakis.html">
+            <div class="img-wrapper" style="border-color: #2B6B90">
+              <img src="images/GoKakis/GoKakis_Thumbnail.png" alt="Motion Graphics" />
+            </div>
+            <h3 class="project-title">GoKakis</h3>
+            <div class="tag-container">
+              <span class="tag" style="background: #2B6B90">Product Design</span>
+              <span class="tag" style="background: #2B6B90">Service Design</span>
+              <span class="tag" style="background: #2B6B90">Motion Graphics</span>
+              <span class="tag" style="background: #2B6B90">2025</span>
+            </div>
+            <p class="project-desc">
+              We transformed a complex biomedical proof-of-concept into an accessible, market-ready product ecosystem
+              through human-centered design.
+            </p>
+          </a>
+        </div>
+
+        <div class="col-md-6 port-card pl-md-4">
+          <a href="misscarry.html">
+            <div class="img-wrapper" style="border-color: #e03e70">
+              <img src="images/misscarry/misscarry_thumbnail.jpg" alt="miss carry" />
+            </div>
+            <h3 class="project-title">miss carry D.I.Y.</h3>
+            <div class="tag-container">
+              <span class="tag" style="background: #e03e70">Advertising Campaign</span>
+              <span class="tag" style="background: #e03e70">Art Direction</span>
+              <span class="tag" style="background: #e03e70">2024</span>
+            </div>
+            <p class="project-desc">
+              Developed an end-to-end speculative campaign for 'The Mother
+              Brief' at TSLA, leading the project from initial ideation and
+              visual execution to a high-level pitch for an initiative
+              advocating for women's rights.
+            </p>
+          </a>
+        </div>
+
+        <div class="col-md-6 port-card pl-md-4">
+          <a href="UnderratedTrashSnackers.html">
+            <div class="img-wrapper" style="border-color: #a04d31">
+              <img src="images/Underrated_Trash_Snackers/UTC_Thumbnail.gif" alt="miss carry" />
+            </div>
+            <h3 class="project-title">Underrated Trash Snackers</h3>
+            <div class="tag-container">
+              <span class="tag" style="background: #a04d31">Advertising Campaign</span>
+              <span class="tag" style="background: #a04d31">Art Direction</span>
+              <span class="tag" style="background: #a04d31">2021</span>
+            </div>
+            <p class="project-desc">
+              Conceptualised an integrated campaign transforming
+              vermicomposting into a fun family routine to reduce food waste.
+              Won awards at the 2021 Crowbar Competition.
+            </p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer-dark">
+    <div class="container">
+      <div class="footer-text">Let's work together :)</div>
+
+      <div class="social-icons">
+        <a href="https://linkedin.com/in/josiechanxt" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png" alt="LinkedIn" />
+        </a>
+        <a href="mailto:jochanxt@gmail.com">
+          <img src="https://cdn-icons-png.flaticon.com/512/542/542689.png" alt="Email" />
+        </a>
+        <a href="https://instagram.com/jo.cgraphics" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/1384/1384015.png" alt="Instagram" />
+        </a>
+      </div>
+
+      <div class="copyright-bar">
+        <p>Copyright © 2026 Josie Chan. Built with HTML & CSS.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var fader = document.getElementById("faderhome");
+      if (fader) {
+        setTimeout(function () {
+          fader.classList.add("fade-out");
+        }, 100);
+      }
+
+      var anchors = document.getElementsByTagName("a");
+      for (var i = 0; i < anchors.length; i++) {
+        if (
+          anchors[i].hostname === window.location.hostname &&
+          anchors[i].pathname !== window.location.pathname &&
+          anchors[i].target !== "_blank"
+        ) {
+          anchors[i].addEventListener("click", function (event) {
+            event.preventDefault();
+            var href = this.href;
+            if (fader) {
+              fader.classList.remove("fade-out");
+              fader.classList.add("fade-in");
+              setTimeout(function () {
+                window.location = href;
+              }, 500);
+            } else {
+              window.location = href;
+            }
+          });
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

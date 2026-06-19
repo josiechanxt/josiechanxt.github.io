@@ -1,0 +1,1009 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Carattere&family=IBM+Plex+Sans:ital,wdth,wght@0,75..100,100..700;1,75..100,100..700&"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .wf-loading * {
+      opacity: 0;
+    }
+
+    /* Navigation */
+    .navbar {
+      padding: 1rem 2rem;
+      background: #ffffff;
+      border-bottom: 1px solid #eaeaea;
+    }
+
+    .nav-link {
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover,
+    .nav-button-active .nav-link {
+      color: #007bff !important;
+    }
+
+    /* --- CUSTOM HAMBURGER TO "X" ANIMATION --- */
+    .navbar-toggler {
+      border: none;
+      padding: 10px 10px;
+      outline: none !important;
+    }
+
+    .toggler-icon {
+      width: 24px;
+      height: 2px;
+      background-color: #007bff;
+      display: block;
+      transition: all 0.3s ease-in-out;
+      position: relative;
+    }
+
+    .toggler-icon::before,
+    .toggler-icon::after {
+      content: "";
+      width: 24px;
+      height: 2px;
+      background-color: #007bff;
+      display: block;
+      transition: all 0.3s ease-in-out;
+      position: absolute;
+    }
+
+    .toggler-icon::before {
+      top: -8px;
+    }
+
+    .toggler-icon::after {
+      bottom: -8px;
+    }
+
+    /* Animation to X */
+    .navbar-toggler:not(.collapsed) .toggler-icon {
+      background-color: transparent;
+    }
+
+    .navbar-toggler:not(.collapsed) .toggler-icon::before {
+      transform: rotate(45deg);
+      top: 0;
+    }
+
+    .navbar-toggler:not(.collapsed) .toggler-icon::after {
+      transform: rotate(-45deg);
+      bottom: 0;
+    }
+
+    /* Custom Light Grey Footer */
+    .footer-dark {
+      background-color: #ececec;
+      padding: 2rem 0 3rem;
+      text-align: center;
+      color: #007bff;
+    }
+
+    .footer-text {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      font-family: "IBM Plex Sans", sans-serif;
+      color: #666;
+    }
+
+    .social-icons a {
+      margin: 0 12px;
+      text-decoration: none;
+      display: inline-block;
+      transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+    }
+
+    .social-icons a:hover {
+      opacity: 0.7;
+      transform: translateY(-3px);
+    }
+
+    .social-icons img {
+      width: 30px;
+      height: 30px;
+      /* CSS Filter to change black icons to #007bff */
+      filter: invert(31%) sepia(94%) saturate(4120%) hue-rotate(211deg) brightness(101%) contrast(85%);
+    }
+
+    .copyright-bar {
+      border-top: 1px solid #d1d1d1;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      color: #666;
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    /* Solid Colour Pill Buttons */
+    .btn-outline-work {
+      padding: 8px 16px;
+      margin: 8px;
+      border-radius: 50px !important;
+      /* Forces the fully rounded ends */
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #ffffff !important;
+      /* Forces white text for legibility on solid backgrounds */
+      /* transition: all 0.3s ease; */
+      text-decoration: none !important;
+      display: inline-block;
+      border: none;
+      /* Removes the outline to keep it a solid block */
+    }
+
+    /* Assigning Solid Colours based on project brandings */
+    .btn-outline-work:nth-child(1) {
+      background-color: #07846b;
+    }
+
+    /* Mandai X */
+    .btn-outline-work:nth-child(2) {
+      background-color: #785ef0;
+    }
+
+    /* GovTech */
+    .btn-outline-work:nth-child(3) {
+      background-color: #4270ce;
+    }
+
+    /* Motion Graphics */
+    .btn-outline-work:nth-child(4) {
+      background-color: #e68700;
+    }
+
+    /* The Bee Crisis */
+    .btn-outline-work:nth-child(5) {
+      background-color: #ea474a;
+    }
+
+    /* Enhancing Fei Yang Band */
+    .btn-outline-work:nth-child(6) {
+      background-color: #e03e70;
+    }
+
+    /* miss carry D.I.Y. */
+    .btn-outline-work:nth-child(7) {
+      background-color: #a04d31;
+    }
+
+    /* Underrated Trash Snackers */
+
+    /* Hover State: Deepen the colour and add a lift effect */
+    .btn-outline-work:hover {
+      transform: translateY(-2px);
+      /* box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); */
+      filter: brightness(80%);
+      /* Slightly darkens the solid colour on hover */
+      color: #ffffff !important;
+    }
+
+    .gap-3 {
+      gap: 1rem;
+    }
+
+    .accordion-body {
+      padding: 0;
+      font-size: 14px;
+      font-weight: 350;
+      line-height: 1.3;
+      color: #666;
+      font-family: "IBM Plex Sans", sans-serif;
+      font-style: italic;
+    }
+
+    /* Image Slider Styles */
+    .image-slider-container {
+      max-width: 100%;
+      margin: 0 auto;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+    }
+
+    .slider-images-region {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr;
+      background: #f5f5f5;
+      border-radius: 12px 12px 0 0;
+    }
+
+    .slider-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      background: #f5f5f5;
+      overflow: hidden;
+      border-radius: 12px 12px 0 0;
+    }
+
+    .slider-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slider-image {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+
+    /* Text panels region */
+    .slider-panels-region {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr;
+      background: white;
+      border-radius: 0 0 12px 12px;
+    }
+
+    .slider-panel {
+      grid-column: 1;
+      grid-row: 1;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      padding: 25px;
+      text-align: left;
+    }
+
+    .slider-panel.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .slider-title {
+      font-size: 22px;
+      font-weight: 600;
+      margin: 0 0 8px 0;
+      color: #1a1a1a;
+      font-family: 'IBM Plex Sans', sans-serif;
+    }
+
+    .slider-description {
+      font-size: 14px;
+      font-weight: 400;
+      margin: 0;
+      color: #666;
+      line-height: 1.4;
+      font-family: 'IBM Plex Sans', sans-serif;
+    }
+
+    .slider-nav {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      transform: translateY(-50%);
+      display: flex;
+      justify-content: space-between;
+      pointer-events: none;
+      z-index: 20;
+      padding: 0 15px;
+      box-sizing: border-box;
+    }
+
+    .slider-arrow {
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: all;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      color: #2B6B90;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .slider-arrow:hover {
+      background: white;
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .slider-arrow-left::after {
+      content: '\2039';
+      font-size: 32px;
+      margin-right: 3px;
+    }
+
+    .slider-arrow-right::after {
+      content: '\203a';
+      font-size: 32px;
+      margin-left: 3px;
+    }
+
+    /* Dots */
+    .slider-dots {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      z-index: 30;
+      padding: 0;
+      background: transparent;
+      pointer-events: all;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.55);
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+      flex-shrink: 0;
+    }
+
+    .dot.active {
+      background: #2B6B90;
+      transform: scale(1.3);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+    }
+
+    .dot:hover {
+      background: #2B6B90;
+    }
+
+    .slider-slide {
+      grid-column: 1;
+      grid-row: 1;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .slider-slide.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    @media (max-width: 768px) {
+      .slider-title {
+        font-size: 18px;
+      }
+
+      .slider-description {
+        font-size: 12px;
+      }
+
+      .slider-arrow {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+      }
+
+      .slider-panel {
+        padding: 20px 15px;
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+      }
+    }
+  </style>
+  <title>GoKakis</title>
+</head>
+
+<body>
+  <svg id="fader"></svg>
+
+  <!-- Nav bar -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <a class="navbar-brand" href="Work.html">
+      <img src="images/Logo2.svg" alt="Josie Logo" height="50" />
+    </a>
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item nav-button-active active">
+          <a class="nav-link px-3" href="Work.html">Work</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3" href="Others.html">Others</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3" href="About.html">About</a>
+        </li>
+        <!-- <li class="nav-item">
+            <a class="nav-link px-3" href="Contact.html">Contact</a>
+          </li> -->
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-12 p-0"></div>
+      <img class="images-header w-100 img-fluid" src="images/GoKakis/GoKakis_Header.png" alt="worm" />
+    </div>
+
+    <div class="row justify-content-center pt-4">
+      <div class="col-md-7 col-12">
+        <h1 class="text-center projecttitle projecttitle--gokakis">
+          GoKakis
+        </h1>
+      </div>
+    </div>
+
+
+
+    <div class="row justify-content-center pb-3 pt-3">
+      <div class="tag-container">
+        <span class="tag" style="background: #2B6B90; color: #ffffff">Product Design</span>
+        <span class="tag" style="background: #2B6B90; color: #ffffff">Service Design</span>
+        <span class="tag" style="background: #2B6B90; color: #ffffff">Motion Graphics</span>
+        <span class="tag" style="background: #2B6B90; color: #ffffff">2025</span>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pt-3">
+      <div class="col-md-5 col-12 px-4">
+        <h3 class="text-md-left text-center main-content3 pb-4 pt-3" style="color: #2B6B90">
+          "How might we transform the rehab waiting experience to be socially and physically engaging while keeping it
+          simple and independent?”
+        </h3>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pt-4 pb-5 px-3">
+      <div class="col-md-6 col-12" style="border: 2px solid #2B6B90; padding: 20px; border-radius: 10px">
+        <h3 class="text-left main-content4 pb-3 pt-3">
+          We were tasked to transform a raw, biomedical engineering proof-of-concept into a mature, market-ready product
+          integrated within a broader service ecosystem. Design complexity was managed by decomposing technical
+          constraints and reconfiguring component layouts, while simultaneously using user research to inform our
+          process. The final project showcases the tangible value of human-centred design in turning complex utility
+          into a seamless, accessible service.
+        </h3>
+
+        <div class="row">
+          <div class="col-md-6 col-12 mb-4 mb-md-0">
+            <h3 class="text-left main-content4 pt-2 pb-0" style="font-size: 16px; color: #2B6B90">
+              <b style="font-weight: 500">My Contributions</b>
+            </h3>
+
+            <h3 class="text-left accordion-body pb-2 pt-2 pl-3">
+              <li>
+                Collaborated on weekly concept development to rapidly ideate and iterate product
+              </li>
+              <br />
+              <li>
+                Driven art direction and visual identity, shaping the look and feel of the product
+              </li>
+              <br />
+              <li>
+                Designed and animated game interfaces
+              </li>
+              <br />
+              <li>
+                Produced high-fidelity video mockups and compelling slide decks to communicate product vision
+              </li>
+            </h3>
+          </div>
+
+          <div class="col-md-6 col-12">
+            <h3 class="text-left main-content4 pt-2 pb-0" style="font-size: 16px; color: #2B6B90">
+              <b style="font-weight: 500">Timeline</b>
+            </h3>
+
+            <h3 class="text-left accordion-body pb-2 pt-2 pl-3">
+              <li>11 Weeks</li>
+            </h3>
+            <h3 class="text-left main-content4 pt-2 pb-0" style="font-size: 16px; color: #2B6B90">
+              <b style="font-weight: 500">Team members</b>
+            </h3>
+
+            <h3 class="text-left accordion-body pb-2 pt-2 pl-3">
+              <li>
+                Lam Jia Xuan, Loh Wan Sing
+              </li>
+              <br />
+              <li>Under the supervision of Professor Song Kee Hong</li>
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <section class="container-fluid" style="background-color: #f4f4f4;">
+
+      <div class="pt-5 pb-5 px-3">
+        <div class="justify-content-center row">
+          <div class="col-md-3 col-12 pl-md-3 pt-0 text-center text-md-left">
+            <h3 class="main-content6 pr-md-2 pt-0 pb-4" style="color: #2B6B90;">
+              The Scenario
+            </h3>
+            <h3 class="main-content4d pr-md-2 pt-0 text-left">
+              Long waits, disengagement, and boredom. For many elderly individuals, this is a familiar routine at
+              rehabilitation centres as they wait for their appointments.
+            </h3>
+          </div>
+          <div class="col-md-5 col-12 pl-md-3 pt-4 pt-md-0 text-center">
+            <img class="images img-fluid" src="images/GoKakis/1.png" alt="worm" />
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-1 pb-5 px-3">
+        <div class="justify-content-center row">
+          <div class="col-md-3 col-12 pl-md-3 pt-0 text-center text-md-left">
+            <h3 class="main-content6 pr-md-2 pt-0 pb-4" style="color: #2B6B90;">
+              The Original Product
+            </h3>
+            <h3 class="main-content4d pr-md-2 pt-0 text-left">
+              Originally, as a biomedical engineering project, the creators reimagined waiting by weaving physiotherapy
+              elements into a playful hybrid gaming station of bingo and tic-tac-toe.
+              </br></br>
+              <b></b> <b style="font-weight: 500">How it works:</b>
+              User cycles with pedal (leg workout) → Ball is dispensed → User picks up ball (stretches back) → puts ball
+              into Tic Tac Toe slot (cognitive)
+            </h3>
+          </div>
+          <div class="col-md-5 col-12 pl-md-3 pt-4 pt-md-0 text-center">
+            <img class="images img-fluid" src="images/GoKakis/2.gif" alt="worm" />
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-1 pb-5 px-3">
+        <div class="justify-content-center row">
+          <div class="col-md-3 col-12 pl-md-3 pt-0 text-center text-md-left">
+            <h3 class="main-content6 pr-md-2 pt-0 pb-4" style="color: #2B6B90;">
+              Identified Opportunities
+            </h3>
+            <h3 class="main-content4d pr-md-2 pt-0 text-left">
+              The original project's success proved the value of gamified physiotherapy. So we leveraged that, making
+              the
+              games more fun and intuitive while minimising reliance on staff to increase spontaneity.
+              <br><br>
+              - Reduce staff reliance
+              <br>
+              - Gamifying physiotherapy
+            </h3>
+          </div>
+          <div class="col-md-5 col-12 pl-md-3 pt-4 pt-md-0 text-center">
+            <img class="images img-fluid" src="images/GoKakis/2a.jpg" alt="worm" />
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+
+
+
+
+    <div class="row justify-content-center px-3">
+      <div class="col-md-6 col-12 pt-5 pb-5">
+        <h3 class="text-center main-content3" style="color: #2B6B90">
+          Revamped Product: GoKakis Interactive Projector
+        </h3>
+      </div>
+    </div>
+
+    <div class="pt-1 pb-3 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
+            GoKakis is an interactive projection system with an old-school charm that turns waiting times into
+            opportunities for social interaction and fun, while gamifying physiotherapy. All it takes is an A4-sized
+            projector, designed to resemble a traditional rattan basket, to transform any floor into a playground of
+            memories inspired by Singapore's nostalgic past. With this solution, we aim to reduce staff reliance and
+            foster spontaneity in play.
+
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pb-1 pt-3 px-3">
+      <div class="col-md-8 col-12 p-1 pt-0 pl-0 pb-0 text-center">
+        <img class="images img-fluid" src="images/GoKakis/3.png" alt="worm" />
+      </div>
+    </div>
+
+    <!-- IMAGE SLIDER -->
+    <div class="row justify-content-center pb-3 pt-4 px-1 pl-3">
+      <div class="col-md-8 col-12 pl-md-0">
+        <div class="image-slider-container">
+
+          <div class="slider-images-region">
+            <div class="slider-slide active">
+              <div class="slider-wrapper">
+                <div class="slider-content">
+                  <img class="slider-image" src="images/GoKakis/4.jpg" alt="Slide 1" />
+                </div>
+                <div class="slider-nav">
+                  <button class="slider-arrow slider-arrow-left" aria-label="Previous slide"></button>
+                  <button class="slider-arrow slider-arrow-right" aria-label="Next slide"></button>
+                </div>
+              </div>
+            </div>
+
+            <div class="slider-slide">
+              <div class="slider-wrapper">
+                <div class="slider-content">
+                  <img class="slider-image" src="images/GoKakis/5.png" alt="Slide 2" />
+                </div>
+                <div class="slider-nav">
+                  <button class="slider-arrow slider-arrow-left" aria-label="Previous slide"></button>
+                  <button class="slider-arrow slider-arrow-right" aria-label="Next slide"></button>
+                </div>
+              </div>
+            </div>
+
+            <div class="slider-slide">
+              <div class="slider-wrapper">
+                <div class="slider-content">
+                  <img class="slider-image" src="images/GoKakis/6.png" alt="Slide 3" />
+                </div>
+                <div class="slider-nav">
+                  <button class="slider-arrow slider-arrow-left" aria-label="Previous slide"></button>
+                  <button class="slider-arrow slider-arrow-right" aria-label="Next slide"></button>
+                </div>
+              </div>
+            </div>
+
+            <div class="slider-slide">
+              <div class="slider-wrapper">
+                <div class="slider-content">
+                  <img class="slider-image" src="images/GoKakis/7.png" alt="Slide 4" />
+                </div>
+                <div class="slider-nav">
+                  <button class="slider-arrow slider-arrow-left" aria-label="Previous slide"></button>
+                  <button class="slider-arrow slider-arrow-right" aria-label="Next slide"></button>
+                </div>
+              </div>
+            </div>
+
+            <div class="slider-dots"></div>
+          </div>
+
+          <div class="slider-panels-region">
+            <div class="slider-panel active">
+              <h3 class="slider-title">Feature 1</h3>
+              <!-- <p class="slider-description">Description for phase 1 goes here.</p> -->
+            </div>
+
+            <div class="slider-panel">
+              <h3 class="slider-title">Feature 2</h3>
+              <!-- <p class="slider-description">Description for phase 2 goes here.</p> -->
+            </div>
+
+            <div class="slider-panel">
+              <h3 class="slider-title">Feature 3</h3>
+              <!-- <p class="slider-description">Description for phase 3 goes here.</p> -->
+            </div>
+
+            <div class="slider-panel">
+              <h3 class="slider-title">Feature 4</h3>
+              <!-- <p class="slider-description">Description for phase 4 goes here.</p> -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row justify-content-center pb-1 pt-3 px-3">
+      <div class="col-md-8 col-12 p-1 pt-0 pl-0 pb-0 text-center">
+        <img class="images img-fluid" src="images/GoKakis/8.gif" alt="worm" />
+      </div>
+    </div>
+
+    <div class="row justify-content-center pb-3 pt-0 px-3">
+      <div class="col-md-4 col-12 p-1 pt-0 pl-0 pb-3 text-center">
+        <img class="images img-fluid" src="images/GoKakis/9.gif" alt="worm" />
+      </div>
+      <div class="col-md-4 col-12 p-1 pt-0 pl-0 pb-3 text-center">
+        <img class="images img-fluid" src="images/GoKakis/10.gif" alt="worm" />
+      </div>
+    </div>
+
+    <div class="row justify-content-center px-3">
+      <div class="col-md-6 col-12 pt-5 pb-5">
+        <h3 class="text-center main-content3" style="color: #2B6B90">
+          Waiting together, socialising together...
+        </h3>
+      </div>
+    </div>
+
+    <div class="pt-1 pb-3 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
+            Beyond the technology, we provide a humanizing experience. Our games are inspired by nostalgic Singaporean
+            pastimes like Longkang Fishing and Chapteh, allowing seniors to relive their past. By combining these
+            familiar movements with physical therapy, we create a more engaging rehabilitation process and a highly
+            social experience.
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pb-5 pt-5">
+      <div class="col-md-8 col-xs-12 p-1 pl-0 pb-0" style="aspect-ratio: 16/9;">
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Lh92DpvBkZg?si=NYF0MXc3xn6EnXBW"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </div>
+
+     <div class="row justify-content-center px-3">
+      <div class="col-md-6 col-12 pt-3 pb-5">
+        <h3 class="text-center main-content3" style="color: #2B6B90">
+          Highly scalable, anytime anywhere in any rehab centre.
+        </h3>
+      </div>
+    </div>
+
+
+
+    <div class="row justify-content-center pb-3 pt-3 px-3">
+      <div class="col-md-8 col-12 p-1 pt-0 pl-0 pb-3 text-center">
+        <img class="images img-fluid" src="images/GoKakis/11.png" alt="worm" />
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Footer -->
+
+    <div id="fab-button" class="fab-container">
+      <div class="fab">
+        <svg xmlns="http://www.w3.org/2000/svg" height="42px" viewBox="0 -960 960 960" width="42px" fill="gray">
+          <path d="M480-545.33 287.33-352.67 240-400l240-240 240 240-47.33 47.33L480-545.33Z" />
+        </svg>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pb-5 pt-5 px-3">
+      <div class="col-6 text-center pt-5 pb-5">
+        <h3 class="mb-4" style="color: #555; font-size: 18px">
+          View other works 👀
+        </h3>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+          <a href="MandaiX.html" class="btn btn-outline-work">Mandai X</a>
+          <a href="GovTech.html" class="btn btn-outline-work">GovTech Singapore</a>
+          <a href="Animations.html" class="btn btn-outline-work">Motion Graphics</a>
+          <a href="TheBeeCrisis.html" class="btn btn-outline-work">The Bee Crisis</a>
+          <a href="Enhancing Fei Yang Band.html" class="btn btn-outline-work">Enhancing Fei Yang Band</a>
+          <a href="misscarry.html" class="btn btn-outline-work">miss carry D.I.Y.</a>
+          <a href="underratedtrashsnackers.html" class="btn btn-outline-work">Underrated Trash Snackers</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+
+    <footer class="footer-dark">
+      <div class="container">
+        <div class="footer-text">Let's work together :)</div>
+
+        <div class="social-icons">
+          <a href="https://linkedin.com/in/josiechanxt" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png" alt="LinkedIn" />
+          </a>
+          <a href="mailto:jochanxt@gmail.com">
+            <img src="https://cdn-icons-png.flaticon.com/512/542/542689.png" alt="Email" />
+          </a>
+          <a href="https://instagram.com/jo.cgraphics" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/1384/1384015.png" alt="Instagram" />
+          </a>
+        </div>
+
+        <div class="copyright-bar">
+          <p>Copyright © 2026 Josie Chan. Built with HTML & CSS.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Universal Multi-Slider Initialization
+      function initSliders() {
+        const sliderContainers = document.querySelectorAll('.image-slider-container');
+
+        sliderContainers.forEach((container) => {
+          const slides = container.querySelectorAll('.slider-slide');
+          const panels = container.querySelectorAll('.slider-panel');
+          const dotsContainer = container.querySelector('.slider-dots');
+
+          let currentSlide = 0;
+          const totalSlides = slides.length;
+
+          // Populate dots specifically for this slider instance
+          if (dotsContainer) {
+            dotsContainer.innerHTML = ''; // Clear layout residue
+            for (let i = 0; i < totalSlides; i++) {
+              const dot = document.createElement('button');
+              dot.className = 'dot' + (i === 0 ? ' active' : '');
+              dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+              dot.addEventListener('click', () => goToSlide(i));
+              dotsContainer.appendChild(dot);
+            }
+          }
+
+          function updateSlider() {
+            slides.forEach((slide, idx) => slide.classList.toggle('active', idx === currentSlide));
+            panels.forEach((panel, idx) => panel.classList.toggle('active', idx === currentSlide));
+
+            const activeSlide = slides[currentSlide];
+            const leftArrow = activeSlide.querySelector('.slider-arrow-left');
+            const rightArrow = activeSlide.querySelector('.slider-arrow-right');
+
+            if (leftArrow) leftArrow.style.visibility = (currentSlide === 0) ? 'hidden' : 'visible';
+            if (rightArrow) rightArrow.style.visibility = (currentSlide === totalSlides - 1) ? 'hidden' : 'visible';
+
+            if (dotsContainer) {
+              const dots = dotsContainer.querySelectorAll('.dot');
+              dots.forEach((dot, idx) => dot.classList.toggle('active', idx === currentSlide));
+            }
+          }
+
+          function nextSlide() {
+            if (currentSlide < totalSlides - 1) { currentSlide++; updateSlider(); }
+          }
+
+          function previousSlide() {
+            if (currentSlide > 0) { currentSlide--; updateSlider(); }
+          }
+
+          function goToSlide(index) {
+            currentSlide = index;
+            updateSlider();
+          }
+
+          container.querySelectorAll('.slider-arrow-left').forEach(btn => btn.addEventListener('click', previousSlide));
+          container.querySelectorAll('.slider-arrow-right').forEach(btn => btn.addEventListener('click', nextSlide));
+
+          updateSlider();
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', initSliders);
+
+      fadeInPage();
+
+      function fadeInPage() {
+        if (!window.AnimationEvent) {
+          return;
+        }
+        var fader = document.getElementById("fader");
+        fader.classList.add("fade-out");
+      }
+      document.addEventListener("DOMContentLoaded", function () {
+        if (!window.AnimationEvent) {
+          return;
+        }
+        var anchors = document.getElementsByTagName("a");
+        for (var idx = 0; idx < anchors.length; idx += 1) {
+          if (
+            anchors[idx].hostname !== window.location.hostname ||
+            anchors[idx].pathname === window.location.pathname
+          ) {
+            continue;
+          }
+          anchors[idx].addEventListener("click", function (event) {
+            var fader = document.getElementById("fader"),
+              anchor = event.currentTarget;
+
+            var listener = function () {
+              window.location = anchor.href;
+              fader.removeEventListener("animationend", listener);
+            };
+            fader.addEventListener("animationend", listener);
+
+            event.preventDefault();
+            fader.classList.add("fade-in");
+          });
+        }
+      });
+      window.onunload = function () { };
+
+      /* FAB */
+      // --- New Scroll to Top Functionality ---
+      const fabButton = document.getElementById("fab-button");
+      const SCROLL_THRESHOLD = 300; // Pixels to scroll down before the button appears
+
+      // Function to handle showing/hiding the button on scroll
+      const toggleFabVisibility = () => {
+        if (window.scrollY > SCROLL_THRESHOLD) {
+          fabButton.classList.remove("fab-hidden");
+        } else {
+          fabButton.classList.add("fab-hidden");
+        }
+      };
+
+      // Event listener for window scroll to show/hide the button
+      window.addEventListener("scroll", toggleFabVisibility);
+
+      // Event listener for button click to scroll to the top
+      fabButton.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+
+      // *FAB END*//
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"></script>
+</body>
+
+</html>

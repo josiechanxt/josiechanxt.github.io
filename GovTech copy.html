@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    .wf-loading * {
+      opacity: 0;
+    }
+
+    /* --- CUSTOM HAMBURGER TO "X" ANIMATION --- */
+    .navbar-toggler {
+      border: none;
+      padding: 10px 10px;
+      outline: none !important;
+    }
+
+    .toggler-icon {
+      width: 24px;
+      height: 2px;
+      background-color: #007bff;
+      display: block;
+      transition: all 0.3s ease-in-out;
+      position: relative;
+    }
+
+    .toggler-icon::before,
+    .toggler-icon::after {
+      content: '';
+      width: 24px;
+      height: 2px;
+      background-color: #007bff;
+      display: block;
+      transition: all 0.3s ease-in-out;
+      position: absolute;
+    }
+
+    .toggler-icon::before {
+      top: -8px;
+    }
+
+    .toggler-icon::after {
+      bottom: -8px;
+    }
+
+    /* Animation to X */
+    .navbar-toggler:not(.collapsed) .toggler-icon {
+      background-color: transparent;
+    }
+
+    .navbar-toggler:not(.collapsed) .toggler-icon::before {
+      transform: rotate(45deg);
+      top: 0;
+    }
+
+    .navbar-toggler:not(.collapsed) .toggler-icon::after {
+      transform: rotate(-45deg);
+      bottom: 0;
+    }
+
+    /* Custom Light Grey Footer */
+    .footer-dark {
+      background-color: #ececec;
+      padding: 2rem 0 3rem;
+      text-align: center;
+      color: #007bff;
+    }
+
+    .footer-text {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      font-family: 'IBM Plex Sans', sans-serif;
+      color: #666;
+    }
+
+    .social-icons a {
+      margin: 0 12px;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .social-icons a:hover {
+      opacity: 0.7;
+      transform: translateY(-3px);
+    }
+
+    .social-icons img {
+      width: 30px;
+      height: 30px;
+      /* CSS Filter to change black icons to #007bff */
+      filter: invert(31%) sepia(94%) saturate(4120%) hue-rotate(211deg) brightness(101%) contrast(85%);
+    }
+
+    .copyright-bar {
+      border-top: 1px solid #d1d1d1;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      color: #666;
+      font-size: 0.85rem;
+      opacity: 0.8;
+
+      /* Fully Rounded Multi-Colour Buttons */
+      .btn-outline-work {
+        padding: 10px 24px;
+        margin: 8px;
+        border-radius: 50px;
+        /* Fully rounded */
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        text-decoration: none !important;
+        display: inline-block;
+        background-color: transparent;
+        border-width: 2px;
+        border-style: solid;
+      }
+
+      /* Individual Button Colours based on project themes */
+      .btn-outline-work:nth-child(1) {
+        border-color: #07846b;
+        color: #07846b;
+      }
+
+      /* Mandai X */
+      .btn-outline-work:nth-child(2) {
+        border-color: #785ef0;
+        color: #785ef0;
+      }
+
+      /* GovTech */
+      .btn-outline-work:nth-child(3) {
+        border-color: #4270ce;
+        color: #4270ce;
+      }
+
+      /* Motion Graphics */
+      .btn-outline-work:nth-child(4) {
+        border-color: #e68700;
+        color: #e68700;
+      }
+
+      /* Bee Crisis */
+      .btn-outline-work:nth-child(5) {
+        border-color: #ea474a;
+        color: #ea474a;
+      }
+
+      /* Fei Yang Band */
+      .btn-outline-work:nth-child(6) {
+        border-color: #e03e70;
+        color: #e03e70;
+      }
+
+      /* miss carry */
+      .btn-outline-work:nth-child(7) {
+        border-color: #a04d31;
+        color: #a04d31;
+      }
+
+      /* Trash Snackers */
+
+     /* Fully Rounded Multi-Colour Buttons */
+    .btn-outline-work {
+      padding: 10px 24px;
+      margin: 8px;
+      border-radius: 50px; /* Fully rounded */
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      text-decoration: none !important;
+      display: inline-block;
+      background-color: transparent;
+      border-width: 2px;
+      border-style: solid;
+    }
+
+    /* Individual Button Colours based on project themes */
+    .btn-outline-work:nth-child(1) { border-color: #07846b; color: #07846b; } /* Mandai X */
+    .btn-outline-work:nth-child(2) { border-color: #785ef0; color: #785ef0; } /* GovTech */
+    .btn-outline-work:nth-child(3) { border-color: #4270ce; color: #4270ce; } /* Motion Graphics */
+    .btn-outline-work:nth-child(4) { border-color: #e68700; color: #e68700; } /* Bee Crisis */
+    .btn-outline-work:nth-child(5) { border-color: #ea474a; color: #ea474a; } /* Fei Yang Band */
+    .btn-outline-work:nth-child(6) { border-color: #e03e70; color: #e03e70; } /* miss carry */
+    .btn-outline-work:nth-child(7) { border-color: #a04d31; color: #a04d31; } /* Trash Snackers */
+
+    /* Hover States: Fill with the respective colour */
+    .btn-outline-work:nth-child(1):hover { background: #07846b; color: #fff; }
+    .btn-outline-work:nth-child(2):hover { background: #785ef0; color: #fff; }
+    .btn-outline-work:nth-child(3):hover { background: #4270ce; color: #fff; }
+    .btn-outline-work:nth-child(4):hover { background: #e68700; color: #fff; }
+    .btn-outline-work:nth-child(5):hover { background: #ea474a; color: #fff; }
+    .btn-outline-work:nth-child(6):hover { background: #e03e70; color: #fff; }
+    .btn-outline-work:nth-child(7):hover { background: #a04d31; color: #fff; }
+
+    .btn-outline-work:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Carattere&family=IBM+Plex+Sans:ital,wdth,wght@0,75..100,100..700;1,75..100,100..700&"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <title>Motion Graphics</title>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <a class="navbar-brand" href="Work.html">
+      <img src="images/Logo2.svg" alt="Josie Logo" height="50" />
+    </a>
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item nav-button-active active">
+          <a class="nav-link px-3" href="Work.html">Work</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3" href="Others.html">Others</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3" href="About.html">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3" href="Contact.html">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <div class="container-fluid">
+    <svg id="fader"></svg>
+
+    <!-- <nav class="navbar navbar-expand-lg sticky-top">
+    <a class="navbar-brand" href="Work.html">
+      <img src="images/Logo2.svg" alt="Josie Logo" height="50" />
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item nav-button-active active">
+          <a class="nav-link px-3" href="Work.html">Work</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3" href="Others.html">Others</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3" href="About.html">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3" href="Contact.html">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav> -->
+
+    <div class="container-fluid"></div>
+    <div class="row justify-content-center">
+      <div class="col-12 p-0"></div>
+      <img class="images w-100 img-fluid" src="images/GovTech/A11y playground mockup.jpg" alt="worm" />
+    </div>
+
+    <div class="row justify-content-center pt-4">
+      <div class="col-md-7 col-12">
+        <h1 class="text-center projecttitle projecttitle--govtech">GovTech Singapore</h1>
+      </div>
+    </div>
+
+    <!-- <div class="row justify-content-center pb-4 pt-3">
+    <h4 class="maincontent5 text-center mx-3"
+      style="border: 2px solid #785EF0; padding: 10px; border-radius: 30px; color: #785EF0; font-size: 18px;"> UX/UI •
+      Art Direction • User Testing • 2025</h4>
+  </div> -->
+
+    <div class="row justify-content-center pb-3 pt-3">
+      <div class="tag-container">
+        <span class="tag" style="background: #785ef0; color: #ffffff">UX/UI</span>
+        <span class="tag" style="background: #785ef0; color: #ffffff">Art Direction</span>
+        <span class="tag" style="background: #785ef0; color: #ffffff">User Testing</span>
+        <span class="tag" style="background: #785ef0; color: #ffffff">2025</span>
+      </div>
+    </div>
+
+
+    <div class="row justify-content-center pt-3">
+      <div class="col-md-5 col-12 px-4">
+        <h3 class="text-md-left text-center main-content3 pb-4 pt-3" style="color: #785EF0;">
+          "How can we empower professionals to build more accessible and inclusive digital services?"
+        </h3>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pt-4 pb-5 px-3">
+      <div class="col-md-6 col-12" style="border: 2px solid #785EF0; padding: 20px; border-radius: 10px">
+        <h3 class="text-left main-content4 pb-3 pt-3">
+          During summer 2025, I joined
+          <a href="https://www.tech.gov.sg/" style="color: black" target="_blank"><i>GovTech Singapore</i></a>
+          as a UX/UI Designer intern. Below are some contributions I made to
+          the a11y Playground team, which I joined halfway through their
+          design process. My role primarily involved setting the site's art
+          direction with illustrations, as well as participating in user
+          interviews and synthesising data for site refinement.
+        </h3>
+
+        <div class="row">
+          <div class="col-md-6 col-12 mb-4 mb-md-0">
+            <h3 class="text-left main-content4 pt-2 pb-0">
+              <b style="font-weight: 500; font-size: 16px; color: #785EF0;">My Contributions</b>
+            </h3>
+
+            <h3 class="text-left main-content4 pb-2 pt-2 pl-3">
+              <li>Conceptualised and provided reusable illustrations/animations from scratch</li>
+              <br />
+              <li>Presented my design process with 30+ UI/UX Designers during a monthly company huddle</li>
+              <br />
+              <li>Conducted user interviews and synthesised observations and insights, presented findings to team</li>
+              <br />
+              <li>Created and updated Figma frames for the website</li>
+            </h3>
+          </div>
+
+          <div class="col-md-6 col-12">
+            <h3 class="text-left main-content4 pt-2 pb-0" style="font-size: 16px; color: #785EF0;">
+
+              <b style="font-weight: 500; font-size: 16px; color: #785EF0;">Timeline</b>
+
+
+            </h3>
+
+            <h3 class="text-left main-content4 pb-2 pt-2 pl-3">
+              <li>3 Months</li>
+            </h3>
+            <h3 class="text-left main-content4 pt-2 pb-0" style="font-size: 16px; color: #785EF0;">
+              <b style="font-weight: 500; font-size: 16px; color: #785EF0;">Team Members</b>
+            </h3>
+
+            <h3 class="text-left main-content4 pb-2 pt-2 pl-3">
+              <li>5 UX Designers, 4 Software Engineers, 1 Product Manager</li>
+              <br />
+              <!-- <li>Under the supervision of Kenneth Tay (Design Lead)</li> -->
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pt-3 px-3">
+      <div class="col-md-6 col-12">
+        <h3 class="text-left main-content4 pb-4 pt-3">
+          As a government agency, Govtech has an even greater responsibility
+          to ensure that government digital services meet the needs of users
+          that are People with Disabilities (PWDs). During Inclusive Design
+          Week (IDW) 2025, our team unveiled A11y Playground, an interactive
+          website designed to empower digital practitioners to build more accessible
+          and inclusive digital services in alignment with WCAG guidelines.
+          <br /><br /><br />
+
+          👉 View site here:
+          <a href="https://a11y.tech.gov.sg/" target="_blank">https://a11y.tech.gov.sg/</a>
+
+          <br /><br /><br />
+          📰 News Coverage:
+          <a href="https://www.straitstimes.com/tech/govtech-launches-website-to-help-organisations-build-more-accessible-and-inclusive-digital-services"
+            target="_blank">Straits Times</a>,
+          <a href="https://www.zaobao.com.sg/news/singapore/story20250729-7242702" target="_blank">Lian He Zao Bao</a>
+        </h3>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pb-3 pt-5 px-3">
+      <div class="col-md-8 col-12 p-1 pt-0 pl-0 pb-5 text-center">
+        <img class="images img-fluid" src="images/GovTech/A11y.gif" alt="worm" />
+      </div>
+    </div>
+
+    <div class="row justify-content-center px-3">
+      <div class="col-md-6 col-12 pt-5 pb-5">
+        <h3 class="text-center main-content3" style="color: #785EF0;">
+          Bridging the Accessibility Gap: Developing a one-stop WCAG-Centred Toolkit for Digital Practitioners
+        </h3>
+      </div>
+    </div>
+
+    <div class="pt-1 pb-3 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
+            A11y Playground serves as a comprehensive one-stop toolkit for developers, designers and product managers,
+            to
+            enhance the inclusivity of their work.
+            It bridges the gap between the technical requirements of WCAG and user empathy, ensuring that accessibility
+            is
+            actively integrated into the product lifecycle rather than treated as an afterthought.</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pb-3 pt-5 px-3">
+      <div class="col-md-8 col-12 p-1 pt-0 pl-0 pb-5 text-center">
+        <img class="images img-fluid" src="images/GovTech/Digital professionals.png" alt="worm" />
+      </div>
+    </div>
+
+    <div class="pt-1 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
+            <b style="font-weight: 500;">The site consists of these main objectives and features:</b>
+            <br><br>
+            <b style="color: #785EF0; font-weight: 500;">✏️ Synthesise:</b> Curated WCAG and DSS information into a
+            user-friendly,
+            categorised checklist for real-time site validation.
+            <br><br>
+            <b style="color: #785EF0; font-weight: 500;">✏️ Empathise:</b> Featuring real-life interviews with PWDs to
+            highlight
+            critical usability gaps and pain points, enabling digital practitioners to better understand their needs.
+            <br><br>
+            <b style="color: #785EF0; font-weight: 500;">✏️ Prioritise:</b> "People Stories" and "Top 5 common issues"
+            to bring
+            practitioners' attention to the most common site accessibility issues and understand PWD user's pain points.
+            <br><br>
+            <b style="color: #785EF0; font-weight: 500;">✏️ Equip:</b> Resource page with selected external tools, such
+            as
+            colour-blindness simulators, or design guides for a better implementation of site.
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pb-5 pt-3 px-3">
+      <div class="col-md-8 col-12 p-1 pt-0 pl-0 pb-5 text-center">
+        <img class="images img-fluid" src="images/GovTech/Website.png" alt="worm" />
+      </div>
+    </div>
+
+  </div>
+
+  <section class="container-fluid" style="background-color: #f4f4f4;">
+    <div class="row justify-content-center px-3">
+      <div class="col-md-6 col-12 pt-5 pb-0">
+        <h3 class="text-center main-content3" style="color: #785EF0;">
+          Setting the Art Direction for a11y Playground
+        </h3>
+        <h3 class="text-center main-content6 pt-0 pb-5" style="color: #785EF0;">
+          <span>(Providing 10+ SVG/Lottiefile illustrations from scratch)</span>
+        </h3>
+      </div>
+    </div>
+
+    <div class="pt-1 pb-4 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
+            One of the tasks I did was to provide the visual identity for the A11y Playground, creating a cohesive set
+            of illustrations & animations that would represent the brand and it's purpose of creating inclusive digital
+            experiences for everyone.</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pb-3 pt-3 p-3">
+      <div class="col-md-5 col-12 p-1 pt-0 pl-0 pb-3 text-center">
+        <img class="images img-fluid" src="images/GovTech/Drawings.svg" alt="worm" />
+      </div>
+      <div class="col-md-3 col-12 p-1 pt-0 pl-0 pb-3 text-center">
+        <img class="images img-fluid" src="images/GovTech/Drawings_2.svg" alt="worm" />
+      </div>
+    </div>
+
+    <div class="pt-5 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-3 col-12 pl-md-3 pt-0 text-center text-md-left">
+          <h3 class="main-content6 pr-md-2 pt-0 pb-4" style="color: #785EF0;">
+            Creating a strong Brand Identity
+          </h3>
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
+            Initially, I brainstormed by finding different styles, including
+            line art, vector shapes, and various other creative treatments.
+            Three styles were then shortlisted for the team's feedback. The
+            vector style was chosen for its stronger consistency with the
+            a11y logo design.
+          </h3>
+        </div>
+        <div class="col-md-5 col-12 pl-md-3 pt-4 pt-md-0 text-center">
+          <img class="images img-fluid" src="images/GovTech/2.jpg" alt="worm" />
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-5 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-3 col-12 pl-md-3 pt-0 text-center text-md-left">
+          <h3 class="main-content6 pr-md-2 pt-0 pb-4" style="color: #785EF0;">
+            Inspired by Universal Accessibility icons
+          </h3>
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
+            I opted for abstract human figures when defining the visual
+            style, for it's simplicity to allow the viewer to project themselves onto the characters,
+            ensuring the visuals resonated with everyone, regardless of
+            disability. This resonates with the familiar and universally
+            understood accessibility signs commonly encountered in public, with their simplified forms representing
+            icons of accessibility.
+          </h3>
+        </div>
+        <div class="col-md-5 col-12 pl-md-3 pt-4 pt-md-0 text-center">
+          <img class="images img-fluid" src="images/GovTech/3.jpg" alt="worm" />
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-1 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-3 col-12 pl-md-3 pt-0 text-center text-md-left">
+          <h3 class="main-content6 pr-md-2 pt-0 pb-4" style="color: #785EF0;">
+            Elevating the copy with another layer of storytelling
+          </h3>
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
+            Each visual has a message to convey, such as themes of "Representation" and
+            "Inclusivity", or even depicting pain points of the PWD users in scenarios where
+            they are frustrated with digital services that are not accessible.
+          </h3>
+        </div>
+        <div class="col-md-5 col-12 pl-md-3 pt-4 pt-md-0 text-center">
+          <img class="images img-fluid" src="images/GovTech/4.jpg" alt="worm" />
+        </div>
+      </div>
+    </div>
+
+
+    <div class="pt-1 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-3 col-12 pl-md-3 pt-0 text-center text-md-left">
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
+            In the hero section,
+            I portrayed the idea of inclusivity through showing happy, diverse imagery of PWD users. This highlights
+            the ultimate goal of a11y Playground: Making digital spaces accessible to everyone and, in turn,
+            fostering user satisfaction.
+          </h3>
+        </div>
+        <div class="col-md-5 col-12 pl-md-3 pt-4 pt-md-0 text-center">
+          <img class="images img-fluid" src="images/GovTech/5.jpg" alt="worm" />
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-1 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-8 col-12 pl-md-0 pt-0 pb-4 text-center">
+          <img class="images img-fluid" src="images/GovTech/7.jpg" alt="worm" />
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-1 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-3 col-12 pl-md-3 pt-0 text-center text-md-left">
+          <h3 class="main-content6 pr-md-2 pt-0 pb-4" style="color: #785EF0;">
+            Converting sketches to High-Fidelity Vectors for Technical-Handover
+          </h3>
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
+            After many iterations, I created high-fidelity designs in
+            Procreate using a11y logo colours and ensured they fit the
+            layout of the website. These were converted to vector SVGs in
+            Adobe Illustrator for efficient web loading and easy
+            customisation (e.g. changing colour) by colleagues in Figma.
+          </h3>
+        </div>
+        <div class="col-md-5 col-12 pl-md-3 pt-4 pt-md-0 text-center">
+          <img class="images img-fluid" src="images/GovTech/8.jpg" alt="worm" />
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-1 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-3 col-12 pl-md-3 pt-0 text-center text-md-left">
+          <h3 class="main-content6 pr-md-2 pt-0 pb-4" style="color: #785EF0;">
+            Adding animation & exporting as Lottie JSON
+          </h3>
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
+            Animations were added in Adobe After Effects and exported as
+            Lottie JSON files for the Software Engineer to use. This keeps
+            the file size small while maintaining quality when upscaling.
+          </h3>
+        </div>
+        <div class="col-md-5 col-12 pl-md-3 pt-4 pt-md-0 text-center">
+          <img class="images img-fluid" src="images/GovTech/23.jpg" alt="worm" />
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pt-5 px-3">
+      <div class="col-md-8 col-12 p-1 borderbottom"></div>
+    </div>
+
+    <div class="row justify-content-center px-3">
+      <div class="col-md-6 col-12 pt-5 pb-5">
+        <h3 class="text-center main-content3" style="color: #785EF0;">
+          Ensuring Inclusive & Accessible Designs for all Users
+        </h3>
+      </div>
+    </div>
+
+    <div class="row justify-content-center px-3">
+      <div class="col-md-2 col-12 pt-0 pb-4">
+        <div class="row align-left pb-0 pl-md-3 justify-content-center justify-content-md-start">
+          <h4 class="maincontent4 text-center text-md-left"
+            style="border: 2px solid #785EF0; padding: 10px; border-radius: 30px; color: #785EF0; font-size: 18px;">
+            Contrast-driven hierarchy</h4>
+        </div>
+        <h3 class="text-center text-md-left main-content4 pt-2">
+          I utilised negative space to create distinct contrast between subjects to ensure the artwork is perfectly
+          visible across both light and dark modes.
+        </h3>
+      </div>
+      <div class="col-md-2 col-12 pt-0 pb-4">
+        <div class="row align-left pb-0 pl-md-3 justify-content-center justify-content-md-start">
+          <h4 class="maincontent4 text-center text-md-left"
+            style="border: 2px solid #785EF0; padding: 10px; border-radius: 30px; color: #785EF0; font-size: 18px;">
+            Colour-inclusive vision</h4>
+        </div>
+        <h3 class="text-center text-md-left main-content4 pt-2">
+          Colour palettes were validated via colour blindness simulators to guarantee that the design remains clear and
+          distinguishable for visually-impaired users.
+        </h3>
+      </div>
+      <div class="col-md-2 col-12 pt-0 pb-4">
+        <div class="row align-left pb-0 pl-md-3 justify-content-center justify-content-md-start">
+          <h4 class="maincontent4 text-center text-md-left"
+            style="border: 2px solid #785EF0; padding: 10px; border-radius: 30px; color: #785EF0; font-size: 18px;">
+            Descriptive alt-text</h4>
+        </div>
+        <h3 class="text-center text-md-left main-content4 pt-2">
+          Alt-text was integrated to bridge the gap for screen-reader users, ensuring that visual context is accessible
+          to everyone. </h3>
+      </div>
+    </div>
+
+    <div class="pt-4 pb-2 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-4 col-12 pl-md-0 pt-0 pb-3 text-center">
+          <img class="images img-fluid" src="images/GovTech/9.jpg" alt="worm" />
+        </div>
+        <div class="col-md-4 col-12 pl-md-0 pt-0 pb-3 text-center">
+          <img class="images img-fluid" src="images/GovTech/10.jpg" alt="worm" />
+        </div>
+      </div>
+    </div>
+    <div class="pt-1 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-4 col-12 pl-md-0 pt-0 pb-4 text-center">
+          <img class="images img-fluid" src="images/GovTech/11.jpg" alt="worm" />
+        </div>
+
+        <div class="col-md-4 col-12 pl-md-0 pt-0 pb-4 text-center">
+          <img class="images img-fluid" src="images/GovTech/12.jpg" alt="worm" />
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center px-3">
+      <div class="col-md-6 col-12 pt-3 pb-5">
+        <h3 class="text-center main-content3" style="color: #785EF0;">
+          Sharing my process during Design Studio
+        </h3>
+      </div>
+    </div>
+
+    <div class="pt-1 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
+            Finally, I was also given the chance to present my illustration
+            process to over 30 UX designers during our monthly design
+            studio. It felt meaningful to be sharing my process with
+            everyone else, as some told me they had learned a thing or two
+            from it. Most importantly, I also got to hone my presentation
+            skills and learned how to integrate accessibility with my
+            drawings.
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-1 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-8 col-12 pl-md-0 pt-0 text-center">
+          <img class="images img-fluid" src="images/GovTech/13.jpg" alt="worm" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container-fluid">
+
+    <div class="row justify-content-center px-3">
+      <div class="col-md-6 col-12 pt-5 pb-5">
+        <h3 class="text-center main-content3" style="color: #785EF0;">
+          Building digital screens for Accessibility Checklist Articles
+        </h3>
+      </div>
+    </div>
+
+    <div class="pt-1 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
+            I also assisted with other tasks, such as creating Figma frames for the "Principle of Accessibility: Top 10
+            Issues" pages. I designed these with a "large screen" first, given that the website is primarily viewed on
+            laptops.
+            The nature of this project focuses more on presenting informational content rather than complex user flows,
+            so
+            I prioritised a clear hierarchy with the different header sizes, as well as ensuring the content is easily
+            digestible.
+            All the content were taken from our previous write-up on notion, which I translated the content into frames
+            here.
+            <br /> <br /> <i>(Had more experience doing up Figma screen flows & technical documentation in another
+              project, but it's confidential)</i>
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-1 pb-3 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-8 col-12 pl-md-0 pt-0 text-center">
+          <img class="images img-fluid" src="images/GovTech/18.jpg" alt="worm" />
+        </div>
+      </div>
+    </div>
+    <div class="pt-1 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-8 col-12 pl-md-0 pt-0 text-center">
+          <img class="images img-fluid" src="images/GovTech/Pic5.gif" alt="worm" />
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-3 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
+            I also created picture infographics to visually explain the content of the examples in the articles,
+            to make them more engaging and easier to understand for users. I added alt text to explain these images for
+            screen-reader users, ensuring that the information is accessible to everyone.
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-5 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-4 col-12 pl-md-0 pt-0 text-center">
+          <img class="images img-fluid" src="images/GovTech/Pic1.png" alt="worm" />
+        </div>
+        <div class="col-md-4 col-12 pl-md-0 pt-0 text-center">
+          <img class="images img-fluid" src="images/GovTech/Pic2.png" alt="worm" />
+        </div>
+      </div>
+    </div>
+    <div class="pt-1 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-4 col-12 pl-md-0 pt-0 text-center">
+          <img class="images img-fluid" src="images/GovTech/Pic3.png" alt="worm" />
+        </div>
+        <div class="col-md-4 col-12 pl-md-0 pt-0 text-center">
+          <img class="images img-fluid" src="images/GovTech/Pic4.png" alt="worm" />
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="row justify-content-center pt-5 px-3">
+      <div class="col-md-8 col-12 p-1 borderbottom"></div>
+    </div>
+
+    <div class="row justify-content-center px-3">
+      <div class="col-md-5 col-12 pt-5 pb-5">
+        <h3 class="text-center text-md-left main-content3" style="color: #785EF0;">
+          Discovering Insights through participating in user interviews and
+          synthesising findings
+        </h3>
+      </div>
+    </div>
+
+    <div class="pt-1 pb-3 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
+            I collaborated with another UX designer on a user testing
+            initiative to discover insights that could help improve our
+            website's experience for people working in government (Software Developers, Product Managers, UX/UI
+            Designers). I helped
+            scribe the interviews (6 of them), meticulously documenting
+            observed behaviours and identified pain points. Additionally, I
+            took on the responsibility of conducting one of the user tests
+            myself. This allowed me to directly observe and understand the
+            user's experience with the website firsthand, gaining insights into their perception
+            of our content's claritym and the website's overall ease of
+            interaction.
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-1 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="text-left main-content4 pt-2 pb-0" style="font-size: 16px; color: #785EF0;">
+            <b style="color: #785EF0; font-weight: 500;">Hypothesis:</b>
+          </h3>
+
+          <h3 class="text-left main-content4 pb-2 pt-2 pl-0">
+            💡 If current site structure is intuitive enough, such that role-based priorities do not hinder navigation
+            to
+            find key information and resources to integrate into their workflow.
+            <br /><br />
+            💡 Whether the website's information & content is accurate and easily understandable across different
+            professional roles.
+            <br /><br />
+          </h3>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="pt-1 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-4 col-12 pl-md-0 pt-0 text-center">
+          <img class="images img-fluid" src="images/GovTech/Roles.svg" alt="worm" />
+        </div>
+      </div>
+    </div>
+
+
+    <div class="pt-1 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-8 col-12 pl-md-0 pt-0 text-center">
+          <img class="images img-fluid" src="images/GovTech/14.jpg" alt="worm" />
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-5 pb-4 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
+            Afterwards, I transcribed the interviews using Dovetail and
+            synthesised key findings and insights, clustering them into
+            different categories based on “content”, “features”, “positive
+            feedback”, and “areas of confusion”, specifically for the
+            checklist and resources sections. These findings were then entered
+            into Google Sheets, with interview timestamps for a consolidated
+            and clearer viewing which key insights were then derived from.
+            Finally, each finding was labelled with it's severity issue (minor, moderate, major) and further labelled
+            with
+            the type of action (copy, design) needed
+            to address it for the team.
+          </h3>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="pt-5 pb-3 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-7 col-12 pl-md-0 pt-0 text-center">
+          <img class="images img-fluid" src="images/GovTech/15.png" alt="worm" />
+        </div>
+      </div>
+    </div>
+    <div class="pt-1 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-7 col-12 pl-md-0 pt-0 text-center">
+          <img class="images img-fluid" src="images/GovTech/16.png" alt="worm" />
+        </div>
+      </div>
+    </div>
+
+
+    <div class="pt-3 pb-3 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
+            I got the opportunity to present the findings and recommendations to the rest
+            of the team in a refined slide deck, which included statistics
+            such as the number of participants who experienced confusion. From
+            this, I also learned the importance of elaborating on the nature
+            and context of their confusion, providing more detailed scenarios
+            to the team for better understanding. The recommendations were used by the team for next steps to address
+            the
+            issues.
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-1 pb-2 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="text-left main-content4 pt-2 pb-0" style="font-size: 16px; color: #785EF0;">
+            <b style="color: #785EF0; font-weight: 500;">Examples of some key findings & recommendations:</b>
+          </h3>
+          <h3 class="text-left main-content4 pb-2 pt-2 pl-0">
+            🧠 Terminology comprehension varies by role, leading to inconsistent information interpretation. (e.g "site
+            component" was interpreted differently by a SWE vs product manager).
+            <br /><br />
+            <i>(Recommendation: Revise the terminology copy and add definitions for key terms for more
+              clarification.)</i>
+            <br /><br />
+            🌐 Professionals prioritise technical workflow integration over empathy-building when accessing information
+            and resources as they are focused on working fast.
+            <br /><br />
+            <i>(Recommendation: Reorder the flow of the sections in the homepage to move "Top 5 at-a-glance issues"
+              above
+              the "People's stories".)</i>
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-5 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-7 col-12 pl-md-0 pt-0 text-center">
+          <img class="images img-fluid" src="images/GovTech/17.png" alt="worm" />
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-5 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
+            I also participated in <u>desk checks</u> with the Software Engineers to ensure the UI aligned with our
+            Figma
+            prototype. During these checks, I noted some concerns, such as the lack of contrast and similarity in the
+            checklist labels' colors, sizing of the illustrations, and inconsistencies in the breadcrumbs. Fortunately,
+            all these issues were rectified afterwards.
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-5 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-7 col-12 pl-md-0 pt-0 text-center">
+          <img class="images img-fluid" src="images/GovTech/21.jpg" alt="worm" />
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-5 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
+            Overall, during this internship, a11y was one of the most meaningful projects I've worked on,
+            as I got to learn about accessibility principles and the importance of designing for all users.
+            My key takeaway was the importance of digital accessibility, as it highlighted the necessity of designing
+            with
+            a user-centric approach, ensuring that every individual has a smooth and equitable digital experience,
+            including PWDs.
+            It was also meaningful to be creating tech for the public good, as I got to improve people's lives through
+            my
+            daily work.
+            </h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-5 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-7 col-12 pl-md-0 pt-0 text-center">
+          <img class="images img-fluid" src="images/GovTech/22.jpg" alt="worm" />
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <div id="fab-button" class="fab-container">
+      <div class="fab">
+        <svg xmlns="http://www.w3.org/2000/svg" height="42px" viewBox="0 -960 960 960" width="42px" fill="gray">
+          <path d="M480-545.33 287.33-352.67 240-400l240-240 240 240-47.33 47.33L480-545.33Z" />
+        </svg>
+      </div>
+    </div>
+
+
+
+    <div class="row justify-content-center pb-5 pt-5 px-3">
+      <div class="col-12 text-center">
+        <h3 class="mb-4" style="color: #555; font-size: 18px;">View other works 👇</h3>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+          <a href="MandaiX.html" class="btn btn-outline-work">Mandai X</a>
+          <a href="GovTech.html" class="btn btn-outline-work">GovTech Singapore</a>
+          <a href="Animations.html" class="btn btn-outline-work">Motion Graphics</a>
+          <a href="TheBeeCrisis.html" class="btn btn-outline-work">The Bee Crisis</a>
+          <a href="Enhancing Fei Yang Band.html" class="btn btn-outline-work">Enhancing Fei Yang Band</a>
+          <a href="misscarry.html" class="btn btn-outline-work">miss carry D.I.Y.</a>
+          <a href="underratedtrashsnackers.html" class="btn btn-outline-work">Underrated Trash Snackers</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+
+  <footer class="footer-dark">
+    <div class="container">
+      <div class="footer-text">
+        Let's work together :)
+      </div>
+
+      <div class="social-icons">
+        <a href="https://linkedin.com/in/josiechanxt" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png" alt="LinkedIn">
+        </a>
+        <a href="mailto:jochanxt@gmail.com">
+          <img src="https://cdn-icons-png.flaticon.com/512/542/542689.png" alt="Email">
+        </a>
+        <a href="https://instagram.com/jo.cgraphics" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/1384/1384015.png" alt="Instagram">
+        </a>
+      </div>
+
+      <div class="copyright-bar">
+        <p>Copyright © 2026 Josie Chan. Built with HTML & CSS.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    fadeInPage();
+
+    function fadeInPage() {
+      if (!window.AnimationEvent) {
+        return;
+      }
+      var fader = document.getElementById("fader");
+      fader.classList.add("fade-out");
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+      if (!window.AnimationEvent) {
+        return;
+      }
+      var anchors = document.getElementsByTagName("a");
+      for (var idx = 0; idx < anchors.length; idx += 1) {
+        if (
+          anchors[idx].hostname !== window.location.hostname ||
+          anchors[idx].pathname === window.location.pathname
+        ) {
+          continue;
+        }
+        anchors[idx].addEventListener("click", function (event) {
+          var fader = document.getElementById("fader"),
+            anchor = event.currentTarget;
+
+          var listener = function () {
+            window.location = anchor.href;
+            fader.removeEventListener("animationend", listener);
+          };
+          fader.addEventListener("animationend", listener);
+
+          event.preventDefault();
+          fader.classList.add("fade-in");
+        });
+      }
+    });
+    window.onunload = function () { };
+
+    /* FAB */
+    // --- New Scroll to Top Functionality ---
+    const fabButton = document.getElementById('fab-button');
+    const SCROLL_THRESHOLD = 300; // Pixels to scroll down before the button appears
+
+    // Function to handle showing/hiding the button on scroll
+    const toggleFabVisibility = () => {
+      if (window.scrollY > SCROLL_THRESHOLD) {
+        fabButton.classList.remove('fab-hidden');
+      } else {
+        fabButton.classList.add('fab-hidden');
+      }
+    };
+
+    // Event listener for window scroll to show/hide the button
+    window.addEventListener('scroll', toggleFabVisibility);
+
+    // Event listener for button click to scroll to the top
+    fabButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // *FAB END*//
+
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

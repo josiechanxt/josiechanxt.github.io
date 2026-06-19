@@ -1,156 +1,612 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Josie Chan | Traditional Drawings</title>
 
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;700&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
     <style>
-        .wf-loading * {
-            opacity: 0;
+      html {
+        cursor: url("images/Pencil.png"), auto;
+        font-family: "IBM Plex Sans", sans-serif;
+      }
+
+      body {
+        font-family: "IBM Plex Sans", sans-serif;
+        color: #1a1a1a;
+        background-color: #fafafa;
+        overflow-x: hidden;
+      }
+
+      /* Navigation */
+      .navbar {
+        padding: 1rem 2rem;
+        background: #ffffff;
+        border-bottom: 1px solid #eaeaea;
+      }
+
+      .nav-link {
+        color: #555 !important;
+        font-weight: 500;
+        transition: color 0.2s ease;
+      }
+
+      .nav-link:hover,
+      .nav-button-active .nav-link {
+        color: #007bff !important;
+      }
+
+      /* Hamburger Animation */
+      .navbar-toggler {
+        border: none;
+        padding: 10px 10px;
+        outline: none !important;
+      }
+
+      .toggler-icon {
+        width: 24px;
+        height: 2px;
+        background-color: #007bff;
+        display: block;
+        transition: all 0.3s ease-in-out;
+        position: relative;
+      }
+
+      .toggler-icon::before,
+      .toggler-icon::after {
+        content: "";
+        width: 24px;
+        height: 2px;
+        background-color: #007bff;
+        display: block;
+        transition: all 0.3s ease-in-out;
+        position: absolute;
+      }
+
+      .toggler-icon::before {
+        top: -8px;
+      }
+      .toggler-icon::after {
+        bottom: -8px;
+      }
+
+      .navbar-toggler:not(.collapsed) .toggler-icon {
+        background-color: transparent;
+      }
+
+      .navbar-toggler:not(.collapsed) .toggler-icon::before {
+        transform: rotate(45deg);
+        top: 0;
+      }
+
+      .navbar-toggler:not(.collapsed) .toggler-icon::after {
+        transform: rotate(-45deg);
+        bottom: 0;
+      }
+
+      /* Typography */
+      .projecttitle {
+        font-size: 3.5rem;
+        font-weight: 500;
+        letter-spacing: -0.02em;
+        margin-bottom: 1rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.25rem;
+        color: #555;
+        font-weight: 400;
+        line-height: 1.6;
+      }
+
+      .main-content3 {
+        font-size: 1.75rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+      }
+
+      .main-content4 {
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: #007bff;
+        margin-bottom: 3rem;
+      }
+
+      /* Image Styling */
+      .images {
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        transition: transform 0.3s ease;
+      }
+
+      /* Page Transition Logic (Matches Work.html) */
+      #faderhome {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: white;
+        z-index: 9999;
+        pointer-events: none;
+        transition: opacity 0.5s ease-in-out;
+      }
+
+      .fade-out {
+        opacity: 0;
+      }
+      .fade-in {
+        opacity: 1;
+      }
+
+      footer {
+        color: #999;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        .projecttitle {
+          font-size: 2.5rem;
         }
+        .hero-subtitle {
+          font-size: 1.1rem;
+        }
+        .navbar {
+          padding: 0.8rem 1rem;
+        }
+        .main-content3 {
+          font-size: 1.4rem;
+        }
+        .main-content4 {
+          margin-bottom: 1.5rem;
+        }
+      }
+      /* Custom Light Grey Footer */
+      .footer-dark {
+        background-color: #ececec;
+        padding: 2rem 0 3rem;
+        text-align: center;
+        color: #007bff;
+      }
+
+      .footer-text {
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin-bottom: 1.5rem;
+        font-family: "IBM Plex Sans", sans-serif;
+        color: #666;
+      }
+
+      .social-icons a {
+        margin: 0 12px;
+        text-decoration: none;
+        display: inline-block;
+        transition:
+          transform 0.2s ease,
+          opacity 0.2s ease;
+      }
+
+      .social-icons a:hover {
+        opacity: 0.7;
+        transform: translateY(-3px);
+      }
+
+      .social-icons img {
+        width: 30px;
+        height: 30px;
+        /* CSS Filter to change black icons to #007bff */
+        filter: invert(31%) sepia(94%) saturate(4120%) hue-rotate(211deg)
+          brightness(101%) contrast(85%);
+      }
+
+      .copyright-bar {
+        border-top: 1px solid #d1d1d1;
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        color: #666;
+        font-size: 0.85rem;
+        opacity: 0.8;
+      }
     </style>
+  </head>
 
-    <!-- FONTS -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap">
-    <!-- <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poetsen+One&family=Quicksand:wght@300..700&display=swap"
-        rel="stylesheet"> -->
-    <!-- <style>
-        body {
-            font-family: "Poetsen One", sans-serif;
-            font-family: Quicksand, sans-serif;
-        }
-    </style> -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css">
-    <title>About</title>
+  <body>
+    <div id="faderhome"></div>
 
-</head>
+    <nav class="navbar navbar-expand-lg sticky-top">
+      <a class="navbar-brand" href="Work.html">
+        <img src="images/Logo2.svg" alt="Josie Logo" height="50" />
+      </a>
+      <button
+        class="navbar-toggler collapsed"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="toggler-icon"></span>
+      </button>
 
-<body>
-    <div class="container-fluid">
-        <svg id="fader"></svg>
-        <!-- Nav bar -->
-        <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link px-3" href="Work.html">Work</a>
+          </li>
+          <li class="nav-item nav-button-active active">
+            <a class="nav-link px-3" href="Others.html">Others</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-3" href="About.html">About</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link px-3" href="Contact.html">Contact</a>
+          </li> -->
+        </ul>
+      </div>
+    </nav>
 
-            <a href="index.html"><img class="navbar-brand logo" src="images/Logo2.svg" alt="worm"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <div class="container-fluid pt-4">
+      <div class="row justify-content-center pt-md-5 pb-5">
+        <div class="col-md-8 col-11 text-center pt-5">
+          <h1 class="projecttitle pb-3">Contact</h1>
+          <p class="hero-subtitle mx-auto" style="max-width: 600px">
+            In my free time, I like to think up of random ideas and express them
+            on paper 🎨 (and ipad)
+          </p>
+        </div>
+      </div>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto topnav">
-                    <li class="nav-item text-center">
-                        <div class="nav-button">
-                            <a class="nav-link nav-a" href="index.html">Work</a>
-                        </div>
-                    </li>
-                    <li class="nav-item text-center">
-                        <div class="nav-button">
-                            <a class="nav-link nav-a" href="Illustrations.html">Others</a>
-                        </div>
-                    </li>
-                    <li class="nav-item text-center">
-                        <div class="nav-button">
-                            <a class="nav-link nav-a" href="About.html">About</a>
-                        </div>
-                    </li>
-                    <li class="nav-item text-center">
-                        <div class="nav-button-active active">
-                            <a class="nav-link nav-a" href="Contact.html">Contact</a>
-                        </div>
-                    </li>
+      <div class="row justify-content-center pt-4 px-3 pb-5">
+        <div class="col-md-4 col-12 pb-3">
+          <img
+            class="images w-100"
+            src="images/Illustrations/Digital/Ah_Yi_Taiwan.jpg"
+            alt="Chicken Rice Stickers"
+          />
+        </div>
+        <div class="col-md-4 col-12">
+          <img
+            class="images w-100"
+            src="images/Illustrations/Traditional/D_3.webp"
+            alt="Chicken Rice Stickers"
+          />
+        </div>
+      </div>
 
-                </ul>
+      <div class="row justify-content-center pt-5 px-3">
+        <div class="col-md-8 col-12">
+          <h3 class="main-content3">Singaporean Local Delights</h3>
+          <h4 class="main-content4">Drawn on Procreate</h4>
+        </div>
+      </div>
+
+      <div class="row justify-content-center px-3 mb-5">
+        <div class="col-md-8 col-12">
+          <div class="row">
+            <div class="col-md-4 col-6 px-2 pb-3">
+              <img
+                class="images w-100"
+                src="images/Illustrations/Digital/Morning_Breakfast.jpg"
+                alt="Breakfast"
+              />
             </div>
-        </nav>
+            <div class="col-md-4 col-6 px-2 pb-3">
+              <img
+                class="images w-100"
+                src="images/Illustrations/Digital/Retro_Snacks.jpg"
+                alt="Snacks"
+              />
+            </div>
+            <div class="col-md-4 col-6 px-2 pb-3">
+              <img
+                class="images w-100"
+                src="images/Illustrations/Digital/SG_Local_Food.jpg"
+                alt="Local Food"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <div class="row justify-content-center pt-5 px-3">
+        <div class="col-md-8 col-12">
+          <h3 class="main-content3">Froot (Original Character)</h3>
+          <h4 class="main-content4">I like pineapples</h4>
+        </div>
+      </div>
 
-        <div class="pt-5 pb-5">
-            <div class="row justify-content-center pt-5 pb-2">
-                <div class="col-md-8 col-xs-12">
-                    <h3 class="text-center DeliusH2 pb-5">
-                        Let's get in touch! :)
-                    </h3>
+      <div class="row justify-content-center px-3 mb-1">
+        <div class="col-md-8 col-12">
+          <div class="row">
+            <div class="col-md-4 col-6 px-2 pb-3">
+              <img
+                class="images w-100"
+                src="images/Illustrations/Digital/Pinelope_Drumming.jpg"
+                alt="Drumming"
+              />
+            </div>
+            <div class="col-md-4 col-6 px-2 pb-3">
+              <img
+                class="images w-100"
+                src="images/Illustrations/Digital/Pinelope_Sticker.jpg"
+                alt="Sticker"
+              />
+            </div>
+            <div class="col-md-4 col-6 px-2 pb-3">
+              <img
+                class="images w-100"
+                src="images/Illustrations/Digital/Phantom_Of_The_Opera.jpg"
+                alt="Phantom"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center px-3 mb-5">
+        <div class="col-md-8 col-12">
+          <div class="row">
+            <div class="col-md-8 col-12 px-2 pb-3">
+              <img
+                class="images w-100 h-100"
+                style="object-fit: cover"
+                src="images/Illustrations/Digital/Froots_Horoscope.jpg"
+                alt="Froots Horoscope"
+              />
+            </div>
+            <div class="col-md-4 col-12 px-0">
+              <div class="row w-100 m-0">
+                <div class="col-6 col-md-12 px-2 pb-3">
+                  <img
+                    class="images w-100"
+                    src="images/Illustrations/Digital/Persi.jpg"
+                    alt="Persi"
+                  />
                 </div>
+                <div class="col-6 col-md-12 px-2 pb-3">
+                  <img
+                    class="images w-100"
+                    src="images/Illustrations/Digital/Pom_Pom.jpg"
+                    alt="Pom_Pom"
+                  />
+                </div>
+              </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center pt-5 px-3">
+        <div class="col-md-8 col-12">
+          <h3 class="main-content3">Kitchen Robots</h3>
+          <h4 class="main-content4">Pen, Watercolour on paper</h4>
+        </div>
+      </div>
+
+      <div class="row justify-content-center px-3 mb-5">
+        <div class="col-md-8 col-12">
+          <div class="row">
+            <div class="col-md-4 col-6 px-2 pb-3">
+              <img
+                class="images w-100"
+                src="images/Illustrations/Traditional/KR_1.webp"
+                alt="KR 1"
+              />
+            </div>
+            <div class="col-md-4 col-6 px-2 pb-3">
+              <img
+                class="images w-100"
+                src="images/Illustrations/Traditional/KR_2.webp"
+                alt="KR 2"
+              />
+            </div>
+            <div class="col-md-4 col-6 px-2 pb-3">
+              <img
+                class="images w-100"
+                src="images/Illustrations/Traditional/KR_3.webp"
+                alt="KR 3"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center pt-5 px-3">
+        <div class="col-md-8 col-12">
+          <h3 class="main-content3">Mind dump</h3>
+          <h4 class="main-content4">Pen, Watercolour on paper</h4>
+        </div>
+      </div>
+
+      <div class="row justify-content-center px-3 mb-5">
+        <div class="col-md-8 col-12">
+          <div class="row">
+            <div class="col-md-4 col-6 px-2 pb-3">
+              <img
+                class="images w-100"
+                src="images/Illustrations/Traditional/D_6.webp"
+                alt="D 6"
+              />
+            </div>
+            <div class="col-md-4 col-6 px-2 pb-3">
+              <img
+                class="images w-100"
+                src="images/Illustrations/Traditional/D_4.webp"
+                alt="D 4"
+              />
+            </div>
+            <div class="col-md-4 col-6 px-2 pb-3">
+              <img
+                class="images w-100"
+                src="images/Illustrations/Traditional/D_5.webp"
+                alt="D 5"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center pt-5 px-3">
+        <div class="col-md-8 col-12">
+          <h3 class="main-content3">Black & White</h3>
+          <h4 class="main-content4">Black Calligraphy Pen on paper</h4>
+        </div>
+      </div>
+
+      <div class="row justify-content-center px-3 mb-5">
+        <div class="col-md-8 col-12">
+          <div class="row">
+            <div class="col-md-4 col-6 px-2 pb-3">
+              <img
+                class="images w-100"
+                src="images/Illustrations/Traditional/BW_1.webp"
+                alt="B&W 1"
+              />
+            </div>
+            <div class="col-md-4 col-6 px-2 pb-3">
+              <img
+                class="images w-100"
+                src="images/Illustrations/Traditional/BW_2.webp"
+                alt="B&W 2"
+              />
+            </div>
+            <div class="col-md-4 col-6 px-2 pb-3">
+              <img
+                class="images w-100"
+                src="images/Illustrations/Traditional/BW_3.webp"
+                alt="B&W 3"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center pt-5 px-3">
+        <div class="col-md-8 col-12">
+          <h3 class="main-content3">Pencil</h3>
+          <h4 class="main-content4">Graphite Pencil on paper</h4>
+        </div>
+      </div>
+
+      <div class="row justify-content-center px-3 mb-5 pb-5">
+        <div class="col-md-8 col-12">
+          <div class="row">
+            <div class="col-md-4 col-6 px-2 pb-3">
+              <img
+                class="images w-100"
+                src="images/Illustrations/Traditional/G_1.webp"
+                alt="G 1"
+              />
+            </div>
+            <div class="col-md-4 col-6 px-2 pb-3">
+              <img
+                class="images w-100"
+                src="images/Illustrations/Traditional/G_2.webp"
+                alt="G 2"
+              />
+            </div>
+            <div class="col-md-4 col-6 px-2 pb-3">
+              <img
+                class="images w-100"
+                src="images/Illustrations/Traditional/G_3.webp"
+                alt="G 3"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+
+    <footer class="footer-dark">
+      <div class="container">
+        <div class="footer-text">Let's work together :)</div>
+
+        <div class="social-icons">
+          <a href="https://linkedin.com/in/josiechanxt" target="_blank">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png"
+              alt="LinkedIn"
+            />
+          </a>
+          <a href="mailto:jochanxt@gmail.com">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/542/542689.png"
+              alt="Email"
+            />
+          </a>
+          <a href="https://instagram.com/jo.cgraphics" target="_blank">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/1384/1384015.png"
+              alt="Instagram"
+            />
+          </a>
         </div>
 
-        <div class="row justify-content-center pb-4">
-            <div class="col-md-8 col-xs-12">
-
-                <h3 class="text-center main-content4">
-                    <li>Email: jochanxt@gmail.com</li>
-                </br></br>
-                    <li>
-                        Linkedin:
-                        <a href="https://www.linkedin.com/in/josie-chan-a3059b1a7/"
-                            target="_blank">Josie Chan</a>
-                    </li>
-                </br></br>
-                    <li>Instagram: <a href="https://www.instagram.com/jo.cgraphics/?hl=en"
-                        target="_blank">jo.cgraphics</a></li>
-                </h3>
-            </div>
+        <div class="copyright-bar">
+          <p>Copyright © 2026 Josie Chan. Built with HTML & CSS.</p>
         </div>
+      </div>
+    </footer>
 
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
 
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var fader = document.getElementById("faderhome");
 
-        <div class="row justify-content-center pb-5 pt-5">
-            <div class="col-md-7 col-xs-12 pb-3 pt-5">
-                <h3 class="text-center main-content5">
-                    Copyright © 2025 Josie Chan. Built with html & css.
-                </h3>
-            </div>
-        </div>
+        // Initial Fade Out (Entering the page)
+        if (fader) {
+          setTimeout(function () {
+            fader.classList.add("fade-out");
+          }, 100);
+        }
 
-
-
-
-
-
-        <script>
-            fadeInPage();
-
-            function fadeInPage() {
-                if (!window.AnimationEvent) { return; }
-                var fader = document.getElementById('fader');
-                fader.classList.add('fade-out');
-            }
-            document.addEventListener('DOMContentLoaded', function () {
-                if (!window.AnimationEvent) { return; }
-                var anchors = document.getElementsByTagName('a');
-                for (var idx = 0; idx < anchors.length; idx += 1) {
-                    if (anchors[idx].hostname !== window.location.hostname ||
-                        anchors[idx].pathname === window.location.pathname) {
-                        continue;
-                    }
-                    anchors[idx].addEventListener('click', function (event) {
-                        var fader = document.getElementById('fader'),
-                            anchor = event.currentTarget;
-
-                        var listener = function () {
-                            window.location = anchor.href;
-                            fader.removeEventListener('animationend', listener);
-                        };
-                        fader.addEventListener('animationend', listener);
-
-                        event.preventDefault();
-                        fader.classList.add('fade-in');
-                    });
-                }
+        // Fade In upon clicking links (Leaving the page)
+        var anchors = document.getElementsByTagName("a");
+        for (var i = 0; i < anchors.length; i++) {
+          if (
+            anchors[i].hostname === window.location.hostname &&
+            anchors[i].pathname !== window.location.pathname &&
+            anchors[i].target !== "_blank"
+          ) {
+            anchors[i].addEventListener("click", function (event) {
+              event.preventDefault();
+              var href = this.href;
+              if (fader) {
+                fader.classList.remove("fade-out");
+                fader.classList.add("fade-in");
+                setTimeout(function () {
+                  window.location = href;
+                }, 500); // Matches the 0.5s transition in CSS
+              } else {
+                window.location = href;
+              }
             });
-
-        </script>
-
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
-</body>
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

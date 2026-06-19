@@ -2,720 +2,976 @@
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>.wf-loading * { opacity: 0;}</style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    .wf-loading * {
+      opacity: 0;
+    }
 
-    <!-- FONTS -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap">
-    <!-- <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poetsen+One&family=Quicksand:wght@300..700&display=swap"
-        rel="stylesheet"> -->
-    <!-- <style>
-        body {
-            font-family: "Poetsen One", sans-serif;
-            font-family: Quicksand, sans-serif;
-        }
-    </style> -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css">
-    <title>Underrated Trash Snackers</title>
+    /* --- CUSTOM HAMBURGER TO "X" ANIMATION --- */
+    .navbar-toggler {
+      border: none;
+      padding: 10px 10px;
+      outline: none !important;
+    }
 
+    .toggler-icon {
+      width: 24px;
+      height: 2px;
+      background-color: #007bff;
+      display: block;
+      transition: all 0.3s ease-in-out;
+      position: relative;
+    }
+
+    .toggler-icon::before,
+    .toggler-icon::after {
+      content: '';
+      width: 24px;
+      height: 2px;
+      background-color: #007bff;
+      display: block;
+      transition: all 0.3s ease-in-out;
+      position: absolute;
+    }
+
+    .toggler-icon::before {
+      top: -8px;
+    }
+
+    .toggler-icon::after {
+      bottom: -8px;
+    }
+
+    /* Animation to X */
+    .navbar-toggler:not(.collapsed) .toggler-icon {
+      background-color: transparent;
+    }
+
+    .navbar-toggler:not(.collapsed) .toggler-icon::before {
+      transform: rotate(45deg);
+      top: 0;
+    }
+
+    .navbar-toggler:not(.collapsed) .toggler-icon::after {
+      transform: rotate(-45deg);
+      bottom: 0;
+    }
+
+    /* WORM STYLING */
+    .worm-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      /* Allows worms to drop to next line on tiny screens */
+      gap: 10px;
+      /* Adds consistent spacing between images */
+    }
+
+    .worms {
+      width: auto;
+      max-width: 25%;
+      /* Ensures 4 images fit side-by-side on most screens */
+      height: auto;
+      /* Maintains aspect ratio */
+    }
+
+    /* Define relative heights for the "family" effect */
+    .worm-baby {
+      height: 8rem;
+    }
+
+    .worm-squiggles {
+      height: 9.5rem;
+    }
+
+    .worm-mom {
+      height: 10.5rem;
+    }
+
+    .worm-dad {
+      height: 11rem;
+    }
+
+    /* Mobile Adjustments */
+    @media (max-width: 576px) {
+      .worm-container {
+        gap: 5px;
+      }
+
+      /* Scale down heights for small phones so they don't crowd the screen */
+      .worm-baby {
+        height: 5rem;
+      }
+
+      .worm-squiggles {
+        height: 6.5rem;
+      }
+
+      .worm-mom {
+        height: 7.5rem;
+      }
+
+      .worm-dad {
+        height: 8rem;
+      }
+    }
+
+    /* Custom Light Grey Footer */
+    .footer-dark {
+      background-color: #ececec;
+      padding: 2rem 0 3rem;
+      text-align: center;
+      color: #007bff;
+    }
+
+    .footer-text {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      font-family: 'IBM Plex Sans', sans-serif;
+      color: #666;
+    }
+
+    .social-icons a {
+      margin: 0 12px;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .social-icons a:hover {
+      opacity: 0.7;
+      transform: translateY(-3px);
+    }
+
+    .social-icons img {
+      width: 30px;
+      height: 30px;
+      /* CSS Filter to change black icons to #007bff */
+      filter: invert(31%) sepia(94%) saturate(4120%) hue-rotate(211deg) brightness(101%) contrast(85%);
+    }
+
+    .copyright-bar {
+      border-top: 1px solid #d1d1d1;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      color: #666;
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    /* Solid Colour Pill Buttons */
+    .btn-outline-work {
+      padding: 8px 16px;
+      margin: 8px;
+      border-radius: 50px !important;
+      /* Forces the fully rounded ends */
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #ffffff !important;
+      /* Forces white text for legibility on solid backgrounds */
+      /* transition: all 0.3s ease; */
+      text-decoration: none !important;
+      display: inline-block;
+      border: none;
+      /* Removes the outline to keep it a solid block */
+    }
+
+    /* Assigning Solid Colours based on project brandings */
+    .btn-outline-work:nth-child(1) {
+      background-color: #07846b;
+    }
+
+    /* Mandai X */
+    .btn-outline-work:nth-child(2) {
+      background-color: #785ef0;
+    }
+
+    /* GovTech */
+    .btn-outline-work:nth-child(3) {
+      background-color: #4270ce;
+    }
+
+    /* Motion Graphics */
+    .btn-outline-work:nth-child(4) {
+      background-color: #e68700;
+    }
+
+    /* The Bee Crisis */
+    .btn-outline-work:nth-child(5) {
+      background-color: #ea474a;
+    }
+
+    /* Enhancing Fei Yang Band */
+    .btn-outline-work:nth-child(6) {
+      background-color: #e03e70;
+    }
+
+    /* miss carry D.I.Y. */
+    .btn-outline-work:nth-child(7) {
+      background-color: #a04d31;
+    }
+
+    /* Underrated Trash Snackers */
+
+    /* Hover State: Deepen the colour and add a lift effect */
+    .btn-outline-work:hover {
+      transform: translateY(-2px);
+      /* box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); */
+      filter: brightness(80%);
+      /* Slightly darkens the solid colour on hover */
+      color: #ffffff !important;
+    }
+
+    .gap-3 {
+      gap: 1rem;
+    }
+
+     h3.accordion-body {
+      padding-top: 0.5rem !important;
+      padding-bottom: 1rem !important;
+      padding-right: 0 !important;
+      margin: 0 !important;
+      font-size: 14px !important;
+      font-weight: 350 !important;
+      line-height: 1.3 !important;
+      color: #666 !important;
+      font-family: "IBM Plex Sans", sans-serif !important;
+      font-style: italic !important;
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Carattere&family=IBM+Plex+Sans:ital,wdth,wght@0,75..100,100..700;1,75..100,100..700&"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <title>Underrated Trash Snackers</title>
 </head>
 
 <body>
-    <div class="container-fluid">
-        <svg id="fader"></svg>
-        <!-- Nav bar -->
-        <nav class="navbar navbar-expand-lg navbar-light">
 
-            <a href="index.html"><img class="navbar-brand logo" src="images/Logo2.svg" alt="worm"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <a class="navbar-brand" href="Work.html">
+      <img src="images/Logo2.svg" alt="Josie Logo" height="50" />
+    </a>
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="toggler-icon"></span>
+    </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto topnav">
-                    <li class="nav-item text-center">
-                        <div class="nav-button-active active">
-                            <a class="nav-link nav-a" href="index.html">Work</a>
-                        </div>
-                    </li>
-                    <li class="nav-item text-center">
-                        <div class="nav-button">
-                            <a class="nav-link nav-a" href="Illustrations.html">Others</a>
-                        </div>
-                    </li>
-                    <li class="nav-item text-center">
-                        <div class="nav-button">
-                            <a class="nav-link nav-a" href="About.html">About</a>
-                        </div>
-                    </li>
-                    <li class="nav-item text-center">
-                        <div class="nav-button">
-                            <a class="nav-link nav-a" href="Contact.html">Contact</a>
-                        </div>
-                    </li>
-
-                </ul>
-            </div>
-        </nav>
-
-<!-- ------------------------------------ -->
-
-<div class="row justify-content-center">
-    <div class="col-12 p-0"></div>
-    <img class="images w-100" src="images/Underrated_Trash_Snackers/UTC_Header.jpg" alt="worm">
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item nav-button-active active">
+          <a class="nav-link px-3" href="Work.html">Work</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3" href="Others.html">Others</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3" href="About.html">About</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link px-3" href="Contact.html">Contact</a>
+        </li> -->
+      </ul>
     </div>
-</div>
+  </nav>
 
 
-<div class="row justify-content-center">
-    <div class="col-md-7 col-xs-6">
-        <h1 class="text-center projecttitle">
-            Underrated Trash Snackers
-        </h1>
-    <h3 class="text-center main-content5">
-            Advertising Campaign
+  <div class="container-fluid">
+    <svg id="fader"></svg>
+
+    <!-- <nav class="navbar navbar-expand-lg sticky-top">
+    <a class="navbar-brand" href="Work.html">
+      <img src="images/Logo2.svg" alt="Josie Logo" height="50" />
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item nav-button-active active">
+          <a class="nav-link px-3" href="Work.html">Work</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3" href="Others.html">Others</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3" href="About.html">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3" href="Contact.html">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav> -->
+
+    <div class="container-fluid"></div>
+    <div class="row justify-content-center">
+      <div class="col-12 p-0"></div>
+      <img class="images-header w-100 img-fluid" src="images/Underrated_Trash_Snackers/UTC_Thumbnail.png" alt="worm" />
+    </div>
+
+    <div class="row justify-content-center pt-4">
+      <div class="col-md-7 col-12">
+        <h1 class="text-center projecttitle projecttitle--underratedtrashsnackers">Underrated Trash Snackers</h1>
+      </div>
+    </div>
+
+    <!-- <div class="row justify-content-center pb-4 pt-3">
+    <h4 class="maincontent5 text-center mx-3"
+      style="border: 2px solid #a04d31; padding: 10px; border-radius: 30px; color: #a04d31; font-size: 18px;"> UX/UI •
+      Art Direction • User Testing • 2025</h4>
+  </div> -->
+
+    <div class="row justify-content-center pb-3 pt-3">
+      <div class="tag-container">
+        <!-- <span class="tag" style="background: #a04d31; color: #ffffff">UX/UI</span> -->
+        <span class="tag" style="background: #a04d31; color: #ffffff">Advertising Campaign</span>
+        <span class="tag" style="background: #a04d31; color: #ffffff">Art Direction</span>
+        <span class="tag" style="background: #a04d31; color: #ffffff">2021</span>
+      </div>
+    </div>
+
+
+    <div class="row justify-content-center pt-3">
+      <div class="col-md-5 col-12 px-4">
+        <h3 class="text-md-left text-center main-content3 pb-4 pt-3" style="color: #a04d31;">
+          "Self-initiated project conceptualising an integrated campaign, transforming vermicomposting into a fun family
+          routine to reduce food waste."
         </h3>
+      </div>
     </div>
 
-</div>
+    <div class="row justify-content-center pt-4 pb-5 px-3">
+      <div class="col-md-6 col-12" style="border: 2px solid #a04d31; padding: 20px; border-radius: 10px">
+        <h3 class="text-left main-content4 pb-3 pt-3">
+          The Underrated Trash Snackers is campaign aimed to make food wastage reduction a fun,
+          interesting and educational approach for people of varying ages to implement into their daily lives. It was a
+          passion project I started to raise awareness about food waste and vermicomposting, a method of composting
+          using worms.
+        </h3>
 
-<div class="row justify-content-center pb-4">
-    <h4 class=" maincontent7">
-        Self-Initiated Project • 2021
-    </h4>
-</div>
+        <div class="row">
+          <div class="col-md-6 col-12 mb-4 mb-md-0">
+            <h3 class="text-left main-content4 pt-2 pb-0">
+              <b style="font-weight: 500; font-size: 16px; color: #a04d31;">My Contributions</b>
+            </h3>
+
+            <h3 class="text-left accordion-body pb-2 pt-2 pl-3">
+              <li>Conceptualised & ideated end-to-end campaign from scratch.</li>
+              <br />
+              <li>Conducted qualitative and quantitative interviews with 50+ users to understand composting habits.</li>
+              <br />
+              <li>Executed all art direction, illustrations touchpoints mockups and animated case film.</li>
+            </h3>
+          </div>
+
+          <div class="col-md-6 col-12">
+            <h3 class="text-left main-content4 pt-2 pb-0" style="font-size: 16px; color: #a04d31;">
+
+              <b style="font-weight: 500; font-size: 16px; color: #a04d31;">Timeline</b>
+
+
+            </h3>
+
+            <h3 class="text-left accordion-body pb-2 pt-2 pl-3">
+              <li>2.5 Months</li>
+            </h3>
+            <!-- <h3 class="text-left main-content4 pt-2 pb-0" style="font-size: 16px; color: #a04d31;">
+              <b style="font-weight: 500; font-size: 16px; color: #a04d31;">Team Members</b>
+            </h3>
+
+            <h3 class="text-left main-content4 pb-2 pt-2 pl-3">
+              <li>5 UX Designers, 4 Software Engineers, 1 Product Manager</li>
+              </br>
+            </h3> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row justify-content-center pt-3 px-3">
+      <div class="col-md-6 col-12">
+        <h3
+          style="font-family: 'IBM Plex Sans', sans-serif; font-size: 1.05rem; font-weight: 400; line-height: 1.5; color: #666">
+          <i>🏆 Crowbar Awards 2021 (Issued by The Association of Advertising and Marketing Singapore): 4 Silvers, 2
+            Bronzes, 1 Finalist
+            <br /><br /><br /></i>
+        </h3>
+      </div>
+    </div>
+
+
+    <div class="row justify-content-center pt-4">
+      <div class="col-12 col-md-8 p-1">
+        <div class="worm-container">
+          <img class="worms worm-baby" src="images/Underrated_Trash_Snackers/4_Baby.webp" alt="worm">
+          <img class="worms worm-squiggles" src="images/Underrated_Trash_Snackers/5_Squiggles half body.webp"
+            alt="worm">
+          <img class="worms worm-mom" src="images/Underrated_Trash_Snackers/6_Mom.webp" alt="worm">
+          <img class="worms worm-dad" src="images/Underrated_Trash_Snackers/7_Dad.webp" alt="worm">
+        </div>
+      </div>
+    </div>
 
 
 
-<div class="row justify-content-center pt-4 pb-5">
-    <div class="col-md-6 col-xs-12" style="border: 1.5px solid black; padding: 20px; border-radius: 10px;">
 
-    <h3 class="text-center main-content4 pt-2 pb-0" style="font-size: 16px;">
-       <b>Project Brief</b>
-    </h3>
+    <div class="row justify-content-center pt-3 px-3">
+      <div class="col-md-6 col-12">
+        <h3 class="text-left main-content4 pb-4 pt-3">
+          The Underrated Trash Snackers is campaign aimed to make food wastage reduction a fun,
+          interesting and educational approach for people of varying ages to implement into their daily lives.
+        </h3>
+      </div>
+    </div>
 
-    <h3 class="text-left main-content4 pb-2 pt-3">
-        The Underrated Trash Snackers is campaign aimed to make food wastage reduction a fun,
-        interesting and educational approach for people of varying ages to implement into their daily lives. It was a passion project I started to raise awareness about food waste and vermicomposting, a method of composting using worms.
-    </h3>
+    <div class="row justify-content-center pt-5 px-3">
+      <div class="col-md-8 col-12 p-1 borderbottom"></div>
+    </div>
 
-         <h3 class="text-left main-content4 pb-2 pt-3 pl-3">
-           
-            <br />
-            <li>Timeline: 2.5 months</li>
-            <br />
-            <li>Collaborator(s): Solo Project</li>
-            <br />
-            <li>
-             Key Skills: Campaign Ideation, Art Direction, Illustration, animating case study video
-            </li>
+    <div class="row justify-content-center px-3">
+      <div class="col-md-6 col-12 pt-5 pb-5">
+        <h3 class="text-center main-content3" style="color: #a04d31;">
+          Campaign Case Film
+        </h3>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pb-5">
+      <div class="col-md-8 col-xs-12 p-1 pl-0 pb-0" style="aspect-ratio: 16/9;">
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/AvWuJZHOjo0?si=vw94mAyvz_ep9Tro"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pt-5 px-3">
+      <div class="col-md-8 col-12 p-1 borderbottom"></div>
+    </div>
+
+    <div class="row justify-content-center px-0">
+      <div class="col-md-6 col-12 pt-5 pb-5">
+        <h3 class="text-center main-content3" style="color: #a04d31;">
+          Campaign Board
+        </h3>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pb- pt-5 px-3">
+      <div class="col-md-8 col-12 p-1 pt-0 pl-0 pb-5 text-center">
+        <img class="images img-fluid"
+          src="images/Underrated_Trash_Snackers/Underrated_Trash_Snackers_Campaign_Board.webp" alt="worm" />
+      </div>
+    </div>
+
+    <div class="row justify-content-center pt-5 px-3">
+      <div class="col-md-8 col-12 p-1 borderbottom"></div>
+    </div>
+
+    <div class="row justify-content-center px-0">
+      <div class="col-md-6 col-12 pt-5 pb-3">
+        <h3 class="text-center main-content3" style="color: #a04d31;">
+          Activation: Vermicomposting Starter Kit
+        </h3>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pt-3 px-3">
+      <div class="col-md-6 col-12">
+        <h3 class="text-left main-content4 pb-5 pt-3">
+          Given to community gardeners, school students to try vermicomposting for themselves.
+        </h3>
+      </div>
+    </div>
+
+    <div class="pt-3 pb-1 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-0 pt-0 text-center">
+          <img class="images img-fluid" src="images/Underrated_Trash_Snackers/Full trashsnackers kit.webp" alt="worm" />
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pt-4 px-3">
+      <div class="col-md-4 col-12 p-1">
+        <img class="images img-fluid w-100"
+          src="images/Underrated_Trash_Snackers/Underrated_Trash_Snackers_Starter_Kit_1.jpg" alt="worm" />
+      </div>
+      <div class="col-md-4 col-12 p-1">
+        <img class="images img-fluid w-100"
+          src="images/Underrated_Trash_Snackers/Underrated_Trash_Snackers_Starter_Kit_2.jpg" alt="worm" />
+      </div>
+    </div>
+    <div class="row justify-content-center pb-5 px-3">
+      <div class="col-md-4 col-12 p-1">
+        <img class="images img-fluid w-100"
+          src="images/Underrated_Trash_Snackers/Underrated_Trash_Snackers_Starter_Kit_3.jpg" alt="worm">
+        </img>
+      </div>
+      <div class="col-md-4 col-12 p-1">
+        <img class="images img-fluid w-100"
+          src="images/Underrated_Trash_Snackers/Underrated_Trash_Snackers_Starter_Kit_4.jpg" alt="worm">
+        </img>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pt-5 px-3">
+      <div class="col-md-8 col-12 p-1 borderbottom"></div>
+    </div>
+
+    <div class="row justify-content-center px-0">
+      <div class="col-md-6 col-12 pt-5 pb-3">
+        <h3 class="text-center main-content3" style="color: #a04d31;">
+          Adopt A Trash Snacker! Posters
+        </h3>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pt-3 px-3">
+      <div class="col-md-6 col-12">
+        <h3 class="text-left main-content4 pb-5 pt-3">
+          Placed at community gardens and school canteens to break stereotypes of worms, urge users to go to the
+          TrashSnackers website to find out more through the QR code.
+        </h3>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pt-4 px-3">
+      <div class="col-md-3 col-12 p-1">
+        <img class="images img-fluid w-100"
+          src="images/Underrated_Trash_Snackers/Underrated_Trash_Snackers_Print_Ad_1.jpg" alt="worm">
+        </img>
+      </div>
+      <div class="col-md-3 col-12 p-1">
+        <img class="images img-fluid w-100"
+          src="images/Underrated_Trash_Snackers/Underrated_Trash_Snackers_Print_Ad_2.jpg" alt="worm">
+        </img>
+      </div>
+      <div class="col-md-3 col-12 p-1">
+        <img class="images img-fluid w-100"
+          src="images/Underrated_Trash_Snackers/Underrated_Trash_Snackers_Print_Ad_3.jpg" alt="worm">
+        </img>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pt-4 px-3">
+      <div class="col-md-8 col-12 p-1">
+        <img class="images img-fluid w-100"
+          src="images/Underrated_Trash_Snackers/Underrated_Trash_Snackers_Print_Ad_Community_Garden.jpg" alt="worm">
+        </img>
+      </div>
+    </div>
+    <div class="row justify-content-center pt-4 px-3">
+      <div class="col-md-8 col-12 p-1">
+        <img class="images img-fluid w-100"
+          src="images/Underrated_Trash_Snackers/Underrated_Trash_Snackers_Print_Ad_Canteen.jpg" alt="worm">
+        </img>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pt-5 px-3">
+      <div class="col-md-8 col-12 p-1 borderbottom"></div>
+    </div>
+
+    <div class="row justify-content-center px-0">
+      <div class="col-md-6 col-12 pt-5 pb-3">
+        <h3 class="text-center main-content3" style="color: #a04d31;">
+          TrashSnackers Website
+        </h3>
+      </div>
+    </div>
+    <div class="row justify-content-center pt-3 px-3">
+      <div class="col-md-6 col-12">
+        <h3 class="text-left main-content4 pb-5 pt-3">
+          Users can visit the TrashSnackers website to check out the brands’s vision and upcoming workshops. Companies
+          and schools are also encouraged to collaborate with us to inculcate vermicomposting habits into their
+          workplace. It also serves as a Call-To-Action to TrashSnackers App.
+        </h3>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pt-4 px-3">
+      <div class="col-md-8 col-12 p-1">
+        <img class="images img-fluid w-100"
+          src="images/Underrated_Trash_Snackers/Underrated_Trash_Snackers_Website_2.jpg" alt="worm">
+        </img>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pt-5 px-3">
+      <div class="col-md-8 col-12 p-1 borderbottom"></div>
+    </div>
+
+    <div class="row justify-content-center px-0">
+      <div class="col-md-6 col-12 pt-5 pb-3">
+        <h3 class="text-center main-content3" style="color: #a04d31;">
+          TrashSnackers App
+        </h3>
+      </div>
+    </div>
+    <div class="row justify-content-center pt-3 px-3">
+      <div class="col-md-6 col-12">
+        <h3 class="text-left main-content4 pb-5 pt-3">
+          Users can download to join a community of vermicomposters where they give and take composting materials.
+        </h3>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pb-5 px-3">
+      <div class="col-md-2 col-12 p-1">
+        <video style="border: 1.4px solid rgb(227, 227, 227); aspect-ratio: 9/16; object-fit: cover;" controls
+          class="w-100" src="images/Underrated_Trash_Snackers/Underrated_Trash_Snackers_Walkthrough.mp4"
+          poster="images/Work/UTS_Appthumbnail.png" alt="worm">
+        </video>
+      </div>
+      <div class="col-md-6 col-12 p-1">
+        <img class="images img-fluid w-100" src="images/Underrated_Trash_Snackers/Underrated_Trash_Snackers_App.jpg"
+          alt="worm">
+        </img>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pt-5 px-3">
+      <div class="col-md-8 col-12 p-1 borderbottom"></div>
+    </div>
+
+    <div class="row justify-content-center px-0">
+      <div class="col-md-6 col-12 pt-5 pb-3">
+        <h3 class="text-center main-content3" style="color: #a04d31;">
+          TrashSnackers Instagram (social media)
+        </h3>
+      </div>
+    </div>
+    <div class="row justify-content-center pt-3 px-3">
+      <div class="col-md-6 col-12">
+        <h3 class="text-left main-content4 pb-5 pt-3">
+          Reach more people while bringing the community closer. Tips, stories and future events are posted here.
+        </h3>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pt-4 px-3">
+      <div class="col-md-8 col-12 p-1">
+        <img class="images img-fluid w-100"
+          src="images/Underrated_Trash_Snackers/Underrated_Trash_Snackers_IG_Posts.jpg" alt="worm">
+        </img>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pt-5 px-3">
+      <div class="col-md-8 col-12 p-1 borderbottom"></div>
+    </div>
+
+    <div class="row justify-content-center px-0">
+      <div class="col-md-6 col-12 pt-5 pb-3">
+        <h3 class="text-center main-content3" style="color: #a04d31;">
+          Telegram Stickers
+        </h3>
+      </div>
+    </div>
+    <div class="row justify-content-center pt-3 px-3">
+      <div class="col-md-6 col-12">
+        <h3 class="text-left main-content4 pb-5 pt-3">
+          Users can use Squiggles in their daily conversations and send them to their loved ones.
+        </h3>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pt-4 px-3 pb-5">
+      <div class="col-md-2 col-12 p-1">
+        <img class="images img-fluid w-100"
+          src="images/Underrated_Trash_Snackers/Underrated_Trash_Snackers_Telegram_Stickers_download.png" alt="worm">
+        </img>
+      </div>
+      <div class="col-md-6 col-12 p-1 pb-5">
+        <img class="images img-fluid w-100"
+          src="images/Underrated_Trash_Snackers/Underrated_Trash_Snackers_Telegram_Stickers.png" alt="worm">
+        </img>
+      </div>
+    </div>
+  </div>
+
+  <section class="container-fluid" style="background-color: #f4f4f4;">
+    <div class="row justify-content-center px-3">
+      <div class="col-md-8 col-12 pt-5 pb-4">
+        <h3 class="text-center main-content3" style="color: #a04d31;">Research Process</h3>
+      </div>
+    </div>
+
+    <div class="pt-5 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-3 col-12 pt-0">
+          <h3 class="main-content6 pr-2 pt-0 pb-4" style="color: #a04d31;">
+            1: Interviews & Surveys
           </h3>
-
-    </div>   
-</div>
-
-
-<div class="row justify-content-center pt-4 pb-5">
-    <div class="col-md-6 col-xs-12">
-    <h3 class="text-center main-content5">
-            🏆 Crowbar Awards 2021 (Issued by The Association of Advertising and Marketing Singapore): 4 Silvers, 2 Bronzes, 1 Finalist
-    </h3>
-    </div>   
-</div>
-
-
-
-
-        
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-xs-12">
-                <div class="row justify-content-center pt-4">
-                    <div class="col-12 p-1 pl-0">
-                        <div style="display: flex; justify-content: center; align-items: end;">
-
-                            <img class="worms" style="height: 10rem;" src="images/Underrated_Trash_Snackers/4_Baby.webp"
-                                alt="worm">
-                            </img>
-                            <img class="worms" style="height: 11.5rem;"
-                                src="images/Underrated_Trash_Snackers/5_Squiggles half body.webp" alt="worm">
-                            </img>
-                            <img class="worms" style="height: 12.2rem;" src="images/Underrated_Trash_Snackers/6_Mom.webp"
-                                alt="worm">
-                            </img>
-                            <img class="worms" style="height: 12.6rem;" src="images/Underrated_Trash_Snackers/7_Dad.webp" alt="worm">
-                            </img>
-                        </div>
-                    </div>
-                </div>
-
-
-                <h3 class="text-left main-content4">
-                    The Underrated Trash Snackers is campaign aimed to make food wastage reduction a fun,
-                    interesting and educational approach for people of varying ages to implement into their daily lives.
-                </h3>
-            </div>
-
+          <h3 class="main-content4d pr-2 pt-0">
+            In addition to online research, interviews and surveys were conducted to understand people's experiences
+            with vermicomposting and their reasons for liking or disliking it. The survey was sent to the plant and
+            vermicomposting community social groups in Singapore. I also interviewed a vermicomposter, learning about
+            the feasibility of vermicomposting in a HDB setting, it's limitations, the suitable materials for a worm bin
+            and how she created her DIY worm bin, which are useful information that can be applied to my project.
+          </h3>
         </div>
-
-
-        <div class="row justify-content-center pt-5 pb-5">
-            <div class="col-md-8 col-xs-12 p-1 borderbottom"></div>
+        <div class="col-md-5 col-12 pl-md-3 pt-4 pt-md-0">
+          <img class="images img-fluid w-100" src="images/Underrated_Trash_Snackers/Research-01.jpg" alt="worm" />
         </div>
-        
-        
-        <div class="row justify-content-center pb-5">
-            <div class="col-md-8 col-xs-12">
-                <h3 class="text-center main-content3">
-                    Campaign Case Film
-                </h3>
-            </div>
+      </div>
+    </div>
+
+    <div class="pt-5 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-3 col-12 pt-0">
+          <h3 class="main-content6 pr-2 pt-0 pb-4" style="color: #a04d31;">
+            2: Trying vermicomposting myself
+          </h3>
+          <h3 class="main-content4d pr-2 pt-0">
+            I also got some worms (specifically the Malaysian Blue Worm species) from a nearby pet store to try
+            composting myself. It was an interesting experience and I understood why some people found them scary
+            (they're a bit slimy~), but eventually, I found them quite cute. They’re harmless and just doing their job
+            of eating, pooping, and creating compost.
+          </h3>
         </div>
-        <div class="row justify-content-center">
-            <div class="col-md-8 col-xs-12 p-1 pl-0 pb-5" style="aspect-ratio: 16/9;">
-                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/AvWuJZHOjo0?si=vw94mAyvz_ep9Tro" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
+        <div class="col-md-5 col-12 pl-md-3 pt-4 pt-md-0">
+          <img class="images img-fluid w-100" src="images/Underrated_Trash_Snackers/Research-02.jpg" alt="worm" />
         </div>
+      </div>
+    </div>
 
-
-        <div class="row justify-content-center pt-5 pb-5">
-            <div class="col-md-8 col-xs-12 p-1 borderbottom"></div>
+    <div class="pt-1 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-3 col-12 pt-0">
+          <h3 class="main-content6 pr-2 pt-0 pb-4" style="color: #a04d31;">
+            3: Compiling Responses
+          </h3>
+          <h3 class="main-content4d pr-2 pt-0">
+            The survey responses were then collected, summarised into concise points and written on post-it notes on a
+            Miro board. They were subsequently categorised into the "likes" and "dislikes" of composting to provide
+            clearer insights into the reasons given.
+          </h3>
         </div>
-
-        <div class="row justify-content-center pb-5">
-            <div class="col-md-8 col-xs-12">
-                <h3 class="text-center main-content3">
-                    Campaign Board
-                </h3>
-            </div>
+        <div class="col-md-5 col-12 pl-md-3 pt-4 pt-md-0">
+          <img class="images img-fluid w-100" src="images/Underrated_Trash_Snackers/Research-03.jpg" alt="worm" />
         </div>
-        <div class="row justify-content-center">
-            <div class="col-md-8 col-xs-12 p-1 pb-5">
-                <img class="images" src="images/Underrated_Trash_Snackers/Underrated_Trash_Snackers_Campaign_Board.webp"
-                    alt="worm">
-                </img>
-            </div>
+      </div>
+    </div>
+
+    <div class="pt-1 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-3 col-12 pt-0">
+          <h3 class="main-content6 pr-2 pt-0 pb-4" style="color: #a04d31;">
+            4: Clustering & Finding Insights
+          </h3>
+          <h3 class="main-content4d pr-2 pt-0">
+            The "dislikes" were then clustered into different pain points, mainly indicating that while many were open
+            to composting, there was uncertainty about how to get started, with many expressing a desire for guidance.
+            Other concerns included space constraints, as well as issues with smell, pests, and messiness.
+            Interestingly, during my interview, the vermicomposter mentioned that, if done correctly, the compost should
+            have an earthy smell.
+          </h3>
         </div>
-
-        <div class="row justify-content-center pt-5 pb-5">
-            <div class="col-md-8 col-xs-12 p-1 borderbottom"></div>
+        <div class="col-md-5 col-12 pl-md-3 pt-4 pt-md-0">
+          <img class="images img-fluid w-100" src="images/Underrated_Trash_Snackers/Research-04.jpg" alt="worm" />
         </div>
+      </div>
+    </div>
 
-        <div class="row justify-content-center pb-3">
-            <div class="col-md-6 col-xs-12">
-                <h3 class="text-center main-content3">
-                    Activation: Vermicomposting Starter Kit
-                </h3>
-            </div>
+    <div class="pt-1 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-3 col-12 pt-0">
+          <h3 class="main-content6 pr-2 pt-0 pb-4" style="color: #a04d31;">
+            5: Campaign Narrative
+          </h3>
+          <h3 class="main-content4d pr-2 pt-0">
+            I wrote the structure of the campaign, streamlining it to ensure its objectives and solutions were clear. My
+            idea was to use the cute "squiggles" family to guide people on how to vermicompost while making the process
+            fun for all ages. I also aimed to leverage the community aspect to make the process more helpful and easily
+            accessible, allowing people to share knowledge, materials, and support one another. Overall, the goal was to
+            encourage people to lead a more eco-friendly lifestyle and reduce food waste.
+          </h3>
         </div>
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-xs-12 pt-0">
-                <h4 class="text-center main-content4 pt-0 pb-5">
-                    Given to community gardeners, school students to try vermicomposting for themselves.
-                </h4>
-            </div>
+        <div class="col-md-5 col-12 pl-md-3 pt-4 pt-md-0">
+          <img class="images img-fluid w-100" src="images/Underrated_Trash_Snackers/Research-05.jpg" alt="worm" />
         </div>
-        <div class="row justify-content-center">
-            <div class="col-md-5 col-xs-12 p-1 pb-5 pt-5">
-                <img class="images" src="images/Underrated_Trash_Snackers/Full trashsnackers kit.webp"
-                    alt="worm">
-                </img>
-            </div>
+      </div>
+    </div>
+
+    <div class="pt-1 pb-5 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-3 col-12 pt-0">
+          <h3 class="main-content6 pr-2 pt-0 pb-4" style="color: #a04d31;">
+            6: Campaign Touchpoints
+          </h3>
+          <h3 class="main-content4d pr-2 pt-0">
+            The campaign touchpoints were also established to ensure a smooth flow and seamless connection between them.
+            I primarily implemented it through physical means, such as distributing kits and placing posters, as well as
+            digital platforms like an app and website. This approach made the campaign well-rounded, offering a fun and
+            interactive physical experience while providing easy access to information online.
+          </h3>
         </div>
-        
-        <div class="row justify-content-center pt-4">
-            <div class="col-md-4 col-xs-12 p-1">
-                <img class="images" src="images/Underrated_Trash_Snackers/Underrated_Trash_Snackers_Starter_Kit_1.jpg"
-                    alt="worm">
-                </img>
-            </div>
-            <div class="col-md-4 col-xs-12 p-1">
-                <img class="images" src="images/Underrated_Trash_Snackers/Underrated_Trash_Snackers_Starter_Kit_2.jpg"
-                    alt="worm">
-                </img>
-            </div>
+        <div class="col-md-5 col-12 pl-md-3 pt-4 pt-md-0">
+          <img class="images img-fluid w-100" src="images/Underrated_Trash_Snackers/Research-06.jpg" alt="worm" />
         </div>
-        <div class="row justify-content-center pb-5">
-            <div class="col-md-4 col-xs-12 p-1">
-                <img class="w-100 object-fill-fit"
-                    src="images/Underrated_Trash_Snackers/Underrated_Trash_Snackers_Starter_Kit_3.jpg" alt="worm">
-                </img>
-            </div>
-            <div class="col-md-4 col-xs-12 p-1">
-                <img class="images" src="images/Underrated_Trash_Snackers/Underrated_Trash_Snackers_Starter_Kit_4.jpg"
-                    alt="worm">
-                </img>
-            </div>
+      </div>
+    </div>
+
+
+
+  </section>
+
+  <div class="container-fluid">
+
+    <!-- BACK AND NEXT BUTTONS -->
+    <!-- <div class="row justify-content-center pt-5 pb-5 px-3">
+        <div class="col-md-8 col-12 d-flex justify-content-between align-items-center">
+          <a href="#" class="btn nav-button-custom" style="background: none; color: rgba(0, 0, 0, .5); font-family: 'Delius', cursive;">← Back</a>
+          <a href="#" class="btn nav-button-custom" style="background: none; color: rgba(0, 0, 0, .5); font-family: 'Delius', cursive;">Next →</a>
         </div>
+      </div> -->
 
 
-        <div class="row justify-content-center pt-5 pb-5">
-            <div class="col-md-8 col-xs-12 p-1 borderbottom"></div>
-        </div>
-
-        <div class="row justify-content-center pb-3">
-            <div class="col-md-6 col-xs-12">
-                <h3 class="text-center main-content3">
-                    Adopt A Trash Snacker! Posters
-                </h3>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-xs-12 pt-0">
-                <h4 class="text-left main-content4 pt-0 pb-5">
-                    Placed at community gardens and school canteens to break stereotypes of worms, urge users to go to the TrashSnackers website to find out more through the QR code.
-                </h4>
-            </div>
-        </div>
-
-        <div class="row justify-content-center pt-1">
-            <div class="col-md-8 col-xs-12 p-1 pl-0">
-            <div class="row justify-content-center pt-1 p-2">
-            <div class="col-md-4 col-xs-12 p-1 pl-0">
-                <img class="images" src="images/Underrated_Trash_Snackers/Underrated_Trash_Snackers_Print_Ad_1.jpg"
-                    alt="worm">
-                </img>
-            </div>
-            <div class="col-md-4 col-xs-12 p-1">
-                <img class="images" src="images/Underrated_Trash_Snackers/Underrated_Trash_Snackers_Print_Ad_2.jpg"
-                    alt="worm">
-                </img>
-            </div>
-            <div class="col-md-4 col-xs-12 p-1 pr-0">
-                <img class="images" src="images/Underrated_Trash_Snackers/Underrated_Trash_Snackers_Print_Ad_3.jpg"
-                    alt="worm">
-                </img>
-            </div>
-            </div>
-            </div>
-        </div>
-
-        <div class="row justify-content-center">
-            <div class="col-md-8 col-xs-12 p-1">
-                <img class="images"
-                    src="images/Underrated_Trash_Snackers/Underrated_Trash_Snackers_Print_Ad_Community_Garden.jpg"
-                    alt="worm">
-                </img>
-            </div>
-        </div>
-
-        <div class="row justify-content-center pb-5">
-            <div class="col-md-8 col-xs-12 p-1">
-                <img class="images"
-                    src="images/Underrated_Trash_Snackers/Underrated_Trash_Snackers_Print_Ad_Canteen.jpg" alt="worm">
-                </img>
-            </div>
-        </div>
-
-        <div class="row justify-content-center pt-5 pb-5">
-            <div class="col-md-8 col-xs-12 p-1 borderbottom"></div>
-        </div>
-
-        <div class="row justify-content-center pb-3">
-            <div class="col-md-6 col-xs-12">
-                <h3 class="text-center main-content3">
-                    TrashSnackers Website
-                </h3>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-xs-12 pt-0">
-                <h4 class="text-left main-content4 pt-0 pb-5">
-                    Users can visit the TrashSnackers website to check out the brands’s vision and upcoming workshops. Companies and schools are also
-                    encouraged to collaborate with us to inculcate vermicomposting habits into their workplace. It also serves as a Call-To-Action to
-                    TrashSnackers App.
-                </h4>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-md-8 col-xs-12 p-1">
-                <img class="images" src="images/Underrated_Trash_Snackers/Underrated_Trash_Snackers_Website_1.jpg"
-                    alt="worm">
-                </img>
-            </div>
-        </div>
-
-        <div class="row justify-content-center pb-5">
-            <div class="col-md-8 col-xs-12 p-1">
-                <img class="images" src="images/Underrated_Trash_Snackers/Underrated_Trash_Snackers_Website_2.jpg"
-                    alt="worm">
-                </img>
-            </div>
-        </div>
-
-
-        <div class="row justify-content-center pt-5 pb-5">
-            <div class="col-md-8 col-xs-12 p-1 borderbottom"></div>
-        </div>
-
-        <div class="row justify-content-center pb-3">
-            <div class="col-md-6 col-xs-12">
-                <h3 class="text-center main-content3">
-                    TrashSnackers App
-                </h3>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-xs-12 pt-0">
-                <h4 class="text-center main-content4 pt-0 pb-5">
-                    Users can download to join a community of vermicomposters where they give and take composting
-                    materials.
-                </h4>
-            </div>
-        </div>
-        <div class="row justify-content-center pb-5">
-            <div class="col-md-2 col-xs-12 p-1 h-100">
-                <video style="border: 1.4px solid rgb(227, 227, 227);" controls class="w-100"
-                    src="images/Underrated_Trash_Snackers/Underrated_Trash_Snackers_Walkthrough.mp4" poster="images/UTS_Appthumbnail.png"
-                    alt="worm">
-                </video>
-            </div>
-            <div class="col-md-6 col-xs-12 p-1">
-                <img class="images" src="images/Underrated_Trash_Snackers/Underrated_Trash_Snackers_App.jpg" alt="worm">
-                </img>
-            </div>
-        </div>
-
-
-
-        <div class="row justify-content-center pt-5 pb-5">
-            <div class="col-md-8 col-xs-12 p-1 borderbottom"></div>
-        </div>
-
-        <div class="row justify-content-center pb-3">
-            <div class="col-md-6 col-xs-12">
-                <h3 class="text-center main-content3">
-                    TrashSnackers Instagram (social media)
-                </h3>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-xs-12 pt-0">
-                <h4 class="text-center main-content4 pt-0 pb-5">
-                    Reach more people while bringing the community closer. Tips, stories and future events are posted
-                    here.
-                </h4>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-md-8 col-xs-12 p-1">
-                <img class="images"
-                    src="images/Underrated_Trash_Snackers/Underrated_Trash_Snackers_IG_Posts.jpg"
-                    alt="worm">
-                </img>
-            </div>
-        </div>
-
-        <div class="row justify-content-center pt-5 pb-5">
-            <div class="col-md-8 col-xs-12 p-1 borderbottom"></div>
-        </div>
-
-        <div class="row justify-content-center pb-3">
-            <div class="col-md-8 col-xs-12">
-                <h3 class="text-center main-content3">
-                    Telegram Stickers
-                </h3>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-md-8 col-xs-12 pt-0">
-                <h4 class="text-center main-content4 pt-0 pb-3">
-                    Users can use Squiggles in their daily conversations and send them to their loved ones.
-                </h4>
-            </div>
-        </div>
-        <div class="row justify-content-center pt-1 pb-5">
-            <div class="col-md-2 col-xs-12 p-1 pl-0">
-                <img class="images"
-                    src="images/Underrated_Trash_Snackers/Underrated_Trash_Snackers_Telegram_Stickers_download.png"
-                    alt="worm">
-                </img>
-            </div>
-            <div class="col-md-6 col-xs-12 p-1 pb-5">
-                <img class="images"
-                    src="images/Underrated_Trash_Snackers/Underrated_Trash_Snackers_Telegram_Stickers.png" alt="worm">
-                </img>
-            </div>
-        </div>
-
-
-        <!-- RESEARCH -->
-
-
-        <section style="background-color: #f4f4f4; padding: 0;">
-
-            <div class="row justify-content-center">
-                <div class="col-md-8 col-xs-12 pt-5 pb-4">
-                    <h3 class="text-center main-content3">
-                        Research Process
-                    </h3>
-                </div>
-            </div>
-        
-
-            <div class="pt-5 pb-5">
-                <div class="justify-content-center row">
-                    <div class="col-md-3 col-xs-12 pl-3 pt-0">
-                        <h3 class="main-content6 pr-2 pt-0 pb-4">
-                            1: Interviews & Surveys
-                        </h3>
-                        <h3 class="main-content4d pr-2 pt-0">
-                            In addition to online research, interviews and surveys were conducted to understand people's experiences with vermicomposting 
-                            and their reasons for liking or disliking it. The survey was sent to the plant and vermicomposting community social groups in 
-                            Singapore. I also interviewed a vermicomposter, learning about the feasibility of vermicomposting in a HDB setting, it's limitations,
-                             the suitable materials for a worm bin and how she created her DIY worm bin, which are useful information that can be applied to my project.
-                        </h3>
-                    </div>
-                    <div class="col-md-5 col-xs-12 pl-md-3 pt-0">
-                        <img class="images" src="images/Underrated_Trash_Snackers/Research-01.jpg" alt="worm">
-                        </img>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="pt-5 pb-5">
-                <div class="justify-content-center row">
-                    <div class="col-md-3 col-xs-12 pl-3 pt-0">
-                        <h3 class="main-content6 pr-2 pt-0 pb-4">
-                            2: Trying it for myself!
-                        </h3>
-                        <h3 class="main-content4d pr-2 pt-0">
-                            I also got some worms (specifically the Malaysian Blue Worm species) from a nearby pet store to try composting myself. It was an interesting experience and I understood why 
-                            some people found them scary (they're a bit slimy~), but eventually, I found them quite cute. They’re harmless and just doing their job of eating, pooping, and creating compost.
-                        </h3>
-                    </div>
-                    <div class="col-md-5 col-xs-12 pl-md-3 pt-0">
-                        <img class="images" src="images/Underrated_Trash_Snackers/Research-02.jpg" alt="worm">
-                        </img>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pt-5 pb-5">
-                <div class="justify-content-center row">
-                    <div class="col-md-3 col-xs-12 pl-3 pt-0">
-                        <h3 class="main-content6 pr-2 pt-0 pb-4">
-                            3: Compiling Responses
-                        </h3>
-                        <h3 class="main-content4d pr-2 pt-0">
-                            The survey responses were then collected, summarised into concise points and written on post-it notes on a Miro board. They were subsequently categorised into the "likes" and "dislikes" of composting to provide
-                            clearer insights into the reasons given.
-                        </h3>
-                    </div>
-                    <div class="col-md-5 col-xs-12 pl-md-3 pt-0">
-                        <img class="images" src="images/Underrated_Trash_Snackers/Research-03.jpg" alt="worm">
-                        </img>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pt-5 pb-5">
-                <div class="justify-content-center row">
-                    <div class="col-md-3 col-xs-12 pl-3 pt-0">
-                        <h3 class="main-content6 pr-2 pt-0 pb-0">
-                            4: Clustering & Finding Insights
-                        </h3>
-                        <h3 class="main-content4d pr-2 pt-4">
-                            The "dislikes" were then clustered into different pain points, mainly indicating that while many were open to composting, there was uncertainty about how to get started, with many expressing a desire for guidance.
-                            Other concerns included space constraints, as well as issues with smell, pests, and messiness. Interestingly, during my interview, the vermicomposter mentioned that, if done correctly, the compost should have an earthy smell.
-                        </h3>
-                    </div>
-                    <div class="col-md-5 col-xs-12 pl-md-3 pt-0">
-                        <img class="images" src="images/Underrated_Trash_Snackers/Research-04.jpg" alt="worm">
-                        </img>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pt-5 pb-5">
-                <div class="justify-content-center row">
-                    <div class="col-md-3 col-xs-12 pl-3 pt-0">
-                        <h3 class="main-content6 pr-2 pt-0 pb-4">
-                            5: Campaign Narrative
-                        </h3>
-                        <h3 class="main-content4d pr-2 pt-0">
-                            I wrote the structure of the campaign, streamlining it to ensure its objectives and solutions were clear. My idea was to use the cute "squiggles" family to guide people on how to vermicompost while making the process fun for all ages. I also aimed to 
-                            leverage the community aspect to make the process more helpful and easily accessible, allowing people to share knowledge, materials, and support one another. Overall, the goal was to encourage people to lead a more eco-friendly lifestyle and reduce food waste.
-                        </h3>
-                    </div>
-                    <div class="col-md-5 col-xs-12 pl-md-3 pt-0">
-                        <img class="images" src="images/Underrated_Trash_Snackers/Research-05.jpg" alt="worm">
-                        </img>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pt-5 pb-5">
-                <div class="justify-content-center row">
-                    <div class="col-md-3 col-xs-12 pl-3 pt-0">
-                        <h3 class="main-content6 pr-2 pt-0 pb-4">
-                            6: Campaign Touchpoints 
-                        </h3>
-                        <h3 class="main-content4d pr-2 pt-0">
-                            The campaign touchpoints were also established to ensure a smooth flow and seamless connection between them. I primarily implemented it through physical means, such as distributing kits and placing posters, as well as digital platforms like an app and website. This approach made the campaign 
-                            well-rounded, offering a fun and interactive physical experience while providing easy access to information online.
-                        </h3>
-                    </div>
-                    <div class="col-md-5 col-xs-12 pl-md-3 pt-0">
-                        <img class="images" src="images/Underrated_Trash_Snackers/Research-06.jpg" alt="worm">
-                        </img>
-                    </div>
-                </div>
-            </div>
-         
-        </section>
-
-         <!-- FOOTER -->
-
-             <!-- FAB Button -->
     <div id="fab-button" class="fab-container">
-        <div class="fab">
-          <svg xmlns="http://www.w3.org/2000/svg" height="42px" viewBox="0 -960 960 960" width="42px" fill="gray"><path d="M480-545.33 287.33-352.67 240-400l240-240 240 240-47.33 47.33L480-545.33Z"/></svg>
-        </div>
+      <div class="fab">
+        <svg xmlns="http://www.w3.org/2000/svg" height="42px" viewBox="0 -960 960 960" width="42px" fill="gray">
+          <path d="M480-545.33 287.33-352.67 240-400l240-240 240 240-47.33 47.33L480-545.33Z" />
+        </svg>
+      </div>
     </div>
 
-      
-   <div class="row justify-content-center pb-5 pr-4 pt-5">
-        <ul>
-          <li class="text-center link">
-            <a href="GovTech.html" style="color: black">GovTech Singapore</a>
-          </li>
-          <li class="text-center link">
-            <a href="BeoBloom.html" style="color: black">BeoBloom</a>
-          </li>
-          <li class="text-center link">
-            <a href="TheBeeCrisis.html" style="color: black">The Bee Crisis</a>
-          </li>
-          <li class="text-center link">
-            <a href="SuperSnacks.html" style="color: black"
-              >SuperSnacks Revamp</a
-            >
-          </li>
-          <li class="text-center link">
-            <a href="BetweenPastAndProgress.html" style="color: black"
-              >Between Past and Progress: A walk from Chinatown to Tanjong
-              Pagar.
-            </a>
-          </li>
-          <li class="text-center link">
-            <a href="misscarry.html" style="color: black">miss carry D.I.Y.</a>
-          </li>
-          <li class="text-center link">
-            <a href="underratedtrashsnackers.html" style="color: black"
-              >Underrated Trash Snackers</a
-            >
-          </li>
-          <li class="text-center link">
-            <a href="Isozoo.html" style="color: black">ISOZOO App</a>
-          </li>
-          <li class="text-center link">
-            <a href="DownToFlix.html" style="color: black"
-              >Netflix: Down To Flix</a
-            >
-          </li>
-          <li class="text-center link">
-            <a href="PH.html" style="color: black">Pizza Hut Singapore</a>
-          </li>
-          <li class="text-center link">
-            <a href="SiangPackaging.html" style="color: black"
-              >Siang Pure Repackaging</a
-            >
-          </li>
-          <li class="text-center link">
-            <a href="RespectfulRelationships.html" style="color: black"
-              >Singapore Polytechnic Respectful Relationships</a
-            >
-          </li>
-        </ul>
-      </div>
-
-      <div class="row justify-content-center pb-5 pt-5">
-        <div class="col-md-7 col-xs-12 pb-3 pt-5">
-          <h3 class="text-center main-content5">
-            Copyright © 2025 Josie Chan. Built with html & css.
-          </h3>
+    <div class="row justify-content-center pb-5 pt-5 px-3">
+      <div class="col-6 text-center pt-5 pb-5">
+        <h3 class="mb-4" style="color: #555; font-size: 18px;">View other works 👀</h3>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+          <a href="MandaiX.html" class="btn btn-outline-work">Mandai X</a>
+          <a href="GovTech.html" class="btn btn-outline-work">GovTech Singapore</a>
+          <a href="Animations.html" class="btn btn-outline-work">Motion Graphics</a>
+          <a href="TheBeeCrisis.html" class="btn btn-outline-work">The Bee Crisis</a>
+          <a href="Enhancing Fei Yang Band.html" class="btn btn-outline-work">Enhancing Fei Yang Band</a>
+          <a href="misscarry.html" class="btn btn-outline-work">miss carry D.I.Y.</a>
+          <a href="underratedtrashsnackers.html" class="btn btn-outline-work">Underrated Trash Snackers</a>
         </div>
       </div>
     </div>
-      
 
+    </div>
 
+    <!-- FOOTER -->
 
+    <footer class="footer-dark">
+      <div class="container">
+        <div class="footer-text">
+          Let's work together :)
+        </div>
 
+        <div class="social-icons">
+          <a href="https://linkedin.com/in/josiechanxt" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png" alt="LinkedIn">
+          </a>
+          <a href="mailto:jochanxt@gmail.com">
+            <img src="https://cdn-icons-png.flaticon.com/512/542/542689.png" alt="Email">
+          </a>
+          <a href="https://instagram.com/jo.cgraphics" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/1384/1384015.png" alt="Instagram">
+          </a>
+        </div>
 
-        <script>
-            fadeInPage();
+        <div class="copyright-bar">
+          <p>Copyright © 2026 Josie Chan. Built with HTML & CSS.</p>
+        </div>
+      </div>
+    </footer>
 
-            function fadeInPage() {
-                if (!window.AnimationEvent) { return; }
-                var fader = document.getElementById('fader');
-                fader.classList.add('fade-out');
-            }
-            document.addEventListener('DOMContentLoaded', function () {
-                if (!window.AnimationEvent) { return; }
-                var anchors = document.getElementsByTagName('a');
-                for (var idx = 0; idx < anchors.length; idx += 1) {
-                    if (anchors[idx].hostname !== window.location.hostname ||
-                        anchors[idx].pathname === window.location.pathname) {
-                        continue;
-                    }
-                    anchors[idx].addEventListener('click', function (event) {
-                        var fader = document.getElementById('fader'),
-                            anchor = event.currentTarget;
+  <script>
+    fadeInPage();
 
-                        var listener = function () {
-                            window.location = anchor.href;
-                            fader.removeEventListener('animationend', listener);
-                        };
-                        fader.addEventListener('animationend', listener);
+    function fadeInPage() {
+      if (!window.AnimationEvent) {
+        return;
+      }
+      var fader = document.getElementById("fader");
+      fader.classList.add("fade-out");
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+      if (!window.AnimationEvent) {
+        return;
+      }
+      var anchors = document.getElementsByTagName("a");
+      for (var idx = 0; idx < anchors.length; idx += 1) {
+        if (
+          anchors[idx].hostname !== window.location.hostname ||
+          anchors[idx].pathname === window.location.pathname
+        ) {
+          continue;
+        }
+        anchors[idx].addEventListener("click", function (event) {
+          var fader = document.getElementById("fader"),
+            anchor = event.currentTarget;
 
-                        event.preventDefault();
-                        fader.classList.add('fade-in');
-                    });
-                }
-            });
-            window.onunload = function () { };
+          var listener = function () {
+            window.location = anchor.href;
+            fader.removeEventListener("animationend", listener);
+          };
+          fader.addEventListener("animationend", listener);
 
-                          /* FAB */
-      // --- New Scroll to Top Functionality ---
-      const fabButton = document.getElementById('fab-button');
-      const SCROLL_THRESHOLD = 300; // Pixels to scroll down before the button appears
+          event.preventDefault();
+          fader.classList.add("fade-in");
+        });
+      }
+    });
+    window.onunload = function () { };
 
-      // Function to handle showing/hiding the button on scroll
-      const toggleFabVisibility = () => {
-          if (window.scrollY > SCROLL_THRESHOLD) {
-              fabButton.classList.remove('fab-hidden');
-          } else {
-              fabButton.classList.add('fab-hidden');
-          }
-      };
+    /* FAB */
+    // --- New Scroll to Top Functionality ---
+    const fabButton = document.getElementById('fab-button');
+    const SCROLL_THRESHOLD = 300; // Pixels to scroll down before the button appears
 
-      // Event listener for window scroll to show/hide the button
-      window.addEventListener('scroll', toggleFabVisibility);
+    // Function to handle showing/hiding the button on scroll
+    const toggleFabVisibility = () => {
+      if (window.scrollY > SCROLL_THRESHOLD) {
+        fabButton.classList.remove('fab-hidden');
+      } else {
+        fabButton.classList.add('fab-hidden');
+      }
+    };
 
-      // Event listener for button click to scroll to the top
-      fabButton.addEventListener('click', () => {
-          window.scrollTo({
-              top: 0,
-              behavior: 'smooth'
-          });
+    // Event listener for window scroll to show/hide the button
+    window.addEventListener('scroll', toggleFabVisibility);
+
+    // Event listener for button click to scroll to the top
+    fabButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
       });
+    });
 
-      // *FAB END*//
+    // *FAB END*//
 
-        </script>
+  </script>
 
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
 </body>
+
+</html>

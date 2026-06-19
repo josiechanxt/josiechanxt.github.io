@@ -1,0 +1,871 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Carattere&family=IBM+Plex+Sans:ital,wdth,wght@0,75..100,100..700;1,75..100,100..700&"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .wf-loading * {
+      opacity: 0;
+    }
+
+    /* Navigation */
+    .navbar {
+      padding: 1rem 2rem;
+      background: #ffffff;
+      border-bottom: 1px solid #eaeaea;
+    }
+
+    .nav-link {
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover,
+    .nav-button-active .nav-link {
+      color: #007bff !important;
+    }
+
+    /* --- CUSTOM HAMBURGER TO "X" ANIMATION --- */
+    .navbar-toggler {
+      border: none;
+      padding: 10px 10px;
+      outline: none !important;
+    }
+
+    .toggler-icon {
+      width: 24px;
+      height: 2px;
+      background-color: #007bff;
+      display: block;
+      transition: all 0.3s ease-in-out;
+      position: relative;
+    }
+
+    .toggler-icon::before,
+    .toggler-icon::after {
+      content: "";
+      width: 24px;
+      height: 2px;
+      background-color: #007bff;
+      display: block;
+      transition: all 0.3s ease-in-out;
+      position: absolute;
+    }
+
+    .toggler-icon::before {
+      top: -8px;
+    }
+
+    .toggler-icon::after {
+      bottom: -8px;
+    }
+
+    /* Animation to X */
+    .navbar-toggler:not(.collapsed) .toggler-icon {
+      background-color: transparent;
+    }
+
+    .navbar-toggler:not(.collapsed) .toggler-icon::before {
+      transform: rotate(45deg);
+      top: 0;
+    }
+
+    .navbar-toggler:not(.collapsed) .toggler-icon::after {
+      transform: rotate(-45deg);
+      bottom: 0;
+    }
+
+    /* Custom Light Grey Footer */
+    .footer-dark {
+      background-color: #ececec;
+      padding: 2rem 0 3rem;
+      text-align: center;
+      color: #007bff;
+    }
+
+    .footer-text {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      font-family: "IBM Plex Sans", sans-serif;
+      color: #666;
+    }
+
+    .social-icons a {
+      margin: 0 12px;
+      text-decoration: none;
+      display: inline-block;
+      transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+    }
+
+    .social-icons a:hover {
+      opacity: 0.7;
+      transform: translateY(-3px);
+    }
+
+    .social-icons img {
+      width: 30px;
+      height: 30px;
+      /* CSS Filter to change black icons to #007bff */
+      filter: invert(31%) sepia(94%) saturate(4120%) hue-rotate(211deg) brightness(101%) contrast(85%);
+    }
+
+    .copyright-bar {
+      border-top: 1px solid #d1d1d1;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      color: #666;
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    /* Solid Colour Pill Buttons */
+    .btn-outline-work {
+      padding: 8px 16px;
+      margin: 8px;
+      border-radius: 50px !important;
+      /* Forces the fully rounded ends */
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #ffffff !important;
+      /* Forces white text for legibility on solid backgrounds */
+      /* transition: all 0.3s ease; */
+      text-decoration: none !important;
+      display: inline-block;
+      border: none;
+      /* Removes the outline to keep it a solid block */
+    }
+
+    /* Assigning Solid Colours based on project brandings */
+    
+    /* Mandai X */
+    .btn-outline-work:nth-child(1) {
+      background-color: #07846b;
+    }
+
+    /* GovTech */
+    .btn-outline-work:nth-child(2) {
+      background-color: #785ef0;
+    }
+
+      /* The Bee Crisis */
+    .btn-outline-work:nth-child(3) {
+      background-color: #e68700;
+    }
+
+    /* Enhancing Fei Yang */
+    .btn-outline-work:nth-child(4) {
+      background-color: #ea474a;
+    }
+
+  
+
+    /* GoKakis*/
+    .btn-outline-work:nth-child(5) {
+      background-color: #2B6B90;
+    }
+
+    /* miss carry D.I.Y. */
+    .btn-outline-work:nth-child(6) {
+      background-color: #e03e70;
+    }
+
+    /* Trash Snackers */
+    .btn-outline-work:nth-child(7) {
+      background-color: #a04d31;
+    }
+
+  
+
+    /* Hover State: Deepen the colour and add a lift effect */
+    .btn-outline-work:hover {
+      transform: translateY(-2px);
+      /* box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); */
+      filter: brightness(80%);
+      /* Slightly darkens the solid colour on hover */
+      color: #ffffff !important;
+    }
+
+    .gap-3 {
+      gap: 1rem;
+    }
+
+    .accordion-body {
+      padding: 0;
+      font-size: 14px;
+      font-weight: 350;
+      line-height: 1.3;
+      color: #666;
+      font-family: "IBM Plex Sans", sans-serif;
+      font-style: italic;
+    }
+  </style>
+  <title>Mandai X</title>
+</head>
+
+<body>
+  <svg id="fader"></svg>
+
+  <!-- Nav bar -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <a class="navbar-brand" href="Work.html">
+      <img src="images/Logo2.svg" alt="Josie Logo" height="50" />
+    </a>
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item nav-button-active active">
+          <a class="nav-link px-3" href="Work.html">Work</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3" href="Others.html">Others</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3" href="About.html">About</a>
+        </li>
+        <!-- <li class="nav-item">
+            <a class="nav-link px-3" href="Contact.html">Contact</a>
+          </li> -->
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-12 p-0"></div>
+      <img class="images-header w-100 img-fluid" src="images/Mandai X/MandaiX_Header.jpg" alt="worm" />
+    </div>
+
+    <div class="row justify-content-center pt-4">
+      <div class="col-md-7 col-12">
+        <h1 class="text-center projecttitle projecttitle--mandaix">
+          Mandai X Ranger Buddies
+        </h1>
+      </div>
+    </div>
+
+    <!-- <div class="row justify-content-center pb-4 pt-3">
+        <h4 class="maincontent5 text-center mx-3" 
+        style="border: 2px solid #07846b; padding: 10px; border-radius: 30px; color: #07846b; font-size: 18px;"> UX/UI • B2C Edutainment • Research • 2026</h4>
+      </div> -->
+
+    <div class="row justify-content-center pb-3 pt-3">
+      <div class="tag-container">
+        <span class="tag" style="background: #07846b; color: #ffffff">UX/UI</span>
+        <span class="tag" style="background: #07846b; color: #ffffff">B2C Edutainment</span>
+        <span class="tag" style="background: #07846b; color: #ffffff">Research</span>
+        <span class="tag" style="background: #07846b; color: #ffffff">2026</span>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pt-3">
+      <div class="col-md-5 col-12 px-4">
+        <h3 class="text-md-left text-center main-content3 pb-4 pt-3" style="color: #07846b">
+          "How might we design a seamless, 'phygital' edutainment experience
+          that integrates educational value with engaging play for both
+          parents and children?”
+        </h3>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pt-4 pb-5 px-3">
+      <div class="col-md-6 col-12" style="border: 2px solid #07846b; padding: 20px; border-radius: 10px">
+        <h3 class="text-left main-content4 pb-3 pt-3">
+          Ranger Buddies is an edutainment initiative by Mandai X, the
+          venture-building arm of the Mandai Wildlife Group. It is designed to
+          nurture a generation of "everyday heroes" by engaging children in
+          wildlife conservation and environmental action through a blend of
+          digital and physical experiences. As a UI/UX design intern, I
+          contributed to the B2C experience of the Ranger Buddies web app,
+          focusing on in-app features, mission flows, and collaborative
+          campaigns.
+        </h3>
+
+        <div class="row">
+          <div class="col-md-6 col-12 mb-4 mb-md-0">
+            <h3 class="text-left main-content4 pt-2 pb-0" style="font-size: 16px; color: #07846b">
+              <b style="font-weight: 500">My Contributions</b>
+            </h3>
+
+            <h3 class="text-left accordion-body pb-2 pt-2 pl-3">
+              <li>
+                Spearheaded the validation of the web app's new reward system
+                feature. Created high-fidelity prototypes, led physical User
+                Testing sessions with Zoo visitors, and presented synthesised
+                findings to the CEO to drive feature implementation
+              </li>
+              <br />
+              <li>
+                Created UI screens and graphic assets for digital mission
+                games
+              </li>
+              <br />
+              <li>
+                Conducted live testing at the physical mission sites to ensure
+                a seamless phygital experience
+              </li>
+              <br />
+              <li>
+                Conducted competitor research for a brand collaboration
+                touchpoint, providing key insights that guided the Product
+                Managers' strategic implementations.
+              </li>
+            </h3>
+          </div>
+
+          <div class="col-md-6 col-12">
+            <h3 class="text-left main-content4 pt-2 pb-0" style="font-size: 16px; color: #07846b">
+              <b style="font-weight: 500">Timeline</b>
+            </h3>
+
+            <h3 class="text-left accordion-body pb-2 pt-2 pl-3">
+              <li>6 Months</li>
+            </h3>
+            <h3 class="text-left main-content4 pt-2 pb-0" style="font-size: 16px; color: #07846b">
+              <b style="font-weight: 500">Team members</b>
+            </h3>
+
+            <h3 class="text-left accordion-body pb-2 pt-2 pl-3">
+              <li>
+                2 UX Designers, 3 Product Managers, 2 Software Engineers,
+                Business team
+              </li>
+              <br />
+              <!-- <li>Under the supervision of Kenneth Tay (Design Lead)</li> -->
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pt-3 px-3">
+      <div class="col-md-6 col-12">
+        <h3 class="text-left main-content4 pb-4 pt-3">
+          Ranger Buddies features a hybrid of physical and digital AR missions
+          designed to instil C.O.U.R.A.G.E values in children, preparing them
+          to be future-ready beyond the classroom. The ecosystem includes a
+          web app where parents can register their children and use it across
+          various missions hosted in malls, the Zoo, and other partners,
+          providing an educational, family-friendly experience in public
+          spaces.
+          <br /><br /><br />
+        </h3>
+      </div>
+    </div>
+
+    <!-- <div class="row justify-content-center pb-1 pt-3 px-3">
+        <div class="col-md-8 col-12 p-1 pt-0 pl-0 pb-0 text-center">
+          <img
+            class="images img-fluid"
+            src="images/Mandai X/1.webp"
+            alt="worm"
+          />
+        </div>
+      </div> -->
+    <div class="row justify-content-center pb-3 pt-0 px-3">
+      <div class="col-md-4 col-12 p-1 pt-0 pl-0 pb-3 text-center">
+        <img class="images img-fluid" src="images/Mandai X/2.jpg" alt="worm" />
+      </div>
+      <div class="col-md-4 col-12 p-1 pt-0 pl-0 pb-3 text-center">
+        <img class="images img-fluid" src="images/Mandai X/3.jpg" alt="worm" />
+      </div>
+    </div>
+    <div class="row justify-content-center pb-3 pt-1 px-3">
+      <div class="col-md-8 col-12 p-1 pt-0 pl-0 pb-0 text-center">
+        <img class="images img-fluid" src="images/Mandai X/5.png" alt="worm" />
+      </div>
+    </div>
+
+    <div class="row justify-content-center pt-5 px-3">
+      <div class="col-md-8 col-12 p-1 borderbottom"></div>
+    </div>
+
+    <div class="row justify-content-center px-3">
+      <div class="col-md-6 col-12 pt-5 pb-5">
+        <h3 class="text-center main-content3" style="color: #07846b">
+          Validating the Reward System Feature
+        </h3>
+      </div>
+    </div>
+
+    <div class="pt-1 pb-3 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
+            I helped develop the brand-new reward system (MVP) for the RB web app.
+            The goal was to incentivise kids for completing their missions,
+            and access partner rewards in one key place. In only three
+            weeks until rollout, I rapidly validated user flows, currency
+            comprehension and navigation for two distinct user profiles:
+            Parents and children.
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center px-3">
+      <div class="col-md-6 col-12 pt-0 pb-3">
+        <h3 class="text-center main-content6" style="color: #07846b">
+          Phase 1: High-Fidelity Prototyping of Flows
+        </h3>
+      </div>
+    </div>
+
+    <div class="pt-1 pb-3 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="main-content4d pr-md-2 pt-0 text-left">
+            <b style="font-weight: 500">Below are the main flows/screens with the newly-added rewards
+              elements: <br /></b>
+            <i>(For context: “Books” are being used for our main method of
+              reward currency)</i>
+            <br /><br />
+            <b style="color: #07846b; font-weight: 500">✏️ The "Mission Flow":</b>
+            A simulated 6-activity walkthrough designed to help users
+            understand mission mechanics, where upon the completion of each
+            activity, the new “Books” meter bar fills up by 100 points.
+            <br /><br />
+            <b style="color: #07846b; font-weight: 500">✏️ The "Redeem Rewards Flow":</b>
+            A new loop covering partner selection, profile options, and reward
+            redemption process. <br /><br />
+            <b style="color: #07846b; font-weight: 500">✏️ The "Home Page":</b>
+            Integrating a new “Books Menu” entry point directly onto the
+            existing map interface homepage.
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="row justify-content-center pb-1 pt-5 px-3">
+        <div class="col-md-8 col-12 p-1 pt-0 pl-0 pb-0 text-center">
+          <img
+            class="images img-fluid"
+            src="images/Mandai X/7.png"
+            alt="worm"
+          />
+        </div>
+      </div> -->
+    <div class="row justify-content-center pb-1 pt-0 px-3">
+      <div class="col-md-8 col-12 p-1 pt-5 pl-0 pb-5 text-center">
+        <img class="header-image img-fluid" src="images/Mandai X/8.svg" alt="worm" />
+      </div>
+    </div>
+
+    <div class="row justify-content-center px-3">
+      <div class="col-md-6 col-12 pt-0 pb-3">
+        <h3 class="text-center main-content6" style="color: #07846b">
+          Phase 2: Conducting On-Site User Testing at Mandai Wildlife Zoo
+        </h3>
+      </div>
+    </div>
+
+    <div class="pt-1 pb-3 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="text-left main-content4 pb-4 pt-3">
+            We conducted rapid on-site guerilla user testing at Mandai
+            Wildlife Zoo, capturing high-value, 15-minute sessions with
+            visiting families. As the interviewer, I tailored the UT Guide for
+            both parent and child demographics. Since the children were quite
+            young (4-10 years old), I simplified the phrasing to ensure easier
+            comprehension while avoiding leading questions for authentic
+            responses. For example, after a progress bar is filled, I would
+            ask: “What do you notice has changed? → Why do you think that
+            happened?” to guide them along the process.
+            <!-- <br /><br />
+              <b style="font-weight: 500">Core objectives:</b>
+              <br /><br />
+              <b style="color: #07846b; font-weight: 500">🧪 #1</b> Assess the
+              clarity of "Books" as a naming convention and determine if users
+              recognise it as a redeemable currency. <br /><br />
+              <b style="color: #07846b; font-weight: 500">🧪 #2</b> Evaluate the
+              intuitiveness and user comprehension of the "earn-to-spend" loop
+              mechanism. <br /><br />
+              <b style="color: #07846b; font-weight: 500">🧪 #3</b> Determine if
+              users can locate and navigate to the rewards section without
+              assistance. -->
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pb-3 pt-3 px-3">
+      <div class="col-md-5 col-12 p-1 pt-0 pl-0 pb-3 text-center">
+        <img class="images img-fluid" src="images/Mandai X/a.png" alt="worm" />
+      </div>
+    </div>
+
+    <div class="row justify-content-center pb-3 pt-3 px-3">
+      <div class="col-md-3 col-12 p-1 pt-0 pl-0 pb-5 text-center">
+        <img class="images img-fluid" src="images/Mandai X/10.png" alt="worm" />
+      </div>
+      <div class="col-md-3 col-12 p-1 pt-0 pl-0 pb-5 text-center">
+        <img class="images img-fluid" src="images/Mandai X/11.png" alt="worm" />
+      </div>
+    </div>
+
+    <div class="row justify-content-center px-3">
+      <div class="col-md-6 col-12 pt-0 pb-3">
+        <h3 class="text-center main-content6" style="color: #07846b">
+          Phase 3: Refinements, additional testing
+        </h3>
+      </div>
+    </div>
+
+    <div class="pt-1 pb-3 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="text-left main-content4 pb-3 pt-3">
+            Afterwards, I synthesised the responses. In our first testing,
+            there were some challenges that both parents and children faced.
+            I refined the prototype, making sure the solutions address the issues, prominently, the drop-off after
+            completing the mission.
+            <!-- <br /><br />
+
+              <b style="color: #07846b; font-weight: 500">💭 #1</b> The “Book”
+              currency being unclear, as users are more familiar with universal
+              icons such as coins. <br /><br />
+              <b style="color: #07846b; font-weight: 500">💭 #2</b> Low
+              discoverability of reward components (”Books” meter bar, rewards
+              menu), as some users did not immediately notice them. <br /><br />
+              <b style="color: #07846b; font-weight: 500">💭 #3</b> Users
+              completed the mission but were unaware of the next steps, leading
+              to a drop-off in the user journey from the “Mission Flow” to the
+              “Reward Redemption Flow”. -->
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pb-1 pt-2 px-3">
+      <div class="col-md-6 col-12 p-1 pt-0 pl-0 pb-4 text-center">
+        <img class="images img-fluid" src="images/Mandai X/b.png" alt="worm" />
+      </div>
+    </div>
+
+
+    <!-- <div class="row justify-content-center pb-5 pt-3 px-3">
+        <div class="col-md-8 col-12 p-1 pt-0 pl-0 pb-4 text-center">
+          <img
+            class="images img-fluid"
+            src="images/Mandai X/12.jpg"
+            alt="worm"
+          />
+        </div>
+      </div> -->
+    <!-- 
+      <div class="pt-1 pb-3 px-3">
+        <div class="justify-content-center row">
+          <div class="col-md-6 col-12 pl-md-3 pt-0">
+            <h3 class="text-left main-content4 pb-4 pt-3">
+              Refinement 1: Addition of “Book Collection” Micro-animations to
+              improve reward system and currency’s visibility.
+            </h3>
+          </div>
+        </div>
+        
+      </div> -->
+
+    <div class="row justify-content-center pb-1 pt-3 px-3">
+      <div class="col-md-2 col-12 p-3 pt-0 pl-0 pb-5 text-center">
+        <img class="images-header img-fluid" src="images/Mandai X/c.png" alt="placeholder" />
+      </div>
+      <div class="col-md-2 col-12 p-3 pt-0 pl-0 pb-5 text-center">
+        <img class="images img-fluid" src="images/Mandai X/16.gif" alt="worm" />
+      </div>
+      <div class="col-md-2 col-12 p-3 pt-0 pl-0 pb-5 text-center">
+        <img class="images img-fluid" src="images/Mandai X/17.gif" alt="worm" />
+      </div>
+      <div class="col-md-2 col-12 p-3 pt-0 pl-0 pb-5 text-center">
+        <img class="images img-fluid" src="images/Mandai X/18.gif" alt="worm" />
+      </div>
+    </div>
+
+    <div class="row justify-content-center pb-1 pt-3 px-3">
+      <div class="col-md-2 col-12 p-3 pt-0 pl-0 pb-5 text-center">
+        <img class="images-header img-fluid" src="images/Mandai X/d.png" alt="placeholder" />
+      </div>
+      <div class="col-md-2 col-12 p-3 pt-0 pl-0 pb-5 text-center">
+        <img class="images img-fluid" src="images/Mandai X/19.gif" alt="worm" />
+      </div>
+      <div class="col-md-2 col-12 p-3 pt-0 pl-0 pb-5 text-center">
+        <img class="images img-fluid" src="images/Mandai X/20.png" alt="worm" />
+      </div>
+      <div class="col-md-2 col-12 p-3 pt-0 pl-0 pb-5 text-center">
+        <img class="images img-fluid" src="images/Mandai X/21.png" alt="worm" />
+      </div>
+    </div>
+
+    <!-- <div class="pt-1 pb-3 px-3">
+        <div class="justify-content-center row">
+          <div class="col-md-6 col-12 pl-md-3 pt-0">
+            <h3 class="main-content4d pr-md-2 pt-0 text-left">
+              2nd Iteration of the Prototype:
+            </h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center pb-5 pt-3 px-3">
+        <div class="col-md-8 col-12 p-1 pt-0 pl-0 pb-3 text-center">
+          <img
+            class="images img-fluid"
+            src="images/Mandai X/19.png"
+            alt="worm"
+          />
+        </div>
+      </div> -->
+
+    <div class="row justify-content-center px-3">
+      <div class="col-md-6 col-12 pt-0 pb-3">
+        <h3 class="text-center main-content6" style="color: #07846b">
+          Phase 4: Testing against our core objectives
+        </h3>
+      </div>
+    </div>
+
+    <div class="pt-1 pb-2 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="text-left main-content4 pb-1 pt-3">
+            We returned to the zoo to test the new iterations with more visitors against our core
+            objectives.
+            <br /><br />
+
+            <b style="font-weight: 500">There was a great improvement in the reception of the rewards system:<br /></b>
+            <br></br>
+
+            <!-- <b style="color: #07846b; font-weight: 500"
+                >💭 100% Discoverability</b
+              >
+              Low discoverability of reward components (”Books” meter bar,
+              rewards menu), as some users did not immediately notice them.
+              <br /><br />
+              <b style="color: #07846b; font-weight: 500"
+                >💭 100% Comprehension of Loop:</b
+              >
+              Users demonstrated high confidence, instantly recognizing that
+              completing activities filled the meter to trade for rewards. -->
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="row justify-content-center pb-5 pt-3 px-3">
+        <div class="col-md-8 col-12 p-1 pt-0 pl-0 pb-3 text-center">
+          <img
+            class="images img-fluid"
+            src="images/Mandai X/13.jpg"
+            alt="worm"
+          />
+        </div>
+      </div> -->
+
+    <div class="row justify-content-center pb-5 pt-0 px-3">
+      <div class="col-md-6 col-12 p-1 pt-0 pl-0 pb-3 text-center">
+        <img class="images img-fluid" src="images/Mandai X/e.png" alt="worm" />
+      </div>
+    </div>
+
+
+    <div class="pt-1 pb-3 px-3">
+      <div class="justify-content-center row">
+        <div class="col-md-6 col-12 pl-md-3 pt-0">
+          <h3 class="text-left main-content4 pb-4 pt-3">
+            <b style="color: #07846b; font-weight: 500">🤔 The Final Pivot: Changing the currency to COINS</b>
+            <br /><br />
+            I presented these synthesised insights and data-driven slides to the CEO during our weekly huddle. Backed by
+            this user data, I proposed a shift to "RB Coins" for the MVP. The team aligned on this choice.
+          </h3>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <!-- BREAK -->
+
+    <!-- <div class="row justify-content-center pb-5 pt-3 px-3">
+        <div class="col-md-6 col-12 p-1 pt-0 pl-0 pb-3 text-center">
+          <img
+            class="images img-fluid"
+            src="images/Mandai X/9.png"
+            alt="worm"
+          />
+        </div>
+      </div> -->
+
+    <!-- <div class="row justify-content-center pb-5 pt-3 px-3">
+        <div class="col-md-8 col-12 p-1 pt-0 pl-0 pb-4 text-center">
+          <img
+            class="images img-fluid"
+            src="images/Mandai X/12.jpg"
+            alt="worm"
+          />
+        </div>
+      </div> -->
+
+
+
+    <!-- BACK AND NEXT BUTTONS -->
+    <!-- <div class="row justify-content-center pt-5 pb-5 px-3">
+    <div class="col-md-8 col-12 d-flex justify-content-between align-items-center">
+      <a href="#" class="btn nav-button-custom"
+        style="background: none; color: rgba(0, 0, 0, .5); font-family: 'IBM Plex Sans', cursive;">← Back</a>
+      <a href="#" class="btn nav-button-custom"
+        style="background: none; color: rgba(0, 0, 0, .5); font-family: 'IBM Plex Sans', cursive;">Next →</a>
+    </div>
+  </div> -->
+
+    <!-- Footer -->
+
+    <div id="fab-button" class="fab-container">
+      <div class="fab">
+        <svg xmlns="http://www.w3.org/2000/svg" height="42px" viewBox="0 -960 960 960" width="42px" fill="gray">
+          <path d="M480-545.33 287.33-352.67 240-400l240-240 240 240-47.33 47.33L480-545.33Z" />
+        </svg>
+      </div>
+    </div>
+
+    <div class="row justify-content-center pb-5 pt-5 px-3">
+      <div class="col-6 text-center pt-5 pb-5">
+        <h3 class="mb-4" style="color: #555; font-size: 18px">
+          View other works 👀
+        </h3>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+          <a href="MandaiX.html" class="btn btn-outline-work">Mandai X</a>
+          <a href="GovTech.html" class="btn btn-outline-work">GovTech a11y Playground</a>
+
+          <a href="TheBeeCrisis.html" class="btn btn-outline-work">The Bee Crisis</a>
+          <a href="Enhancing Fei Yang Band.html" class="btn btn-outline-work">Enhancing Fei Yang Band</a>
+
+          <a href="GoKakis.html" class="btn btn-outline-work">GoKakis</a>
+          <a href="misscarry.html" class="btn btn-outline-work">miss carry D.I.Y.</a>
+
+          <a href="underratedtrashsnackers.html" class="btn btn-outline-work">Underrated Trash Snackers</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+
+  <footer class="footer-dark">
+    <div class="container">
+      <div class="footer-text">Let's work together :)</div>
+
+      <div class="social-icons">
+        <a href="https://linkedin.com/in/josiechanxt" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png" alt="LinkedIn" />
+        </a>
+        <a href="mailto:jochanxt@gmail.com">
+          <img src="https://cdn-icons-png.flaticon.com/512/542/542689.png" alt="Email" />
+        </a>
+        <a href="https://instagram.com/jo.cgraphics" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/1384/1384015.png" alt="Instagram" />
+        </a>
+      </div>
+
+      <div class="copyright-bar">
+        <p>Copyright © 2026 Josie Chan. Built with HTML & CSS.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    fadeInPage();
+
+    function fadeInPage() {
+      if (!window.AnimationEvent) {
+        return;
+      }
+      var fader = document.getElementById("fader");
+      fader.classList.add("fade-out");
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+      if (!window.AnimationEvent) {
+        return;
+      }
+      var anchors = document.getElementsByTagName("a");
+      for (var idx = 0; idx < anchors.length; idx += 1) {
+        if (
+          anchors[idx].hostname !== window.location.hostname ||
+          anchors[idx].pathname === window.location.pathname
+        ) {
+          continue;
+        }
+        anchors[idx].addEventListener("click", function (event) {
+          var fader = document.getElementById("fader"),
+            anchor = event.currentTarget;
+
+          var listener = function () {
+            window.location = anchor.href;
+            fader.removeEventListener("animationend", listener);
+          };
+          fader.addEventListener("animationend", listener);
+
+          event.preventDefault();
+          fader.classList.add("fade-in");
+        });
+      }
+    });
+    window.onunload = function () { };
+
+    /* FAB */
+    // --- New Scroll to Top Functionality ---
+    const fabButton = document.getElementById("fab-button");
+    const SCROLL_THRESHOLD = 300; // Pixels to scroll down before the button appears
+
+    // Function to handle showing/hiding the button on scroll
+    const toggleFabVisibility = () => {
+      if (window.scrollY > SCROLL_THRESHOLD) {
+        fabButton.classList.remove("fab-hidden");
+      } else {
+        fabButton.classList.add("fab-hidden");
+      }
+    };
+
+    // Event listener for window scroll to show/hide the button
+    window.addEventListener("scroll", toggleFabVisibility);
+
+    // Event listener for button click to scroll to the top
+    fabButton.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    });
+
+    // *FAB END*//
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
