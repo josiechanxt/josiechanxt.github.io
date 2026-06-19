@@ -522,12 +522,29 @@
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       var fader = document.getElementById("faderhome");
-      if (fader) {
-        setTimeout(function () {
-          fader.classList.add("fade-out");
-        }, 100);
+
+      // Function to hide the white overlay
+      function revealPage() {
+        if (fader) {
+          setTimeout(function () {
+            fader.classList.remove("fade-in");
+            fader.classList.add("fade-out");
+          }, 100);
+        }
       }
 
+      // Run on initial fresh load
+      revealPage();
+
+      // CRITICAL FIX: Listen for back/forward cache navigation
+      window.addEventListener("pageshow", function (event) {
+        // If the page was resurrected from memory (back button hit)
+        if (event.persisted) {
+          revealPage();
+        }
+      });
+
+      // Handle outbound link clicks with fade transition
       var anchors = document.getElementsByTagName("a");
       for (var i = 0; i < anchors.length; i++) {
         if (

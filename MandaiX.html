@@ -791,43 +791,54 @@
   </footer>
 
   <script>
-    fadeInPage();
-
-    function fadeInPage() {
-      if (!window.AnimationEvent) {
-        return;
-      }
-      var fader = document.getElementById("fader");
-      fader.classList.add("fade-out");
-    }
     document.addEventListener("DOMContentLoaded", function () {
-      if (!window.AnimationEvent) {
-        return;
-      }
-      var anchors = document.getElementsByTagName("a");
-      for (var idx = 0; idx < anchors.length; idx += 1) {
-        if (
-          anchors[idx].hostname !== window.location.hostname ||
-          anchors[idx].pathname === window.location.pathname
-        ) {
-          continue;
+      var fader = document.getElementById("fader");
+
+      // Function to hide the white overlay
+      function revealPage() {
+        if (fader) {
+          setTimeout(function () {
+            fader.classList.remove("fade-in");
+            fader.classList.add("fade-out");
+          }, 100);
         }
-        anchors[idx].addEventListener("click", function (event) {
-          var fader = document.getElementById("fader"),
-            anchor = event.currentTarget;
+      }
 
-          var listener = function () {
-            window.location = anchor.href;
-            fader.removeEventListener("animationend", listener);
-          };
-          fader.addEventListener("animationend", listener);
+      // Run on initial fresh load
+      revealPage();
 
-          event.preventDefault();
-          fader.classList.add("fade-in");
-        });
+      // CRITICAL FIX: Listen for back/forward cache navigation
+      window.addEventListener("pageshow", function (event) {
+        // If the page was resurrected from memory (back button hit)
+        if (event.persisted) {
+          revealPage();
+        }
+      });
+
+      // Handle outbound link clicks with fade transition
+      var anchors = document.getElementsByTagName("a");
+      for (var i = 0; i < anchors.length; i++) {
+        if (
+          anchors[i].hostname === window.location.hostname &&
+          anchors[i].pathname !== window.location.pathname &&
+          anchors[i].target !== "_blank"
+        ) {
+          anchors[i].addEventListener("click", function (event) {
+            event.preventDefault();
+            var href = this.href;
+            if (fader) {
+              fader.classList.remove("fade-out");
+              fader.classList.add("fade-in");
+              setTimeout(function () {
+                window.location = href;
+              }, 500);
+            } else {
+              window.location = href;
+            }
+          });
+        }
       }
     });
-    window.onunload = function () { };
 
     /* FAB */
     // --- New Scroll to Top Functionality ---

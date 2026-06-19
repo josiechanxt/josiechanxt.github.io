@@ -738,10 +738,23 @@
       var fader = document.getElementById("fader");
       fader.classList.add("fade-out");
     }
-    document.addEventListener("DOMContentLoaded", function () {
-      if (!window.AnimationEvent) {
-        return;
+    function revealPage() {
+      var fader = document.getElementById("fader");
+      if (fader) {
+        fader.classList.remove("fade-in");
+        fader.classList.add("fade-out");
       }
+    }
+
+    window.addEventListener("pageshow", function (event) {
+      if (event.persisted) {
+        revealPage();
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      revealPage();
+      if (!window.AnimationEvent) { return; }
       var anchors = document.getElementsByTagName("a");
       for (var idx = 0; idx < anchors.length; idx += 1) {
         if (
@@ -753,13 +766,11 @@
         anchors[idx].addEventListener("click", function (event) {
           var fader = document.getElementById("fader"),
             anchor = event.currentTarget;
-
           var listener = function () {
             window.location = anchor.href;
             fader.removeEventListener("animationend", listener);
           };
           fader.addEventListener("animationend", listener);
-
           event.preventDefault();
           fader.classList.add("fade-in");
         });
