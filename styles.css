@@ -231,42 +231,50 @@ nav {
   padding-bottom: 1rem;
   font-family: "IBM Plex Sans", sans-serif;
   font-size: 36pt;
-  font-weight: 500;
+  font-weight: 600;
   color: rgb(40, 40, 40);
 }
 
 /* Project Title Color Variants */
 .projecttitle--govtech {
-  color: #785ef0;
+  /* color: #785ef0; */
+  color: #303030;
 }
 
 .projecttitle--animations {
-  color: #4270ce;
+  /* color: #4270ce; */
+  color: #303030;
 }
 
 
 .projecttitle--gokakis {
-  color: #2B6B90;
+  /* color: #2B6B90; */
+  color: #303030;
 }
 
 .projecttitle--beec {
-  color: #e68a00;
+  /* color: #e68a00; */
+  color: #303030;
 }
 
 .projecttitle--misscarry {
-  color: #e03e70;
+  /* color: #e03e70; */
+  color: #303030;
 }
 
 .projecttitle--enhancing {
-  color: #ea474a;
+  /* color: #ea474a; */
+  color: #303030;
 }
 
 .projecttitle--mandaix {
-  color: #07846b;
+  /* color: #07846b; */
+  color: #303030;
 }
 
 .projecttitle--underratedtrashsnackers {
-  color: #a04d31;
+  /* color: #a04d31; */
+  color: #303030;
 }
 
 .main-content3 {
