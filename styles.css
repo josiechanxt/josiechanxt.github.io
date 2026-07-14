@@ -18,6 +18,16 @@ html {
   font-family: "IBM Plex Sans", sans-serif;
 }
 
+/* Scrollbar Styles */
+:root {
+  --scrollbar-color: #007bff;
+  --scrollbar-hover: #0056b3;
+}
+
+html {
+  scrollbar-color: var(--scrollbar-color) transparent;
+}
+
 nav {
   z-index: 999999;
 }
@@ -122,6 +132,7 @@ nav {
   font-family: "IBM Plex Sans", sans-serif;
   font-size: 32pt;
   color: rgb(40, 40, 40);
+  letter-spacing: -0.02rem;
 }
 
 .main-content2 {
@@ -131,6 +142,7 @@ nav {
   font-size: 16pt;
   font-weight: 300;
   color: rgb(40, 40, 40);
+  letter-spacing: -0.02rem;
 }
 
 .images {
@@ -220,6 +232,7 @@ nav {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   text-align: center;
+  letter-spacing: -0.02rem;
 }
 
 /* PAGES */
@@ -233,6 +246,7 @@ nav {
   font-size: 36pt;
   font-weight: 600;
   color: rgb(40, 40, 40);
+  letter-spacing: -0.09rem;
 }
 
 /* Project Title Color Variants */
@@ -283,8 +297,9 @@ nav {
   font-family: "ibm plex sans", sans-serif;
   /* font-family: "Delius", sans-serif; */
   font-size: 24pt;
-  font-weight: 450;
+  font-weight: 550;
   color: rgb(40, 40, 40);
+  letter-spacing: -0.04rem;
 }
 
 /* For project body copy */
@@ -295,6 +310,7 @@ nav {
   font-weight: 350;
   font-size: 12pt;
   color: rgb(48, 48, 48);
+  letter-spacing: -0.02rem;
 }
 
 .main-content4a {
@@ -303,6 +319,7 @@ nav {
   font-size: 12pt;
   font-weight: 350;
   color: rgb(40, 40, 40);
+  letter-spacing: -0.02rem;
 }
 
 .main-content4b {
@@ -313,6 +330,7 @@ nav {
   font-weight: 350;
   text-decoration: underline;
   color: rgb(40, 40, 40);
+  letter-spacing: -0.02rem;
 }
 
 .main-content4c {
@@ -321,6 +339,7 @@ nav {
   font-size: 12pt;
   font-weight: 350;
   color: rgb(40, 40, 40);
+  letter-spacing: -0.02rem;
 }
 
 .main-content4d {
@@ -328,6 +347,7 @@ nav {
   font-size: 12pt;
   font-weight: 350;
   color: rgb(40, 40, 40);
+  letter-spacing: -0.02rem;
 }
 
 .main-content5 {
@@ -337,6 +357,7 @@ nav {
   font-size: 12pt;
   font-weight: 300;
   color: rgb(142, 142, 142);
+  letter-spacing: -0.02rem;
 }
 
 /* For subhead */
@@ -346,8 +367,9 @@ nav {
   /* text-decoration: underline; */
   font-family: "IBM Plex Sans", sans-serif;
   font-size: 16pt;
-  font-weight: 450;
+  font-weight: 550;
   color: rgb(40, 40, 40);
+  letter-spacing: -0.02rem;
 }
 
 .maincontent7 {
@@ -360,6 +382,7 @@ nav {
   font-family: "IBM Plex Sans", sans-serif;
   font-weight: 350;
   font-size: 12pt;
+  letter-spacing: -0.02rem;
 }
 
 .link {
@@ -368,6 +391,7 @@ nav {
   font-family: "IBM Plex Sans", sans-serif;
   font-weight: 350;
   font-size: 12pt;
+  letter-spacing: -0.02rem;
 }
 
 .button:hover {
@@ -383,6 +407,7 @@ nav {
   font-size: 16pt;
   font-weight: 350;
   color: rgb(142, 142, 142);
+  letter-spacing: -0.02rem;
 }
 
 .main-content9 {
@@ -391,6 +416,7 @@ nav {
   font-size: 12pt;
   font-weight: 350;
   color: rgb(0, 0, 0);
+  letter-spacing: -0.02rem;
 }
 
 .main-content10 {
@@ -398,6 +424,7 @@ nav {
   /* font-weight: bold; */
   font-size: 24pt;
   color: rgb(40, 40, 40);
+  letter-spacing: -0.02rem;
 }
 
 .link {
@@ -799,7 +826,8 @@ ul {
 }
 
 .accordion-body {
-  padding: 0 64px 40px 84px; /* Align with text column */
+  padding: 0 64px 40px 84px;
+  /* Align with text column */
   color: #666;
   font-size: 1rem;
   line-height: 1.5;
@@ -821,11 +849,66 @@ ul {
   }
 
   .accordion-date {
-    display: none; /* Hide date on header for mobile to save space */
+    display: none;
+    /* Hide date on header for mobile to save space */
   }
 
   .accordion-body {
     padding: 0 0 30px 65px;
     font-size: 1rem;
+  }
+}
+
+/* Consistent Mobile Padding Fix v4 (Exact 31px Match) */
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Match navbar to the new 31px padding */
+  .navbar {
+    padding-left: 31px !important;
+    padding-right: 31px !important;
+  }
+
+  /* Increase container padding to exactly 31px to match desired body text padding */
+  .container,
+  .container-fluid:not(.px-0) {
+    padding-left: 31px !important;
+    padding-right: 31px !important;
+  }
+
+  /* Neutralize Bootstrap row's default -15px negative margins on mobile inside containers.
+     This ensures the container's 31px padding is fully visible at the column edge,
+     giving consistent padding across all pages including the index card grid. */
+  .container > .row,
+  .container-fluid > .row,
+  .container-fluid:not(.px-0) > .row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Strip inconsistent manual padding from direct row wrappers to normalize the grid. */
+  .container-fluid>.px-3,
+  .container>.px-3,
+  .container-fluid>.row.px-3,
+  .container>.row.px-3,
+  .container-fluid>div>.row.px-3,
+  .container>div>.row.px-3 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* Strip extra px-4 from columns on mobile so text aligns with the standard 31px container padding */
+  [class*="col-"].px-4 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* Full bleed override for header images (push out by 31px to cancel container padding) */
+  .container-fluid>.row:has(.images-header),
+  .container>.row:has(.images-header) {
+    margin-left: -31px !important;
+    margin-right: -31px !important;
   }
 }
