@@ -1,596 +1,505 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Josie Chan | UI/UX Designer</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Josie Chan | Traditional Drawings</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Carattere&family=IBM+Plex+Sans:ital,wdth,wght@0,75..100,100..700;1,75..100,100..700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Carattere&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
 
-  <style>
-    /* --- CUSTOM BLUE SCROLLBAR COHESION --- */
-    /* For WebKit browsers (Chrome, Safari, Edge) */
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-    
-    ::-webkit-scrollbar-track {
-      background: #1a1a1a; /* Matches the dark background theme underneath */
-    }
-    
-    ::-webkit-scrollbar-thumb {
-      background: #007bff; /* Signature Blue */
-      border-radius: 5px;
-    }
-    
-    ::-webkit-scrollbar-thumb:hover {
-      background: #0056b3; /* Darker blue on hover */
-    }
+    <style>
+      /* --- CUSTOM BLUE SCROLLBAR --- */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      
+      ::-webkit-scrollbar-track {
+        background: #1a1a1a;
+      }
+      
+      ::-webkit-scrollbar-thumb {
+        background: #007bff;
+        border-radius: 5px;
+      }
+      
+      ::-webkit-scrollbar-thumb:hover {
+        background: #0056b3;
+      }
 
-    /* For Firefox */
-    html {
-      scrollbar-width: thin;
-      scrollbar-color: #007bff #1a1a1a;
-    }
+      html {
+        scrollbar-width: thin;
+        scrollbar-color: #007bff #1a1a1a;
+      }
 
-    /* Layout fixes to push footer to bottom and eliminate white space */
-    html,
-    body {
-      height: 100%;
-      margin: 0;
-      cursor: url("images/Pencil.png"), auto;
-      font-family: "IBM Plex Sans", sans-serif;
-      color: #303030;
-      background-color: #1a1a1a;
-      display: flex;
-      flex-direction: column;
-      letter-spacing: -0.02rem;
-      padding: 0;
-    }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        cursor: url("images/Pencil.png"), auto;
+        font-family: "IBM Plex Sans", sans-serif;
+        color: #303030;
+        background-color: #1a1a1a;
+        display: flex;
+        flex-direction: column;
+        letter-spacing: -0.02rem;
+        padding: 0;
+      }
 
-    /* Navigation */
-    .navbar {
-      padding: 0.8rem 0.8rem;
-      background: #ffffff;
-      border-bottom: 1px solid #eaeaea;
-      z-index: 1030;
-    }
+      /* Navigation */
+      .navbar {
+        padding: 0.8rem 0.8rem;
+        background: #ffffff;
+        border-bottom: 1px solid #eaeaea;
+      }
 
-    .nav-link {
-      color: #c3c3c3 !important;
-      font-family: "caveat", cursive;
-      font-weight: 550;
-      font-size: 1.5rem;
-      transition: color 0.2s ease;
-    }
+      .nav-link {
+        color: #c3c3c3 !important;
+        font-family: "caveat", cursive;
+        font-weight: 550;
+        font-size: 1.5rem;
+        transition: color 0.2s ease;
+      }
 
-    .nav-link:hover,
-    .nav-button-active .nav-link {
-      color: #007bff !important;
-    }
+      .nav-link:hover,
+      .nav-button-active .nav-link {
+        color: #007bff !important;
+      }
 
-    /* Hamburger to X Animation */
-    .navbar-toggler {
-      border: none;
-      padding: 10px 10px;
-      outline: none !important;
-    }
+      /* Toggler */
+      .navbar-toggler {
+        border: none;
+        padding: 10px 10px;
+        outline: none !important;
+      }
 
-    .toggler-icon {
-      width: 24px;
-      height: 2px;
-      background-color: #007bff;
-      display: block;
-      transition: all 0.3s ease-in-out;
-      position: relative;
-    }
+      .toggler-icon {
+        width: 24px;
+        height: 2px;
+        background-color: #007bff;
+        display: block;
+        transition: all 0.3s ease-in-out;
+        position: relative;
+      }
 
-    .toggler-icon::before,
-    .toggler-icon::after {
-      content: "";
-      width: 24px;
-      height: 2px;
-      background-color: #007bff;
-      display: block;
-      transition: all 0.3s ease-in-out;
-      position: absolute;
-    }
+      .toggler-icon::before,
+      .toggler-icon::after {
+        content: "";
+        width: 24px;
+        height: 2px;
+        background-color: #007bff;
+        display: block;
+        transition: all 0.3s ease-in-out;
+        position: absolute;
+      }
 
-    .toggler-icon::before {
-      top: -8px;
-    }
+      .toggler-icon::before {
+        top: -8px;
+      }
 
-    .toggler-icon::after {
-      bottom: -8px;
-    }
+      .toggler-icon::after {
+        bottom: -8px;
+      }
 
-    .navbar-toggler:not(.collapsed) .toggler-icon {
-      background-color: transparent;
-    }
+      .navbar-toggler:not(.collapsed) .toggler-icon {
+        background-color: transparent;
+      }
 
-    .navbar-toggler:not(.collapsed) .toggler-icon::before {
-      transform: rotate(45deg);
-      top: 0;
-    }
+      .navbar-toggler:not(.collapsed) .toggler-icon::before {
+        transform: rotate(45deg);
+        top: 0;
+      }
 
-    .navbar-toggler:not(.collapsed) .toggler-icon::after {
-      transform: rotate(-45deg);
-      bottom: 0;
-    }
+      .navbar-toggler:not(.collapsed) .toggler-icon::after {
+        transform: rotate(-45deg);
+        bottom: 0;
+      }
 
-    /* Typography */
-    .projecttitle {
-      font-size: 3.5rem;
-      font-weight: 500;
-      letter-spacing: -0.02em;
-      margin-bottom: 1rem;
-      color: #303030
-    }
+      /* Hero Section */
+      .hero-section {
+        padding: 3rem 0 1rem; /* Reduced vertical padding */
+      }
 
-    .hero-subtitle {
-      font-size: 1.25rem;
-      color: #555;
-      font-weight: 400;
-      line-height: 1.4;
-      letter-spacing: -0.025rem
-    }
-
-    .main-content3 {
-      font-size: 1.75rem;
-      font-weight: 500;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.04rem;
-    }
-
-    .main-content4 {
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: #007bff;
-      margin-bottom: 3rem;
-    }
-
-    /* Image Styling with No Hover Scale Effects */
-    .images {
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-    }
-
-    /* Scroll Reveal Framework */
-    .reveal-row {
-      opacity: 0;
-      transform: translateY(45px);
-      transition: opacity 1.1s cubic-bezier(0.25, 1, 0.5, 1), transform 1.1s cubic-bezier(0.25, 1, 0.5, 1);
-      will-change: transform, opacity;
-    }
-
-    .reveal-row.revealed {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Page Transition Overlay */
-    #faderhome {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: white;
-      z-index: 9999;
-      pointer-events: none;
-      transition: opacity 0.5s ease-in-out;
-    }
-
-    .fade-out {
-      opacity: 0;
-    }
-
-    .fade-in {
-      opacity: 1;
-    }
-
-    /* Main Container over-scroll styling */
-    .main-scroll-container {
-      flex: 1 0 auto;
-      position: relative;
-      z-index: 10;
-      background-color: #fafafa;
-      background-image: url("images/Dots.svg");
-      background-attachment: fixed;
-      background-size: 70%;
-      background-repeat: repeat;
-      border-bottom-left-radius: 80px;
-      border-bottom-right-radius: 80px;
-      overflow: hidden;
-    }
-
-    /* Footer Design Frame */
-    .footer-dark {
-      font-family: "IBM Plex Sans", sans-serif;
-      flex-shrink: 0;
-      background-color: #1a1a1a;
-      padding: 6.5rem 0 6.5rem;
-      text-align: center;
-      color: #007bff;
-      position: sticky;
-      bottom: 0;
-      z-index: 1;
-    }
-
-    .footer-text {
-      font-size: 3.8rem;
-      font-weight: 500;
-      margin-bottom: 1.5rem;
-      font-family: "caveat", cursive;
-      color: #f0f0f0;
-    }
-
-    .social-icons a {
-      margin: 0 12px;
-      text-decoration: none;
-      display: inline-block;
-      transition: opacity 0.2s ease, transform 0.2s ease;
-    }
-
-    .social-icons a:hover {
-      opacity: 0.6;
-      transform: translateY(-5px);
-    }
-
-    .social-icons img {
-      width: 45px;
-      height: 45px;
-    }
-
-    .copyright-bar {
-      margin-top: 2rem;
-      padding-top: 1.5rem;
-      color: #999;
-      font-size: 0.85rem;
-      opacity: 0.8;
-    }
-
-    .copyright-bar p {
-      margin-bottom: 0;
-    }
-
-    @media (max-width: 768px) {
-      .projecttitle {
-        font-size: 2.5rem;
+      .hero-title {
+        font-size: 4rem;
+        font-weight: 500;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+        color: #303030;
       }
 
       .hero-subtitle {
-        font-size: 1.1rem;
+        font-size: 1.5rem;
+        color: #555;
+        font-weight: 400;
+        max-width: 600px;
+        line-height: 1.4;
+        letter-spacing: -0.03rem;
       }
 
-      .navbar {
-        padding: 0.8rem 1rem;
+      /* Portfolio Cards */
+      .port-card {
+        margin-bottom: 1rem; /* Reduced bottom margin */
+        opacity: 0;
+        transform: translateY(50px);
+        transition:
+          opacity 1.1s cubic-bezier(0.25, 1, 0.5, 1),
+          transform 1.1s cubic-bezier(0.25, 1, 0.5, 1);
+        will-change: transform, opacity;
       }
 
-      .main-content3 {
-        font-size: 1.4rem;
+      .port-card.revealed {
+        opacity: 1;
+        transform: translateY(0);
       }
 
-      .main-content4 {
-        margin-bottom: 1.5rem;
+      .port-card a {
+        text-decoration: none;
+        color: inherit;
+        display: block;
       }
-    }
-  </style>
-</head>
 
-<body>
-  <div id="faderhome"></div>
+      .img-wrapper {
+        overflow: hidden;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        background-color: #f4f4f4;
+        margin-bottom: 1rem;
+        aspect-ratio: 4/3;
+        border-width: 3px;
+        border-style: solid;
+      }
 
-  <nav class="navbar navbar-expand-lg sticky-top">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">
-        <img src="images/Logo2.svg" alt="Josie Logo" height="50" />
-      </a>
-      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="toggler-icon"></span>
-      </button>
+      .img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+      }
 
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link px-3" href="index.html">Work</a>
-          </li>
-          <li class="nav-item nav-button-active active">
-            <a class="nav-link px-3" href="Others.html">Others</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link px-3" href="About.html">About</a>
-          </li>
-        </ul>
+      .port-card:hover .img-wrapper img {
+        transform: scale(1.1);
+      }
+
+      .project-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #303030;
+        letter-spacing: -0.02rem;
+      }
+
+      .project-desc {
+        color: #666;
+        font-size: 1rem;
+        line-height: 1.3;
+      }
+
+      /* Page Transition */
+      #faderhome {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: white;
+        z-index: 9999;
+        pointer-events: none;
+        transition: opacity 0.5s ease-in-out;
+      }
+
+      .fade-out {
+        opacity: 0;
+      }
+
+      .fade-in {
+        opacity: 1;
+      }
+
+      /* Main Content Container - Reduced overall padding & min-height */
+      .container-fluid {
+        flex: 1 0 auto;
+        position: relative;
+        z-index: 10;
+        background-color: #fafafa;
+        background-image: url("images/Dots.svg");
+        background-attachment: fixed;
+        background-size: 70%;
+        background-repeat: repeat;
+        min-height: auto; /* Removed excessive forced height */
+        padding-bottom: 2rem !important; /* Significantly reduced bottom space */
+        border-bottom-left-radius: 80px;
+        border-bottom-right-radius: 80px;
+        overflow: hidden;
+      }
+
+      .footer-dark {
+        font-family: "IBM Plex Sans", sans-serif;
+        flex-shrink: 0;
+        background-color: #1a1a1a;
+        padding: 3rem 0 3rem; /* Compact footer padding */
+        text-align: center;
+        color: #007bff;
+        position: sticky;
+        bottom: 0;
+        z-index: 1;
+      }
+
+      .footer-text {
+        font-size: 3.8rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+        font-family: "caveat", cursive;
+        color: #f0f0f0;
+      }
+
+      .social-icons a {
+        margin: 0 12px;
+        text-decoration: none;
+        display: inline-block;
+        transition: opacity 0.2s ease;
+      }
+
+      .social-icons a:hover {
+        opacity: 0.6;
+        transform: translateY(-5px);
+      }
+
+      .social-icons img {
+        filter: brightness(0) invert(1);
+        width: 45px;
+        height: 45px;
+      }
+
+      .copyright-bar {
+        margin-top: 1.5rem;
+        padding-top: 1rem;
+        color: #999;
+        font-size: 0.85rem;
+        opacity: 0.8;
+      }
+
+      .copyright-bar p {
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="faderhome"></div>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img src="images/Logo2.svg" alt="Josie Logo" height="50" />
+        </a>
+        <button
+          class="navbar-toggler collapsed"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item nav-button-active active">
+              <a class="nav-link px-3" href="index.html">Work</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3" href="Others.html">Others</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3" href="About.html">About</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 
-  <div class="main-scroll-container">
-    <div class="container-fluid pt-4">
-      
-      <div class="row justify-content-center pt-md-5 pb-5">
-        <div class="col-md-10 col-11 text-center pt-3">
-          <h1 class="projecttitle pb-3">Illustrations</h1>
-          <p class="hero-subtitle mx-auto">
-            In my free time, I like to think up of random ideas and express them on paper 🎨 (and ipad).
-          </p>
+    <div class="container-fluid px-0 pt-5">
+      <div class="container">
+        <div class="hero-section text-center text-md-left">
+          <h1 class="hero-title mb-1">
+            My
+            <span
+              style="
+                color: #007bff;
+                font-family: 'Caveat', cursive;
+                font-size: 6rem;
+                font-weight: 500;
+              "
+              >Side Quests</span
+            >
+          </h1>
+          <h3 class="hero-subtitle mx-auto mx-md-0">
+            Beyond UI/UX, I enjoy other areas of <b style="font-weight:600;">design.</b>
+          </h3>
         </div>
       </div>
 
-      <div class="row justify-content-center pt-1 pb-5 reveal-row">
-        <div class="col-md-7 col-12">
-          <div class="row">
-            <div class="col-md-6 col-12 pb-3">
-              <img class="images w-100" src="images/Illustrations/Digital/Ah_Yi_Taiwan.jpg" alt="Ah Yi Taiwan" />
-            </div>
-            <div class="col-md-6 col-12 pb-3">
-              <img class="images w-100" src="images/Illustrations/Traditional/D_3.webp" alt="Traditional Scene" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row justify-content-center pt-3 reveal-row">
-        <div class="col-md-7 col-12">
-          <h3 class="main-content3">Singaporean Local Delights</h3>
-          <h4 class="main-content4">Drawn on Procreate</h4>
-        </div>
-      </div>
-
-      <div class="row justify-content-center mb-5 reveal-row">
-        <div class="col-md-7 col-12">
-          <div class="row">
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Digital/Morning_Breakfast.jpg" alt="Breakfast" />
-            </div>
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Digital/Retro_Snacks.jpg" alt="Snacks" />
-            </div>
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Digital/SG_Local_Food.jpg" alt="Local Food" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row justify-content-center pt-3 reveal-row">
-        <div class="col-md-7 col-12">
-          <h3 class="main-content3">Froot (Original Character)</h3>
-          <h4 class="main-content4">I like pineapples</h4>
-        </div>
-      </div>
-
-      <div class="row justify-content-center mb-1 reveal-row">
-        <div class="col-md-7 col-12">
-          <div class="row">
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Digital/Pinelope_Drumming.jpg" alt="Drumming" />
-            </div>
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Digital/Pinelope_Sticker.jpg" alt="Sticker" />
-            </div>
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Digital/Phantom_Of_The_Opera.jpg" alt="Phantom" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row justify-content-center mb-5 reveal-row">
-        <div class="col-md-7 col-12">
-          <div class="row">
-            <div class="col-md-7 col-12 pb-3">
-              <img class="images w-100 h-120" style="object-fit: cover" src="images/Illustrations/Digital/Froots_Horoscope.jpg" alt="Froots Horoscope" />
-            </div>
-            <div class="col-md-5 col-12">
-              <div class="row">
-                <div class="col-6 col-md-12 pb-3">
-                  <img class="images w-100" src="images/Illustrations/Digital/Persi.jpg" alt="Persi" />
-                </div>
-                <div class="col-6 col-md-12 pb-3">
-                  <img class="images w-100" src="images/Illustrations/Digital/Pom_Pom.jpg" alt="Pom_Pom" />
-                </div>
+      <div class="container pb-2 pt-4">
+        <div class="row pt-2">
+          <!-- Card 1 -->
+          <div class="col-md-4 port-card">
+            <a href="Motion Graphics.html">
+              <div class="img-wrapper" style="border-color: #007bff">
+                <img
+                  src="images/Others/MotionGraphics_Thumbnail.jpg"
+                  alt="Mandai X"
+                />
               </div>
-            </div>
+              <h3 class="project-title">Motion Graphics</h3>
+              <p class="project-desc">
+                Gained expertise in motion graphics from the advertising industry, leveraging Adobe software like After Effects to produce high-quality assets and microanimations.
+              </p>
+            </a>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="col-md-4 port-card">
+            <a href="Illustrations.html">
+              <div class="img-wrapper" style="border-color: #007bff">
+                <img src="images/Others/Illustration_Thumbnail.jpg" alt="GovTech" />
+              </div>
+              <h3 class="project-title">Illustrations</h3>
+              <p class="project-desc">
+               Drawing is my passion. I use various mediums such as pen, watercolor, and paint, working both traditionally and digitally.
+              </p>
+            </a>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="col-md-4 port-card">
+            <a href="#.html">
+              <div class="img-wrapper" style="border-color: #007bff">
+                <img src="images/Others/ai_Thumbnail.jpg" alt="3D Design" />
+              </div>
+              <h3 class="project-title">AI Experimentations</h3>
+              <p class="project-desc">
+                Coming soon!
+              </p>
+            </a>
           </div>
         </div>
-      </div>
-
-      <div class="row justify-content-center pt-3 reveal-row">
-        <div class="col-md-7 col-12">
-          <h3 class="main-content3">Kitchen Robots</h3>
-          <h4 class="main-content4">Pen, Watercolour on paper</h4>
-        </div>
-      </div>
-
-      <div class="row justify-content-center mb-5 reveal-row">
-        <div class="col-md-7 col-12">
-          <div class="row">
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Traditional/KR_1.webp" alt="KR 1" />
-            </div>
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Traditional/KR_2.webp" alt="KR 2" />
-            </div>
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Traditional/KR_3.webp" alt="KR 3" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row justify-content-center pt-3 reveal-row">
-        <div class="col-md-7 col-12">
-          <h3 class="main-content3">Mind dump</h3>
-          <h4 class="main-content4">Pen, Watercolour on paper</h4>
-        </div>
-      </div>
-
-      <div class="row justify-content-center mb-5 reveal-row">
-        <div class="col-md-7 col-12">
-          <div class="row">
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Traditional/D_6.webp" alt="D 6" />
-            </div>
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Traditional/D_4.webp" alt="D 4" />
-            </div>
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Traditional/D_5.webp" alt="D 5" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row justify-content-center pt-3 reveal-row">
-        <div class="col-md-7 col-12">
-          <h3 class="main-content3">Black & White</h3>
-          <h4 class="main-content4">Black Calligraphy Pen on paper</h4>
-        </div>
-      </div>
-
-      <div class="row justify-content-center mb-5 reveal-row">
-        <div class="col-md-7 col-12">
-          <div class="row">
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Traditional/BW_1.webp" alt="B&W 1" />
-            </div>
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Traditional/BW_2.webp" alt="B&W 2" />
-            </div>
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Traditional/BW_3.webp" alt="B&W 3" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row justify-content-center pt-3 reveal-row">
-        <div class="col-md-7 col-12">
-          <h3 class="main-content3">Pencil</h3>
-          <h4 class="main-content4">Graphite Pencil on paper</h4>
-        </div>
-      </div>
-
-      <div class="row justify-content-center mb-5 pb-5 reveal-row">
-        <div class="col-md-7 col-12">
-          <div class="row">
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Traditional/G_1.jpg" alt="G 1" />
-            </div>
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Traditional/G_2.jpg" alt="G 2" />
-            </div>
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Traditional/G_3.jpg" alt="G 3" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <footer class="footer-dark">
-    <div class="container">
-      <div class="footer-text">⤷ Let's work together ⋆.˚</div>
-
-      <div class="social-icons">
-        <a href="mailto:jochanxt@gmail.com" target="_blank">
-          <img src="images/Work/Icon1_Email.svg" alt="Email" />
-        </a>
-        <a href="https://linkedin.com/in/josiechan" target="_blank">
-          <img src="images/Work/Icon2_Linkedin.svg" alt="LinkedIn" />
-        </a>
-        <a href="https://instagram.com/jo.cgraphics" target="_blank">
-          <img src="images/Work/Icon3_Instagram.svg" alt="Instagram" />
-        </a>
-      </div>
-
-      <div class="copyright-bar">
-        <p>Copyright © 2026 Josie Chan</p>
       </div>
     </div>
-  </footer>
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+    <footer class="footer-dark">
+      <div class="container">
+        <div class="footer-text">⤷ Let's work together ⋆.˚</div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      var fader = document.getElementById("faderhome");
+        <div class="social-icons">
+          <a href="mailto:jochanxt@gmail.com" target="_blank">
+            <img src="images/Work/Icon1_Email.svg" alt="Email" />
+          </a>
+          <a href="https://linkedin.com/in/josiechan" target="_blank">
+            <img src="images/Work/Icon2_Linkedin.svg" alt="LinkedIn" />
+          </a>
+          <a href="https://instagram.com/jo.cgraphics" target="_blank">
+            <img src="images/Work/Icon3_Instagram.svg" alt="Instagram" />
+          </a>
+        </div>
 
-      function revealPage() {
-        if (fader) {
-          setTimeout(function () {
-            fader.classList.remove("fade-in");
-            fader.classList.add("fade-out");
-          }, 100);
+        <div class="copyright-bar">
+          <p>Copyright © 2026 Josie Chan</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var fader = document.getElementById("faderhome");
+
+        function revealPage() {
+          if (fader) {
+            setTimeout(function () {
+              fader.classList.remove("fade-in");
+              fader.classList.add("fade-out");
+            }, 100);
+          }
         }
-      }
 
-      revealPage();
+        revealPage();
 
-      window.addEventListener("pageshow", function (event) {
-        if (event.persisted) {
-          revealPage();
-        }
-      });
-
-      var anchors = document.getElementsByTagName("a");
-      for (var i = 0; i < anchors.length; i++) {
-        if (
-          anchors[i].hostname === window.location.hostname &&
-          anchors[i].pathname !== window.location.pathname &&
-          anchors[i].target !== "_blank"
-        ) {
-          anchors[i].addEventListener("click", function (event) {
-            event.preventDefault();
-            var href = this.href;
-            if (fader) {
-              fader.classList.remove("fade-out");
-              fader.classList.add("fade-in");
-              setTimeout(function () {
-                window.location = href;
-              }, 500);
-            } else {
-              window.location = href;
-            }
-          });
-        }
-      }
-
-      var observerOptions = {
-        root: null,
-        rootMargin: "0px 0px -80px 0px",
-        threshold: 0.10
-      };
-
-      var rowObserver = new IntersectionObserver(function (entries, observer) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("revealed");
-            observer.unobserve(entry.target);
+        window.addEventListener("pageshow", function (event) {
+          if (event.persisted) {
+            revealPage();
           }
         });
-      }, observerOptions);
 
-      var revealRows = document.querySelectorAll(".reveal-row");
-      revealRows.forEach(function (row) {
-        rowObserver.observe(row);
+        var anchors = document.getElementsByTagName("a");
+        for (var i = 0; i < anchors.length; i++) {
+          if (
+            anchors[i].hostname === window.location.hostname &&
+            anchors[i].pathname !== window.location.pathname &&
+            anchors[i].target !== "_blank"
+          ) {
+            anchors[i].addEventListener("click", function (event) {
+              event.preventDefault();
+              var href = this.href;
+              if (fader) {
+                fader.classList.remove("fade-out");
+                fader.classList.add("fade-in");
+                setTimeout(function () {
+                  window.location = href;
+                }, 500);
+              } else {
+                window.location = href;
+              }
+            });
+          }
+        }
+
+        var observerOptions = {
+          root: null,
+          rootMargin: "0px 0px -80px 0px",
+          threshold: 0.15,
+        };
+
+        var projectObserver = new IntersectionObserver(function (
+          entries,
+          observer,
+        ) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("revealed");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+
+        var cards = document.querySelectorAll(".port-card");
+        cards.forEach(function (card) {
+          projectObserver.observe(card);
+        });
       });
-    });
-  </script>
-</body>
-
+    </script>
+  </body>
 </html>
