@@ -1,1761 +1,2889 @@
 <!doctype html>
 <html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Carattere&family=IBM+Plex+Sans:ital,wdth,wght@0,75..100,100..700;1,75..100,100..700&"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;700&display=swap"
-    rel="stylesheet" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Carattere&family=IBM+Plex+Sans:ital,wdth,wght@0,75..100,100..700;1,75..100,100..700&"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-
-  <link rel="stylesheet" href="styles.css" />
-  <style>
-    /* Override scrollbar color to purple for GovTech page */
-    :root {
-      --scrollbar-color: #715ad8;
-      --scrollbar-hover: #5a45b8;
-    }
-
-    .wf-loading * {
-      opacity: 0;
-    }
-
-    /* Navigation */
-    .navbar {
-      padding: 0.8rem 0.8rem;
-      background: #ffffff;
-      border-bottom: 1px solid #eaeaea;
-      z-index: 1030;
-    }
-
-    .nav-link {
-      color: #c3c3c3 !important;
-      font-family: "caveat", cursive;
-      font-weight: 550;
-      font-size: 1.5rem;
-      transition: color 0.2s ease;
-    }
-
-    .nav-link:hover,
-    .nav-button-active .nav-link {
-      color: #007bff !important;
-    }
-
-    /* Hamburger to X Animation */
-    .navbar-toggler {
-      border: none;
-      padding: 10px 10px;
-      outline: none !important;
-    }
-
-    .toggler-icon {
-      width: 24px;
-      height: 2px;
-      background-color: #007bff;
-      display: block;
-      transition: all 0.3s ease-in-out;
-      position: relative;
-    }
-
-    .toggler-icon::before,
-    .toggler-icon::after {
-      content: "";
-      width: 24px;
-      height: 2px;
-      background-color: #007bff;
-      display: block;
-      transition: all 0.3s ease-in-out;
-      position: absolute;
-    }
-
-    .toggler-icon::before {
-      top: -8px;
-    }
-
-    .toggler-icon::after {
-      bottom: -8px;
-    }
-
-    .navbar-toggler:not(.collapsed) .toggler-icon {
-      background-color: transparent;
-    }
-
-    .navbar-toggler:not(.collapsed) .toggler-icon::before {
-      transform: rotate(45deg);
-      top: 0;
-    }
-
-    .navbar-toggler:not(.collapsed) .toggler-icon::after {
-      transform: rotate(-45deg);
-      bottom: 0;
-    }
-
-    body {
-      height: 100%;
-      margin: 0;
-      cursor: url("images/Pencil.png"), auto;
-      font-family: "IBM Plex Sans", sans-serif;
-      color: #303030;
-      background-color: #1a1a1a;
-      display: flex;
-      flex-direction: column;
-      letter-spacing: -0.02rem;
-      padding: 0;
-    }
-
-    /* Footer Styles */
-    .footer-dark {
-      font-family: "IBM Plex Sans", sans-serif;
-      flex-shrink: 0;
-      background-color: #1a1a1a;
-      padding: 6.5rem 0 6.5rem;
-      text-align: center;
-      color: #007bff;
-      position: sticky;
-      bottom: 0;
-      z-index: 1;
-    }
-
-    .footer-text {
-      font-size: 3.8rem;
-      font-weight: 500;
-      margin-bottom: 1.5rem;
-      font-family: "caveat", cursive;
-      color: #f0f0f0;
-    }
-
-    .social-icons a {
-      margin: 0 12px;
-      text-decoration: none;
-      display: inline-block;
-      transition: opacity 0.2s ease;
-    }
-
-    .social-icons a:hover {
-      opacity: 0.6;
-      transform: translateY(-5px);
-    }
-
-    .social-icons img {
-      width: 45px;
-      height: 45px;
-    }
-
-    .copyright-bar {
-      margin-top: 2rem;
-      padding-top: 1.5rem;
-      color: #999;
-      font-size: 0.85rem;
-      opacity: 0.8;
-    }
-
-    .copyright-bar p {
-      margin-bottom: 0;
-    }
-
-    /* Pill Buttons */
-    .btn-outline-work {
-      padding: 8px 16px;
-      margin: 8px;
-      border-radius: 50px !important;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: #ffffff !important;
-      text-decoration: none !important;
-      display: inline-block;
-      border: none;
-    }
-
-    .btn-outline-work:nth-child(1) {
-      background-color: #07846b;
-    }
-
-    .btn-outline-work:nth-child(2) {
-      background-color: #785ef0;
-    }
-
-    .btn-outline-work:nth-child(3) {
-      background-color: #9d7e51;
-    }
-
-    .btn-outline-work:nth-child(4) {
-      background-color: #e68700;
-    }
-
-    .btn-outline-work:nth-child(5) {
-      background-color: #ea474a;
-    }
-
-    .btn-outline-work:nth-child(6) {
-      background-color: #2B6B90;
-    }
-
-    .btn-outline-work:nth-child(7) {
-      background-color: #a04d31;
-    }
-
-    .btn-outline-work:hover {
-      transform: translateY(-2px);
-      filter: brightness(80%);
-      color: #ffffff !important;
-    }
-
-    .gap-3 {
-      gap: 1rem;
-    }
-
-    .accordion-body {
-      padding: 0;
-      font-size: 14px;
-      font-weight: 350;
-      line-height: 1.3;
-      color: #666;
-      font-family: "IBM Plex Sans", sans-serif;
-      font-style: italic;
-    }
-
-    /* Image Slider Styles */
-    .image-slider-container {
-      max-width: 100%;
-      margin: 0 auto;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-      overflow: hidden;
-    }
-
-    .slider-images-region {
-      position: relative;
-      display: grid;
-      grid-template-columns: 1fr;
-      background: #f5f5f5;
-      border-radius: 12px 12px 0 0;
-    }
-
-    .slider-wrapper {
-      position: relative;
-      width: 100%;
-      padding-bottom: 56.25%;
-      background: #f5f5f5;
-      overflow: hidden;
-      border-radius: 12px 12px 0 0;
-    }
-
-    .slider-content {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .slider-image {
-      max-width: 100%;
-      max-height: 100%;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-    }
-
-    .slider-panels-region {
-      position: relative;
-      display: grid;
-      grid-template-columns: 1fr;
-      background: white;
-      border-radius: 0 0 12px 12px;
-      border-top: 1px solid #eaeaea;
-    }
-
-    .slider-panel {
-      grid-column: 1;
-      grid-row: 1;
-      opacity: 0;
-      visibility: hidden;
-      transition:
-        opacity 0.3s ease,
-        visibility 0.3s ease;
-      padding: 25px;
-      text-align: left;
-    }
-
-    .slider-panel.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .slider-title {
-      font-size: 22px;
-      font-weight: 600;
-      margin: 0 0 8px 0;
-      color: #1a1a1a;
-      font-family: "IBM Plex Sans", sans-serif;
-      letter-spacing: -0.02rem;
-    }
-
-    .slider-description {
-      font-size: 14px;
-      font-weight: 400;
-      margin: 0;
-      color: #666;
-      line-height: 1.4;
-      font-family: "IBM Plex Sans", sans-serif;
-    }
-
-    .slider-nav {
-      position: absolute;
-      top: 50%;
-      width: 100%;
-      transform: translateY(-50%);
-      display: flex;
-      justify-content: space-between;
-      pointer-events: none;
-      z-index: 20;
-      padding: 0 15px;
-      box-sizing: border-box;
-    }
-
-    .slider-arrow {
-      width: 50px;
-      height: 50px;
-      background: #ffffff;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      pointer-events: all;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      color: #715ad8;
-      font-size: 24px;
-      font-weight: bold;
-    }
-
-    .slider-arrow:hover {
-      background: white;
-      transform: scale(1.1);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-    }
-
-    .slider-arrow-left::after {
-      content: "\2039";
-      font-size: 32px;
-      margin-right: 3px;
-    }
-
-    .slider-arrow-right::after {
-      content: "\203a";
-      font-size: 32px;
-      margin-left: 3px;
-    }
-
-    .slider-dots {
-      position: absolute;
-      bottom: 14px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 8px;
-      justify-content: center;
-      z-index: 30;
-      padding: 0;
-      background: transparent;
-      pointer-events: all;
-    }
-
-    .dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.55);
-      cursor: pointer;
-      border: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-      flex-shrink: 0;
-    }
-
-    .dot.active {
-      background: #715ad8;
-      transform: scale(1.3);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
-    }
-
-    .dot:hover {
-      background: #715ad8;
-    }
-
-    .slider-slide {
-      grid-column: 1;
-      grid-row: 1;
-      opacity: 0;
-      visibility: hidden;
-      transition:
-        opacity 0.3s ease,
-        visibility 0.3s ease;
-    }
-
-    .slider-slide.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    @media (max-width: 768px) {
-      .slider-title {
-        font-size: 18px;
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/svg+xml" href="images/Logo1.svg" />
+    <style>
+      .wf-loading * {
+        opacity: 0;
       }
 
-      .slider-description {
-        font-size: 12px;
+      /* Navigation */
+      .navbar {
+        padding: 0.8rem 0.8rem;
+        background: #ffffff;
+        border-bottom: 1px solid #eaeaea;
+        z-index: 1030;
       }
 
-      .slider-arrow {
-        width: 36px;
-        height: 36px;
-        font-size: 18px;
+      .nav-link {
+        color: #c3c3c3 !important;
+        font-family: "caveat", cursive;
+        font-weight: 550;
+        font-size: 1.5rem;
+        transition: color 0.2s ease;
+      }
+
+      .nav-link:hover,
+      .nav-button-active .nav-link {
+        color: #007bff !important;
+      }
+
+      /* Hamburger to X Animation */
+      .navbar-toggler {
+        border: none;
+        padding: 10px 10px;
+        outline: none !important;
+      }
+
+      .toggler-icon {
+        width: 24px;
+        height: 2px;
+        background-color: #007bff;
+        display: block;
+        transition: all 0.3s ease-in-out;
+        position: relative;
+      }
+
+      .toggler-icon::before,
+      .toggler-icon::after {
+        content: "";
+        width: 24px;
+        height: 2px;
+        background-color: #007bff;
+        display: block;
+        transition: all 0.3s ease-in-out;
+        position: absolute;
+      }
+
+      .toggler-icon::before {
+        top: -8px;
+      }
+
+      .toggler-icon::after {
+        bottom: -8px;
+      }
+
+      .navbar-toggler:not(.collapsed) .toggler-icon {
+        background-color: transparent;
+      }
+
+      .navbar-toggler:not(.collapsed) .toggler-icon::before {
+        transform: rotate(45deg);
+        top: 0;
+      }
+
+      .navbar-toggler:not(.collapsed) .toggler-icon::after {
+        transform: rotate(-45deg);
+        bottom: 0;
+      }
+
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        cursor: url("images/Pencil.png"), auto;
+        font-family: "IBM Plex Sans", sans-serif;
+        color: #303030;
+        background-color: #1a1a1a;
+        display: flex;
+        flex-direction: column;
+        letter-spacing: -0.02rem;
+        padding: 0;
+      }
+
+      /* Footer Styles */
+      .footer-dark {
+        font-family: "IBM Plex Sans", sans-serif;
+        flex-shrink: 0;
+        background-color: #1a1a1a;
+        padding: 6.5rem 0 6.5rem;
+        text-align: center;
+        color: #007bff;
+        position: sticky;
+        bottom: 0;
+        z-index: 1;
+      }
+
+      .footer-text {
+        font-size: 3.8rem;
+        font-weight: 500;
+        margin-bottom: 1.5rem;
+        font-family: "caveat", cursive;
+        color: #f0f0f0;
+      }
+
+      .social-icons a {
+        margin: 0 12px;
+        text-decoration: none;
+        display: inline-block;
+        transition: opacity 0.2s ease;
+      }
+
+      .social-icons a:hover {
+        opacity: 0.6;
+        transform: translateY(-5px);
+      }
+
+      .social-icons img {
+        width: 45px;
+        height: 45px;
+      }
+
+      .copyright-bar {
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        color: #999;
+        font-size: 0.85rem;
+        opacity: 0.8;
+      }
+
+      .copyright-bar p {
+        margin-bottom: 0;
+      }
+
+      /* Pill Buttons */
+      .btn-outline-work {
+        padding: 8px 16px;
+        margin: 8px;
+        border-radius: 50px !important;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: #ffffff !important;
+        text-decoration: none !important;
+        display: inline-block;
+        border: none;
+      }
+
+      .btn-outline-work:focus:not(:focus-visible) {
+        outline: none;
+        box-shadow: none !important;
+      }
+
+      .btn-outline-work:nth-child(1) {
+        background-color: #07846b;
+      }
+
+      .btn-outline-work:nth-child(2) {
+        background-color: #715ad8;
+      }
+
+      .btn-outline-work:nth-child(3) {
+        background-color: #d63d3f;
+      }
+
+      .btn-outline-work:nth-child(4) {
+        background-color: #dd8203;
+      }
+
+      .btn-outline-work:nth-child(5) {
+        background-color: #ea474a;
+      }
+
+      .btn-outline-work:nth-child(6) {
+        background-color: #2b6b90;
+      }
+
+      .btn-outline-work:nth-child(7) {
+        background-color: #a04d31;
+      }
+
+      .btn-outline-work:hover {
+        transform: translateY(-2px);
+        filter: brightness(80%);
+        color: #ffffff !important;
+      }
+
+      .gap-3 {
+        gap: 1rem;
+      }
+
+      .accordion-body {
+        padding: 0;
+        font-size: 14px;
+        font-weight: 350;
+        line-height: 1.3;
+        color: #666;
+        font-family: "IBM Plex Sans", sans-serif;
+        font-style: italic;
+      }
+
+      .images-light {
+        border: 1px solid #eaeaea;
+        border-radius: 12px;
+      }
+
+      /* Lottie hero illustrations */
+      .lottie-animation {
+        width: 100%;
+        aspect-ratio: 656 / 369;
+        overflow: hidden;
+      }
+
+      .lottie-animation svg {
+        display: block;
+        width: 100% !important;
+        height: 100% !important;
+      }
+
+      /* Image Slider Styles */
+      .image-slider-container {
+        max-width: 100%;
+        margin: 0 auto;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+        border: 1px solid #eaeaea;
+        /* Added shorthand property */
+      }
+
+      .slider-images-region {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr;
+        background: #f5f5f5;
+        border-radius: 12px 12px 0 0;
+      }
+
+      .slider-wrapper {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%;
+        background: #f5f5f5;
+        overflow: hidden;
+        border-radius: 12px 12px 0 0;
+      }
+
+      .slider-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .slider-image {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+      }
+
+      .slider-panels-region {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr;
+        background: #f8f6ff;
+        border-radius: 0 0 12px 12px;
+        border-top: 1px solid #eaeaea;
       }
 
       .slider-panel {
-        padding: 20px 15px;
+        grid-column: 1;
+        grid-row: 1;
+        opacity: 0;
+        visibility: hidden;
+        transition:
+          opacity 0.3s ease,
+          visibility 0.3s ease;
+        padding: 25px;
+        text-align: left;
+      }
+
+      .slider-panel.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .slider-title {
+        font-size: 22px;
+        font-weight: 600;
+        margin: 0 0 8px 0;
+        color: #1a1a1a;
+        font-family: "IBM Plex Sans", sans-serif;
+        letter-spacing: -0.02rem;
+      }
+
+      .slider-description {
+        font-size: 14px;
+        font-weight: 400;
+        margin: 0;
+        color: #666;
+        line-height: 1.4;
+        font-family: "IBM Plex Sans", sans-serif;
+      }
+
+      .slider-nav {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        transform: translateY(-50%);
+        display: flex;
+        justify-content: space-between;
+        pointer-events: none;
+        z-index: 20;
+        padding: 0 15px;
+        box-sizing: border-box;
+      }
+
+      .slider-arrow {
+        width: 50px;
+        height: 50px;
+        background: rgba(255, 255, 255, 0.9);
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: all;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        color: #715ad8;
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .slider-arrow:hover {
+        background: white;
+        transform: scale(1.1);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      .slider-arrow-left::after {
+        content: "\2039";
+        font-size: 32px;
+        margin-right: 3px;
+      }
+
+      .slider-arrow-right::after {
+        content: "\203a";
+        font-size: 32px;
+        margin-left: 3px;
+      }
+
+      .slider-dots {
+        position: absolute;
+        bottom: 14px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        z-index: 30;
+        padding: 0;
+        background: transparent;
+        pointer-events: all;
       }
 
       .dot {
-        width: 8px;
-        height: 8px;
-      }
-    }
-
-    /* Purple Branding Section Styling */
-    .hero-purple-section {
-      background-color: #715ad8;
-      color: #ffffff;
-      font-family: "IBM Plex Sans", sans-serif;
-      text-align: center;
-      padding: 1.5rem 2rem 3rem 2rem;
-    }
-
-    .hero-purple-title {
-      font-size: 3rem;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.03rem;
-    }
-
-    .tag-container {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .tag {
-      background-color: #ffffff;
-      color: #715ad8;
-      padding: 0.4rem 1.2rem;
-      border-radius: 50px;
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-
-    .hero-purple-quote {
-      font-size: 1.6rem;
-      font-weight: 400;
-      font-style: italic;
-      max-width: 850px;
-      margin: 0 auto;
-      line-height: 1.4;
-    }
-
-    .hero-image-wrapper {
-      width: 100%;
-      overflow: hidden;
-      background-color: #715ad8;
-      padding: 5rem 5rem 3rem 5rem;
-      transition: padding 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-
-    .hero-image-wrapper img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 20px;
-      transition: border-radius 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-
-    .main-scroll-container {
-      flex: 1 0 auto;
-      position: relative;
-      z-index: 10;
-      margin-top: 0;
-      background-color: #ffffff;
-      display: block;
-      border-bottom-left-radius: 80px;
-      border-bottom-right-radius: 80px;
-      overflow: hidden;
-    }
-
-    @media (max-width: 768px) {
-      .hero-image-wrapper {
-        padding: 1.5rem 15px 0 15px !important;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.55);
+        cursor: pointer;
+        border: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+        flex-shrink: 0;
       }
 
-      .hero-image-wrapper img {
-        border-radius: 12px !important;
-        transform: scale(1.05);
-        transform-origin: center top;
+      .dot.active {
+        background: #715ad8;
+        transform: scale(1.3);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
       }
 
+      .dot:hover {
+        background: #715ad8;
+      }
+
+      .slider-slide {
+        grid-column: 1;
+        grid-row: 1;
+        opacity: 0;
+        visibility: hidden;
+        transition:
+          opacity 0.3s ease,
+          visibility 0.3s ease;
+      }
+
+      .slider-slide.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      /* Reference Section Styling */
       .hero-purple-section {
-        padding: 1.5rem 15px 3rem 15px !important;
+        background-color: #715ad8;
+        color: #ffffff;
+        font-family: "IBM Plex Sans", sans-serif;
+        text-align: center;
+        padding: 1.5rem 2rem 3rem 2rem;
       }
 
       .hero-purple-title {
-        font-size: 2.2rem;
+        font-size: 3rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        letter-spacing: -0.03rem;
+      }
+
+      .tag-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-bottom: 0rem;
+      }
+
+      .tag {
+        background-color: #ffffff;
+        color: #715ad8;
+        padding: 0.4rem 1.2rem;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: 600;
       }
 
       .hero-purple-quote {
+        font-size: 1.8rem;
+        font-weight: 450;
+        font-family: "IBM Plex Sans", sans-serif;
+        color: #715ad8;
+        max-width: 900px;
+        margin: 0 auto;
+        line-height: 1.1;
+      }
+
+      .hero-image-wrapper {
+        width: 100%;
+        overflow: hidden;
+        background-color: #715ad8;
+        padding: 5rem 5rem 3rem 5rem;
+        transition: padding 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+      }
+
+      .hero-image-wrapper img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 20px;
+        transform-origin: center;
+        transition: border-radius 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+      }
+
+      .main-scroll-container {
+        flex: 1 0 auto;
+        position: relative;
+        z-index: 10;
+        margin-top: 0;
+        background-color: #ffffff;
+        display: block;
+        border-bottom-left-radius: 80px;
+        border-bottom-right-radius: 80px;
+        overflow: hidden;
+      }
+
+      /* Enforced Global Mobile Settings with Correct Side Padding */
+      @media (max-width: 768px) {
+        .main-scroll-container {
+          border-bottom-left-radius: 0 !important;
+          border-bottom-right-radius: 0 !important;
+        }
+
+        .hero-image-wrapper {
+          padding: 0 !important;
+        }
+
+        .hero-image-wrapper img {
+          border-radius: 0 !important;
+        }
+
+        .hero-purple-section {
+          padding: 2rem 1.25rem 2.5rem 1.25rem !important;
+        }
+
+        .hero-purple-title {
+          font-size: 2.2rem;
+        }
+
+        .hero-purple-quote {
+          font-size: 1.25rem;
+        }
+
+        .container {
+          padding-left: 1.25rem !important;
+          padding-right: 1.25rem !important;
+        }
+
+        .container-fluid {
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+        }
+
+        .row {
+          margin-left: 0 !important;
+          margin-right: 0 !important;
+        }
+
+        .col-12,
+        .col-md-10,
+        .col-md-12 {
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+        }
+
+        .slider-title {
+          font-size: 18px;
+        }
+
+        .slider-description {
+          font-size: 12px;
+        }
+
+        .slider-arrow {
+          width: 36px;
+          height: 36px;
+          font-size: 18px;
+        }
+
+        .slider-panel {
+          padding: 20px 15px;
+        }
+
+        .dot {
+          width: 8px;
+          height: 8px;
+        }
+      }
+
+      /* Scroll animations structure sync */
+      #faderhome {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: white;
+        z-index: 9999;
+        pointer-events: none;
+        transition: opacity 0.5s ease-in-out;
+      }
+
+      .fade-out {
+        opacity: 0;
+      }
+
+      .fade-in {
+        opacity: 1;
+      }
+
+      .reveal,
+      .port-card {
+        opacity: 0;
+        transform: translateY(40px);
+        transition:
+          opacity 1.1s cubic-bezier(0.25, 1, 0.5, 1),
+          transform 1.1s cubic-bezier(0.25, 1, 0.5, 1);
+        will-change: transform, opacity;
+      }
+
+      .reveal.active,
+      .port-card.revealed {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Case Study Labels & Typography */
+      .case-study-label {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: #715ad8;
+        letter-spacing: 0.05rem;
+        text-transform: uppercase;
+        margin-bottom: 0.75rem;
+        font-family: "IBM Plex Sans", sans-serif;
+      }
+
+      .case-study-title {
+        font-size: 2.5rem;
+        font-weight: 600;
+        color: #1a1a1a;
+        letter-spacing: -0.04rem;
+        margin-bottom: 1.5rem;
+        font-family: "IBM Plex Sans", sans-serif;
+      }
+
+      /* Challenge Box Styling */
+      .challenge-box-light {
+        border: 1px solid #eaeaea;
+        border-left: 5px solid #715ad8;
+        border-radius: 8px;
+        padding: 1.5rem 2rem;
+        background-color: #ffffff;
+        margin-bottom: 2rem;
+      }
+
+      .challenge-box-dark {
+        border: 1px solid #eaeaea;
+        border-left: 5px solid #715ad8;
+        border-radius: 8px;
+        padding: 1.5rem 2rem;
+        background-color: #f8f6ff;
+        margin-bottom: 2rem;
+      }
+
+      .challenge-label {
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: #715ad8;
+        letter-spacing: 0.05rem;
+        margin-bottom: 0.5rem;
+        font-family: "IBM Plex Sans", sans-serif;
+        text-transform: uppercase;
+      }
+
+      .challenge-text {
+        font-size: 1.1rem;
+        font-weight: 550;
+        line-height: 1.45;
+        color: #2b2b2b;
+        font-family: "IBM Plex Sans", sans-serif;
+      }
+
+      /* General Cards Styling */
+      .cs-card {
+        border-radius: 12px;
+        padding: 2rem;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+
+      .cs-card-dark {
+        border: 1px solid #eaeaea;
+        background-color: #4834a3;
+        color: #ffffff;
+      }
+
+      .cs-card-light {
+        border: 1px solid #eaeaea;
+        background-color: #f8f6ff;
+        color: #715ad8;
+      }
+
+      .cs-card-number {
+        font-family: "caveat", cursive;
+        font-size: 2rem;
+        font-weight: 550;
+        line-height: 1;
+        margin-bottom: 1rem;
+      }
+
+      .cs-card-dark .cs-card-number {
+        color: #e5e0fa;
+      }
+
+      .cs-card-light .cs-card-number {
+        color: #715ad8;
+      }
+
+      .cs-card-title {
         font-size: 1.25rem;
+        font-weight: 550;
+        margin-bottom: 0.5rem;
+        font-family: "IBM Plex Sans", sans-serif;
       }
 
-      .container {
-        padding-left: 15px !important;
-        padding-right: 15px !important;
+      .cs-card-dark .cs-card-title {
+        color: #ffffff;
       }
-    }
 
-    /* Scroll Animations Structure */
-    #faderhome {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: white;
-      z-index: 9999;
-      pointer-events: none;
-      transition: opacity 0.5s ease-in-out;
-    }
+      .cs-card-light .cs-card-title {
+        color: #1a1a1a;
+      }
 
-    .fade-out {
-      opacity: 0;
-    }
+      .cs-card-text {
+        font-size: 0.95rem;
+        line-height: 1.3;
+        margin-bottom: 0;
+      }
 
-    .fade-in {
-      opacity: 1;
-    }
+      .cs-card-dark .cs-card-text {
+        color: rgba(255, 255, 255, 0.85);
+      }
 
-    .reveal,
-    .port-card {
-      opacity: 0;
-      transform: translateY(40px);
-      transition:
-        opacity 1.1s cubic-bezier(0.25, 1, 0.5, 1),
-        transform 1.1s cubic-bezier(0.25, 1, 0.5, 1);
-      will-change: transform, opacity;
-    }
+      .cs-card-light .cs-card-text {
+        color: #4a4a4a;
+      }
 
-    .reveal.active,
-    .port-card.revealed {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  </style>
-  <title>GovTech</title>
-</head>
+      /* Objectives Cards */
+      .cs-objective-card {
+        background-color: #f8f6ff;
+        border-radius: 12px;
+        padding: 2rem 1.5rem;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
 
-<body>
-  <div id="faderhome"></div>
-  <svg id="fader"></svg>
+      .cs-objective-card .cs-card-number {
+        color: #715ad8;
+      }
 
-  <!-- Nav bar -->
-  <nav class="navbar navbar-expand-lg sticky-top">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">
-        <img src="images/Logo2.svg" alt="Josie Logo" height="50" />
-      </a>
-      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="toggler-icon"></span>
-      </button>
+      .cs-objective-text {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: #4a4a4a;
+        margin-bottom: 0;
+        font-family: "IBM Plex Sans", sans-serif;
+      }
 
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item nav-button-active active">
-            <a class="nav-link px-3" href="index.html">Work</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link px-3" href="Others.html">Others</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link px-3" href="About.html">About</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+      /* Pivot Banner Styling */
+      .pivot-banner {
+        background-color: #4834a3;
+        border-radius: 12px;
+        padding: 1.5rem 2rem;
+        color: #ffffff;
+      }
 
-  <!-- Main Scroll Container Structure containing the Inline Header Image and Sections -->
-  <div class="main-scroll-container">
-    <!-- Top Part Layout matching standard padding-reveal rules -->
-    <div class="hero-image-wrapper" id="heroImageWrapper">
-      <img src="images/GovTech/A11y playground mockup.jpg" id="heroHeaderImg" alt="GovTech Header Image" />
-    </div>
+      .pivot-content {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+      }
 
-    <!-- Hero Text Branding Area -->
-    <div class="hero-purple-section">
-      <h1 class="hero-purple-title">GovTech a11y Playground</h1>
-      <div class="row justify-content-center pb-2 pt-2 mx-0">
-        <div class="tag-container">
-          <span class="tag" style="background: #ffffff; color: #715ad8">UX/UI</span>
-          <span class="tag" style="background: #ffffff; color: #715ad8">Art Direction</span>
-          <span class="tag" style="background: #ffffff; color: #715ad8">User Testing</span>
-          <span class="tag" style="background: #ffffff; color: #715ad8">2025</span>
+      .pivot-icon {
+        font-size: 2.25rem;
+        line-height: 1;
+        flex-shrink: 0;
+      }
+
+      .pivot-text {
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-bottom: 0;
+        font-family: "IBM Plex Sans", sans-serif;
+      }
+
+      .pivot-text strong {
+        font-weight: 700;
+      }
+
+      .card {
+        border: 1px solid #eaeaea !important;
+      }
+
+      /* Card banner */
+      .card-container {
+        font-family: "IBM Plex Sans", sans-serif;
+        border-radius: 12px;
+        overflow: hidden;
+        max-width: 850px;
+        width: 100%;
+        margin: 20px auto;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      }
+
+      /* Top Banner */
+      .top-banner {
+        background-color: #312178;
+        color: #d8cefa;
+        padding: 18px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        font-size: 1.05rem;
+        text-align: center;
+      }
+
+      .top-banner strong {
+        color: #ffffff;
+        font-weight: 700;
+      }
+
+      .check-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #715ad8;
+        color: #ffffff;
+        border-radius: 4px;
+        width: 20px;
+        height: 20px;
+        font-size: 13px;
+        font-weight: bold;
+        flex-shrink: 0;
+      }
+
+      /* Bottom Grid */
+      .bottom-grid {
+        background-color: #d1c7f7;
+        display: flex;
+        color: #312178;
+      }
+
+      .grid-column {
+        flex: 1;
+        padding: 24px;
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .grid-column:first-child {
+        border-right: 1px solid rgba(49, 33, 120, 0.15);
+      }
+
+      .column-text {
+        font-size: 1rem;
+        line-height: 1.35;
+        margin: 0;
+        font-weight: 500;
+      }
+
+      .column-text em {
+        font-style: italic;
+        font-weight: 600;
+      }
+
+      /* Responsive adjustments for mobile */
+      @media (max-width: 600px) {
+        .bottom-grid {
+          flex-direction: column;
+        }
+
+        .grid-column:first-child {
+          border-right: none;
+          border-bottom: 1px solid rgba(49, 33, 120, 0.15);
+        }
+
+        .top-banner {
+          font-size: 0.95rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .case-study-title {
+          font-size: 1.75rem;
+        }
+
+        .main-content4 {
+          font-size: 0.95rem;
+        }
+
+        .challenge-text {
+          font-size: 1.05rem;
+        }
+
+        .cs-card {
+          padding: 1.5rem;
+        }
+
+        .cs-objective-card {
+          padding: 1.5rem;
+        }
+
+        .pivot-banner {
+          padding: 1.25rem 1.5rem;
+        }
+
+        .pivot-content {
+          gap: 0.75rem;
+        }
+      }
+    </style>
+    <title>GovTech</title>
+    <style>
+      :root {
+        --scrollbar-color: #715ad8;
+        --scrollbar-hover: #5a45b8;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="faderhome"></div>
+    <svg id="fader"></svg>
+
+    <!-- Nav bar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img src="images/Logo2.svg" alt="Josie Logo" height="30" />
+        </a>
+        <button
+          class="navbar-toggler collapsed"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item nav-button-active active">
+              <a class="nav-link px-3" href="index.html">Work</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3" href="Playground.html">Playground</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3" href="About.html">About</a>
+            </li>
+          </ul>
         </div>
       </div>
-      <p class="hero-purple-quote">
-        “ How can we empower professionals to build more accessible and
-        inclusive digital services? ”
-      </p>
-    </div>
+    </nav>
 
-    <div class="container-fluid px-0">
-      <div class="container py-5">
-        <div class="row justify-content-center">
-          <div class="col-md-10 col-12 text-left">
-            <div class="row">
-              <!-- Left Text Column -->
-              <div class="col-md-6 col-12 pr-md-4 text-left">
-                <h2 class="text-left pb-3 pt-0" style="
-                      font-size: 24px;
-                      font-weight: 600;
+    <!-- Main Scroll Container Structure containing the Inline Header Image and Sections -->
+    <div class="main-scroll-container">
+      <div class="hero-image-wrapper" id="heroImageWrapper">
+        <img
+          src="images/GovTech/A11y playground mockup.jpg"
+          id="heroHeaderImg"
+          alt="GovTech Header Image"
+        />
+      </div>
+
+      <!-- Hero Text Branding Area -->
+      <div class="hero-purple-section">
+        <h1 class="hero-purple-title">GovTech a11y Playground</h1>
+        <div class="row justify-content-center pb-2 pt-2 mx-0">
+          <div class="tag-container">
+            <span class="tag" style="background: #ffffff; color: #715ad8"
+              >UI/UX</span
+            >
+            <span class="tag" style="background: #ffffff; color: #715ad8"
+              >Art Direction</span
+            >
+            <span class="tag" style="background: #ffffff; color: #715ad8"
+              >User Testing</span
+            >
+            <span class="tag" style="background: #ffffff; color: #715ad8"
+              >2025</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <section class="container-fluid py-5" style="background-color: #ffffff">
+        <div class="container pt-4 pb-4">
+          <div class="row">
+            <div class="col-12 text-left">
+              <!-- Row 1: PROJECT OVERVIEW Label Only -->
+              <div class="row">
+                <div class="col-12 text-left mb-3">
+                  <div
+                    class="case-study-label"
+                    style="
+                      font-size: 0.85rem;
+                      font-weight: 700;
                       color: #715ad8;
-                      font-family: &quot;IBM Plex Sans&quot;, sans-serif;
-                    ">
-                  Overview
-                </h2>
-                <h3 class="text-left main-content4 pb-3 pt-0">
-                  During summer 2025, I joined
-                  <a href="https://www.tech.gov.sg/" style="color: black" target="_blank"><i>GovTech Singapore</i></a>
-                  as a UX/UI Designer intern. Below are some contributions I
-                  made to the a11y Playground team, which I joined halfway
-                  through their design process. My role primarily involved
-                  setting the site's art direction with illustrations, as well
-                  as participating in user interviews and synthesising data
-                  for site refinement.
-                </h3>
+                      letter-spacing: 0.05rem;
+                    "
+                  >
+                    PROJECT OVERVIEW
+                  </div>
+                </div>
               </div>
 
-              <!-- Right Box Column -->
-              <div class="col-md-6 col-12 mt-4 mt-md-0 text-left">
-                <div style="
+              <!-- Top Overview & Card Row -->
+              <div class="row align-items-stretch">
+                <!-- Left Column: Overview -->
+                <div
+                  class="col-md-6 col-12 pr-md-5 text-left d-flex flex-column justify-content-center"
+                >
+                  <h3 class="hero-purple-quote">
+                    “ How can we empower digital professionals to build more
+                    accessible and inclusive digital services? ”
+                  </h3>
+
+                  <h3 class="main-content4">
+                    During summer 2025, I joined
+                    <u
+                      ><i
+                        ><a
+                          href="https://www.tech.gov.sg/"
+                          style="color: #1a1a1a"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          >GovTech Singapore</a
+                        ></i
+                      ></u
+                    >
+                    as a UI/UX Designer intern. Below are some contributions I
+                    made to the
+                    <u
+                      ><i
+                        ><a
+                          href="https://a11y.tech.gov.sg/"
+                          style="color: #1a1a1a"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          >a11y Playground</a
+                        ></i
+                      ></u
+                    >
+                    team, which I joined halfway through their design process.
+                    My role primarily involved setting the site's art direction
+                    with illustrations, as well as participating in user
+                    interviews and synthesising data for site refinement.
+                  </h3>
+                </div>
+
+                <!-- Right Column: My Contributions Box -->
+                <div class="col-md-6 col-12 mt-4 mt-md-0 text-left">
+                  <div
+                    style="
                       border: 2px solid #715ad8;
-                      padding: 25px;
-                      border-radius: 10px;
-                    ">
-                  <h3 class="text-left main-content4 pt-0 pb-2" style="font-size: 16px; color: #715ad8">
-                    <b style="font-weight: 550">My Contributions</b>
-                  </h3>
-                  <h3 class="text-left accordion-body pb-3 pt-0 pl-3">
-                    <li>
-                      Conceptualised and provided reusable
-                      illustrations/animations from scratch
-                    </li>
-                    <br />
-                    <li>
-                      Presented my design process with 30+ UI/UX Designers
-                      during a monthly company huddle
-                    </li>
-                    <br />
-                    <li>
-                      Conducted user interviews and synthesised observations
-                      and insights, presented findings to team
-                    </li>
-                    <br />
-                    <li>Created and updated Figma frames for the website</li>
-                  </h3>
-
-                  <div class="row pt-2">
-                    <div class="col-6 text-left">
-                      <h3 class="text-left main-content4 pt-0 pb-2" style="font-size: 16px; color: #715ad8">
-                        <b style="font-weight: 550">Timeline</b>
-                      </h3>
-                      <h3 class="text-left accordion-body pb-0 pt-0 pl-3">
-                        <li>3 Months</li>
-                      </h3>
-                    </div>
-                    <div class="col-6 text-left">
-                      <h3 class="text-left main-content4 pt-0 pb-2" style="font-size: 16px; color: #715ad8">
-                        <b style="font-weight: 550">Team Members</b>
-                      </h3>
-                      <h3 class="text-left accordion-body pb-0 pt-0 pl-3">
-                        <li>
-                          5 UX Designers, 4 Software Engineers, 1 Product
-                          Manager
+                      background-color: #f8f6ff;
+                      padding: 28px;
+                      border-radius: 12px;
+                      height: fit-content;
+                    "
+                  >
+                    <h3
+                      class="case-study-label text-left pt-0 pb-3"
+                      style="color: #715ad8"
+                    >
+                      My contributions
+                    </h3>
+                    <ul
+                      style="
+                        list-style: none;
+                        padding-left: 0;
+                        margin-bottom: 0;
+                        color: #4a4a4a;
+                        font-size: 0.95rem;
+                        font-weight: 350;
+                      "
+                    >
+                      <i>
+                        <li class="mb-2">
+                          • Conceptualised and provided reusable
+                          illustrations/animations from scratch.
                         </li>
-                      </h3>
-                    </div>
+                        <li class="mb-2">
+                          • Presented my design process with 30+ UI/UX Designers
+                          during a monthly company huddle.
+                        </li>
+                        <li class="mb-2">
+                          • Conducted user interviews and synthesised
+                          observations and insights.
+                        </li>
+                        <li>
+                          • Created and updated high-fidelity Figma frames for
+                          website layouts.
+                        </li>
+                      </i>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Divider Line -->
+              <hr
+                style="
+                  border-top: 1px solid #e0e0e0;
+                  margin-top: 3rem;
+                  margin-bottom: 3rem;
+                "
+              />
+
+              <!-- Bottom Metadata Row: Timeline & Team -->
+              <div class="row">
+                <div class="col-md-3 col-6 text-left">
+                  <div class="case-study-label" style="color: #715ad8">
+                    Timeline
+                  </div>
+                  <div style="color: #555; font-weight: 350">
+                    <i>3 months</i>
+                  </div>
+                </div>
+                <div class="col-md-9 col-6 text-left">
+                  <div class="case-study-label" style="color: #715ad8">
+                    Team
+                  </div>
+                  <div style="color: #555; font-weight: 350">
+                    <i
+                      >5 UX Designers, 4 Software Engineers, 1 Product
+                      Manager</i
+                    >
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="container py-3">
-        <div class="row justify-content-center pb-5">
-          <div class="col-md-10 col-12 text-left">
-            <h3 class="text-left main-content4 pb-1 pt-2">
-              As a government agency, Govtech has an even greater
-              responsibility to ensure that government digital services meet
-              the needs of users that are People with Disabilities (PWDs).
-              During Inclusive Design Week (IDW) 2025, our team unveiled A11y
-              Playground, an interactive website designed to empower digital
-              practitioners to build more accessible and inclusive digital
-              services in alignment with WCAG guidelines.
-              <br /><br /><br />
-
-              👉 View site here:
-              <a href="https://a11y.tech.gov.sg/" target="_blank">https://a11y.tech.gov.sg/</a>
-
-              <br /><br /><br />
-              📰 News Coverage:
-              <a href="https://www.straitstimes.com/tech/govtech-launches-website-to-help-organisations-build-more-accessible-and-inclusive-digital-services"
-                target="_blank">Straits Times</a>,
-              <a href="https://www.zaobao.com.sg/news/singapore/story20250729-7242702" target="_blank">Lian He Zao
-                Bao</a>
-            </h3>
-          </div>
-        </div>
-
-        <div class="row justify-content-center pb-5 pt-0">
-          <div class="col-md-12 col-12 p-2 text-center">
-            <img class="images img-fluid" src="images/GovTech/A11y.gif" alt="worm" />
-          </div>
-        </div>
-      </div>
-
-      <section class="container-fluid px-0" style="background-color: #f4f4f4">
-        <div class="container">
-          <div class="row justify-content-center pt-5">
-            <div class="col-md-10 col-12 pt-0 pb-5 text-left">
-              <h3 class="text-center main-content3" style="color: #715ad8">
-                Bridging the Accessibility Gap: Developing a one-stop
-                WCAG-Centred Toolkit for Digital Practitioners
-              </h3>
-            </div>
-          </div>
-
-          <div class="pt-1 pb-0">
-            <div class="row justify-content-center">
-              <div class="col-md-10 col-12 pt-0 text-left">
-                <h3 class="main-content4 pt-0 text-left">
-                  A11y Playground serves as a comprehensive one-stop toolkit
-                  for developers, designers and product managers, to enhance
-                  the inclusivity of their work. It bridges the gap between
-                  the technical requirements of WCAG and user empathy,
-                  ensuring that accessibility is actively integrated into the
-                  product lifecycle rather than treated as an afterthought.
-                </h3>
-              </div>
-            </div>
-          </div>
-
-          <div class="row justify-content-center pb-4 pt-0">
-            <div class="col-md-10 col-12 p-2 text-center">
-              <img class="images img-fluid" src="images/GovTech/Digital professionals.png" alt="worm" />
-            </div>
-          </div>
-
-          <div class="pt-1 pb-3">
-            <div class="row justify-content-center">
-              <div class="col-md-10 col-12 pt-0 text-left">
-                <h3 class="main-content4 pt-0 text-left">
-                  <b style="font-weight: 500">The site consists of these main objectives and
-                    features:</b>
-                  <br /><br />
-                  <b style="color: #715ad8; font-weight: 500">✏️ Synthesise:</b>
-                  Curated WCAG and DSS information into a user-friendly,
-                  categorised checklist for real-time site validation.
-                  <br /><br />
-                  <b style="color: #715ad8; font-weight: 500">✏️ Empathise:</b>
-                  Featuring real-life interviews with PWDs to highlight
-                  critical usability gaps and pain points, enabling digital
-                  practitioners to better understand their needs. <br /><br />
-                  <b style="color: #715ad8; font-weight: 500">✏️ Prioritise:</b>
-                  "People Stories" and "Top 5 common issues" to bring
-                  practitioners' attention to the most common site
-                  accessibility issues and understand PWD user's pain points.
-                  <br /><br />
-                  <b style="color: #715ad8; font-weight: 500">✏️ Equip:</b>
-                  Resource page with selected external tools, such as
-                  colour-blindness simulators, or design guides for a better
-                  implementation of site.
-                </h3>
-              </div>
-            </div>
-          </div>
-
-          <div class="row justify-content-center pb-5 pt-0">
-            <div class="col-md-12 col-12 p-2 text-center">
-              <img class="images img-fluid" src="images/GovTech/Website.png" alt="worm" />
-            </div>
-          </div>
-        </div>
       </section>
 
-      <section class="container-fluid px-0" style="background-color: #ffffff">
-        <div class="container pt-5">
-          <div class="row justify-content-center pt-5 pb-0">
-            <div class="tag-container" style="margin-bottom: 0">
-              <span class="tag" style="
-                    background: #715ad8;
-                    color: #ffffff;
-                    font-weight: 500;
-                    font-size: 0.75rem;
-                    padding: 0.25rem 0.8rem;
-                  ">Case Study #1</span>
-            </div>
-          </div>
-
-          <div class="row justify-content-center">
-            <div class="col-md-10 col-12 pt-0 pb-5 text-left">
-              <h3 class="text-center main-content3" style="color: #715ad8">
-                Setting the Art Direction for a11y Playground <br />
-                <span style="font-size: 1rem; font-weight: 400">(Providing 10+ SVG/Lottiefile illustrations from
-                  scratch)</span>
-              </h3>
-            </div>
-          </div>
-
-          <div class="pt-1 pb-2">
+      <div class="container-fluid px-0">
+        <section class="container-fluid px-0" style="background-color: #f8f6ff">
+          <div class="container py-3 pt-4 pb-4">
             <div class="row justify-content-center">
-              <div class="col-md-10 col-12 pt-0 text-left">
-                <h3 class="main-content4 pt-0 text-left">
+              <div class="col-md-12 col-12 text-left">
+                <h3
+                  class="main-content6 text-left"
+                  style="
+                    color: #715ad8;
+                    font-weight: 550;
+                    font-size: 2rem;
+                    padding-top: 1.5rem;
+                    padding-bottom: 0.5rem;
+                    margin-bottom: 0;
+                  "
+                >
+                  WCAG made simple: An accessibility toolkit for practitioners
+                </h3>
+                <h3 class="text-left main-content4 pb-1 pt-3">
+                  As a government agency, GovTech has an even greater
+                  responsibility to ensure digital services meet the needs of
+                  People with Disabilities (PWDs). Unveiled during Inclusive
+                  Design Week 2025,
+                  <b style="font-weight: 550">a11y Playground</b> serves as an
+                  interactive toolkit enabling developers, designers, and
+                  product managers to
+                  <b style="font-weight: 550"
+                    >integrate WCAG standards into everyday products</b
+                  >. <br /><br />
+                  👉 <b style="font-weight: 550">View site:</b>
+                  <a
+                    href="https://a11y.tech.gov.sg/"
+                    target="_blank"
+                    style="color: #1a1a1a"
+                    ><u>a11y.tech.gov.sg</u></a
+                  ><br /><br />
+                  📰 <b style="font-weight: 550">News Coverage:</b>
+                  <a
+                    href="https://www.straitstimes.com/tech/govtech-launches-website-to-help-organisations-build-more-accessible-and-inclusive-digital-services"
+                    target="_blank"
+                    style="color: #1a1a1a"
+                    ><u>Straits Times</u></a
+                  >,
+                  <a
+                    href="https://www.zaobao.com.sg/news/singapore/story20250729-7242702"
+                    target="_blank"
+                    style="color: #1a1a1a"
+                    ><u>Lianhe Zaobao</u></a
+                  >
+                  <br /><br /><br />
+                </h3>
+              </div>
+            </div>
+
+            <div class="row justify-content-center pb-3 pt-0">
+              <div class="col-md-12 col-12 p-2 text-center">
+                <img
+                  class="images-light img-fluid"
+                  src="images/GovTech/A11y.gif"
+                  alt="a11y Playground interface preview"
+                />
+              </div>
+            </div>
+            <!-- <div class="row justify-content-center pb-5 pt-0">
+            <div class="col-md-12 col-12 p-2 text-center">
+              <img class="images img-fluid" src="images/GovTech/Digital professionals.png"
+                alt="a11y Playground interface preview" />
+            </div>
+          </div> -->
+
+            <!-- Grid Layout for 3 Image Cards -->
+            <div class="row my-4">
+              <!-- Image Card 1 -->
+              <div class="col-md-4 col-12 mb-4 mb-md-0">
+                <div
+                  class="position-relative overflow-hidden"
+                  style="border-radius: 12px"
+                >
+                  <img
+                    src="images/GovTech/Digital professionals1.png"
+                    alt="Target Users"
+                    class="w-100 d-block"
+                    style="
+                      height: 240px;
+                      object-fit: cover;
+                      border-radius: 12px;
+                    "
+                  />
+                  <div
+                    class="position-absolute w-100 text-center text-white p-3"
+                    style="
+                      bottom: 0;
+                      background: linear-gradient(
+                        to top,
+                        rgba(0, 0, 0, 1),
+                        transparent
+                      );
+                      font-size: 0.85rem;
+                      line-height: 1.3;
+                      border-bottom-left-radius: 12px;
+                      border-bottom-right-radius: 12px;
+                    "
+                  >
+                    Our target users: Digital professionals (developers,
+                    designers, and product managers) leveraging our platform to
+                    build inclusive, accessible website experiences for PWDs.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Image Card 2 -->
+              <div class="col-md-4 col-12 mb-4 mb-md-0">
+                <div
+                  class="position-relative overflow-hidden"
+                  style="border-radius: 12px"
+                >
+                  <img
+                    src="images/GovTech/Digital professionals2.png"
+                    alt="Limited Mobility User"
+                    class="w-100 d-block"
+                    style="
+                      height: 240px;
+                      object-fit: cover;
+                      border-radius: 12px;
+                    "
+                  />
+                  <div
+                    class="position-absolute w-100 text-center text-white p-3"
+                    style="
+                      bottom: 0;
+                      background: linear-gradient(
+                        to top,
+                        rgba(0, 0, 0, 1),
+                        transparent
+                      );
+                      font-size: 0.85rem;
+                      line-height: 1.3;
+                      border-bottom-left-radius: 12px;
+                      border-bottom-right-radius: 12px;
+                    "
+                  >
+                    A user with limited mobility using a Wacom tablet and audio
+                    speaker to navigate sites.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Image Card 3 -->
+              <div class="col-md-4 col-12 mb-4 mb-md-0">
+                <div
+                  class="position-relative overflow-hidden"
+                  style="border-radius: 12px" 
+                >
+                  <img
+                    src="images/GovTech/Digital professionals3.png"
+                    alt="Visually Impaired User"
+                    class="w-100 d-block"
+                    style="
+                      height: 240px;
+                      object-fit: cover;
+                      border-radius: 12px;
+                    "
+                  />
+                  <div
+                    class="position-absolute w-100 text-center text-white p-3"
+                    style="
+                      bottom: 0;
+                      background: linear-gradient(
+                        to top,
+                        rgba(0, 0, 0, 1),
+                        transparent
+                      );
+                      font-size: 0.85rem;
+                      line-height: 1.3;
+                      border-bottom-left-radius: 12px;
+                      border-bottom-right-radius: 12px;
+                    "
+                  >
+                    A visually-impaired user using a mobile screenreader to
+                    navigate sites.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="container-fluid px-0" style="background-color: #ffffff">
+          <div class="container pt-4 pb-4">
+            <div class="row justify-content-center pt-5 pb-0">
+              <div class="col-md-12 col-12 text-left">
+                <div class="case-study-label">[ CASE STUDY 01 ]</div>
+                <h2 class="case-study-title">
+                  Setting art direction with illustrations
+                </h2>
+                <h3 class="main-content4">
                   I established the art direction and visual identity for a11y
-                  Playground, launched during Inclusive Design Week 2025. I
-                  designed a cohesive set of illustrations and animations to
-                  <b style="font-weight: 550" ;>champion inclusive digital experiences and drive
-                    nationwide adoption among public sector workers</b>, such as developers, and designers.
+                  Playground. Over 10+ custom vector illustration and animation
+                  assets (lottiefile) were produced from scratch to
+                  <b style="font-weight: 550"
+                    >champion inclusive digital experiences and drive nationwide
+                    adoption among public sector workers</b
+                  >, such as developers, and designers.
+                </h3>
+
+                <div class="challenge-box-dark">
+                  <div class="challenge-label">THE CHALLENGE 🏁</div>
+                  <div class="challenge-text">
+                    "How might we design a visual identity that represents the
+                    a11y Playground website's message of inclusivity for PWDs
+                    while staying consistent with GovTech's digital branding?"
+                  </div>
+                </div>
+
+                <div class="row justify-content-center pb-0 pt-3">
+                  <div class="col-md-12 col-12 p-0 text-center">
+                    <div class="row gx-0 lottie-showcase-row">
+                      <div class="col-md-4 col-12 p-0">
+                        <div
+                          class="lottie-animation"
+                          data-animation-path="images/GovTech/Hero_landing.json"
+                          role="img"
+                          aria-label="a11y Playground landing page illustration"
+                        ></div>
+                      </div>
+                      <div class="col-md-4 col-12 p-0">
+                        <div
+                          class="lottie-animation"
+                          data-animation-path="images/GovTech/Hero_frustrations.json"
+                          role="img"
+                          aria-label="a11y Playground frustrations illustration"
+                        ></div>
+                      </div>
+                      <div class="col-md-4 col-12 p-0">
+                        <div
+                          class="lottie-animation"
+                          data-animation-path="images/GovTech/Learn,stories.json"
+                          role="img"
+                          aria-label="a11y Playground learning stories illustration"
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row justify-content-center pb-3 pt-3">
+                  <div class="col-md-12 col-12 p-2 text-center">
+                    <div class="row">
+                      <div class="col-md-12 col-12">
+                        <img
+                          class="images img-fluid"
+                          src="images/GovTech/Drawings.svg"
+                          alt="worm"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row justify-content-center">
+                  <div class="col-md-12 col-12 pt-0 pb-2 text-left">
+                    <h3
+                      class="main-content6 text-left"
+                      style="
+                        color: #715ad8;
+                        font-weight: 550;
+                        font-size: 2rem;
+                        padding-top: 1.5rem;
+                        padding-bottom: 0.5rem;
+                        margin-bottom: 0;
+                      "
+                    >
+                      Ensuring inclusive & accessible designs for all users
+                    </h3>
+                  </div>
+                </div>
+
+                <div class="row my-4">
+                  <div class="col-md-4 col-12 mb-3 mb-md-0">
+                    <div class="cs-card cs-card-light">
+                      <div class="cs-card-number">
+                        Contrast-driven hierarchy
+                      </div>
+                      <!-- <h3 class="cs-card-title">Contrast-driven hierarchy</h3> -->
+                      <p class="cs-card-text">
+                        Negative space was used to create distinct contrast
+                        between subjects to ensure the artwork is perfectly
+                        visible across both light and dark modes.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-12 mb-3 mb-md-0">
+                    <div class="cs-card cs-card-light">
+                      <div class="cs-card-number">Colour-inclusive vision</div>
+                      <!-- <h3 class="cs-card-title">Colour-inclusive vision
+                    </h3> -->
+                      <p class="cs-card-text">
+                        Colour palettes were validated via colour blindness
+                        simulators to guarantee that the design remains clear
+                        and distinguishable for visually-impaired users.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-12 mb-3 mb-md-0">
+                    <div class="cs-card cs-card-light">
+                      <div class="cs-card-number">Descriptive alt-text</div>
+                      <!-- <h3 class="cs-card-title">Descriptive alt-text
+                    </h3> -->
+                      <p class="cs-card-text">
+                        Alt-text was integrated to bridge the gap for
+                        screen-reader users, ensuring that visual context is
+                        accessible to everyone.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Grid Container: 1 column on mobile, 2 columns on desktop -->
+
+                <div class="row justify-content-center pb-3 pt-0">
+                  <div class="col-md-12 col-12 p-2 text-center">
+                    <img
+                      class="images img-fluid"
+                      src="images/GovTech/9.gif"
+                      alt="a11y Playground interface preview"
+                    />
+                  </div>
+
+                  <!-- Image 2: Dark Mode -->
+                  <!-- <div class="col-12 col-md-6 mb-3">
+                  <div class="overflow-hidden h-100" style="border-radius: 16px;">
+                    <img src="images/GovTech/10.jpg" alt="Dark mode" class="w-100 h-100 d-block"
+                      style="object-fit: cover; border-radius: 16px;">
+                  </div>
+                </div> -->
+
+                  <!-- Image 3: Colour Blindness -->
+                  <!-- <div class="col-12 col-md-6 mb-3 mb-md-0">
+                  <div class="overflow-hidden h-100" style="border-radius: 16px;">
+                    <img src="images/GovTech/11.jpg" alt="Colour blindness" class="w-100 h-100 d-block"
+                      style="object-fit: cover; border-radius: 16px;">
+                  </div>
+                </div> -->
+
+                  <!-- Image 4: Alt Text -->
+                  <!-- <div class="col-12 col-md-6">
+                  <div class="overflow-hidden h-100" style="border-radius: 16px;">
+                    <img src="images/GovTech/12.jpg" alt="Alt text" class="w-100 h-100 d-block"
+                      style="object-fit: cover; border-radius: 16px;">
+                  </div>
+                </div> -->
+                </div>
+
+                <!-- <div class="my-4">
+                <img class="images img-fluid" src="images/GovTech/Website.png" alt="a11y Playground landing visuals"
+                  style="width: 100%;" />
+              </div> -->
+              </div>
+            </div>
+
+            <div class="row justify-content-center">
+              <div class="col-md-12 col-12 pt-0 pb-2 text-left">
+                <h3
+                  class="main-content6 text-left"
+                  style="
+                    color: #715ad8;
+                    font-weight: 550;
+                    font-size: 2rem;
+                    padding-top: 1.5rem;
+                    padding-bottom: 0.5rem;
+                    margin-bottom: 0;
+                  "
+                >
+                  Meaningful visuals, with an additional layer of storytelling
                 </h3>
               </div>
             </div>
-          </div>
 
-          <div class="row justify-content-center pb-3 pt-3">
-            <div class="col-md-12 col-12 p-2 text-center">
-              <div class="row">
-                <div class="col-md-8 col-12">
-                  <img class="images img-fluid" src="images/GovTech/Drawings.svg" alt="worm" />
-                </div>
-                <div class="col-md-4 col-12">
-                  <img class="images img-fluid" src="images/GovTech/Drawings_2.svg" alt="worm" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row justify-content-center">
-            <div class="col-md-10 col-12 pt-0 pb-3 text-left">
-              <h3 class="text-center main-content6" style="color: #715ad8">
-                View Art Direction Process👇
+            <!-- <div class="row justify-content-center pt-0">
+            <div class="col-md-10 col-12 text-center">
+              <h3 class="main-content6"
+                style="color: #715ad8; margin-top: 1rem; margin-bottom: 0; font-size: 2.3rem; font-family: caveat, cursive; font-style:normal; font-weight: 550;">
+                Art Direction Process 👇
               </h3>
             </div>
-          </div>
+          </div> -->
 
-          <!-- IMAGE SLIDER -->
-          <div class="row justify-content-center pb-5 pt-3">
-            <div class="col-md-12 col-12">
-              <div class="image-slider-container">
-                <div class="slider-images-region">
-                  <!-- Slide 1 -->
-                  <div class="slider-slide active">
-                    <div class="slider-wrapper">
-                      <div class="slider-content">
-                        <img class="slider-image" src="images/GovTech/2.jpg" alt="Creating a strong Brand Identity" />
-                      </div>
-                      <div class="slider-nav">
-                        <button class="slider-arrow slider-arrow-left" aria-label="Previous slide"></button>
-                        <button class="slider-arrow slider-arrow-right" aria-label="Next slide"></button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Slide 2 -->
-                  <div class="slider-slide">
-                    <div class="slider-wrapper">
-                      <div class="slider-content">
-                        <img class="slider-image" src="images/GovTech/3.jpg"
-                          alt="Inspired by Universal Accessibility icons" />
-                      </div>
-                      <div class="slider-nav">
-                        <button class="slider-arrow slider-arrow-left" aria-label="Previous slide"></button>
-                        <button class="slider-arrow slider-arrow-right" aria-label="Next slide"></button>
+            <!-- IMAGE SLIDER -->
+            <div class="row justify-content-center pb-5 pt-5">
+              <div class="col-md-12 col-12">
+                <div class="image-slider-container">
+                  <div class="slider-images-region">
+                    <!-- Slide 1 -->
+                    <div class="slider-slide active">
+                      <div class="slider-wrapper">
+                        <div class="slider-content">
+                          <img
+                            class="slider-image"
+                            src="images/GovTech/2.jpg"
+                            alt="Creating a strong Brand Identity"
+                          />
+                        </div>
+                        <div class="slider-nav">
+                          <button
+                            class="slider-arrow slider-arrow-left"
+                            aria-label="Previous slide"
+                          ></button>
+                          <button
+                            class="slider-arrow slider-arrow-right"
+                            aria-label="Next slide"
+                          ></button>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <!-- Slide 3 -->
-                  <div class="slider-slide">
-                    <div class="slider-wrapper">
-                      <div class="slider-content">
-                        <img class="slider-image" src="images/GovTech/4.jpg"
-                          alt="Elevating the copy with another layer of storytelling" />
-                      </div>
-                      <div class="slider-nav">
-                        <button class="slider-arrow slider-arrow-left" aria-label="Previous slide"></button>
-                        <button class="slider-arrow slider-arrow-right" aria-label="Next slide"></button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Slide 4 -->
-                  <div class="slider-slide">
-                    <div class="slider-wrapper">
-                      <div class="slider-content">
-                        <img class="slider-image" src="images/GovTech/5.jpg"
-                          alt="Celebrating Diversity and Inclusivity" />
-                      </div>
-                      <div class="slider-nav">
-                        <button class="slider-arrow slider-arrow-left" aria-label="Previous slide"></button>
-                        <button class="slider-arrow slider-arrow-right" aria-label="Next slide"></button>
+                    <!-- Slide 2 -->
+                    <div class="slider-slide">
+                      <div class="slider-wrapper">
+                        <div class="slider-content">
+                          <img
+                            class="slider-image"
+                            src="images/GovTech/3.jpg"
+                            alt="Inspired by Universal Accessibility icons"
+                          />
+                        </div>
+                        <div class="slider-nav">
+                          <button
+                            class="slider-arrow slider-arrow-left"
+                            aria-label="Previous slide"
+                          ></button>
+                          <button
+                            class="slider-arrow slider-arrow-right"
+                            aria-label="Next slide"
+                          ></button>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <!-- Slide 5 -->
-                  <div class="slider-slide">
-                    <div class="slider-wrapper">
-                      <div class="slider-content">
-                        <img class="slider-image" src="images/GovTech/8.jpg"
-                          alt="Converting sketches to High-Fidelity Vectors for Technical-Handover" />
-                      </div>
-                      <div class="slider-nav">
-                        <button class="slider-arrow slider-arrow-left" aria-label="Previous slide"></button>
-                        <button class="slider-arrow slider-arrow-right" aria-label="Next slide"></button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Slide 6 -->
-                  <div class="slider-slide">
-                    <div class="slider-wrapper">
-                      <div class="slider-content">
-                        <img class="slider-image" src="images/GovTech/23.jpg"
-                          alt="Adding animation & exporting as Lottie JSON" />
-                      </div>
-                      <div class="slider-nav">
-                        <button class="slider-arrow slider-arrow-left" aria-label="Previous slide"></button>
-                        <button class="slider-arrow slider-arrow-right" aria-label="Next slide"></button>
+                    <!-- Slide 3 -->
+                    <div class="slider-slide">
+                      <div class="slider-wrapper">
+                        <div class="slider-content">
+                          <img
+                            class="slider-image"
+                            src="images/GovTech/4.jpg"
+                            alt="Elevating the copy with another layer of storytelling"
+                          />
+                        </div>
+                        <div class="slider-nav">
+                          <button
+                            class="slider-arrow slider-arrow-left"
+                            aria-label="Previous slide"
+                          ></button>
+                          <button
+                            class="slider-arrow slider-arrow-right"
+                            aria-label="Next slide"
+                          ></button>
+                        </div>
                       </div>
                     </div>
+
+                    <!-- Slide 4 -->
+                    <div class="slider-slide">
+                      <div class="slider-wrapper">
+                        <div class="slider-content">
+                          <img
+                            class="slider-image"
+                            src="images/GovTech/5.jpg"
+                            alt="Celebrating Diversity and Inclusivity"
+                          />
+                        </div>
+                        <div class="slider-nav">
+                          <button
+                            class="slider-arrow slider-arrow-left"
+                            aria-label="Previous slide"
+                          ></button>
+                          <button
+                            class="slider-arrow slider-arrow-right"
+                            aria-label="Next slide"
+                          ></button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Slide 5 -->
+                    <div class="slider-slide">
+                      <div class="slider-wrapper">
+                        <div class="slider-content">
+                          <img
+                            class="slider-image"
+                            src="images/GovTech/8.jpg"
+                            alt="Converting sketches to High-Fidelity Vectors"
+                          />
+                        </div>
+                        <div class="slider-nav">
+                          <button
+                            class="slider-arrow slider-arrow-left"
+                            aria-label="Previous slide"
+                          ></button>
+                          <button
+                            class="slider-arrow slider-arrow-right"
+                            aria-label="Next slide"
+                          ></button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Slide 6 -->
+                    <div class="slider-slide">
+                      <div class="slider-wrapper">
+                        <div class="slider-content">
+                          <img
+                            class="slider-image"
+                            src="images/GovTech/23.jpg"
+                            alt="Adding animation & exporting as Lottie JSON"
+                          />
+                        </div>
+                        <div class="slider-nav">
+                          <button
+                            class="slider-arrow slider-arrow-left"
+                            aria-label="Previous slide"
+                          ></button>
+                          <button
+                            class="slider-arrow slider-arrow-right"
+                            aria-label="Next slide"
+                          ></button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="slider-dots" id="sliderDots"></div>
                   </div>
 
-                  <div class="slider-dots" id="sliderDots"></div>
-                </div>
+                  <div class="slider-panels-region">
+                    <div class="slider-panel active">
+                      <h3 class="slider-title">
+                        Creating a Strong Brand Identity
+                      </h3>
+                      <p class="slider-description">
+                        I explored multiple illustration directions (line art,
+                        photography, vectors) and gathered team feedback. The
+                        vector direction was chosen for its clean cohesion with
+                        the a11y logo identity.
+                      </p>
+                    </div>
 
-                <div class="slider-panels-region">
-                  <div class="slider-panel active">
-                    <h3 class="slider-title">
-                      Creating a strong Brand Identity
-                    </h3>
-                    <p class="slider-description">
-                      Initially, I brainstormed by finding different styles,
-                      including line art, vector shapes, and various other
-                      creative treatments. Three styles were then shortlisted
-                      for the team's feedback. The vector style was chosen for
-                      its stronger consistency with the a11y logo design.
-                    </p>
-                  </div>
+                    <div class="slider-panel">
+                      <h3 class="slider-title">
+                        Inspired by Universal Accessibility icons
+                      </h3>
+                      <p class="slider-description">
+                        I opted for abstract human figures that allow different
+                        users to easily project themselves into the experience.
+                        This is referenced from globally recognised
+                        accessibility signage icons.
+                      </p>
+                    </div>
 
-                  <div class="slider-panel">
-                    <h3 class="slider-title">
-                      Inspired by Universal Accessibility icons
-                    </h3>
-                    <p class="slider-description">
-                      I opted for abstract human figures when defining the
-                      visual style, for its simplicity to allow the viewer to
-                      project themselves onto the characters, ensuring the
-                      visuals resonated with everyone, regardless of
-                      disability. This resonates with the familiar and
-                      universally understood accessibility signs commonly
-                      encountered in public, with their simplified forms
-                      representing icons of accessibility.
-                    </p>
-                  </div>
+                    <div class="slider-panel">
+                      <h3 class="slider-title">
+                        Elevating the copy with another layer of storytelling
+                      </h3>
+                      <p class="slider-description">
+                        Visuals were developed around key storytelling themes:
+                        representation, real PWD usability barriers, and
+                        practical design solutions, helping practitioners build
+                        empathy.
+                      </p>
+                    </div>
 
-                  <div class="slider-panel">
-                    <h3 class="slider-title">
-                      Elevating the copy with another layer of storytelling
-                    </h3>
-                    <p class="slider-description">
-                      Each visual has a message to convey, such as themes of
-                      "Representation" and "Inclusivity", or even depicting
-                      pain points of the PWD users in scenarios where they are
-                      frustrated with digital services that are not
-                      accessible.
-                    </p>
-                  </div>
+                    <div class="slider-panel">
+                      <h3 class="slider-title">
+                        Celebrating Diversity and Inclusivity
+                      </h3>
+                      <p class="slider-description">
+                        The hero visuals highlight joyful, inclusive
+                        interactions to reinforce the website's core message:
+                        making digital spaces usable for everyone.
+                      </p>
+                    </div>
 
-                  <div class="slider-panel">
-                    <h3 class="slider-title">
-                      Celebrating Diversity and Inclusivity
-                    </h3>
-                    <p class="slider-description">
-                      In the hero section, I portrayed the idea of inclusivity
-                      through showing happy, diverse imagery of PWD users.
-                      This highlights the ultimate goal of a11y Playground:
-                      Making digital spaces accessible to everyone and, in
-                      turn, fostering user satisfaction.
-                    </p>
-                  </div>
+                    <div class="slider-panel">
+                      <h3 class="slider-title">
+                        Sketches → High-Fidelity Vectors
+                      </h3>
+                      <p class="slider-description">
+                        Procreate concept sketches were converted into scalable
+                        SVGs via Adobe Illustrator, enabling rapid theme
+                        customization for Figma and seamless engineer handoff.
+                      </p>
+                    </div>
 
-                  <div class="slider-panel">
-                    <h3 class="slider-title">
-                      Converting sketches to High-Fidelity Vectors for Technical-Handover
-                    </h3>
-                    <p class="slider-description">
-                      After many iterations, I created high-fidelity designs in Procreate using a11y logo colours and
-                      ensured they fit the layout of the website. These were converted to vector SVGs in Adobe
-                      Illustrator for efficient web loading and easy customisation (e.g. changing colour) by colleagues
-                      in Figma.
-                    </p>
-                  </div>
-
-                  <div class="slider-panel">
-                    <h3 class="slider-title">
-                      Adding animation & exporting as Lottie JSON
-                    </h3>
-                    <p class="slider-description">
-                      Animations were added in Adobe After Effects and exported as Lottie JSON files for the Software
-                      Engineer to use. This keeps the file size small while maintaining quality when upscaling.
-                    </p>
+                    <div class="slider-panel">
+                      <h3 class="slider-title">
+                        Lottie Animations for Developer Handoff
+                      </h3>
+                      <p class="slider-description">
+                        Animations were produced in After Effects and exported
+                        as lightweight Lottie JSON files, maintaining
+                        high-quality rendering across screens without impacting
+                        performance.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-
-
-          <div class="pt-1 pb-3">
-            <div class="row justify-content-center">
-              <div class="col-md-12 col-12 text-center">
-                <img class="images img-fluid" src="images/GovTech/7.jpg" alt="worm" />
-              </div>
-            </div>
-          </div>
-
-          <div class="row justify-content-center pt-5">
+            <!-- <div class="row justify-content-center pt-3">
             <div class="col-md-12 col-12 p-1 borderbottom"></div>
-          </div>
-        </div>
-      </section>
+          </div> -->
 
-
-
-      <section class="container-fluid px-0" style="background-color: #ffffff">
-        <div class="container py-2">
-          <div class="row justify-content-center px-3">
-            <div class="col-md-10 col-12 pt-3 pb-5 text-left">
-              <h3 class="text-center main-content3" style="color: #715ad8">
-                Ensuring Inclusive & Accessible Designs for all Users
-              </h3>
+            <div class="row justify-content-center">
+              <div class="col-md-12 col-12 pt-0 pb-2 text-left">
+                <h3
+                  class="main-content6 text-left"
+                  style="
+                    color: #715ad8;
+                    font-weight: 550;
+                    font-size: 2rem;
+                    padding-top: 1.5rem;
+                    padding-bottom: 0.5rem;
+                    margin-bottom: 0;
+                  "
+                >
+                  Driving publicity and streamlining workflows
+                </h3>
+              </div>
             </div>
-          </div>
 
-          <div class="row justify-content-center px-3">
-            <div class="col-md-10 col-12 text-left">
-              <div class="row">
-                <div class="col-md-4 col-12 pt-0 pb-4 text-left">
-                  <div class="row pb-2 justify-content-center justify-content-md-start">
-                    <h4 class="maincontent4 text-left" style="
-                          border: 2px solid #715ad8;
-                          padding: 10px;
-                          border-radius: 30px;
-                          color: #715ad8;
-                          font-size: 16px;
-                          font-weight: 500;
-                        ">
-                      Contrast-driven hierarchy
-                    </h4>
+            <!-- Custom Feature Cards Section -->
+            <div class="row my-4">
+              <!-- Card 1 -->
+              <div class="col-md-4 col-12 mb-4 mb-md-0">
+                <div
+                  class="card h-100 border-0 rounded-4 overflow-hidden"
+                  style="background-color: #f8f6ff; border-radius: 12px"
+                >
+                  <img
+                    src="images/GovTech/13a.png"
+                    class="card-img-top"
+                    alt="National Debut"
+                    style="
+                      height: 220px;
+                      object-fit: cover;
+                      border-top-left-radius: 12px;
+                      border-top-right-radius: 12px;
+                    "
+                  />
+                  <div class="card-body p-4 text-center">
+                    <h5
+                      class="card-title mb-3"
+                      style="
+                        color: #715ad8;
+                        font-size: 1.15rem;
+                        font-weight: 550;
+                      "
+                    >
+                      Solidified a high-profile national debut
+                    </h5>
+                    <p
+                      class="card-text text-muted"
+                      style="
+                        font-size: 0.9rem;
+                        line-height: 1.45;
+                        color: #4a4a4a !important;
+                      "
+                    >
+                      The
+                      <b style="font-weight: 550">distinct visual identity</b>
+                      has maximised brand recall in audiences during its
+                      official reveal by Minister Josephine Teo, and widespread
+                      media coverage across major media outlets (e.g The Straits
+                      Times).
+                    </p>
                   </div>
-                  <h3 class="text-left accordion-body pt-2" style="font-style: normal; color: #303030">
-                    I utilised negative space to create distinct contrast
-                    between subjects to ensure the artwork is perfectly
-                    visible across both light and dark modes.
-                  </h3>
                 </div>
-                <div class="col-md-4 col-12 pt-0 pb-4 text-left">
-                  <div class="row pb-2 justify-content-center justify-content-md-start">
-                    <h4 class="maincontent4 text-left" style="
-                          border: 2px solid #715ad8;
-                          padding: 10px;
-                          border-radius: 30px;
-                          color: #715ad8;
-                          font-size: 16px;
-                          font-weight: 500;
-                        ">
-                      Colour-inclusive vision
-                    </h4>
+              </div>
+
+              <!-- Card 2 -->
+              <div class="col-md-4 col-12 mb-4 mb-md-0">
+                <div
+                  class="card h-100 border-0 rounded-4 overflow-hidden"
+                  style="background-color: #f8f6ff; border-radius: 12px"
+                >
+                  <img
+                    src="images/GovTech/13b.png"
+                    class="card-img-top"
+                    alt="Streamlined Workflows"
+                    style="
+                      height: 220px;
+                      object-fit: cover;
+                      border-top-left-radius: 12px;
+                      border-top-right-radius: 12px;
+                    "
+                  />
+                  <div class="card-body p-4 text-center">
+                    <h5
+                      class="card-title font-weight-550 mb-3"
+                      style="
+                        color: #715ad8;
+                        font-size: 1.15rem;
+                        font-weight: 550;
+                      "
+                    >
+                      Streamlined Design Workflows
+                    </h5>
+                    <p
+                      class="card-text text-muted"
+                      style="
+                        font-size: 0.9rem;
+                        line-height: 1.45;
+                        color: #4a4a4a !important;
+                      "
+                    >
+                      Reusable SVG vectors
+                      <b style="font-weight: 550"
+                        >streamlined internal workflows</b
+                      >, allowing colleagues to easily repurpose design elements
+                      for slide decks and physical collateral.
+                    </p>
                   </div>
-                  <h3 class="text-left accordion-body pt-2" style="font-style: normal; color: #303030">
-                    Colour palettes were validated via colour blindness
-                    simulators to guarantee that the design remains clear and
-                    distinguishable for visually-impaired users.
-                  </h3>
                 </div>
-                <div class="col-md-4 col-12 pt-0 pb-4 text-left">
-                  <div class="row pb-2 justify-content-center justify-content-md-start">
-                    <h4 class="maincontent4 text-left" style="
-                          border: 2px solid #715ad8;
-                          padding: 10px;
-                          border-radius: 30px;
-                          color: #715ad8;
-                          font-size: 16px;
-                          font-weight: 500;
-                        ">
-                      Descriptive alt-text
-                    </h4>
+              </div>
+
+              <!-- Card 3 -->
+              <div class="col-md-4 col-12 mb-4 mb-md-0">
+                <div
+                  class="card h-100 border-0 rounded-4 overflow-hidden"
+                  style="background-color: #f8f6ff; border-radius: 12px"
+                >
+                  <img
+                    src="images/GovTech/13c.png"
+                    class="card-img-top"
+                    alt="Sharing with UX Designers"
+                    style="
+                      height: 220px;
+                      object-fit: cover;
+                      border-top-left-radius: 12px;
+                      border-top-right-radius: 12px;
+                    "
+                  />
+                  <div class="card-body p-4 text-center">
+                    <h5
+                      class="card-title font-weight-550 mb-3"
+                      style="
+                        color: #715ad8;
+                        font-size: 1.15rem;
+                        font-weight: 550;
+                      "
+                    >
+                      Sharing with 30+ UX designers
+                    </h5>
+                    <p
+                      class="card-text text-muted"
+                      style="
+                        font-size: 0.9rem;
+                        line-height: 1.45;
+                        color: #4a4a4a !important;
+                      "
+                    >
+                      <b style="font-weight: 550"
+                        >Presented my illustration process to 30+ UX
+                        designers</b
+                      >
+                      during a monthly design studio, sharing conceptualisation
+                      techniques on how to create visual assets while honing
+                      public speaking skills.
+                    </p>
                   </div>
-                  <h3 class="text-left accordion-body pt-2" style="font-style: normal; color: #303030">
-                    Alt-text was integrated to bridge the gap for
-                    screen-reader users, ensuring that visual context is
-                    accessible to everyone.
-                  </h3>
                 </div>
               </div>
             </div>
           </div>
+        </section>
 
-          <div class="row justify-content-center pt-4">
-            <div class="col-md-12 col-12 p-2 text-center">
-              <div class="row">
-                <div class="col-md-6 col-12 px-1">
-                  <img class="images img-fluid" src="images/GovTech/9.jpg" alt="worm" />
-                </div>
-                <div class="col-md-6 col-12 px-1">
-                  <img class="images img-fluid" src="images/GovTech/10.jpg" alt="worm" />
-                </div>
+        <section
+          class="container-fluid px-0 pb-5"
+          style="background-color: #f8f6fe"
+        >
+          <div class="container pt-4 pb-4">
+            <div class="row justify-content-center pt-5 pb-0">
+              <div class="col-md-12 col-12 text-left">
+                <div class="case-study-label">[ CASE STUDY 02 ]</div>
+                <h2 class="case-study-title">
+                  Building digital screens for accessibility checklist articles
+                </h2>
+                <h3 class="main-content4">
+                  I assisted with creating Figma frames for the "Principle of
+                  Accessibility: Top 10 Issues" pages. I designed these with a
+                  "large screen" first, given that the website is primarily
+                  viewed on laptops. The nature of
+                  <b style="font-weight: 550"
+                    >this project focuses more on presenting informational
+                    content rather than complex user flows</b
+                  >, so I
+                  <b style="font-weight: 550">prioritised a clear hierarchy</b>
+                  with the different header sizes, as well as ensuring the
+                  content is easily digestible.<br /><br />
+
+                  <i
+                    >(Had more experience doing up Figma screen flows &
+                    technical documentation in another project, but it's
+                    confidential)</i
+                  >
+                </h3>
               </div>
             </div>
-          </div>
-          <div class="row justify-content-center pb-4">
-            <div class="col-md-12 col-12 p-2 text-center">
-              <div class="row">
-                <div class="col-md-6 col-12 px-1">
-                  <img class="images img-fluid" src="images/GovTech/11.jpg" alt="worm" />
-                </div>
-                <div class="col-md-6 col-12 px-1">
-                  <img class="images img-fluid" src="images/GovTech/12.jpg" alt="worm" />
-                </div>
+
+            <div class="row justify-content-center pb-3 pt-0">
+              <div class="col-md-12 col-12 p-2 text-center">
+                <img
+                  class="images-light img-fluid"
+                  src="images/GovTech/Pic5.gif"
+                  alt="a11y Playground interface preview"
+                />
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      <div class="container pt-4 pb-5">
-        <div class="row justify-content-center pb-3">
-          <div class="col-md-12 col-12 p-1 borderbottom"></div>
-        </div>
-        <div class="row justify-content-center">
-          <div class="col-md-10 col-12 text-left">
-            <h3 class="text-center main-content3 pb-2" style="color: #715ad8">
-              👍 Final Outcomes
-            </h3>
-            <!-- <p class="main-content4 text-left pb-0">
-                Finally, I was also given the chance to present my illustration
-                process to over 30 UX designers during our monthly design
-                studio. It felt meaningful to be sharing my process with
-                everyone else, as some told me they had learned a thing or two
-                from it. Most importantly, I also got to hone my presentation
-                skills and learned how to integrate accessibility with my
-                drawings.
-              </p> -->
-          </div>
-        </div>
-      </div>
-
-      <div class="container pb-5">
-        <div class="row justify-content-center pb-4">
-          <div class="col-md-4 col-12 text-center">
-            <img class="images img-fluid" src="images/GovTech/13a.png" alt="worm" />
-          </div>
-          <div class="col-md-4 col-12 text-center">
-            <img class="images img-fluid" src="images/GovTech/13b.png" alt="worm" />
-          </div>
-          <div class="col-md-4 col-12 text-center">
-            <img class="images img-fluid" src="images/GovTech/13c.png" alt="worm" />
-          </div>
-        </div>
-      </div>
-
-      <section class="container-fluid px-0" style="background-color: #f4f4f4">
-        <div class="container py-5">
-          <div class="row justify-content-center pt-5 pb-0">
-            <div class="tag-container" style="margin-bottom: 0">
-              <span class="tag" style="
-                    background: #715ad8;
-                    color: #ffffff;
-                    font-weight: 500;
-                    font-size: 0.75rem;
-                    padding: 0.25rem 0.8rem;
-                  ">Case Study #2</span>
-            </div>
-          </div>
-          <div class="row justify-content-center">
-            <div class="col-md-10 col-12 text-left pb-3">
-              <h3 class="text-center main-content3 pb-4" style="color: #715ad8">
-                Building digital screens for Accessibility Checklist Articles
-              </h3>
-              <h3 class="main-content4 text-left pb-4">
-                I also assisted with other tasks, such as creating Figma
-                frames for the "Principle of Accessibility: Top 10 Issues"
-                pages. I designed these with a "large screen" first, given
-                that the website is primarily viewed on laptops. The nature of
-                this project focuses more on <b style="font-weight:550">presenting informational content
-                rather than complex user flows, so I prioritised a clear
-                hierarchy</b> with the different header sizes, as well as ensuring
-                the content is easily digestible. All the content were taken
-                from our previous write-up on notion, which I translated the
-                content into frames here. <br /><br /><i>(Had more experience doing up Figma screen flows &
-                  technical documentation in another project, but it's
-                  confidential)</i>
-              </h3>
-            </div>
-
-            <div class="col-md-12 col-12 text-center pb-4">
-              <img class="images img-fluid" src="images/GovTech/Pic5.gif" alt="worm" />
-            </div>
-
-            <div class="col-md-10 col-12 text-left pb-4 pt-4">
-              <h3 class="main-content4 text-left pb-4">
-                Picture infographics were created to visually explain the
-                content of the examples in the articles, to make them more
-                engaging and easier to understand for users. I added alt text
-                to explain these images for screen-reader users, ensuring that
-                the information is accessible to everyone.
-              </h3>
+            <div class="row justify-content-center pt-3 pb-0">
+              <div class="col-md-12 col-12 text-left">
+                <h3
+                  class="main-content6 text-left"
+                  style="
+                    color: #715ad8;
+                    font-weight: 550;
+                    font-size: 2rem;
+                    padding-top: 1.5rem;
+                    padding-bottom: 0.5rem;
+                    margin-bottom: 0;
+                  "
+                >
+                  Enhancing comprehension with visual aids
+                </h3>
+                <h3 class="main-content4">
+                  Picture infographics were created to visually explain the
+                  content of the examples in the articles, to make them more
+                  engaging and easier to understand for users. I added alt text
+                  to explain these images for screen-reader users, ensuring that
+                  the information is accessible to everyone.
+                </h3>
+              </div>
             </div>
 
             <div class="col-md-12 col-12 text-center pt-4">
               <div class="row justify-content-center">
                 <div class="col-md-6 col-12 px-1">
-                  <img class="header-image img-fluid" src="images/GovTech/Pic1.png" alt="worm" />
+                  <img
+                    class="images-light img-fluid"
+                    src="images/GovTech/Pic1.png"
+                    alt="worm"
+                    style="border-radius: 0; border: none;"
+                  />
                 </div>
                 <div class="col-md-6 col-12 px-1">
-                  <img class="header-image img-fluid" src="images/GovTech/Pic3.png" alt="worm" />
+                  <img
+                    class="images-light img-fluid"
+                    src="images/GovTech/Pic3.png"
+                    alt="worm"
+                    style="border-radius: 0; border: none;"
+                  />
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      <div class="container py-5">
-        <div class="row justify-content-center pt-5 pb-0">
-          <div class="tag-container" style="margin-bottom: 0">
-            <span class="tag" style="
-                  background: #715ad8;
-                  color: #ffffff;
-                  font-weight: 500;
-                  font-size: 0.75rem;
-                  padding: 0.25rem 0.8rem;
-                ">Case Study #3</span>
-          </div>
-        </div>
-
-        <div class="row justify-content-center">
-          <div class="col-md-10 col-12 pt-0 pb-4 text-left">
-            <h3 class="text-center main-content3" style="color: #715ad8">
-              Discovering Insights through participating in user interviews
-              and synthesising findings
-            </h3>
-            <h3 class="main-content4 text-left pb-4">
-              I collaborated with another designer on a user testing to
-              discover insights that could help improve our website's
-              experience for people working in government (Software
-              Developers, Product Managers, UX/UI Designers). I helped scribe
-              the interviews (6 of them), meticulously documenting observed
-              behaviours and identified pain points. Additionally, I took on
-              the responsibility of conducting one of the user tests myself.
-              This allowed me to directly understand the user's experience
-              with the website firsthand, and ask questions to gain insights
-              into their perception of our
-              <b style="font-weight: 550">website's overall ease of interaction and content's
-                clarity.</b>
-            </h3>
-
-            <div style="
-                  border: 2px solid #715ad8;
-                  padding: 25px;
-                  border-radius: 16px;
-                  margin-bottom: 30px;
-                ">
-              <h4 style="color: #715ad8; font-weight: 550; font-size: 18px">
-                Core Objectives:
-              </h4>
-              <h3 class="main-content4 pt-2 pb-2">
-                🧪 Understand the target user's priorities when browsing the
-                site (empathy vs tools).
+            <!-- <div class="row justify-content-center">
+            <div class="col-md-12 col-12 pt-0 pb-3 text-left">
+              <h3 class="main-content6 text-left"
+                style="color: #715ad8; font-weight: 550; font-size: 2rem; padding-top: 1.5rem; padding-bottom: 0.5rem; margin-bottom: 0;">
+                Key Usability Findings
               </h3>
-              <h3 class="main-content4 pt-2 pb-2">
-                🧪 Evaluate if the current site structure is intuitive such
-                that users can easily locate essential resources and integrate
-                them into their workflows, regardless of their roles.
-              </h3>
-              <h3 class="main-content4 pt-0 pb-0">
-                🧪 Determine whether the website's content is accurate and
-                easily understandable across different professional roles.
-              </h3>
-            </div>
-          </div>
-        </div>
-
-        <div class="container pb-4">
-          <div class="row justify-content-center pb-0">
-            <div class="col-md-6 col-12 text-center">
-              <img class="images img-fluid" src="images/GovTech/Roles.svg" alt="worm" />
-            </div>
-          </div>
-        </div>
-
-        <div class="container pb-4">
-          <div class="row justify-content-center pb-4">
-            <div class="col-md-12 col-12 text-center">
-              <img class="images img-fluid" src="images/GovTech/14.jpg" alt="worm" />
-            </div>
-          </div>
-        </div>
-
-        <div class="row justify-content-center pb-4">
-          <div class="col-md-10 col-12 text-left">
-            <h3 class="main-content4 text-left">
-              I transcribed and synthesised the interviews using Dovetail, clustering insights into targeted categories
-              like "content", "features", "positive feedback", and "areas of confusion". To make the data actionable for the
-              team, these info were consolidated into a Google Sheets cross-referenced with timestamps, and
-              each finding marked with the severity level (minor, moderate, major) and action type (copy vs design).
-            </h3>
-          </div>
-        </div>
-
-        <div class="container pb-3">
-          <div class="row justify-content-center pb-0">
-            <div class="col-md-12 col-12 text-center">
-              <img class="images img-fluid" src="images/GovTech/15.png" alt="worm" />
-            </div>
-          </div>
-        </div>
-
-        <div class="container pb-4">
-          <div class="row justify-content-center pb-4">
-            <div class="col-md-12 col-12 text-center">
-              <img class="images img-fluid" src="images/GovTech/16.png" alt="worm" />
-            </div>
-          </div>
-        </div>
-
-        <div class="row justify-content-center">
-          <div class="col-md-10 col-12 text-left">
-            <h3 class="main-content4 text-left pb-5">
-              I presented the findings and
-              recommendations to the rest of the team in a refined slide deck.
-              From this, I also learned the importance of elaborating on the
-              nature and context of their confusion, providing more detailed
-              scenarios to the team for better understanding.
-              <br /><br />
-              These findings were used by the team to
-              <b style="font-weight: 550">make informed decisions on how to address the issues to
-                improve the website.</b>
-            </h3>
-
-            <div style="
-                  border: 2px solid #715ad8;
-                  padding: 25px;
-                  border-radius: 16px;
-                  margin-bottom: 30px;
-                ">
-              <h4 style="color: #715ad8; font-weight: 550; font-size: 18px">
-                Examples of key findings & recommendations:
-              </h4>
-              <h3 class="main-content4 pt-2 pb-2">
-                <b style="font-weight: 550">🧠 Terminology comprehension varies by role:</b>
-                Inconsistent information interpretation occurred (e.g., "site
-                component" was interpreted differently by a SWE vs. a product
-                manager).
-              </h3>
-              <h3 class="main-content4 pt-0 pb-2">
-                <i>Recommendation: Revise the terminology copy and add
-                  definitions for key terms for clearer specification.</i>
-              </h3>
-              <h3 class="main-content4 pt-0 pb-2">
-                <b style="font-weight: 550">🌐 Workflow integration over empathy:</b>
-                Professionals prioritise technical workflow integration over
-                empathy-building when accessing information as they focus on
-                output speed.
-              </h3>
-              <h3 class="main-content4 pt-0 pb-2">
-                <i>Recommendation: Reorder the flow of sections on the
-                  homepage to elevate "Top 5 at-a-glance issues" above
-                  "People's Stories".</i>
-              </h3>
-            </div>
-          </div>
-        </div>
-
-        <!-- <div class="row justify-content-center pt-5">
-            <div class="col-md-12 col-12 text-center">
-              <img
-                class="images img-fluid"
-                src="images/GovTech/17.png"
-                alt="worm"
-              />
             </div>
           </div> -->
 
-        <div class="row justify-content-center pt-2 pb-4">
-          <div class="col-md-10 col-12 text-left">
-            <h3 class="main-content4 text-left py-3">
-              Overall, during this internship, a11y was one of the most
-              meaningful projects I've worked on, as I got to learn about
-              accessibility principles and the importance of designing for all
-              users. My key takeaway was the importance of digital
-              accessibility, as it highlighted the necessity of designing with
-              a user-centric approach, ensuring that every individual has a
-              smooth and equitable digital experience, including PWDs. It was
-              also meaningful to be creating tech for the public good, as I
-              got to improve people's lives through my daily work.
-            </h3>
-          </div>
-        </div>
-
-        <div class="row justify-content-center">
-          <div class="col-md-12 col-12 text-center pb-5">
-            <img class="images img-fluid" src="images/GovTech/22.jpg" alt="worm" />
-          </div>
-        </div>
-
-        <div id="fab-button" class="fab-container">
-          <div class="fab">
-            <svg xmlns="http://www.w3.org/2000/svg" height="42px" viewBox="0 -960 960 960" width="42px" fill="gray">
-              <path d="M480-545.33 287.33-352.67 240-400l240-240 240 240-47.33 47.33L480-545.33Z" />
-            </svg>
-          </div>
-        </div>
-
-        <!-- Pagination Routing -->
-        <div class="row justify-content-center pb-5 pt-5">
-          <div class="col-md-8 col-12 text-center pt-5 pb-5">
-            <h3 class="mb-4" style="color: #555; font-size: 18px">
-              View other works 👀
-            </h3>
-            <div class="d-flex flex-wrap justify-content-center gap-3">
-              <a href="MandaiX.html" class="btn btn-outline-work">Mandai X</a>
-              <a href="GovTech.html" class="btn btn-outline-work">GovTech a11y Playground</a>
-              <a href="SproutSwap.html" class="btn btn-outline-work">SproutSwap</a>
-              <a href="TheBeeCrisis.html" class="btn btn-outline-work">The Bee Crisis</a>
-              <a href="Enhancing Fei Yang Band.html" class="btn btn-outline-work">Enhancing Fei Yang Band</a>
-              <a href="GoKakis.html" class="btn btn-outline-work">GoKakis</a>
+            <!-- 3 cards layout -->
+            <!-- <div class="row my-4 pb-3">
+            <div class="col-md-4 col-12 mb-3 mb-md-0">
+              <div class="cs-card cs-card-dark">
+                <div class="cs-card-number">Checklist Readability</div>
+                <p class="cs-card-text">
+                  Practitioners requested clearer role-based filters so designers and developers could instantly see
+                  recommendations for their discipline.
+                </p>
+              </div>
             </div>
+            <div class="col-md-4 col-12 mb-3 mb-md-0">
+              <div class="cs-card cs-card-dark">
+                <div class="cs-card-number">Tool Discovery</div>
+                <p class="cs-card-text">
+                  External tools were highly valued but required more visual categorization to quickly highlight
+                  screen-reader testing and color checkers.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4 col-12 mb-3 mb-md-0">
+              <div class="cs-card cs-card-dark">
+                <div class="cs-card-number">Empathy Video Impact</div>
+                <p class="cs-card-text">
+                  PWD interviews drove strong engagement; linking video insights directly to actionable checklist steps
+                  improved adoption.
+                </p>
+              </div>
+            </div>
+          </div> -->
+
+            <!-- <div class="pivot-banner my-4">
+            <div class="pivot-content">
+              <span class="pivot-icon">💡</span>
+              <p class="pivot-text">
+                Focused on <strong>high-impact UI enhancements</strong> that improved checklist filtering and content
+                discovery with <strong>minimal code overhead</strong>.
+              </p>
+            </div>
+          </div> -->
+
           </div>
-        </div>
+        </section>
 
+            <section
+              class="container-fluid px-0 pb-5"
+              style="background-color: #ffffff"
+            >
+              <div class="container pt-4 pb-4">
+                <div class="row justify-content-center pt-5 pb-0">
+                  <div class="col-md-12 col-12 text-left">
+                    <div class="case-study-label">[CASE STUDY 03 ]</div>
+                    <h2 class="case-study-title">
+                      Conducting usability testing and synthesis
+                    </h2>
+                    <div class="row justify-content-center">
+                      <div class="col-md-12 col-12 pt-0 pb-1 text-left">
+                        <h3
+                          class="main-content6 text-left"
+                          style="
+                            color: #715ad8;
+                            font-weight: 550;
+                            font-size: 2rem;
+                            padding-top: 1.5rem;
+                            padding-bottom: 0.5rem;
+                            margin-bottom: 0;
+                          "
+                        >
+                          User testing with demographics to uncover findings
+                        </h3>
+                      </div>
+                    </div>
+                    <h3 class="main-content4">
+                      Through user testing with government professionals, I
+                      documented behaviors, identified pain points, and gained
+                      firsthand insights into their workflow needs. This allowed
+                      me to directly understand the user's concerns with the
+                      website firsthand, and
+                      <b style="font-weight: 550"
+                        >gather their concerns and perception on our website's
+                        overall ease of interaction and content's clarity, as
+                        well as how they might incorporate a11y into their
+                        workflows.</b
+                      >
+                    </h3>
+                  </div>
+                </div>
+
+                <div class="row justify-content-center pb-3 pt-0">
+                  <div class="col-md-8 col-12 p-2 text-center">
+                    <img
+                      class="images img-fluid"
+                      src="images/GovTech/Roles.svg"
+                      alt="a11y Playground interface preview"
+                    />
+                  </div>
+                </div>
+
+                <!-- <div class="row justify-content-center pb-3 pt-0">
+            <div class="col-md-12 col-12 p-2 text-center">
+              <img class="images img-fluid" src="images/GovTech/14.jpg" alt="a11y Playground interface preview" />
+            </div>
+          </div> -->
+
+                <div class="row justify-content-center">
+                  <div class="col-md-12 col-12 pt-0 pb-1 text-left">
+                    <h3
+                      class="main-content6 text-left"
+                      style="
+                        color: #715ad8;
+                        font-weight: 550;
+                        font-size: 2rem;
+                        padding-top: 1.5rem;
+                        padding-bottom: 0.5rem;
+                        margin-bottom: 0;
+                      "
+                    >
+                      Using Dovetail AI to transcribe, synthesise and cluster
+                      insights
+                    </h3>
+                  </div>
+                </div>
+
+                <div class="row justify-content-center pt-0 pb-0">
+                  <div class="col-md-12 col-12 text-left">
+                    <h3 class="main-content4">
+                      Using Dovetail, I transcribed and clustered interview
+                      insights into key categories (content, features, positive
+                      feedback, confusion areas). To make the data actionable, I
+                      consolidated findings in Google Sheets with timestamps,
+                      severity levels (minor, moderate, major), and action types
+                      (copy vs. design).
+                    </h3>
+                  </div>
+                </div>
+
+                <!-- Custom Grid Box -->
+                <div
+                  class="card border-0 overflow-hidden my-4"
+                  style="border-radius: 12px; background-color: #f8f6ff"
+                >
+                  <!-- Card Header -->
+                  <div
+                    class="card-header border-0 text-white text-center py-3"
+                    style="
+                      background-color: #715ad8;
+                      border-top-left-radius: 12px;
+                      border-top-right-radius: 12px;
+                    "
+                  >
+                    <h5
+                      class="mb-0"
+                      style="
+                        font-weight: 550;
+                        font-size: 1.1rem;
+                        letter-spacing: 0.2px;
+                      "
+                    >
+                      💡 Examples of key findings & recommendations:
+                    </h5>
+                  </div>
+
+                  <!-- Card Body -->
+                  <div class="card-body p-0">
+                    <div class="row no-gutters align-items-stretch">
+                      <!-- Column 1 -->
+                      <div
+                        class="col-md-6 p-4 p-md-5"
+                        style="border-right: 1px solid #c3b5f7"
+                      >
+                        <div class="d-flex align-items-start">
+                          <span
+                            class="mr-3"
+                            style="font-size: 2.2rem; line-height: 1"
+                            >🧠</span
+                          >
+                          <div>
+                            <h6
+                              class="font-italic mb-3"
+                              style="
+                                font-weight: 550;
+                                color: #2c1a6b;
+                                font-size: 1.05rem;
+                              "
+                            >
+                              Terminology comprehension varies by role:
+                            </h6>
+                            <p
+                              class="mb-3"
+                              style="
+                                font-weight: 400;
+                                color: #2c1a6b;
+                                font-size: 0.95rem;
+                                line-height: 1.4;
+                              "
+                            >
+                              Inconsistent information interpretation occurred
+                              (e.g., "site component" was interpreted
+                              differently by a SWE vs. a product manager).
+                            </p>
+                            <p
+                              class="font-italic mb-0"
+                              style="
+                                font-weight: 400;
+                                color: #2c1a6b;
+                                font-size: 0.95rem;
+                                line-height: 1.4;
+                              "
+                            >
+                              (Recommendation: Revise the terminology copy and
+                              add definitions for key terms for clearer
+                              specification.)
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Column 2 -->
+                      <div class="col-md-6 p-4 p-md-5">
+                        <div class="d-flex align-items-start">
+                          <span
+                            class="mr-3"
+                            style="font-size: 2.2rem; line-height: 1"
+                            >🧑‍💻</span
+                          >
+                          <div>
+                            <h6
+                              class="font-italic mb-3"
+                              style="
+                                font-weight: 550;
+                                color: #2c1a6b;
+                                font-size: 1.05rem;
+                              "
+                            >
+                              Workflow integration over empathy:
+                            </h6>
+                            <!-- Main Copy -->
+                            <p
+                              class="mb-3"
+                              style="
+                                font-weight: 400;
+                                color: #2c1a6b;
+                                font-size: 0.95rem;
+                                line-height: 1.4;
+                              "
+                            >
+                              Professionals prioritise technical workflow
+                              integration over empathy-building when accessing
+                              information as they focus on output speed.
+                            </p>
+                            <!-- Recommendation Copy with matching spacing -->
+                            <p
+                              class="font-italic mb-0"
+                              style="
+                                font-weight: 400;
+                                color: #2c1a6b;
+                                font-size: 0.95rem;
+                                line-height: 1.4;
+                              "
+                            >
+                              (Recommendation: Reorder the flow of sections on
+                              the homepage to elevate "Top 5 at-a-glance issues"
+                              above "People's Stories".)
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row justify-content-center pb-3 pt-0">
+                  <div class="col-md-12 col-12 p-2 text-center">
+                    <img
+                      class="images-light img-fluid"
+                      src="images/GovTech/15.png"
+                      alt="a11y Playground interface preview"
+                    />
+                  </div>
+                </div>
+                <!-- <div class="row justify-content-center pb-3 pt-0">
+            <div class="col-md-12 col-12 p-2 text-center">
+              <img class="images-light img-fluid" src="images/GovTech/16.png" alt="a11y Playground interface preview" />
+            </div>
+          </div> -->
+
+                <div class="row justify-content-center">
+                  <div class="col-md-12 col-12 pt-0 pb-1 text-left">
+                    <h3
+                      class="main-content6 text-left"
+                      style="
+                        color: #715ad8;
+                        font-weight: 550;
+                        font-size: 2rem;
+                        padding-top: 1.5rem;
+                        padding-bottom: 0.5rem;
+                        margin-bottom: 0;
+                      "
+                    >
+                      Clear handover of recommendations to the team
+                    </h3>
+                  </div>
+                </div>
+
+                <div class="row justify-content-center pt-0 pb-0">
+                  <div class="col-md-12 col-12 text-left">
+                    <h3 class="main-content4">
+                      Presenting these findings to the team reinforced the
+                      importance of capturing the deep context behind user pain
+                      points. Ultimately, these actionable insights enabled the
+                      team to
+                      <b style="font-weight: 550"
+                        >make informed, user-centered improvements to the
+                        website.</b
+                      >
+                    </h3>
+                  </div>
+                </div>
+
+                <!-- <div class="row justify-content-center">
+            <div class="col-md-12 col-12 pt-0 pb-3 text-left">
+              <h3 class="main-content6 text-left"
+                style="color: #715ad8; font-weight: 550; font-size: 2rem; padding-top: 1.5rem; padding-bottom: 0.5rem; margin-bottom: 0;">
+                Key Usability Findings
+              </h3>
+            </div>
+          </div> -->
+
+                <!-- 3 cards layout -->
+                <!-- <div class="row my-4 pb-3">
+            <div class="col-md-4 col-12 mb-3 mb-md-0">
+              <div class="cs-card cs-card-dark">
+                <div class="cs-card-number">Checklist Readability</div>
+                <p class="cs-card-text">
+                  Practitioners requested clearer role-based filters so designers and developers could instantly see
+                  recommendations for their discipline.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4 col-12 mb-3 mb-md-0">
+              <div class="cs-card cs-card-dark">
+                <div class="cs-card-number">Tool Discovery</div>
+                <p class="cs-card-text">
+                  External tools were highly valued but required more visual categorization to quickly highlight
+                  screen-reader testing and color checkers.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4 col-12 mb-3 mb-md-0">
+              <div class="cs-card cs-card-dark">
+                <div class="cs-card-number">Empathy Video Impact</div>
+                <p class="cs-card-text">
+                  PWD interviews drove strong engagement; linking video insights directly to actionable checklist steps
+                  improved adoption.
+                </p>
+              </div>
+            </div>
+          </div> -->
+
+                <!-- <div class="pivot-banner my-4">
+            <div class="pivot-content">
+              <span class="pivot-icon">💡</span>
+              <p class="pivot-text">
+                Focused on <strong>high-impact UI enhancements</strong> that improved checklist filtering and content
+                discovery with <strong>minimal code overhead</strong>.
+              </p>
+            </div>
+          </div> -->
+
+                <!-- <div class="challenge-box-light">
+            <div class="challenge-label">Final Outcomes 👍</div>
+            <p class="main-content4 pt-2 pb-2">
+              🚀 <b style="font-weight:550;">Public Launch:</b> Successfully debuted during Inclusive Design Week 2025,
+              receiving wide media recognition.
+            </p>
+            <p class="main-content4 pt-2 pb-2">
+              🎨 <b style="font-weight:550;">Design System Integration:</b> Produced scalable illustration assets that
+              team members continue to reuse across GovTech accessibility communications.
+            </p>
+          </div> -->
+
+          </div>
+        </section>
+
+                <div id="fab-button" class="fab-container">
+                  <div class="fab">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      height="42px"
+                      viewBox="0 -960 960 960"
+                      width="42px"
+                      fill="gray"
+                    >
+                      <path
+                        d="M480-545.33 287.33-352.67 240-400l240-240 240 240-47.33 47.33L480-545.33Z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+
+                <div class="row justify-content-center pb-5 pt-5">
+                  <div class="col-md-8 col-12 text-center pt-5 pb-5">
+                    <h3 class="mb-4" style="color: #555; font-size: 18px">
+                      View other works 👀
+                    </h3>
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                      <a href="MandaiX.html" class="btn btn-outline-work"
+                        >Mandai X</a
+                      >
+                      <a href="GovTech.html" class="btn btn-outline-work"
+                        >GovTech a11y Playground</a
+                      >
+                      <a
+                        href="Enhancing Fei Yang Band.html"
+                        class="btn btn-outline-work"
+                        >Enhancing Fei Yang Band</a
+                      >
+                      <a href="TheBeeCrisis.html" class="btn btn-outline-work"
+                        >The Bee Crisis</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              </div>
+
+              <!-- EXACT SYNCED FOOTER OUTSIDE CONTAINER STRUCTURE -->
+              <footer class="footer-dark">
+                <div class="container">
+                  <div class="footer-text">⤷ Let's create together ⋆.˚</div>
+
+                  <div class="social-icons">
+                    <a href="mailto:jochanxt@gmail.com" target="_blank">
+                      <img src="images/Work/Icon1_Email.svg" alt="Email" />
+                    </a>
+                    <a
+                      href="https://linkedin.com/in/josiechanxt"
+                      target="_blank"
+                    >
+                      <img
+                        src="images/Work/Icon2_Linkedin.svg"
+                        alt="LinkedIn"
+                      />
+                    </a>
+                    <a
+                      href="https://instagram.com/jo.cgraphics"
+                      target="_blank"
+                    >
+                      <img
+                        src="images/Work/Icon3_Instagram.svg"
+                        alt="Instagram"
+                      />
+                    </a>
+                  </div>
+
+                  <div class="copyright-bar">
+                    <p>Copyright © 2026 Josie Chan</p>
+                  </div>
+                </div>
+              </footer>
+
+              <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                  var fader = document.getElementById("fader");
+
+                  function revealPage() {
+                    if (fader) {
+                      setTimeout(function () {
+                        fader.classList.remove("fade-in");
+                        fader.classList.add("fade-out");
+                      }, 100);
+                    }
+                  }
+
+                  revealPage();
+
+                  window.addEventListener("pageshow", function (event) {
+                    if (event.persisted) {
+                      revealPage();
+                    }
+                  });
+
+                  var anchors = document.getElementsByTagName("a");
+                  for (var i = 0; i < anchors.length; i++) {
+                    if (
+                      anchors[i].hostname === window.location.hostname &&
+                      anchors[i].pathname !== window.location.pathname &&
+                      anchors[i].target !== "_blank"
+                    ) {
+                      anchors[i].addEventListener("click", function (event) {
+                        event.preventDefault();
+                        var href = this.href;
+                        if (fader) {
+                          fader.classList.remove("fade-out");
+                          fader.classList.add("fade-in");
+                          setTimeout(function () {
+                            window.location = href;
+                          }, 500);
+                        } else {
+                          window.location = href;
+                        }
+                      });
+                    }
+                  }
+                });
+
+                const fabButton = document.getElementById("fab-button");
+                const SCROLL_THRESHOLD = 300;
+
+                const toggleFabVisibility = () => {
+                  if (window.scrollY > SCROLL_THRESHOLD) {
+                    fabButton.classList.remove("fab-hidden");
+                  } else {
+                    fabButton.classList.add("fab-hidden");
+                  }
+                };
+
+                window.addEventListener("scroll", toggleFabVisibility);
+
+                fabButton.addEventListener("click", () => {
+                  window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                  });
+                });
+
+                function initSliders() {
+                  const sliderContainers = document.querySelectorAll(
+                    ".image-slider-container",
+                  );
+
+                  sliderContainers.forEach((container) => {
+                    const slides = container.querySelectorAll(".slider-slide");
+                    const panels = container.querySelectorAll(".slider-panel");
+                    const dotsContainer =
+                      container.querySelector(".slider-dots");
+
+                    let currentSlide = 0;
+                    const totalSlides = slides.length;
+
+                    if (dotsContainer) {
+                      dotsContainer.innerHTML = "";
+                      for (let i = 0; i < totalSlides; i++) {
+                        const dot = document.createElement("button");
+                        dot.className = "dot" + (i === 0 ? " active" : "");
+                        dot.setAttribute("aria-label", `Go to slide ${i + 1}`);
+                        dot.addEventListener("click", () => goToSlide(i));
+                        dotsContainer.appendChild(dot);
+                      }
+                    }
+
+                    function updateSlider() {
+                      slides.forEach((slide, idx) =>
+                        slide.classList.toggle("active", idx === currentSlide),
+                      );
+                      panels.forEach((panel, idx) =>
+                        panel.classList.toggle("active", idx === currentSlide),
+                      );
+
+                      const activeSlide = slides[currentSlide];
+                      const leftArrow =
+                        activeSlide.querySelector(".slider-arrow-left");
+                      const rightArrow = activeSlide.querySelector(
+                        ".slider-arrow-right",
+                      );
+
+                      if (leftArrow)
+                        leftArrow.style.visibility =
+                          currentSlide === 0 ? "hidden" : "visible";
+                      if (rightArrow)
+                        rightArrow.style.visibility =
+                          currentSlide === totalSlides - 1
+                            ? "hidden"
+                            : "visible";
+
+                      if (dotsContainer) {
+                        const dots = dotsContainer.querySelectorAll(".dot");
+                        dots.forEach((dot, idx) =>
+                          dot.classList.toggle("active", idx === currentSlide),
+                        );
+                      }
+                    }
+
+                    function nextSlide() {
+                      if (currentSlide < totalSlides - 1) {
+                        currentSlide++;
+                        updateSlider();
+                      }
+                    }
+
+                    function previousSlide() {
+                      if (currentSlide > 0) {
+                        currentSlide--;
+                        updateSlider();
+                      }
+                    }
+
+                    function goToSlide(index) {
+                      currentSlide = index;
+                      updateSlider();
+                    }
+
+                    container
+                      .querySelectorAll(".slider-arrow-left")
+                      .forEach((btn) =>
+                        btn.addEventListener("click", previousSlide),
+                      );
+                    container
+                      .querySelectorAll(".slider-arrow-right")
+                      .forEach((btn) =>
+                        btn.addEventListener("click", nextSlide),
+                      );
+
+                    updateSlider();
+                  });
+                }
+
+                document.addEventListener("DOMContentLoaded", initSliders);
+              </script>
+
+              <script
+                src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+                integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                crossorigin="anonymous"
+              ></script>
+              <script
+                src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QXtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"
+              ></script>
+              <script
+                src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.js"
+                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin="anonymous"
+              ></script>
+              <script src="images/lottie.min.js"></script>
+              <script src="images/GovTech/lottie-animation-data.js"></script>
+
+              <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                  var fader = document.getElementById("faderhome");
+
+                  function revealPage() {
+                    if (fader) {
+                      setTimeout(function () {
+                        fader.classList.remove("fade-in");
+                        fader.classList.add("fade-out");
+                      }, 100);
+                    }
+                  }
+
+                  revealPage();
+
+                  window.addEventListener("pageshow", function (event) {
+                    if (event.persisted) {
+                      revealPage();
+                    }
+                  });
+
+                  var anchors = document.getElementsByTagName("a");
+                  for (var i = 0; i < anchors.length; i++) {
+                    if (
+                      anchors[i].hostname === window.location.hostname &&
+                      anchors[i].pathname !== window.location.pathname &&
+                      anchors[i].target !== "_blank"
+                    ) {
+                      anchors[i].addEventListener("click", function (event) {
+                        event.preventDefault();
+                        var href = this.href;
+                        if (fader) {
+                          fader.classList.remove("fade-out");
+                          fader.classList.add("fade-in");
+                          setTimeout(function () {
+                            window.location = href;
+                          }, 500);
+                        } else {
+                          window.location = href;
+                        }
+                      });
+                    }
+                  }
+
+                  var revealTargets = document.querySelectorAll(
+                    ".reveal, .port-card",
+                  );
+                  if ("IntersectionObserver" in window) {
+                    var revealObserver = new IntersectionObserver(
+                      function (entries, observer) {
+                        entries.forEach(function (entry) {
+                          if (entry.isIntersecting) {
+                            entry.target.classList.add(
+                              entry.target.classList.contains("port-card")
+                                ? "revealed"
+                                : "active",
+                            );
+                            observer.unobserve(entry.target);
+                          }
+                        });
+                      },
+                      {
+                        root: null,
+                        rootMargin: "0px 0px -80px 0px",
+                        threshold: 0.15,
+                      },
+                    );
+
+                    revealTargets.forEach(function (target) {
+                      revealObserver.observe(target);
+                    });
+                  } else {
+                    revealTargets.forEach(function (target) {
+                      target.classList.add(
+                        target.classList.contains("port-card")
+                          ? "revealed"
+                          : "active",
+                      );
+                    });
+                  }
+
+                  const heroWrapper =
+                    document.getElementById("heroImageWrapper");
+                  const heroImg = document.getElementById("heroHeaderImg");
+
+                  const updateHeroOnScroll = () => {
+                    if (window.innerWidth <= 768) {
+                      heroWrapper.style.removeProperty("padding");
+                      heroImg.style.removeProperty("border-radius");
+                      heroImg.style.removeProperty("transform");
+                      return;
+                    }
+
+                    const progress = Math.max(0, Math.min(window.scrollY / 150, 1));
+                    const currentSidePadding = 5 * (1 - progress);
+                    const currentBottomPadding = 3 * (1 - progress);
+                    const currentRadius = 20 * (1 - progress);
+
+                    heroWrapper.style.padding = `${currentSidePadding}rem ${currentSidePadding}rem ${currentBottomPadding}rem ${currentSidePadding}rem`;
+                    heroImg.style.setProperty("border-radius", progress >= 1 ? "0px" : `${currentRadius}px`, "important");
+                    heroImg.style.transform = `scale(${1 + (0.025 * progress)})`;
+                  };
+
+                  window.addEventListener("scroll", updateHeroOnScroll);
+                  window.addEventListener("resize", updateHeroOnScroll);
+                  updateHeroOnScroll();
+
+                  if (window.lottie) {
+                    const reducedMotion = window.matchMedia(
+                      "(prefers-reduced-motion: reduce)",
+                    ).matches;
+
+                    function cropLottieHorizontalBounds(
+                      animation,
+                      container,
+                      compositionWidth,
+                      compositionHeight,
+                    ) {
+                      const svg =
+                        animation.renderer && animation.renderer.svgElement;
+                      const artwork = svg && svg.querySelector(":scope > g");
+
+                      if (
+                        !svg ||
+                        !artwork ||
+                        typeof artwork.getBBox !== "function"
+                      ) {
+                        return;
+                      }
+
+                      let left = compositionWidth;
+                      let right = 0;
+                      const originalFrame = animation.currentFrame;
+                      const lastFrame = Math.max(
+                        0,
+                        Math.ceil(animation.totalFrames) - 1,
+                      );
+
+                      // Measure every frame so animated elements never get clipped by the crop.
+                      for (let frame = 0; frame <= lastFrame; frame += 1) {
+                        animation.goToAndStop(frame, true);
+                        const bounds = artwork.getBBox();
+
+                        if (bounds.width > 0) {
+                          left = Math.min(left, bounds.x);
+                          right = Math.max(right, bounds.x + bounds.width);
+                        }
+                      }
+
+                      if (right <= left) {
+                        return;
+                      }
+
+                      const padding = 6;
+                      const croppedLeft = Math.max(
+                        0,
+                        Math.floor(left - padding),
+                      );
+                      const croppedRight = Math.min(
+                        compositionWidth,
+                        Math.ceil(right + padding),
+                      );
+                      const croppedWidth = croppedRight - croppedLeft;
+
+                      svg.setAttribute(
+                        "viewBox",
+                        `${croppedLeft} 0 ${croppedWidth} ${compositionHeight}`,
+                      );
+                      container.style.aspectRatio = `${croppedWidth} / ${compositionHeight}`;
+
+                      if (reducedMotion) {
+                        animation.goToAndStop(animation.firstFrame, true);
+                      } else {
+                        animation.goToAndPlay(originalFrame, true);
+                      }
+                    }
+
+                    document
+                      .querySelectorAll(
+                        ".lottie-animation[data-animation-path]",
+                      )
+                      .forEach(function (container) {
+                        const animationPath = container.dataset.animationPath;
+                        const fileName = animationPath.split("/").pop();
+                        const bundledAnimation =
+                          window.govTechLottieAnimations &&
+                          window.govTechLottieAnimations[fileName];
+                        const animation = lottie.loadAnimation({
+                          container: container,
+                          renderer: "svg",
+                          loop: !reducedMotion,
+                          autoplay: !reducedMotion,
+                          ...(bundledAnimation
+                            ? { animationData: bundledAnimation }
+                            : { path: animationPath }),
+                          rendererSettings: {
+                            preserveAspectRatio: "xMidYMid meet",
+                          },
+                        });
+
+                        animation.addEventListener("DOMLoaded", function () {
+                          cropLottieHorizontalBounds(
+                            animation,
+                            container,
+                            bundledAnimation ? bundledAnimation.w : 656,
+                            bundledAnimation ? bundledAnimation.h : 369,
+                          );
+                        });
+                      });
+                  }
+                });
+              </script>
+            </section>
+          </div>
+        </section>
       </div>
-    </div>
-  </div>
-
-  <!-- Synced Footer Context -->
-  <footer class="footer-dark">
-    <div class="container">
-      <div class="footer-text">⤷ Let's work together ⋆.˚</div>
-
-      <div class="social-icons">
-        <a href="mailto:jochanxt@gmail.com" target="_blank">
-          <img src="images/Work/Icon1_Email.svg" alt="Email" />
-        </a>
-        <a href="https://linkedin.com/in/josiechan" target="_blank">
-          <img src="images/Work/Icon2_Linkedin.svg" alt="LinkedIn" />
-        </a>
-        <a href="https://instagram.com/jo.cgraphics" target="_blank">
-          <img src="images/Work/Icon3_Instagram.svg" alt="Instagram" />
-        </a>
-      </div>
-
-      <div class="copyright-bar">
-        <p>Copyright © 2026 Josie Chan</p>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      var fader = document.getElementById("fader");
-
-      // Function to hide the white overlay
-      function revealPage() {
-        if (fader) {
-          setTimeout(function () {
-            fader.classList.remove("fade-in");
-            fader.classList.add("fade-out");
-          }, 100);
-        }
-      }
-
-      revealPage();
-
-      window.addEventListener("pageshow", function (event) {
-        if (event.persisted) {
-          revealPage();
-        }
-      });
-
-      var anchors = document.getElementsByTagName("a");
-      for (var i = 0; i < anchors.length; i++) {
-        if (
-          anchors[i].hostname === window.location.hostname &&
-          anchors[i].pathname !== window.location.pathname &&
-          anchors[i].target !== "_blank"
-        ) {
-          anchors[i].addEventListener("click", function (event) {
-            event.preventDefault();
-            var href = this.href;
-            if (fader) {
-              fader.classList.remove("fade-out");
-              fader.classList.add("fade-in");
-              setTimeout(function () {
-                window.location = href;
-              }, 500);
-            } else {
-              window.location = href;
-            }
-          });
-        }
-      }
-    });
-
-    const fabButton = document.getElementById("fab-button");
-    const SCROLL_THRESHOLD = 300;
-
-    const toggleFabVisibility = () => {
-      if (window.scrollY > SCROLL_THRESHOLD) {
-        fabButton.classList.remove("fab-hidden");
-      } else {
-        fabButton.classList.add("fab-hidden");
-      }
-    };
-
-    window.addEventListener("scroll", toggleFabVisibility);
-
-    fabButton.addEventListener("click", () => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    });
-
-    function initSliders() {
-      const sliderContainers = document.querySelectorAll(
-        ".image-slider-container",
-      );
-
-      sliderContainers.forEach((container) => {
-        const slides = container.querySelectorAll(".slider-slide");
-        const panels = container.querySelectorAll(".slider-panel");
-        const dotsContainer = container.querySelector(".slider-dots");
-
-        let currentSlide = 0;
-        const totalSlides = slides.length;
-
-        if (dotsContainer) {
-          dotsContainer.innerHTML = "";
-          for (let i = 0; i < totalSlides; i++) {
-            const dot = document.createElement("button");
-            dot.className = "dot" + (i === 0 ? " active" : "");
-            dot.setAttribute("aria-label", `Go to slide ${i + 1}`);
-            dot.addEventListener("click", () => goToSlide(i));
-            dotsContainer.appendChild(dot);
-          }
-        }
-
-        function updateSlider() {
-          slides.forEach((slide, idx) =>
-            slide.classList.toggle("active", idx === currentSlide),
-          );
-          panels.forEach((panel, idx) =>
-            panel.classList.toggle("active", idx === currentSlide),
-          );
-
-          const activeSlide = slides[currentSlide];
-          const leftArrow = activeSlide.querySelector(".slider-arrow-left");
-          const rightArrow = activeSlide.querySelector(".slider-arrow-right");
-
-          if (leftArrow)
-            leftArrow.style.visibility =
-              currentSlide === 0 ? "hidden" : "visible";
-          if (rightArrow)
-            rightArrow.style.visibility =
-              currentSlide === totalSlides - 1 ? "hidden" : "visible";
-
-          if (dotsContainer) {
-            const dots = dotsContainer.querySelectorAll(".dot");
-            dots.forEach((dot, idx) =>
-              dot.classList.toggle("active", idx === currentSlide),
-            );
-          }
-        }
-
-        function nextSlide() {
-          if (currentSlide < totalSlides - 1) {
-            currentSlide++;
-            updateSlider();
-          }
-        }
-
-        function previousSlide() {
-          if (currentSlide > 0) {
-            currentSlide--;
-            updateSlider();
-          }
-        }
-
-        function goToSlide(index) {
-          currentSlide = index;
-          updateSlider();
-        }
-
-        container
-          .querySelectorAll(".slider-arrow-left")
-          .forEach((btn) => btn.addEventListener("click", previousSlide));
-        container
-          .querySelectorAll(".slider-arrow-right")
-          .forEach((btn) => btn.addEventListener("click", nextSlide));
-
-        updateSlider();
-      });
-    }
-
-    document.addEventListener("DOMContentLoaded", initSliders);
-  </script>
-
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      var fader = document.getElementById("faderhome");
-
-      function revealPage() {
-        if (fader) {
-          setTimeout(function () {
-            fader.classList.remove("fade-in");
-            fader.classList.add("fade-out");
-          }, 100);
-        }
-      }
-
-      revealPage();
-
-      window.addEventListener("pageshow", function (event) {
-        if (event.persisted) {
-          revealPage();
-        }
-      });
-
-      var anchors = document.getElementsByTagName("a");
-      for (var i = 0; i < anchors.length; i++) {
-        if (
-          anchors[i].hostname === window.location.hostname &&
-          anchors[i].pathname !== window.location.pathname &&
-          anchors[i].target !== "_blank"
-        ) {
-          anchors[i].addEventListener("click", function (event) {
-            event.preventDefault();
-            var href = this.href;
-            if (fader) {
-              fader.classList.remove("fade-out");
-              fader.classList.add("fade-in");
-              setTimeout(function () {
-                window.location = href;
-              }, 500);
-            } else {
-              window.location = href;
-            }
-          });
-        }
-      }
-
-      var revealTargets = document.querySelectorAll(".reveal, .port-card");
-      if ("IntersectionObserver" in window) {
-        var revealObserver = new IntersectionObserver(
-          function (entries, observer) {
-            entries.forEach(function (entry) {
-              if (entry.isIntersecting) {
-                entry.target.classList.add(
-                  entry.target.classList.contains("port-card")
-                    ? "revealed"
-                    : "active",
-                );
-                observer.unobserve(entry.target);
-              }
-            });
-          },
-          {
-            root: null,
-            rootMargin: "0px 0px -80px 0px",
-            threshold: 0.15,
-          },
-        );
-
-        revealTargets.forEach(function (target) {
-          revealObserver.observe(target);
-        });
-      } else {
-        revealTargets.forEach(function (target) {
-          target.classList.add(
-            target.classList.contains("port-card") ? "revealed" : "active",
-          );
-        });
-      }
-
-      /* Scroll Animation for the Hero Header Image */
-      const heroWrapper = document.getElementById("heroImageWrapper");
-      const heroImg = document.getElementById("heroHeaderImg");
-
-      window.addEventListener("scroll", function () {
-        // Guard rule: execute desktop animation scaling/paddings only if viewport is wide
-        if (window.innerWidth > 768) {
-          let scrollPos = window.scrollY;
-          let progress = Math.min(scrollPos / 150, 1);
-
-          let currentPadding = 40 * (1 - progress);
-          heroWrapper.style.padding = `${currentPadding}px ${currentPadding}px 0 ${currentPadding}px`;
-
-          let currentRadius = 20 * (1 - progress);
-          heroImg.style.borderRadius = `${currentRadius}px`;
-        }
-      });
-    });
-  </script>
-</body>
-
+  </body>
 </html>

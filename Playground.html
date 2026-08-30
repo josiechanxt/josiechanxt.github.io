@@ -25,22 +25,50 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
+    <link rel="icon" type="image/svg+xml" href="images/Logo1.svg" />
 
     <style>
+      /* Custom Circle Cursor Elements */
+      .custom-cursor {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 99999;
+        background-color: #007bff;
+        transform: translate(-50%, -50%) scale(0);
+        transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+        mix-blend-mode: multiply;
+        opacity: 0.9;
+      }
+
+      .custom-cursor.active {
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      /* Standard cursor override when hovering image wrapper */
+      .img-wrapper,
+      .img-wrapper img {
+        cursor: none !important;
+      }
+
       /* --- CUSTOM BLUE SCROLLBAR --- */
       ::-webkit-scrollbar {
         width: 10px;
       }
-      
+
       ::-webkit-scrollbar-track {
         background: #1a1a1a;
       }
-      
+
       ::-webkit-scrollbar-thumb {
         background: #007bff;
         border-radius: 5px;
       }
-      
+
       ::-webkit-scrollbar-thumb:hover {
         background: #0056b3;
       }
@@ -135,7 +163,7 @@
 
       /* Hero Section */
       .hero-section {
-        padding: 3rem 0 1rem; /* Reduced vertical padding */
+        padding: 3rem 0 1rem;
       }
 
       .hero-title {
@@ -157,7 +185,7 @@
 
       /* Portfolio Cards */
       .port-card {
-        margin-bottom: 1rem; /* Reduced bottom margin */
+        margin-bottom: 1rem;
         opacity: 0;
         transform: translateY(50px);
         transition:
@@ -179,13 +207,9 @@
 
       .img-wrapper {
         overflow: hidden;
-        border-radius: 16px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-        background-color: #f4f4f4;
+        border-radius: 12px;
         margin-bottom: 1rem;
         aspect-ratio: 4/3;
-        border-width: 3px;
-        border-style: solid;
       }
 
       .img-wrapper img {
@@ -234,18 +258,18 @@
         opacity: 1;
       }
 
-      /* Main Content Container - Reduced overall padding & min-height */
+      /* Main Content Container */
       .container-fluid {
         flex: 1 0 auto;
         position: relative;
         z-index: 10;
-        background-color: #fafafa;
+        background-color: #f7f7f7;
         background-image: url("images/Dots.svg");
         background-attachment: fixed;
         background-size: 70%;
         background-repeat: repeat;
-        min-height: auto; /* Removed excessive forced height */
-        padding-bottom: 2rem !important; /* Significantly reduced bottom space */
+        min-height: auto;
+        padding-bottom: 7rem !important; /* Increased bottom padding */
         border-bottom-left-radius: 80px;
         border-bottom-right-radius: 80px;
         overflow: hidden;
@@ -255,7 +279,7 @@
         font-family: "IBM Plex Sans", sans-serif;
         flex-shrink: 0;
         background-color: #1a1a1a;
-        padding: 3rem 0 3rem; /* Compact footer padding */
+        padding: 3rem 0 3rem;
         text-align: center;
         color: #007bff;
         position: sticky;
@@ -305,11 +329,12 @@
 
   <body>
     <div id="faderhome"></div>
+    <div id="customCursor" class="custom-cursor"></div>
 
     <nav class="navbar navbar-expand-lg sticky-top">
       <div class="container">
         <a class="navbar-brand" href="index.html">
-          <img src="images/Logo2.svg" alt="Josie Logo" height="50" />
+          <img src="images/Logo2.svg" alt="Josie Logo" height="30" />
         </a>
         <button
           class="navbar-toggler collapsed"
@@ -325,11 +350,11 @@
 
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item nav-button-active active">
+            <li class="nav-item">
               <a class="nav-link px-3" href="index.html">Work</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link px-3" href="Others.html">Others</a>
+            <li class="nav-item nav-button-active active">
+              <a class="nav-link px-3" href="Playground.html">Playground</a>
             </li>
             <li class="nav-item">
               <a class="nav-link px-3" href="About.html">About</a>
@@ -339,7 +364,7 @@
       </div>
     </nav>
 
-    <div class="container-fluid px-0 pt-5">
+    <div class="container-fluid px-0 pt-5 pb-5">
       <div class="container">
         <div class="hero-section text-center text-md-left">
           <h1 class="hero-title mb-1">
@@ -347,60 +372,60 @@
             <span
               style="
                 color: #007bff;
-                font-family: 'Caveat', cursive;
-                font-size: 6rem;
+                font-family: &quot;Caveat&quot;, cursive;
+                font-size: 5rem;
                 font-weight: 500;
+                letter-spacing: -0.2rem;
+                line-height: 6rem;
               "
-              >Side Quests</span
+              >Playground</span
             >
           </h1>
-          <h3 class="hero-subtitle mx-auto mx-md-0">
-            Beyond UI/UX, I enjoy other areas of <b style="font-weight:600;">design.</b>
+          <h3 class="hero-subtitle mx-auto mx-md-0 pt-2">
+            I enjoy experimenting with different areas of
+            <b style="font-weight: 600">design.</b>
           </h3>
         </div>
       </div>
 
-      <div class="container pb-2 pt-4">
+      <div class="container pt-4">
         <div class="row pt-2">
+          <!-- Card 3 -->
+          <div class="col-md-4 port-card">
+            <a href="Stash.html">
+              <div class="img-wrapper">
+                <img src="images/Others/ai_Thumbnail.svg" alt="3D Design" />
+              </div>
+              <h3 class="project-title">AI Experimentations</h3>
+              <p class="project-desc">Staying up to date with technologies.</p>
+            </a>
+          </div>
+
           <!-- Card 1 -->
           <div class="col-md-4 port-card">
             <a href="Motion Graphics.html">
-              <div class="img-wrapper" style="border-color: #007bff">
+              <div class="img-wrapper">
                 <img
-                  src="images/Others/MotionGraphics_Thumbnail.jpg"
+                  src="images/Others/MotionGraphics_Thumbnail.svg"
                   alt="Mandai X"
                 />
               </div>
               <h3 class="project-title">Motion Graphics</h3>
-              <p class="project-desc">
-                Gained expertise in motion graphics from the advertising industry, leveraging Adobe software like After Effects to produce high-quality assets and microanimations.
-              </p>
+              <p class="project-desc">Adding movement to any project.</p>
             </a>
           </div>
 
           <!-- Card 2 -->
           <div class="col-md-4 port-card">
             <a href="Illustrations.html">
-              <div class="img-wrapper" style="border-color: #007bff">
-                <img src="images/Others/Illustration_Thumbnail.jpg" alt="GovTech" />
+              <div class="img-wrapper">
+                <img
+                  src="images/Others/Illustration_Thumbnail.svg"
+                  alt="GovTech"
+                />
               </div>
               <h3 class="project-title">Illustrations</h3>
-              <p class="project-desc">
-               Drawing is my passion. I use various mediums such as pen, watercolor, and paint, working both traditionally and digitally.
-              </p>
-            </a>
-          </div>
-
-          <!-- Card 3 -->
-          <div class="col-md-4 port-card">
-            <a href="#.html">
-              <div class="img-wrapper" style="border-color: #007bff">
-                <img src="images/Others/ai_Thumbnail.jpg" alt="3D Design" />
-              </div>
-              <h3 class="project-title">AI Experimentations</h3>
-              <p class="project-desc">
-                Coming soon!
-              </p>
+              <p class="project-desc">Drawing is my passion.</p>
             </a>
           </div>
         </div>
@@ -409,13 +434,13 @@
 
     <footer class="footer-dark">
       <div class="container">
-        <div class="footer-text">⤷ Let's work together ⋆.˚</div>
+        <div class="footer-text">⤷ Let's create together ⋆.˚</div>
 
         <div class="social-icons">
           <a href="mailto:jochanxt@gmail.com" target="_blank">
             <img src="images/Work/Icon1_Email.svg" alt="Email" />
           </a>
-          <a href="https://linkedin.com/in/josiechan" target="_blank">
+          <a href="https://linkedin.com/in/josiechanxt" target="_blank">
             <img src="images/Work/Icon2_Linkedin.svg" alt="LinkedIn" />
           </a>
           <a href="https://instagram.com/jo.cgraphics" target="_blank">
@@ -498,6 +523,25 @@
         var cards = document.querySelectorAll(".port-card");
         cards.forEach(function (card) {
           projectObserver.observe(card);
+        });
+
+        // Circle Cursor Implementation (Solid #007bff Blue)
+        var cursor = document.getElementById("customCursor");
+        var imgWrappers = document.querySelectorAll(".img-wrapper");
+
+        document.addEventListener("mousemove", function (e) {
+          cursor.style.left = e.clientX + "px";
+          cursor.style.top = e.clientY + "px";
+        });
+
+        imgWrappers.forEach(function (wrapper) {
+          wrapper.addEventListener("mouseenter", function () {
+            cursor.classList.add("active");
+          });
+
+          wrapper.addEventListener("mouseleave", function () {
+            cursor.classList.remove("active");
+          });
         });
       });
     </script>

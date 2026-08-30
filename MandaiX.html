@@ -13,10 +13,12 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Carattere&family=IBM+Plex+Sans:ital,wdth,wght@0,75..100,100..700;1,75..100,100..700&"
     rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
 
   <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/svg+xml" href="images/Logo1.svg" />
   <style>
     .wf-loading * {
       opacity: 0;
@@ -32,7 +34,7 @@
 
     .nav-link {
       color: #c3c3c3 !important;
-      font-family: "caveat", cursive;
+      font-family: 'caveat', cursive;
       font-weight: 550;
       font-size: 1.5rem;
       transition: color 0.2s ease;
@@ -121,7 +123,7 @@
       font-size: 3.8rem;
       font-weight: 500;
       margin-bottom: 1.5rem;
-      font-family: "caveat", cursive;
+      font-family: 'caveat', cursive;
       color: #f0f0f0;
     }
 
@@ -167,20 +169,25 @@
       border: none;
     }
 
+    .btn-outline-work:focus:not(:focus-visible) {
+      outline: none;
+      box-shadow: none !important;
+    }
+
     .btn-outline-work:nth-child(1) {
       background-color: #07846b;
     }
 
     .btn-outline-work:nth-child(2) {
-      background-color: #785ef0;
+      background-color: #715ad8;
     }
 
     .btn-outline-work:nth-child(3) {
-      background-color: #9d7e51;
+      background-color: #d63d3f;
     }
 
     .btn-outline-work:nth-child(4) {
-      background-color: #e68700;
+      background-color: #dd8203;
     }
 
     .btn-outline-work:nth-child(5) {
@@ -188,7 +195,7 @@
     }
 
     .btn-outline-work:nth-child(6) {
-      background-color: #2B6B90;
+      background-color: #2b5c9e;
     }
 
     .btn-outline-work:nth-child(7) {
@@ -220,8 +227,9 @@
       max-width: 100%;
       margin: 0 auto;
       border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
       overflow: hidden;
+      border: 1px solid #eaeaea;
     }
 
     .slider-images-region {
@@ -264,7 +272,7 @@
       position: relative;
       display: grid;
       grid-template-columns: 1fr;
-      background: white;
+      background: #eef8f4;
       border-radius: 0 0 12px 12px;
       border-top: 1px solid #eaeaea;
     }
@@ -421,7 +429,7 @@
       justify-content: center;
       flex-wrap: wrap;
       gap: 0.75rem;
-      margin-bottom: 2.5rem;
+      margin-bottom: 0rem;
     }
 
     .tag {
@@ -434,12 +442,13 @@
     }
 
     .hero-green-quote {
-      font-size: 1.6rem;
-      font-weight: 400;
-      font-style: italic;
-      max-width: 850px;
+      font-size: 1.8rem;
+      font-weight: 450;
+      font-family: 'IBM Plex Sans', sans-serif;
+      color: #07846b;
+      max-width: 900px;
       margin: 0 auto;
-      line-height: 1.4;
+      line-height: 1.1;
     }
 
     .hero-image-wrapper {
@@ -455,7 +464,8 @@
       height: auto;
       display: block;
       border-radius: 20px;
-      transition: border-radius 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+      transform-origin: center;
+      transition: border-radius 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
     .main-scroll-container {
@@ -470,18 +480,110 @@
       overflow: hidden;
     }
 
-    /* Enforced Global Mobile Padding Consistency with govtech.html */
+    /* Custom Activity Card component */
+    .activity-card {
+      border-radius: 12px;
+      border-color: #eaeaea;
+      border-width: 1px;
+      border-style: solid;
+      overflow: hidden;
+      background-color: #d8eff5;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      font-family: 'IBM Plex Sans', sans-serif;
+      width: 100%;
+    }
+
+    .activity-card-body {
+      padding: 1.3rem 1.3rem;
+    }
+
+    .activity-badge {
+      font-family: 'Caveat', cursive, sans-serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #2b5c9e;
+      line-height: 1;
+      letter-spacing: -0.05rem;
+    }
+
+    .activity-title {
+      font-family: 'IBM Plex Sans', sans-serif;
+      color: #2b5c9e;
+      font-weight: 550;
+      font-size: 1.5rem;
+      letter-spacing: -0.03rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .activity-desc {
+      color: #2b5c9e;
+      font-size: 1rem;
+      line-height: 1.3;
+      font-weight: 500;
+      margin-bottom: 2rem;
+    }
+
+    .activity-meta-label {
+      color: #8daec9;
+      font-size: 0.85rem;
+      font-weight: 550;
+      font-style: italic;
+      margin-bottom: 0.4rem;
+    }
+
+    .activity-pill {
+      background-color: #ffffff;
+      color: #2b5c9e;
+      padding: 0.35rem 1.25rem;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      display: inline-block;
+    }
+
+    .activity-card-footer {
+      background-color: #2b5c9e;
+      color: #ffffff;
+      text-align: center;
+      padding: 0.75rem 1.5rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .activity-card-img-wrapper {
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .activity-card-img-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Global Card Border Updates */
+    .card {
+      border: 1px solid #eaeaea !important;
+    }
+
+    /* Enforced Global Mobile Settings with Correct Side Padding */
     @media (max-width: 768px) {
+      .main-scroll-container {
+        border-bottom-left-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+      }
+
       .hero-image-wrapper {
-        padding: 1.5rem 1rem 0 1rem !important;
+        padding: 0 !important;
       }
 
       .hero-image-wrapper img {
-        border-radius: 12px;
+        border-radius: 0 !important;
       }
 
       .hero-green-section {
-        padding: 2rem 1rem 2.5rem 1rem !important;
+        padding: 2rem 1.25rem 2.5rem 1.25rem !important;
       }
 
       .hero-green-title {
@@ -492,22 +594,26 @@
         font-size: 1.25rem;
       }
 
-      .container,
+      .container {
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+      }
+
       .container-fluid {
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
       }
 
       .row {
-        margin-left: -0.5rem !important;
-        margin-right: -0.5rem !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
       }
 
       .col-12,
       .col-md-10,
       .col-md-12 {
-        padding-left: 0.5rem !important;
-        padding-right: 0.5rem !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
       }
 
       .slider-title {
@@ -531,6 +637,14 @@
       .dot {
         width: 8px;
         height: 8px;
+      }
+
+      .activity-card-body {
+        padding: 1.5rem;
+      }
+
+      .activity-title {
+        font-size: 1.25rem;
       }
     }
 
@@ -568,14 +682,560 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    /* Case Study Labels & Typography */
+    .case-study-label {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #07846b;
+      letter-spacing: 0.05rem;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+      font-family: 'IBM Plex Sans', sans-serif;
+    }
+
+    .case-study-title {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      letter-spacing: -0.04rem;
+      margin-bottom: 1.5rem;
+      font-family: 'IBM Plex Sans', sans-serif;
+    }
+
+    /* Challenge Box Styling */
+    .challenge-box-light {
+      border: 1px solid #eaeaea;
+      border-left: 5px solid #07846b;
+      border-radius: 8px;
+      padding: 1.5rem 2rem;
+      background-color: #ffffff;
+      margin-bottom: 2rem;
+    }
+
+    .challenge-box-dark {
+      border: 1px solid #eaeaea;
+      border-left: 5px solid #07846b;
+      border-radius: 8px;
+      padding: 1.5rem 2rem;
+      background-color: #eef8f4;
+      margin-bottom: 2rem;
+    }
+
+    .challenge-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #07846b;
+      letter-spacing: 0.05rem;
+      margin-bottom: 0.5rem;
+      font-family: 'IBM Plex Sans', sans-serif;
+      text-transform: uppercase;
+    }
+
+    .challenge-text {
+      font-size: 1.1rem;
+      font-weight: 550;
+      line-height: 1.45;
+      color: #2b2b2b;
+      font-family: 'IBM Plex Sans', sans-serif;
+    }
+
+    /* General Cards Styling */
+    .cs-card {
+      border-radius: 12px;
+      padding: 2rem;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .cs-card-dark {
+      border: 1px solid #eaeaea;
+      background-color: #deeee1;
+      color: #ffffff;
+    }
+
+    .cs-card-light {
+      border: 1px solid #eaeaea;
+      background-color: #eef8f4;
+      color: #07846b;
+    }
+
+
+    .cs-card-number {
+      font-family: 'caveat', cursive;
+      font-size: 2.0rem;
+      font-weight: 550;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .cs-card-dark .cs-card-number {
+      color: #0b5f31
+    }
+
+    .cs-card-light .cs-card-number {
+      color: #07846b;
+    }
+
+    .cs-card-title {
+      font-size: 1.25rem;
+      font-weight: 550;
+      margin-bottom: 0.5rem;
+      font-family: 'IBM Plex Sans', sans-serif;
+    }
+
+    .cs-card-dark .cs-card-title {
+      color: #1a1a1a
+    }
+
+    .cs-card-light .cs-card-title {
+      color: #1a1a1a;
+    }
+
+    .cs-card-text {
+      font-size: 0.95rem;
+      line-height: 1.3;
+      margin-bottom: 0;
+    }
+
+    .cs-card-dark .cs-card-text {
+      color: #4a4a4a;
+    }
+
+    .cs-card-light .cs-card-text {
+      color: #4a4a4a;
+    }
+
+    /* Objectives Cards for Case Study 02 */
+    .cs-objective-card {
+      background-color: #f3f6f4;
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cs-objective-card .cs-card-number {
+      color: #07846b;
+    }
+
+    .cs-objective-text {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #4a4a4a;
+      margin-bottom: 0;
+      font-family: 'IBM Plex Sans', sans-serif;
+    }
+
+    /* Pivot Banner Styling */
+    .pivot-banner {
+      background-color: #0b5f31;
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      color: #ffffff;
+    }
+
+    .pivot-content {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .pivot-icon {
+      font-size: 2.25rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .pivot-text {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 0;
+      font-family: 'IBM Plex Sans', sans-serif;
+    }
+
+    .pivot-text strong {
+      font-weight: 700;
+    }
+
+    /* Card banner */
+    .card-container {
+      font-family: "IBM Plex Sans", sans-serif;
+      border-radius: 12px;
+      overflow: hidden;
+      max-width: 850px;
+      width: 100%;
+      margin: 20px auto;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Top Banner */
+    .top-banner {
+      background-color: #085028;
+      color: #c0e3b9;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 1.05rem;
+      text-align: center;
+    }
+
+    .top-banner strong {
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .check-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #27ae60;
+      color: #ffffff;
+      border-radius: 4px;
+      width: 20px;
+      height: 20px;
+      font-size: 13px;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    /* Bottom Grid */
+    .bottom-grid {
+      background-color: #b7d794;
+      display: flex;
+      color: #085028;
+    }
+
+    .grid-column {
+      flex: 1;
+      padding: 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .grid-column:first-child {
+      border-right: 1px solid rgba(8, 80, 40, 0.15);
+    }
+
+    .avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .column-text {
+      font-size: 1rem;
+      line-height: 1.35;
+      margin: 0;
+      font-weight: 500;
+    }
+
+    .column-text em {
+      font-style: italic;
+      font-weight: 600;
+    }
+
+    /* Responsive adjustments for mobile */
+    @media (max-width: 600px) {
+      .bottom-grid {
+        flex-direction: column;
+      }
+
+      .grid-column:first-child {
+        border-right: none;
+        border-bottom: 1px solid rgba(8, 80, 40, 0.15);
+      }
+
+      .top-banner {
+        font-size: 0.95rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .case-study-title {
+        font-size: 1.75rem;
+      }
+
+      .main-content4 {
+        font-size: 0.95rem;
+      }
+
+      .challenge-text {
+        font-size: 1.05rem;
+      }
+
+      .cs-card {
+        padding: 1.5rem;
+      }
+
+      .cs-objective-card {
+        padding: 1.5rem;
+      }
+
+      .pivot-banner {
+        padding: 1.25rem 1.5rem;
+      }
+
+      .pivot-content {
+        gap: 0.75rem;
+      }
+    }
+
+    .takeaway-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 16px 24px;
+      max-width: 650px;
+      width: 100%;
+      box-shadow: 0 4px 12px rgba(43, 96, 165, 0.08);
+      border-left: 5px solid var(--primary-blue);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-sizing: border-box;
+    }
+
+    .takeaway-badge {
+      background-color: rgba(43, 96, 165, 0.1);
+      color: var(--primary-blue);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 6px 12px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    .takeaway-text {
+      color: var(--text-dark);
+      font-size: 0.98rem;
+      font-weight: 500;
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    /* Activity Dropdown Styles */
+    .activity-dropdown-section {
+      margin-top: 15px;
+    }
+
+    .activity-dropdown-toggle {
+      width: 100%;
+      background-color: #2b5c9e;
+      color: #ffffff;
+      border: none;
+      outline: none !important;
+      box-shadow: none !important;
+      padding: 14px 20px;
+      border-radius: 0 0 12px 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      font-family: 'IBM Plex Sans', sans-serif;
+      margin-top: 0;
+    }
+
+    .activity-dropdown-toggle:hover,
+    .activity-dropdown-toggle:focus {
+      background-color: #2b5c9e;
+      outline: none !important;
+      box-shadow: none !important;
+    }
+
+    .activity-dropdown-toggle svg {
+      transition: transform 0.3s ease;
+    }
+
+    .activity-dropdown-toggle.active svg {
+      transform: rotate(180deg);
+    }
+
+    .activity-dropdown-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-out;
+      background-color: #2b5c9e;
+      border-radius: 0;
+      margin-top: 0;
+    }
+
+    .activity-dropdown-content-inner {
+      padding: 20px 10px 0 10px;
+      text-align: center;
+      background-color: #2b5c9e;
+      overflow: hidden;
+    }
+
+    .activity-dropdown-content-inner img {
+      width: 100%;
+      max-width: none;
+      display: block;
+      margin-bottom: -8px;
+      clip-path: inset(0px 0px 8px 0px);
+    }
+
+    /* Mission End and Stats Custom Cards */
+    .eom-card {
+      background-color: #e6f3f8;
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      font-family: 'IBM Plex Sans', sans-serif;
+    }
+
+    .eom-badge {
+      background-color: #3b609c;
+      color: #ffffff;
+      padding: 4px 16px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+    }
+
+    .eom-title {
+      color: #3b609c;
+      font-weight: 550;
+      font-size: 1.05rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .perk-card {
+      background-color: #3b609c;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .perk-img {
+      width: 100%;
+      height: 130px;
+      object-fit: cover;
+      background-color: #ccc;
+    }
+
+    .perk-text {
+      color: #ffffff;
+      padding: 12px;
+      text-align: center;
+      font-family: 'Poetsen One', sans-serif;
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.2;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      letter-spacing: 0.5px;
+    }
+
+    .plus-sign {
+      color: #3b609c;
+      font-size: 2.5rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .outcomes-card {
+      background-color: #d8eff5;
+      border-width: 1px;
+      border-style: solid;
+      border-color: #eaeaea;
+      border-radius: 12px;
+      padding: 1.5rem 1.5rem;
+      color: #ffffff;
+      font-family: 'IBM Plex Sans', sans-serif;
+      width: 100%;
+    }
+
+    .outcomes-badge {
+      background-color: #ffffff;
+      color: #3b609c;
+      padding: 4px 16px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 1.0rem;
+    }
+
+    .outcomes-subtitle {
+      text-align: center;
+      font-size: 1.3rem;
+      font-style: italic;
+      font-weight: 550;
+      margin-bottom: 2rem;
+      color: #2b5c9e;
+    }
+
+    .stat-box {
+      text-align: center;
+      margin-bottom: 0rem;
+    }
+
+    .stat-num {
+      font-size: 4rem;
+      font-weight: 600;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      color: #2b5c9e;
+    }
+
+    .stat-label {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: #2b5c9e;
+    }
+
+    .outcome-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 8px;
+      background-color: #ccc;
+    }
+
+    @media (max-width: 768px) {
+      .stat-num {
+        font-size: 3rem;
+      }
+
+      .outcome-img {
+        height: 180px;
+      }
+
+      .eom-card,
+      .outcomes-card {
+        padding: 1.5rem;
+      }
+    }
   </style>
   <title>Mandai X</title>
-    <style>
-      :root {
-        --scrollbar-color: #07846b;
-        --scrollbar-hover: #05614e;
-      }
-    </style>
+  <style>
+    :root {
+      --scrollbar-color: #07846b;
+      --scrollbar-hover: #05614e;
+    }
+  </style>
 </head>
 
 <body>
@@ -586,7 +1246,7 @@
   <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
       <a class="navbar-brand" href="index.html">
-        <img src="images/Logo2.svg" alt="Josie Logo" height="50" />
+        <img src="images/Logo2.svg" alt="Josie Logo" height="30" />
       </a>
       <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -599,7 +1259,7 @@
             <a class="nav-link px-3" href="index.html">Work</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link px-3" href="Others.html">Others</a>
+            <a class="nav-link px-3" href="Playground.html">Playground</a>
           </li>
           <li class="nav-item">
             <a class="nav-link px-3" href="About.html">About</a>
@@ -623,786 +1283,1134 @@
       </h1>
       <div class="row justify-content-center pb-2 pt-2 mx-0">
         <div class="tag-container">
-          <span class="tag" style="background: #ffffff; color: #07846b">UX/UI</span>
+          <span class="tag" style="background: #ffffff; color: #07846b">UI/UX</span>
           <span class="tag" style="background: #ffffff; color: #07846b">B2C Edutainment</span>
           <span class="tag" style="background: #ffffff; color: #07846b">User Testing</span>
           <span class="tag" style="background: #ffffff; color: #07846b">2026</span>
         </div>
       </div>
-      <p class="hero-green-quote">
-        “ How might we design a seamless, 'phygital' edutainment experience that integrates educational value with
-        engaging play for children? ”
-      </p>
     </div>
 
-    <div class="container-fluid px-0">
-      <div class="container py-5">
-        <div class="row justify-content-center">
-          <div class="col-md-10 col-12 text-left">
+
+    <section class="container-fluid py-5" style="background-color: #ffffff;">
+      <div class="container pt-4 pb-4">
+        <div class="row">
+          <div class="col-12 text-left">
+
+
+            <!-- Row 1: PROJECT OVERVIEW Label Only -->
             <div class="row">
-              <!-- Left Text Column -->
-              <div class="col-md-6 col-12 pr-md-4 text-left">
-                <h2 class="text-left pb-3 pt-0"
-                  style="font-size: 24px; font-weight: 600; color: #07846b; font-family: 'IBM Plex Sans', sans-serif;">
-                  Overview</h2>
-                <h3 class="text-left main-content4 pb-3 pt-0">
-                  Ranger Buddies is an edutainment initiative by Mandai X, the
-                  venture-building arm of the Mandai Wildlife Group. It is designed to
-                  nurture a generation of "everyday heroes" by engaging children (age 4-10) in
-                  wildlife conservation and environmental action through a blend of
-                  digital and physical experiences.
-                  <br /><br />
-                  As a UI/UX design intern, I
-                  contributed to the B2C experience of the Ranger Buddies web app,
-                  focusing on in-app features, mission flows, and collaborative
-                  campaigns.
+              <div class="col-12 text-left mb-3">
+                <div class="case-study-label"
+                  style="font-size: 0.85rem; font-weight: 700; color: #07846b; letter-spacing: 0.05rem;">
+                  PROJECT OVERVIEW
+                </div>
+              </div>
+            </div>
+
+            <!-- Top Overview & Card Row -->
+            <div class="row align-items-stretch">
+
+              <!-- Left Column: Overview -->
+              <div class="col-md-6 col-12 pr-md-5 text-left d-flex flex-column justify-content-center">
+                <h3 class="hero-green-quote">
+                  “ How might we design a seamless, 'phygital' edutainment experience that integrates educational value
+                  with engaging play for children? ”
+                </h3>
+
+
+                <h3 class="main-content4">
+                  <u><i><a href="https://rangerbuddies.com/en/home" style="color: #1a1a1a;" target="_blank"
+                        rel="noopener noreferrer">Ranger Buddies</a></i></u> is an edutainment initiative by Mandai X,
+                  the venture-building arm of the Mandai
+                  Wildlife Group. It nurtures everyday heroes by engaging young children in wildlife conservation
+                  and environmental action through connected digital and physical experiences. As a UI/UX design intern,
+                  I contributed to the B2C web app through in-app features, mission flows, and collaborative campaigns.
                 </h3>
               </div>
 
-              <!-- Right Box Column -->
+              <!-- Right Column: My Contributions Box -->
               <div class="col-md-6 col-12 mt-4 mt-md-0 text-left">
-                <div style="border: 2px solid #07846b; padding: 25px; border-radius: 10px;">
-                  <h3 class="text-left main-content4 pt-0 pb-2" style="font-size: 16px; color: #07846b;">
-                    <b style="font-weight: 550;">My Contributions</b>
+                <div
+                  style="border: 2px solid #07846b; background-color: #f3f8f5; padding: 28px; border-radius: 12px; height: fit-content;">
+                  <h3 class="case-study-label text-left pt-0 pb-3" style="color: #07846b;">
+                    My contributions
                   </h3>
-                  <h3 class="text-left accordion-body pb-3 pt-0 pl-3">
-                    <li>
-                      Spearheaded the validation of the web app's new reward system
-                      feature. Created high-fidelity prototypes, led physical User
-                      Testing sessions with Zoo visitors, and presented synthesised
-                      findings to the CEO to drive feature implementation
-                    </li>
-                    <br />
-                    <li>
-                      Created UI screens and graphic assets for digital mission
-                      games
-                    </li>
-                    <br />
-                    <li>
-                      Conducted live testing at the physical mission sites to ensure
-                      a seamless phygital experience
-                    </li>
-                    <br />
-                    <li>
-                      Conducted competitor research for a brand collaboration
-                      touchpoint, providing key insights that guided the Product
-                      Managers' strategic implementations.
-                    </li>
-                  </h3>
-
-                  <div class="row pt-2">
-                    <div class="col-6 text-left">
-                      <h3 class="text-left main-content4 pt-0 pb-2" style="font-size: 16px; color: #07846b;">
-                        <b style="font-weight: 550;">Timeline</b>
-                      </h3>
-                      <h3 class="text-left accordion-body pb-0 pt-0 pl-3">
-                        <li>6 Months</li>
-                      </h3>
-                    </div>
-                    <div class="col-6 text-left">
-                      <h3 class="text-left main-content4 pt-0 pb-2" style="font-size: 16px; color: #07846b;">
-                        <b style="font-weight: 550;">Team members</b>
-                      </h3>
-                      <h3 class="text-left accordion-body pb-0 pt-0 pl-3">
-                        <li>
-                          1 UI/UX Designer, 1 Product Manager, Software Engineers,
-                          Business team
-                        </li>
-                      </h3>
-                    </div>
-                  </div>
+                  <ul
+                    style="list-style: none; padding-left: 0; margin-bottom: 0; color: #4a4a4a; font-size: 0.95rem; font-weight: 350;">
+                    <i>
+                      <li class="mb-2">• Validated the new reward system through high-fidelity prototyping and on-site
+                        user testing.</li>
+                      <li class="mb-2">• Created UI screens and graphic assets for digital mission games.</li>
+                      <li class="mb-2">• Tested physical mission sites to ensure a seamless phygital experience.</li>
+                      <li>• Conducted competitor research for brand collaboration touchpoints.</li>
+                    </i>
+                  </ul>
                 </div>
               </div>
+
             </div>
+
+            <!-- Divider Line -->
+            <hr style="border-top: 1px solid #e0e0e0; margin-top: 1rem; margin-bottom: 3rem;" />
+
+            <!-- Bottom Metadata Row: Timeline & Team -->
+            <div class="row">
+              <div class="col-md-3 col-6 text-left">
+                <div class="case-study-label" style="color: #07846b;">Timeline</div>
+                <div style="color: #555; font-weight: 350;"><i>6 months</i></div>
+              </div>
+              <div class="col-md-9 col-6 text-left">
+                <div class="case-study-label" style="color: #07846b;">Team</div>
+                <div style="color: #555; font-weight: 350;"><i>1 UI/UX Designer, Product Manager,
+                    Software Engineers, Business team</i></div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
+    </section>
 
-      <div class="container py-3">
-        <div class="row justify-content-center">
-          <div class="col-md-10 col-12 text-left">
-            <h3 class="text-left main-content4 pb-1 pt-3">
-              Ranger Buddies features a hybrid of physical and digital AR missions designed to instil C.O.U.R.A.G.E
-              values
-              in children, preparing them to be future-ready beyond the classroom. The ecosystem includes a <b
-                style="font-weight: 550;">web app</b> where
-              parents can register their children and use it across various <b style="font-weight: 550;">physical
-                missions</b> hosted in malls, the Zoo, and other
-              partners, providing an educational, family-friendly experience in public spaces.
-              <br /><br /><br />
-            </h3>
-          </div>
-        </div>
 
-        <div class="row justify-content-center pb-2 pt-0">
-          <div class="col-md-12 col-12 text-center">
-            <div class="row justify-content-center">
-              <div class="col-md-5 col-12 p-2">
-                <img class="images img-fluid" src="images/Mandai X/2.jpg" alt="worm" />
-              </div>
-              <div class="col-md-5 col-12 p-2">
-                <img class="images img-fluid" src="images/Mandai X/3.jpg" alt="worm" />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row justify-content-center pb-5 pt-0">
-          <div class="col-md-12 col-12 p-2 text-center">
-            <img class="images img-fluid" src="images/Mandai X/5.png" alt="worm" />
-          </div>
-        </div>
-      </div>
 
-      <section class="container-fluid px-0" style="background-color: #f4f4f4;">
-        <div class="container">
-          <div class="row justify-content-center pt-5 pb-0">
-            <div class="tag-container" style="margin-bottom: 0;">
-              <span class="tag"
-                style="background: #07846b; color: #ffffff; font-weight: 500; font-size: 0.75rem; padding: 0.25rem 0.8rem;">Case
-                Study #1</span>
-            </div>
-          </div>
 
+    <div class="container-fluid px-0">
+      <section class="container-fluid px-0" style="background-color: #eef8f4;">
+        <div class="container py-3 pt-4 pb-4">
           <div class="row justify-content-center">
-            <div class="col-md-10 col-12 pt-0 pb-5 text-left">
-              <h3 class="text-center main-content3" style="color: #07846b">
-                “Polar Melt Patrol” Mission
+            <div class="col-md-12 col-12 text-left">
+              <h3 class="main-content6 text-left"
+                style="color: #07846b; font-weight: 550; font-size: 2rem; padding-top: 1.5rem; padding-bottom: 0.5rem; margin-bottom: 0;">
+                Phygital "Missions": Expanding learning beyond the zoo
+              </h3>
+              <h3 class="text-left main-content4 pb-1 pt-3">
+                Ranger Buddies features a hybrid of physical and digital AR missions designed to instil <b
+                  style="font-weight: 550 ;">C.O.U.R.A.G.E
+                  values</b>
+                in children, preparing them to be future-ready beyond the classroom. The ecosystem includes a <b
+                  style="font-weight: 550;">web app</b> where
+                parents can register their children and use it across various <b style="font-weight: 550;">physical
+                  missions</b> hosted in malls, the Zoo, and other
+                partners, providing an educational, family-friendly experience in public spaces.
+                <br /><br /><br />
               </h3>
             </div>
           </div>
 
-          <div class="pt-1 pb-2">
-            <div class="justify-content-center row">
-              <div class="col-md-10 col-12 pt-0 text-left">
-                <h3 class="main-content4 pt-0 text-left">
-                  I was the sole designer for the “Polar Melt Patrol” mission at PLQ Parkside, which focuses on how
-                  global
-                  warming is melting Antarctica and its consequences on penguins and the environment. I've done up
-                  mostly everything from
-                  scratch, conceptualising the narrative, creating physical and digital activities, and designing the
-                  screens
-                  for the mission to ensure the <b style="font-weight: 550;">experience is fun and educational for children</b>. The timeline for this
-                  project
-                  was roughly 1 month.
-                </h3>
-              </div>
-            </div>
-          </div>
-
-          <div class="row justify-content-center pb-3 pt-3">
+          <div class="row justify-content-center pb-3 pt-0">
             <div class="col-md-12 col-12 p-2 text-center">
-              <div class="row justify-content-center">
-                <div class="col-md-4 col-12 p-2">
-                  <img class="images img-fluid" src="images/Mandai X/plq_m3.png" alt="worm" />
-                </div>
-                <div class="col-md-4 col-12 p-2">
-                  <img class="images img-fluid" src="images/Mandai X/plq_m2.png" alt="worm" />
-                </div>
-                <div class="col-md-4 col-12 p-2">
-                  <img class="images img-fluid" src="images/Mandai X/plq_m1.png" alt="worm" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row justify-content-center">
-            <div class="col-md-10 col-12 pt-0 pb-0 text-left">
-              <h3 class="text-center main-content6" style="color: #07846b">
-                View Mission Ideation Process👇
-              </h3>
-            </div>
-          </div>
-
-            <div class="row justify-content-center">
-            <div class="col-md-7 col-12 pt-0 pb-0 text-left">
-              <h3 class="text-left main-content4">
-               <b style="font-weight: 550; color: #07846b;">🏁 The Challenge:</b> "How might we translate complex scientific concepts into a simple, educational play experience that 4-year-olds can enjoy independently?"</b>
-              </h3>
-            </div>
-          </div>
-
-          <!-- IMAGE SLIDER -->
-          <div class="row justify-content-center pb-5 pt-3">
-            <div class="col-md-12 col-12">
-              <div class="image-slider-container">
-                <div class="slider-images-region">
-                  <!-- Slide 1 -->
-                  <div class="slider-slide active">
-                    <div class="slider-wrapper">
-                      <div class="slider-content">
-                        <img class="slider-image" src="images/Mandai X/plq_1.png"
-                          alt="Creating a strong Brand Identity" />
-                      </div>
-                      <div class="slider-nav">
-                        <button class="slider-arrow slider-arrow-left" aria-label="Previous slide"></button>
-                        <button class="slider-arrow slider-arrow-right" aria-label="Next slide"></button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Slide 2 -->
-                  <div class="slider-slide">
-                    <div class="slider-wrapper">
-                      <div class="slider-content">
-                        <img class="slider-image" src="images/Mandai X/plq_2.png"
-                          alt="Inspired by Universal Accessibility icons" />
-                      </div>
-                      <div class="slider-nav">
-                        <button class="slider-arrow slider-arrow-left" aria-label="Previous slide"></button>
-                        <button class="slider-arrow slider-arrow-right" aria-label="Next slide"></button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Slide 3 -->
-                  <div class="slider-slide">
-                    <div class="slider-wrapper">
-                      <div class="slider-content">
-                        <img class="slider-image" src="images/Mandai X/plq_3.png"
-                          alt="Elevating the copy with another layer of storytelling" />
-                      </div>
-                      <div class="slider-nav">
-                        <button class="slider-arrow slider-arrow-left" aria-label="Previous slide"></button>
-                        <button class="slider-arrow slider-arrow-right" aria-label="Next slide"></button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="slider-dots" id="sliderDots"></div>
-                </div>
-
-                <div class="slider-panels-region">
-                  <div class="slider-panel active">
-                    <h3 class="slider-title">Creating the Narrative</h3>
-                    <p class="slider-description">I started by developing 5 sub-narratives for the activities revolving
-                      around the Antarctic
-                      using the ADKAR framework and COURAGE traits, balancing learning takeaways with an engaging,
-                      intuitive
-                      experience for parents and children.
-                    </p>
-                  </div>
-
-                  <div class="slider-panel">
-                    <h3 class="slider-title">Digital & Physical Activities Ideation</h3>
-                    <p class="slider-description">Following the narrative development, I ideated both physical and
-                      digital
-                      activities. To work within the technical constraints of our template-based Contentful CMS, I
-                      adapted
-                      mechanics from previous missions, and taking into account reskinning elements (e.g previously-used
-                      "playground equipment") to align with the new theme.
-                    </p>
-                  </div>
-
-                  <div class="slider-panel">
-                    <h3 class="slider-title">Fitting Narrative + Activities</h3>
-                    <p class="slider-description">Once completed, I mapped an overview of all activities and their
-                      narratives
-                      to view how the physical and digital aspects interacted, ensuring cohesiveness. I iterated on this
-                      framework multiple times to ensure a smooth and clear user experience, while balancing constraints
-                      like technical feasibility and physical installation limitations.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row justify-content-center pt-3">
-            <div class="col-md-12 col-12 p-1 borderbottom"></div>
-          </div>
-
-
-          <div class="row justify-content-center">
-            <div class="col-md-10 col-12 pt-0 pb-3 text-left">
-              <h3 class="text-center main-content6" style="color: #07846b">
-                Mission Gameplay
-              </h3>
-            </div>
-          </div>
-
-          <div class="pt-1 pb-2">
-            <div class="justify-content-center row">
-              <div class="col-md-10 col-12 pt-0 text-left">
-                <h3 class="main-content4 pt-0 text-left">
-                  Below is the final look of the mission. The most important aspect of the mission is that it is
-                  designed to be <b style="font-weight: 550;">completed in a single visit (roughly 10 minutes)</b>,
-                  with a clear start and end point, allowing children to fully immerse themselves in the experience
-                  without feeling rushed or overwhelmed.
-                  <br /><br />
-                  <b style="font-weight: 500;">Most importantly, with PLQ as our mall partner, the experience has been
-                    strategically streamlined to drive completion,
-                    encouraging participants to earn and spend their mall perks.</b>
-                </h3>
-              </div>
-            </div>
-          </div>
-
-          <div class="pt-1 pb-5">
-            <div class="justify-content-center row">
-              <div class="col-md-12 col-12 pt-4 pt-md-0 text-center">
-                <img class="images img-fluid" src="images/Mandai X/PLQ_preActivity.png" alt="worm" />
-              </div>
-            </div>
-          </div>
-
-          <div class="pt-1 pb-0">
-            <div class="justify-content-center row">
-              <div class="col-md-12 col-12 pt-4 pt-md-0 text-center">
-                <img class="images img-fluid" src="images/Mandai X/PLQ_A1.png" alt="worm" />
-              </div>
-            </div>
-          </div>
-
-          <div class="pt-2 pb-5">
-            <div class="justify-content-center row">
-              <div class="col-md-12 col-12 pt-0 pt-md-0 text-center">
-                <img class="images img-fluid" src="images/Mandai X/PLQ_Activity1.gif"
-                  alt="Mandai X mission animation" />
-              </div>
-            </div>
-          </div>
-
-          <div class="pt-1 pb-0">
-            <div class="justify-content-center row">
-              <div class="col-md-12 col-12 pt-4 pt-md-0 text-center">
-                <img class="images img-fluid" src="images/Mandai X/PLQ_A2.png" alt="worm" />
-              </div>
-            </div>
-          </div>
-
-          <div class="pt-2 pb-5">
-            <div class="justify-content-center row">
-              <div class="col-md-12 col-12 pt-0 pt-md-0 text-center">
-                <img class="images img-fluid" src="images/Mandai X/PLQ_Activity2.gif" alt="worm" />
-              </div>
-            </div>
-          </div>
-
-          <div class="pt-1 pb-0">
-            <div class="justify-content-center row">
-              <div class="col-md-12 col-12 pt-4 pt-md-0 text-center">
-                <img class="images img-fluid" src="images/Mandai X/PLQ_A3.png" alt="worm" />
-              </div>
-            </div>
-          </div>
-
-          <div class="pt-2 pb-5">
-            <div class="justify-content-center row">
-              <div class="col-md-12 col-12 pt-0 pt-md-0 text-center">
-                <img class="images img-fluid" src="images/Mandai X/PLQ_Activity3.gif" alt="worm" />
-              </div>
-            </div>
-          </div>
-
-          <div class="pt-1 pb-0">
-            <div class="justify-content-center row">
-              <div class="col-md-12 col-12 pt-4 pt-md-0 text-center">
-                <img class="images img-fluid" src="images/Mandai X/PLQ_A4.png" alt="worm" />
-              </div>
-            </div>
-          </div>
-
-          <div class="pt-2 pb-5">
-            <div class="justify-content-center row">
-              <div class="col-md-12 col-12 pt-0 pt-md-0 text-center">
-                <img class="images img-fluid" src="images/Mandai X/PLQ_Activity4.gif" alt="worm" />
-              </div>
-            </div>
-          </div>
-
-          <div class="pt-1 pb-1">
-            <div class="justify-content-center row">
-              <div class="col-md-12 col-12 pt-4 pt-md-0 text-center">
-                <img class="images img-fluid" src="images/Mandai X/PLQ_A5.png" alt="worm" />
-              </div>
-            </div>
-          </div>
-
-          <div class="pt-2 pb-5">
-            <div class="justify-content-center row">
-              <div class="col-md-12 col-12 pt-0 pt-md-0 text-center">
-                <img class="images img-fluid" src="images/Mandai X/PLQ_Activity5.gif" alt="worm" />
-              </div>
-            </div>
-          </div>
-
-          <div class="pt-1 pb-2">
-            <div class="justify-content-center row">
-              <div class="col-md-12 col-12 pt-4 pt-md-0 text-center">
-                <img class="images img-fluid" src="images/Mandai X/PLQ_BadgeCollection.png" alt="worm" />
-              </div>
-            </div>
-          </div>
-           <div class="pt-1 pb-5">
-            <div class="justify-content-center row">
-              <div class="col-md-12 col-12 pt-4 pt-md-0 text-center">
-                <img class="images img-fluid" src="images/Mandai X/plq_stats.png" alt="worm" />
-              </div>
+              <img class="images img-fluid" src="images/Mandai X/5.png" alt="worm" />
             </div>
           </div>
         </div>
       </section>
 
-      <div class="container">
-        <div class="row justify-content-center pt-5 pb-0">
-          <div class="tag-container" style="margin-bottom: 0;">
-            <span class="tag"
-              style="background: #07846b; color: #ffffff; font-weight: 500; font-size: 0.75rem; padding: 0.25rem 0.8rem;">Case
-              Study #2</span>
-          </div>
-        </div>
 
-        <div class="row justify-content-center">
-          <div class="col-md-10 col-12 pt-0 pb-5 text-left">
-            <h3 class="text-center main-content3" style="color: #07846b">
-              Validating the Core Reward Loop
-            </h3>
-          </div>
-        </div>
 
-        <div class="pt-1 pb-0">
-          <div class="justify-content-center row">
-            <div class="col-md-10 col-12 pt-0 text-left">
-              <h3 class="main-content4 pt-0 text-left">
-                I lead the validation and iterations of the brand-new reward system (MVP) for the RB web app.
-                The goal was to incentivise kids for completing their missions,
-                and access partner rewards in one key place. In only three
-                weeks until rollout, I rapidly validated user flows, currency
-                comprehension and navigation for two distinct user profiles:
-                Parents and children.
+      <section class="container-fluid px-0" style="background-color: #ffffff;">
+        <div class="container pt-4 pb-4">
+          <div class="row justify-content-center pt-5 pb-0">
+            <div class="col-md-12 col-12 text-left">
+              <div class="case-study-label">[ CASE STUDY 01 ]</div>
+
+              <h2 class="case-study-title">Creating the “Polar Melt Patrol” Mission</h2>
+              <div class="row justify-content-center">
+                <div class="col-md-12 col-12 pt-0 pb-2 text-left">
+                  <h3 class="main-content6 text-left"
+                    style="color: #07846b; font-weight: 550; font-size: 2rem; padding-top: 1.5rem; padding-bottom: 0.5rem; margin-bottom: 0;">
+                    Turning Antarctic climate change into a playful, educational experience for young children (aged
+                    4–10)
+                  </h3>
+                </div>
+              </div>
+              <h3 class="main-content4">
+                This mission was done for our mall partner, Paya Lebar Quarter (PLQ) Parkside. As the sole designer, I
+                did the end-to-end design process of crafting the narrative, designing phygital
+                activities, copywriting and crafting screens to make every step feel intuitive.
+              </h3>
+
+              <div class="challenge-box-dark">
+                <div class="challenge-label">THE CHALLENGE 🏁</div>
+                <div class="challenge-text">
+                  "How might we translate complex scientific concepts into a simple educational play experience that
+                  four-year-olds can enjoy independently?"
+                </div>
+              </div>
+
+              <div class="my-4">
+                <img class="images img-fluid" src="images/Mandai X/Mandai Xplq_KV.gif" alt="Polar Melt Patrol Penguins"
+                  style="width: 100%; border-radius: 12px;" />
+              </div>
+
+
+            </div>
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-md-12 col-12 pt-0 pb-3 text-left">
+              <h3 class="main-content6 text-left"
+                style="color: #07846b; font-weight: 550; font-size: 2rem; padding-top: 1.5rem; padding-bottom: 0.5rem; margin-bottom: 0;">
+                Scoping technicalities, crafting engaging storytelling
               </h3>
             </div>
           </div>
-        </div>
-
-        <div class="row justify-content-center">
-          <div class="col-md-10 col-12 pt-0 pb-3 text-left">
-            <h3 class="text-center main-content6" style="color: #07846b">
-              Phase 1: High-Fidelity Prototyping of Flows
-            </h3>
-          </div>
-        </div>
-
-        <div class="pt-1 pb-3">
-          <div class="justify-content-center row">
-            <div class="col-md-10 col-12 pt-0 text-left">
-              <h3 class="text-left main-content4 pb-3 pt-3">
-                <b style="font-weight: 500">Below are the main flows/screens with the newly-added rewards
-                  elements: <br /></b>
-                <i>(For context: "Books" are being used for our main method of
-                  reward currency)</i>
-                <br /><br />
-                <b style="color: #07846b; font-weight: 500">✏️ The "Mission Flow":</b>
-                A simulated 6-activity walkthrough designed to help users
-                understand mission mechanics, where upon the completion of each
-                activity, the new “Books” meter bar fills up by 100 points.
-                <br /><br />
-                <b style="color: #07846b; font-weight: 500">✏️ The "Redeem Rewards Flow":</b>
-                (New) Covering partner selection, profile options, and reward
-                redemption process. <br /><br />
-                <b style="color: #07846b; font-weight: 500">✏️ The "Home Page":</b>
-                Integrating a new “Books Menu” entry point directly onto the
-                existing map interface homepage.
-              </h3>
-            </div>
-          </div>
-        </div>
 
 
-
-        <div class="row justify-content-center pb-1 pt-0">
-          <div class="col-md-12 col-12 p-1 pt-5 pb-5 text-center">
-            <img class="header-image img-fluid" src="images/Mandai X/8.svg" alt="worm" />
-          </div>
-        </div>
-        
-          <div class="row justify-content-center pt-3">
-            <div class="col-md-12 col-12 p-1 borderbottom"></div>
-          </div>
-
-        <div class="row justify-content-center">
-          <div class="col-md-10 col-12 pt-0 pb-3 text-left">
-            <h3 class="text-center main-content6" style="color: #07846b">
-              Phase 2: Conducting On-Site User Testing at Mandai Wildlife Zoo
-            </h3>
-          </div>
-        </div>
-
-
-        <div class="pt-1 pb-3">
-          <div class="justify-content-center row">
-            <div class="col-md-10 col-12 pt-0 text-left">
-              <h3 class="text-left main-content4 pb-5 pt-3">
-                We conducted rapid on-site guerilla user testing at Mandai
-                Wildlife Zoo, capturing high-value, 15-minute sessions with
-                visiting families. As the interviewer, I tailored the UT Guide for
-                both parent and child demographics. Since the children were quite
-                young (4-10 years old), I simplified the phrasing to ensure easier
-                comprehension while avoiding leading questions for authentic
-                responses. For example, after a progress bar is filled, I would
-                ask: “What do you notice has changed? → Why do you think that
-                happened?” to guide them along the process.
-              </h3>
-              <div style="
-                  border: 2px solid #07846b;
-                  padding: 25px;
-                  border-radius: 16px;
-                  margin-bottom: 30px;
-                ">
-                <h4 style="color: #07846b; font-weight: 550; font-size: 18px">
-                  Core Objectives:
-                </h4>
-                <p class="main-content4 pt-2 pb-2">
-                  🧪 Assess the clarity of "Books Currency": Determine if users recognise it as redeemable.
-                </p>
-                <p class="main-content4 pt-2 pb-2">
-                  🧪 Evaluate intuitiveness and user comprehension of the "earn-to-spend" loop's mechanism.
-                </p>
-                <p class="main-content4 pt-0 pb-0">
-                  🧪 Determine the ease of navigation to the rewards section after completing a mission (without
-                  assistance).
-                </p>
+          <div class="pt-1 pb-0">
+            <div class="justify-content-center row">
+              <div class="col-md-12 col-12 pt-0 text-left">
+                <h3 class="text-left main-content4 pb-1 pt-3">
+                  Ideation involved translating researched scientific facts into distinct, educational narratives across
+                  physical and digital touchpoints. From PLQ's requirement, the activities' mechanism needed to be
+                  unique compared to past
+                  missions while reusing past structures.
+                </h3>
               </div>
             </div>
           </div>
-        </div>
 
 
 
-        <!-- <div class="row justify-content-center pb-3 pt-3">
-          <div class="col-md-12 col-12 p-1 text-center">
-            <img class="images img-fluid" src="images/Mandai X/a.png" alt="worm" />
-          </div>
-        </div> -->
-
-        <div class="row justify-content-center pb-3 pt-">
-          <div class="col-md-12 col-12 p-2 text-center">
-            <div class="row justify-content-center">
-              <div class="col-md-6 col-12 p-2">
-                <img class="images img-fluid" src="images/Mandai X/10.png" alt="worm" />
+          <!-- Custom Feature Cards Section -->
+          <div class="row my-4">
+            <!-- Card 1 -->
+            <div class="col-md-4 col-12 mb-4 mb-md-0">
+              <div class="card h-100 border-0 rounded-4 overflow-hidden"
+                style="background-color: #eef8f4; border-radius: 12px;">
+                <img src="images/Mandai X/plq_0.PNG" class="card-img-top" alt="National Debut"
+                  style="height: 220px; object-fit: cover; border-top-left-radius: 12px; border-top-right-radius: 12px;">
+                <div class="card-body p-4 text-center">
+                  <h5 class="card-title mb-3" style="color: #07846b; font-size: 1.15rem; font-weight: 550;">
+                    Scoping Technical Constraints
+                  </h5>
+                  <p class="card-text text-muted"
+                    style="font-size: 0.9rem; line-height: 1.45; color: #4a4a4a !important;">
+                    Refurbishment of existing physical structures + Repurposing existiing CMS digital screen
+                    templates/mechanisms.
+                  </p>
+                </div>
               </div>
-              <div class="col-md-6 col-12 p-2">
-                <img class="images img-fluid" src="images/Mandai X/11.png" alt="worm" />
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-md-4 col-12 mb-4 mb-md-0">
+              <div class="card h-100 border-0 rounded-4 overflow-hidden"
+                style="background-color: #eef8f4; border-radius: 12px;">
+                <img src="images/Mandai X/plq_1.PNG" class="card-img-top" alt="Streamlined Workflows"
+                  style="height: 220px; object-fit: cover; border-top-left-radius: 12px; border-top-right-radius: 12px;">
+                <div class="card-body p-4 text-center">
+                  <h5 class="card-title font-weight-550 mb-3"
+                    style="color: #07846b; font-size: 1.15rem; font-weight: 550;">
+                    Developing Activities' Narratives
+                  </h5>
+                  <p class="card-text text-muted"
+                    style="font-size: 0.9rem; line-height: 1.45; color: #4a4a4a !important;">
+                    I crafted subnarratives and learning takeaways for each
+                    activity, integrating the ADKAR framework and C.O.U.R.A.G.E traits.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-md-4 col-12 mb-4 mb-md-0">
+              <div class="card h-100 border-0 rounded-4 overflow-hidden"
+                style="background-color: #eef8f4; border-radius: 12px;">
+                <img src="images/Mandai X/plq_2.PNG" class="card-img-top" alt="Streamlined Workflows"
+                  style="height: 220px; object-fit: cover; border-top-left-radius: 12px; border-top-right-radius: 12px;">
+                <div class="card-body p-4 text-center">
+                  <h5 class="card-title font-weight-550 mb-3"
+                    style="color: #07846b; font-size: 1.15rem; font-weight: 550;">
+                    Digital & Physical Activities Ideation
+                  </h5>
+                  <p class="card-text text-muted"
+                    style="font-size: 0.9rem; line-height: 1.45; color: #4a4a4a !important;">
+                    <b style="font-weight: 550;">Activities were brainstormed, with some based on previous
+                      mechanics, while exploring new concepts for fresh opportunities.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-            <div class="row justify-content-center pt-3">
-            <div class="col-md-12 col-12 p-1 borderbottom"></div>
-          </div>
-
-        <div class="row justify-content-center">
-          <div class="col-md-10 col-12 pt-2 pb-4 text-left">
-            <h3 class="text-center main-content6" style="color: #07846b">
-              Phase 3: Refinements, additional testing
-            </h3>
-          </div>
-        </div>
-
-        <div class="pt-1 pb-3">
-          <div class="justify-content-center row">
-            <div class="col-md-10 col-12 pt-0 text-left">
-              <h3 class="text-left main-content4 pb-3 pt-3">
-                Afterwards, I synthesised the responses. In our first testing,
-                there were some challenges that both parents and children faced.
-                I refined the prototype, making sure the solutions address the issues, prominently, the drop-off after
-                completing the mission.
-
-                <br></br>
-                Given the tight timeline, I prioritised <b style=font-weight:550;>high-impact solutions that leveraged
-                  on existing functionality</b>,
-                ensuring effective results with <b style=font-weight:550;>minimal implementation.</b>
-              </h3>
-            </div>
-          </div>
-        </div>
-
-        <div class="row justify-content-center pb-1 pt-2">
-          <div class="col-md-12 col-12 p-1 pb-4 text-center">
-            <img class="images img-fluid" src="images/Mandai X/b.png" alt="worm" />
-          </div>
-        </div>
-
-        <div class="row justify-content-center pb-1 pt-3">
-          <div class="col-md-12 col-12 p-2 text-center">
-            <div class="row justify-content-center">
-              <div class="col-md-3 col-6 p-2">
-                <img class="images-header img-fluid" src="images/Mandai X/c.png" alt="placeholder" />
-              </div>
-              <div class="col-md-3 col-6 p-2">
-                <img class="images img-fluid" src="images/Mandai X/16.gif" alt="worm" />
-              </div>
-              <div class="col-md-3 col-6 p-2">
-                <img class="images img-fluid" src="images/Mandai X/17.gif" alt="worm" />
-              </div>
-              <div class="col-md-3 col-6 p-2">
-                <img class="images img-fluid" src="images/Mandai X/18.gif" alt="worm" />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="row justify-content-center pb-1 pt-3">
-          <div class="col-md-12 col-12 p-2 text-center">
-            <div class="row justify-content-center">
-              <div class="col-md-3 col-6 p-2">
-                <img class="images-header img-fluid" src="images/Mandai X/d.png" alt="placeholder" />
-              </div>
-              <div class="col-md-3 col-6 p-2">
-                <img class="images img-fluid" src="images/Mandai X/19.gif" alt="worm" />
-              </div>
-              <div class="col-md-3 col-6 p-2">
-                <img class="images img-fluid" src="images/Mandai X/20.png" alt="worm" />
-              </div>
-              <div class="col-md-3 col-6 p-2">
-                <img class="images img-fluid" src="images/Mandai X/21.png" alt="worm" />
-              </div>
-            </div>
-          </div>
-        </div>
 
           <div class="row justify-content-center pt-3">
             <div class="col-md-12 col-12 p-1 borderbottom"></div>
           </div>
 
-        <div class="row justify-content-center">
-          <div class="col-md-10 col-12 pt-3 pb-4 text-left">
-            <h3 class="text-center main-content6" style="color: #07846b">
-              Phase 4: Testing against our core objectives
-            </h3>
-          </div>
-        </div>
-
-        <div class="pt-1 pb-4">
-          <div class="justify-content-center row">
-            <div class="col-md-10 col-12 pt-0 text-left">
-              <h3 class="text-left main-content4 pb-1 pt-3">
-                We returned to the zoo to test the new iterations with more visitors against our core
-                objectives.
-                <br /><br />
-                <b style="color: #07846b; font-weight: 500; font-size:18px">🙌 There was a great improvement in the
-                  reception of the Rewards System...
-
+          <div class="row justify-content-center">
+            <div class="col-md-12 col-12 pt-0 pb-2 text-left">
+              <h3 class="main-content6 text-left"
+                style="color: #07846b; font-weight: 550; font-size: 2rem; padding-top: 1.5rem; padding-bottom: 0.5rem; margin-bottom: 0;">
+                An interactive journey where children play and discover on their own
               </h3>
             </div>
           </div>
-        </div>
 
-        <div class="row justify-content-center pb-3 pt-0">
-          <div class="col-md-10 col-12 p-1 pb-3 text-center">
-            <img class="images img-fluid" src="images/Mandai X/e1.png" alt="worm" />
+
+          <div class="row justify-content-center my-4">
+            <div class="col-md-6 col-12 mb-3 mb-md-0">
+              <div class="cs-card cs-card-light">
+                <div class="cs-card-number">01</div>
+                <h3 class="cs-card-title">Gameplay that completes in one visit (~10 mins)</h3>
+                <p class="cs-card-text">A clear ten-minute start-to-finish journey (unmanned) lets children
+                  immerse themselves
+                  without feeling rushed or draggy.</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-12">
+              <div class="cs-card cs-card-light">
+                <div class="cs-card-number">02</div>
+                <h3 class="cs-card-title">Drives customer footfall and spending at PLQ</h3>
+                <p class="cs-card-text"> The frictionless experience encourages mission completion,
+                  motivating more participants to earn rewards and discounts at PLQ.</p>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div class="pt-1 pb-2">
-          <div class="justify-content-center row">
-            <div class="col-md-10 col-12 pt-0 text-left">
-              <h3 class="text-left main-content4 pb-4 pt-3">
-                <b style="color: #07846b; font-weight: 500; font-size:18px">🤔 However, despite these
-                  improvements...</b>
-                <br /><br />
-                both parents and children still significantly expressed confusion regarding books as a reward currency.
+          <!-- Activity 1 Card Section with Challenge Box & Dropdown (Pre-opened active state) -->
+          <div class="pt-1 pb-5">
+            <div class="justify-content-center row">
+              <div class="col-md-12 col-12 pt-4 pt-md-0">
+                <div class="activity-card">
+                  <div class="activity-card-body">
+                    <div class="row align-items-center">
+                      <!-- Left Column: Photo of the activity board -->
+                      <div class="col-md-5 col-12 mb-4 mb-md-0">
+                        <div class="activity-card-img-wrapper">
+                          <img src="images/Mandai X/PLQ_Activity1.png" alt="Arlo's Antarctic Check Physical Board" />
+                        </div>
+                      </div>
+                      <!-- Right Column: Details and Metadata -->
+                      <div class="col-md-7 col-12 text-left pl-md-4">
+                        <span class="activity-badge">Activity 1</span>
+                        <h2 class="activity-title pt-3">Arlo's Antarctic Check</h2>
+                        <p class="activity-desc" style="max-width: 420px;">
+                          Suit up, snowy Ranger, it's time to scout the ice and spot anything that's making the
+                          Antarctic lose it's cool.
+                        </p>
+
+                        <div class="row mb-3">
+                          <div class="col-6">
+                            <div class="activity-meta-label">C.O.U.R.A.G.E Trait</div>
+                            <span class="activity-pill">Curiosity</span>
+                          </div>
+                          <div class="col-6">
+                            <div class="activity-meta-label">ADKAR value</div>
+                            <span class="activity-pill">Awareness</span>
+                          </div>
+                        </div>
+
+                        <!-- Challenge Box for Learning Takeaway -->
+                        <div
+                          style="border: 1px solid #eaeaea; border-left: 5px solid #2b5c9e; border-radius: 8px; padding: 1rem 1.25rem; background-color: #ffffff; margin-top: 1rem;">
+                          <div
+                            style="font-size: 0.75rem; font-weight: 700; color: #2b5c9e; letter-spacing: 0.05rem; margin-bottom: 0.25rem; text-transform: uppercase;">
+                            Learning Takeaway 💡</div>
+                          <div style="font-size: 0.95rem; font-weight: 550; line-height: 1.35; color: #2b2b2b;">
+                            Identify the essential elements required for a thriving Antarctic habitat
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Dropdown for GIF (First activity pre-opened) -->
+                  <div class="activity-dropdown-section">
+                    <div class="activity-dropdown-content" style="max-height: 2000px;">
+                      <div class="activity-dropdown-content-inner">
+                        <img class="images img-fluid" src="images/Mandai X/PLQ_Activity1.gif"
+                          alt="Mandai X mission animation" />
+                      </div>
+                    </div>
+                    <button class="activity-dropdown-toggle active" onclick="toggleActivityDropdown(this)">
+                      <span>View Activity Screens</span>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Activity 2 Card Section with Challenge Box & Dropdown -->
+          <div class="pt-1 pb-5">
+            <div class="justify-content-center row">
+              <div class="col-md-12 col-12 pt-4 pt-md-0">
+                <div class="activity-card">
+                  <div class="activity-card-body">
+                    <div class="row align-items-center">
+                      <div class="col-md-5 col-12 mb-4 mb-md-0">
+                        <div class="activity-card-img-wrapper">
+                          <img src="images/Mandai X/PLQ_Activity2.png" alt="Activity 2 Board" />
+                        </div>
+                      </div>
+                      <div class="col-md-7 col-12 text-left pl-md-4">
+                        <span class="activity-badge">Activity 2</span>
+                        <h2 class="activity-title pt-3">Melting Ice Mystery</h2>
+                        <p class="activity-desc" style="max-width: 420px;">
+                          The ice floes are melting! Use your goggles to reveal why the ice is disappearing,
+                        </p>
+
+                        <div class="row mb-3">
+                          <div class="col-6">
+                            <div class="activity-meta-label">C.O.U.R.A.G.E Trait</div>
+                            <span class="activity-pill">Curiosity</span>
+                          </div>
+                          <div class="col-6">
+                            <div class="activity-meta-label">ADKAR value</div>
+                            <span class="activity-pill">Desire</span>
+                          </div>
+                        </div>
+
+                        <div
+                          style="border: 1px solid #eaeaea; border-left: 5px solid #2b5c9e; border-radius: 8px; padding: 1rem 1.25rem; background-color: #ffffff; margin-top: 1rem;">
+                          <div
+                            style="font-size: 0.75rem; font-weight: 700; color: #2b5c9e; letter-spacing: 0.05rem; margin-bottom: 0.25rem; text-transform: uppercase;">
+                            Learning Takeaway 💡</div>
+                          <div style="font-size: 0.95rem; font-weight: 550; line-height: 1.35; color: #2b2b2b;">
+                            Understand the causes of global warming and it's impact on the environment
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="activity-dropdown-section">
+                    <div class="activity-dropdown-content">
+                      <div class="activity-dropdown-content-inner">
+                        <img class="images img-fluid" src="images/Mandai X/PLQ_Activity2.gif" alt="Activity 2 GIF" />
+                      </div>
+                    </div>
+                    <button class="activity-dropdown-toggle" onclick="toggleActivityDropdown(this)">
+                      <span>View Activity Screens</span>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Activity 3 Card Section with Challenge Box & Dropdown -->
+          <div class="pt-1 pb-5">
+            <div class="justify-content-center row">
+              <div class="col-md-12 col-12 pt-4 pt-md-0">
+                <div class="activity-card">
+                  <div class="activity-card-body">
+                    <div class="row align-items-center">
+                      <div class="col-md-5 col-12 mb-4 mb-md-0">
+                        <div class="activity-card-img-wrapper">
+                          <img src="images/Mandai X/PLQ_Activity3.png" alt="Activity 3 Board" />
+                        </div>
+                      </div>
+                      <div class="col-md-7 col-12 text-left pl-md-4">
+                        <span class="activity-badge">Activity 3</span>
+                        <h2 class="activity-title pt-3">Chilly Home Clues</h2>
+                        <p class="activity-desc" style="max-width: 420px;">
+                          Explore individual practices that lower your carbon footprint from home
+                        </p>
+
+                        <div class="row mb-3">
+                          <div class="col-6">
+                            <div class="activity-meta-label">C.O.U.R.A.G.E Trait</div>
+                            <span class="activity-pill">Grit</span>
+                          </div>
+                          <div class="col-6">
+                            <div class="activity-meta-label">ADKAR value</div>
+                            <span class="activity-pill">Knowledge</span>
+                          </div>
+                        </div>
+
+                        <div
+                          style="border: 1px solid #eaeaea; border-left: 5px solid #2b5c9e; border-radius: 8px; padding: 1rem 1.25rem; background-color: #ffffff; margin-top: 1rem;">
+                          <div
+                            style="font-size: 0.75rem; font-weight: 700; color: #2b5c9e; letter-spacing: 0.05rem; margin-bottom: 0.25rem; text-transform: uppercase;">
+                            Learning Takeaway 💡</div>
+                          <div style="font-size: 0.95rem; font-weight: 550; line-height: 1.35; color: #2b2b2b;">
+                            Scan for home habits you can change to help Earth breathe easier
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="activity-dropdown-section">
+                    <div class="activity-dropdown-content">
+                      <div class="activity-dropdown-content-inner">
+                        <img class="images img-fluid" src="images/Mandai X/PLQ_Activity3.gif" alt="Activity 3 GIF" />
+                      </div>
+                    </div>
+                    <button class="activity-dropdown-toggle" onclick="toggleActivityDropdown(this)">
+                      <span>View Activity Screens</span>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Activity 4 Card Section with Challenge Box & Dropdown -->
+          <div class="pt-1 pb-5">
+            <div class="justify-content-center row">
+              <div class="col-md-12 col-12 pt-4 pt-md-0">
+                <div class="activity-card">
+                  <div class="activity-card-body">
+                    <div class="row align-items-center">
+                      <div class="col-md-5 col-12 mb-4 mb-md-0">
+                        <div class="activity-card-img-wrapper">
+                          <img src="images/Mandai X/PLQ_Activity4.png" alt="Activity 4 Board" />
+                        </div>
+                      </div>
+                      <div class="col-md-7 col-12 text-left pl-md-4">
+                        <span class="activity-badge">Activity 4</span>
+                        <h2 class="activity-title pt-3">Cooling Our Coast</h2>
+                        <p class="activity-desc" style="max-width: 420px;">
+                          Ice melts there, but we feel it here! Flip the panels to uncover the connection
+                        </p>
+
+                        <div class="row mb-3">
+                          <div class="col-6">
+                            <div class="activity-meta-label">C.O.U.R.A.G.E Trait</div>
+                            <span class="activity-pill">Grit</span>
+                          </div>
+                          <div class="col-6">
+                            <div class="activity-meta-label">ADKAR value</div>
+                            <span class="activity-pill">Take Action</span>
+                          </div>
+                        </div>
+
+                        <div
+                          style="border: 1px solid #eaeaea; border-left: 5px solid #2b5c9e; border-radius: 8px; padding: 1rem 1.25rem; background-color: #ffffff; margin-top: 1rem;">
+                          <div
+                            style="font-size: 0.75rem; font-weight: 700; color: #2b5c9e; letter-spacing: 0.05rem; margin-bottom: 0.25rem; text-transform: uppercase;">
+                            Learning Takeaway 💡</div>
+                          <div style="font-size: 0.95rem; font-weight: 550; line-height: 1.35; color: #2b2b2b;">
+                            Discover how melting glaciers and rising temperatures threaten Singapore's coastlines
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="activity-dropdown-section">
+                    <div class="activity-dropdown-content">
+                      <div class="activity-dropdown-content-inner">
+                        <img class="images img-fluid" src="images/Mandai X/PLQ_Activity4.gif" alt="Activity 4 GIF" />
+                      </div>
+                    </div>
+                    <button class="activity-dropdown-toggle" onclick="toggleActivityDropdown(this)">
+                      <span>View Activity Screens</span>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Activity 5 Card Section with Challenge Box & Dropdown -->
+          <div class="pt-1 pb-5">
+            <div class="justify-content-center row">
+              <div class="col-md-12 col-12 pt-4 pt-md-0">
+                <div class="activity-card">
+                  <div class="activity-card-body">
+                    <div class="row align-items-center">
+                      <div class="col-md-5 col-12 mb-4 mb-md-0">
+                        <div class="activity-card-img-wrapper">
+                          <img src="images/Mandai X/PLQ_Activity5.png" alt="Activity 5 Board" />
+                        </div>
+                      </div>
+                      <div class="col-md-7 col-12 text-left pl-md-4">
+                        <span class="activity-badge">Activity 5</span>
+                        <h2 class="activity-title pt-3">Big Waddles</h2>
+                        <p class="activity-desc" style="max-width: 420px;">
+                          Use the decoder wheel to crack the secret word. It unlocks a habit that keeps the penguins
+                          happy.
+                        </p>
+
+                        <div class="row mb-3">
+                          <div class="col-6">
+                            <div class="activity-meta-label">C.O.U.R.A.G.E Trait</div>
+                            <span class="activity-pill">Empathy</span>
+                          </div>
+                          <div class="col-6">
+                            <div class="activity-meta-label">ADKAR value</div>
+                            <span class="activity-pill">Reinforcement</span>
+                          </div>
+                        </div>
+
+                        <div
+                          style="border: 1px solid #eaeaea; border-left: 5px solid #2b5c9e; border-radius: 8px; padding: 1rem 1.25rem; background-color: #ffffff; margin-top: 1rem;">
+                          <div
+                            style="font-size: 0.75rem; font-weight: 700; color: #2b5c9e; letter-spacing: 0.05rem; margin-bottom: 0.25rem; text-transform: uppercase;">
+                            Learning Takeaway 💡</div>
+                          <div style="font-size: 0.95rem; font-weight: 550; line-height: 1.35; color: #2b2b2b;">
+                            Despite the distance, our improved daily routines can still protect Antarctica's future
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="activity-dropdown-section">
+                    <div class="activity-dropdown-content">
+                      <div class="activity-dropdown-content-inner">
+                        <img class="images img-fluid" src="images/Mandai X/PLQ_Activity5.gif" alt="Activity 5 GIF" />
+                      </div>
+                    </div>
+                    <button class="activity-dropdown-toggle" onclick="toggleActivityDropdown(this)">
+                      <span>View Activity Screens</span>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row justify-content-center">
+            <div class="col-md-12 col-12 pt-0 pb-2 text-left">
+              <h3 class="main-content6 text-left"
+                style="color: #07846b; font-weight: 550; font-size: 2rem; padding-top: 1.5rem; padding-bottom: 0.5rem; margin-bottom: 0;">
+                Mission completion unlocks a badge and PLQ discounts
               </h3>
             </div>
           </div>
-        </div>
 
-        <div class="row justify-content-center pb-3 pt-0">
-          <div class="col-md-10 col-12 p-1 pb-3 text-center">
-            <img class="images img-fluid" src="images/Mandai X/e.png" alt="worm" />
+          <!-- New End of Mission and Stats Replaced Sections -->
+          <div class="pt-1 pb-5">
+            <div class="row justify-content-center">
+              <div class="col-md-12 col-12 pt-4 pt-md-0">
+
+                <div class="row my-4">
+                  <!-- Card 1 -->
+                  <div class="col-md-6 col-12 mb-4 mb-md-0">
+                    <div class="card h-100 rounded-4 overflow-hidden"
+                      style="background-color: #d8eff5; border-radius: 12px;">
+                      <img src="images/Mandai X/R_Badge.png" class="card-img-top" alt="National Debut"
+                        style="height: 220px; object-fit: cover; border-top-left-radius: 12px; border-top-right-radius: 12px;">
+                      <div class="card-body px-4 py-2 text-center">
+                        <h5 class="card-title my-1" style="color: #2b5c9e; font-size: 1.15rem; font-weight: 550;">
+                          Users redeem a custom mission badge
+                        </h5>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Card 2 -->
+                  <div class="col-md-6 col-12 mb-4 mb-md-0">
+                    <div class="card h-100 rounded-4 overflow-hidden"
+                      style="background-color: #d8eff5; border-radius: 12px;">
+                      <img src="images/Mandai X/R_Tanglin.png" class="card-img-top" alt="Streamlined Workflows"
+                        style="height: 220px; object-fit: cover; border-top-left-radius: 12px; border-top-right-radius: 12px;">
+                      <div class="card-body px-4 py-2 text-center">
+                        <h5 class="card-title font-weight-550 my-1"
+                          style="color: #2b5c9e; font-size: 1.15rem; font-weight: 550;">
+                          Earn discounts to shop at PLQ merchants
+                        </h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Final Outcomes Card with Rolling Number Animation -->
+                <div class="outcomes-card" id="statsSection">
+                  <div class="outcomes-subtitle">In 1 month...</div>
+
+                  <div class="row justify-content-center mb-2">
+                    <div class="col-md-4 col-12 stat-box">
+                      <div class="stat-num"><span class="counter" data-target="300" data-suffix="+">0</span></div>
+                      <div class="stat-label">Families Played</div>
+                    </div>
+                    <div class="col-md-4 col-12 stat-box">
+                      <div class="stat-num"><span class="counter" data-target="91" data-suffix="%">0</span></div>
+                      <div class="stat-label">Mission Completion Rate</div>
+                    </div>
+                    <div class="col-md-4 col-12 stat-box">
+                      <div class="stat-num"><span class="counter" data-target="50" data-suffix="%">0</span></div>
+                      <div class="stat-label">Returning Users</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End of Replaced Section -->
+
           </div>
-        </div>
+      </section>
 
-        <div class="pt-1 pb-3">
-          <div class="justify-content-center row">
-            <div class="col-md-10 col-12 pt-0 text-left">
-              <h3 class="text-left main-content4 pb-4 pt-3">
-                <b style="color: #07846b; font-weight: 500; font-size:18px">💡 The Pivot: Changing the currency to
-                  COINS</b>
-                <br /><br />
-                I presented these synthesised insights and data-driven slides to the CEO during our weekly huddle.
-                Backed by
-                this user data, I proposed a shift to "RB Coins" for the MVP. The team aligned on this choice.
+      <section class="container-fluid px-0 pb-5" style="background-color: #f3f8f6;">
+        <div class="container pt-4 pb-4">
+          <div class="row justify-content-center pt-5 pb-0">
+            <div class="col-md-12 col-12 text-left">
+              <div class="case-study-label">[ CASE STUDY 02 ]</div>
+              <h2 class="case-study-title">Validating the core reward loop</h2>
+              <h3 class="main-content4">
+                I led the validation and iterations of a new rewards-system MVP for the Ranger Buddies web app. With
+                only
+                three weeks until rollout, the work focused on quickly understanding the experience of <b
+                  style="font-weight: 600;">two distinct user groups: parents and children.</b>
               </h3>
             </div>
           </div>
-        </div>
 
-        <div class="row justify-content-center pb-5 pt-0">
-          <div class="col-md-10 col-12 p-1 pb-3 text-center">
-            <img class="images img-fluid" src="images/Mandai X/f.png" alt="worm" />
+          <div class="row justify-content-center pt-1">
+            <div class="col-md-12 col-12 p-1 borderbottom"></div>
           </div>
-        </div>
+
+          <div class="row justify-content-center">
+            <div class="col-md-12 col-12 pt-0 pb-3 text-left">
+              <h3 class="main-content6 text-left"
+                style="color: #07846b; font-weight: 550; font-size: 2rem; padding-top: 1.5rem; padding-bottom: 0.5rem; margin-bottom: 0;">
+                Phase 1: High-fidelity prototyping of flows
+              </h3>
+            </div>
+          </div>
+
+          <div class="pt-1 pb-3">
+            <div class="justify-content-center row">
+              <div class="col-md-12 col-12 pt-0 text-left">
+                <h3 class="text-left main-content4 pb-2 pt-3">
+                  <b style="font-weight: 500">Below are the main flows/screens with the newly-added rewards
+                    elements:</b></br>
+                  <i>(For context: "Books" are being used for our main method of reward currency)</i>
+                </h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="row justify-content-center my-4">
+            <div class="col-md-4 col-12 mb-3 mb-md-0">
+              <div class="cs-card cs-card-dark">
+                <div class="cs-card-number ">Mission Simulation</div>
+                <p class="cs-card-text"><b style="color: #07846b; font-weight: 500; font-size: 1.2rem"></b>
+                  A simulated activity walkthrough to help new users
+                  understand mission mechanics, where upon the completion of each
+                  activity, the new “Books” meter bar fills up by 100 points.</p>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-12 mb-3 mb-md-0">
+              <div class="cs-card cs-card-dark">
+                <div class="cs-card-number ">Redeem Rewards</div>
+                <p class="cs-card-text"><b style="color: #07846b; font-weight: 500; font-size: 1.2rem"></b>
+                  (New) Covering partner selection, profile options, and reward redemption process.</p>
+              </div>
+            </div>
+            <div class="col-md-4 col-12 mb-3 mb-md-0">
+              <div class="cs-card cs-card-dark">
+                <div class="cs-card-number ">Home Page</div>
+                <p class="cs-card-text"><b style="color: #07846b; font-weight: 500; font-size: 1.2rem"></b>
+                  Integrating a new “Books Menu” entry point directly onto the existing map interface homepage.</p>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row justify-content-center pb-1 pt-0">
+            <div class="col-md-12 col-12 p-1 pt-5 pb-5 text-center">
+              <img class="header-image img-fluid" src="images/Mandai X/8.svg" alt="worm" />
+            </div>
+          </div>
+
+          <div class="row justify-content-center pt-3">
+            <div class="col-md-12 col-12 p-1 borderbottom"></div>
+          </div>
 
 
 
-         <div class="pt-1 pb-3">
-          <div class="justify-content-center row">
-            <div class="col-md-10 col-12 pt-0 text-left">
-              <div style="
-                  border: 2px solid #07846b;
-                  padding: 25px;
-                  border-radius: 16px;
-                  margin-bottom: 30px;
-                ">
-                <h4 style="color: #07846b; font-weight: 550; font-size: 18px">
-                  👍 Final Outcomes 
-                </h4>
-                <p class="main-content4 pt-2 pb-2">
-                  🛍️ <b style="font-weight:550;">For Partners:</b> Increased family foot traffic to partners’ physical retail stores for reward redemption, driven by awareness from a centralised reward hub.
+          <div class="row justify-content-center">
+            <div class="col-md-12 col-12 pt-0 pb-3 text-left">
+              <h3 class="main-content6 text-left"
+                style="color: #07846b; font-weight: 550; font-size: 2rem; padding-top: 1.5rem; padding-bottom: 0.5rem; margin-bottom: 0;">
+                Phase 2: Conducting on-site user testing at Mandai Wildlife Zoo
+              </h3>
+            </div>
+          </div>
+
+
+          <div class="pt-1 pb-3">
+            <div class="justify-content-center row">
+              <div class="col-md-12 col-12 pt-0 text-left">
+                <h3 class="text-left main-content4 pb-2 pt-3">
+                  We conducted <b style="font-weight:550;">rapid on-site guerilla user testing at Mandai
+                    Wildlife Zoo, capturing high-value, 15-minute sessions with
+                    visiting families.</b> As the interviewer, I tailored the UT Guide for
+                  both parent and child demographics. Since the children were quite
+                  young (4-10 years old), I adapted a more guided approach, while still avoiding leading
+                  questions to gain authentic responses. For example, after a progress bar is filled, I would
+                  ask: “What do you notice has changed? → Why do you think that
+                  happened?” to help them along the process.
+                </h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="challenge-box-light">
+            <div class="challenge-label">Core Objectives 💡</div>
+            <p class="main-content4 pb-2" style="font-weight: 550;">
+              🧪 Access the clarity of "Books currency", determine if users recognise
+              it as redeemable. <br><br>
+              🧪 Evaluate intuitiveness and user comprehension of the "earn-to-spend" loop's mechanism. <br><br>
+              🧪 Determine the ease of navigation to the rewards section after completing a mission (without
+              assistance).
+            </p>
+          </div>
+
+          <div class="row justify-content-center pb-3 pt-">
+            <div class="col-md-12 col-12 p-2 text-center">
+              <div class="row justify-content-center">
+                <div class="col-md-6 col-12 p-2">
+                  <img class="images img-fluid" src="images/Mandai X/10.png" alt="worm" />
+                </div>
+                <div class="col-md-6 col-12 p-2">
+                  <img class="images img-fluid" src="images/Mandai X/11.png" alt="worm" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row justify-content-center pt-3">
+            <div class="col-md-12 col-12 p-1 borderbottom"></div>
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-md-12 col-12 pt-0 pb-3 text-left">
+              <h3 class="main-content6 text-left"
+                style="color: #07846b; font-weight: 550; font-size: 2rem; padding-top: 1.5rem; padding-bottom: 0.5rem; margin-bottom: 0;">
+                Phase 3: Refinements, additional testing
+              </h3>
+            </div>
+          </div>
+
+
+          <div class="pt-1 pb-2">
+            <div class="justify-content-center row">
+              <div class="col-md-12 col-12 pt-0 text-left">
+                <h3 class="text-left main-content4 pb-3 pt-3">
+                  Afterwards, I synthesised the responses. <b style="font-weight:550;">In our first testing,
+                    there were some challenges</b> that both parents and children faced.
+                  I refined the prototype, making sure the solutions address the issues.
+
+                </h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Aligning 3 cards to match the green banner below -->
+          <div class="row justify-content-center my-4 pb-3">
+            <div class="col-md-4 col-12 mb-3 mb-md-0">
+              <div class="cs-card cs-card-dark">
+                <div class="cs-card-number">Drop-off after completing Mission flow</div>
+                <p class="cs-card-text"><b style="color: #07846b; font-weight: 500; font-size: 1.2rem"></b>
+                  Users successfully completed the mission but were not always aware of the next step to redeem rewards.
                 </p>
-                <p class="main-content4 pt-2 pb-2">
-                  👪 <b style="font-weight:550;">For the Public:</b> Boosted mission completion rates by eliminating post-activity user drop-off. Created a continuous incentive loop that kept children motivated to complete every required activity.
+              </div>
+            </div>
+            <div class="col-md-4 col-12 mb-3 mb-md-0">
+              <div class="cs-card cs-card-dark">
+                <div class="cs-card-number">"Books" is unclear as a currency</div>
+                <p class="cs-card-text">
+                  <i>5/5 Children</i> failed to identify "Books" and it's role as a primary reward currency. <i>3/5
+                    Parents</i>
+                  preferred more intuitive icons such as coins.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4 col-12 mb-3 mb-md-0">
+              <div class="cs-card cs-card-dark">
+                <div class="cs-card-number">Low Discoverability of components</div>
+                <p class="cs-card-text">
+                  Most users did not immediately notice the reward menu and meter bar as they were concentrated on the
+                  activity.
                 </p>
               </div>
             </div>
           </div>
-        </div>
-        
 
-        <div id="fab-button" class="fab-container">
-          <div class="fab">
-            <svg xmlns="http://www.w3.org/2000/svg" height="42px" viewBox="0 -960 960 960" width="42px" fill="gray">
-              <path d="M480-545.33 287.33-352.67 240-400l240-240 240 240-47.33 47.33L480-545.33Z" />
-            </svg>
-          </div>
-        </div>
-
-        <div class="row justify-content-center pb-5 pt-5">
-          <div class="col-md-8 col-12 text-center pt-5 pb-5">
-            <h3 class="mb-4" style="color: #555; font-size: 18px">
-              View other works 👀
-            </h3>
-            <div class="d-flex flex-wrap justify-content-center gap-3">
-              <a href="MandaiX.html" class="btn btn-outline-work">Mandai X</a>
-              <a href="GovTech.html" class="btn btn-outline-work">GovTech a11y Playground</a>
-               <a href="SproutSwap.html" class="btn btn-outline-work">SproutSwap</a>
-
-              <a href="TheBeeCrisis.html" class="btn btn-outline-work">The Bee Crisis</a>
-              <a href="Enhancing Fei Yang Band.html" class="btn btn-outline-work">Enhancing Fei Yang Band</a>
-
-              <a href="GoKakis.html" class="btn btn-outline-work">GoKakis</a>
-              <!-- <a href="misscarry.html" class="btn btn-outline-work">miss carry D.I.Y.</a> -->
-
-              <!-- <a href="underratedtrashsnackers.html" class="btn btn-outline-work">Underrated Trash Snackers</a> -->
+          <div class="pivot-banner my-4">
+            <div class="pivot-content">
+              <span class="pivot-icon">💡</span>
+              <p class="pivot-text">
+                Given the tight timeline, I prioritised <strong>high-impact solutions that leveraged on existing
+                  functionality</strong>,
+                ensuring effective results with <strong>minimal implementation</strong>.
+              </p>
             </div>
+          </div>
+
+          <div class="row justify-content-center pb-1 pt-3 pr-4 pl-4">
+            <div class="col-md-12 col-12 p-2 text-center">
+              <div class="row justify-content-center">
+                <div class="col-md-3 col-6 p-2">
+                  <img class="images-header img-fluid" src="images/Mandai X/c.png" alt="placeholder" />
+                </div>
+                <div class="col-md-3 col-6 p-2">
+                  <img class="images img-fluid" src="images/Mandai X/16.gif" alt="worm" />
+                </div>
+                <div class="col-md-3 col-6 p-2">
+                  <img class="images img-fluid" src="images/Mandai X/17.gif" alt="worm" />
+                </div>
+                <div class="col-md-3 col-6 p-2">
+                  <img class="images img-fluid" src="images/Mandai X/18.gif" alt="worm" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row justify-content-center pb-1 pt-3 pr-4 pl-4">
+            <div class="col-md-12 col-12 p-2 text-center">
+              <div class="row justify-content-center">
+                <div class="col-md-3 col-6 p-2">
+                  <img class="images-header img-fluid" src="images/Mandai X/d.png" alt="placeholder" />
+                </div>
+                <div class="col-md-3 col-6 p-2">
+                  <img class="images img-fluid" src="images/Mandai X/19.gif" alt="worm" />
+                </div>
+                <div class="col-md-3 col-6 p-2">
+                  <img class="images img-fluid" src="images/Mandai X/20.png" alt="worm" />
+                </div>
+                <div class="col-md-3 col-6 p-2">
+                  <img class="images img-fluid" src="images/Mandai X/21.png" alt="worm" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row justify-content-center pt-3">
+            <div class="col-md-12 col-12 p-1 borderbottom"></div>
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-md-12 col-12 pt-0 pb-3 text-left">
+              <h3 class="main-content6 text-left"
+                style="color: #07846b; font-weight: 550; font-size: 2rem; padding-top: 1.5rem; padding-bottom: 0.5rem; margin-bottom: 0;">
+                Phase 4: Testing against our core objectives
+              </h3>
+            </div>
+          </div>
+
+
+          <div class="pt-1 pb-2">
+            <div class="justify-content-center row">
+              <div class="col-md-12 col-12 pt-0 text-left">
+                <h3 class="text-left main-content4 pb-1 pt-3">
+                  We returned to the zoo to test the new iterations with more visitors against our core
+                  objectives.
+                  <br /><br />
+                  <b style="color: #07846b; font-weight: 500; font-size:18px">🙌 There was a great improvement in the
+                    reception of the rewards system...
+
+                </h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card container 1 -->
+
+          <div class="row justify-content-center my-4">
+            <div class="col-md-12 col-12">
+              <div
+                style="border-radius: 12px; overflow: hidden; font-family: 'IBM Plex Sans', sans-serif; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+
+                <!-- Top Green Banner -->
+                <div
+                  style="background-color: #085028; color: #c0e3b9; padding: 18px 24px; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 1.05rem; text-align: center;">
+                  <span><strong style="color: #ffffff; font-weight: 550;">✅ 100% of Parents and Children</strong>
+                    successfully
+                    identified the “earn-to-spend” reward loop.</span>
+                </div>
+
+                <!-- Bottom Light Green Grid -->
+                <div class="row no-gutters" style="background-color: #b7d794; color: #085028;">
+
+                  <!-- Left Column: Children -->
+                  <div class="col-md-6 col-12 p-4 d-flex align-items-start"
+                    style="gap: 16px; border-right: 1px solid rgba(8, 80, 40, 0.15);">
+                    <span style="font-size: 40px; line-height: 1; flex-shrink: 0;">👦</span>
+                    <p style="font-size: 1rem; line-height: 1.35; margin: 0; font-weight: 500;">
+                      <em style="font-style: italic; font-weight: 600;">Children</em> displayed improved independence,
+                      as
+                      they understood they were earning books through activities.
+                    </p>
+                  </div>
+
+                  <!-- Right Column: Parents -->
+                  <div class="col-md-6 col-12 p-4 d-flex align-items-start" style="gap: 16px;">
+                    <span style="font-size: 40px; line-height: 1; flex-shrink: 0;">👩</span>
+                    <p style="font-size: 1rem; line-height: 1.35; margin: 0; font-weight: 500;">
+                      <em style="font-style: italic; font-weight: 600;">Parents</em> understood that there's still an
+                      outstanding task of redeeming the reward through the CTAs/animations.
+                    </p>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-1 pb-2">
+            <div class="justify-content-center row">
+              <div class="col-md-12 col-12 pt-0 text-left">
+                <h3 class="text-left main-content4 pb-2 pt-3">
+                  <b style="color: #07846b; font-weight: 500; font-size:18px">🤔 However, despite these
+                    improvements...</b>
+                  <br /><br />
+                  both parents and children still significantly expressed confusion regarding books as a reward
+                  currency.
+                </h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+
+          <div class="row justify-content-center my-4">
+            <div class="col-md-12 col-12">
+              <div
+                style="border-radius: 12px; overflow: hidden; font-family: 'IBM Plex Sans', sans-serif; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+
+                <!-- Top Green Banner -->
+                <div
+                  style="background-color: #085028; color: #c0e3b9; padding: 18px 24px; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 1.05rem; text-align: center;">
+                  <span><strong style="color: #ffffff; font-weight: 550;">🤔 7/9 Parents & 100% of Children</strong>
+                    across
+                    UT1
+                    & UT2 found the book icon unclear as a reward currency.</span>
+                </div>
+
+                <!-- Bottom Light Green Grid -->
+                <div class="row no-gutters" style="background-color: #b7d794; color: #085028;">
+
+                  <!-- Left Column: Children -->
+                  <div class="col-md-6 col-12 p-4 d-flex align-items-start"
+                    style="gap: 16px; border-right: 1px solid rgba(8, 80, 40, 0.15);">
+                    <span style="font-size: 40px; line-height: 1; flex-shrink: 0;">👦</span>
+                    <p style="font-size: 1rem; line-height: 1.35; margin: 0; font-weight: 500;">
+                      <em style="font-style: italic; font-weight: 600;">Children</em> displayed literal bias, mistaking
+                      book
+                      icon as an actual functional item: "to read".
+                    </p>
+                  </div>
+
+                  <!-- Right Column: Parents -->
+                  <div class="col-md-6 col-12 p-4 d-flex align-items-start" style="gap: 16px;">
+                    <span style="font-size: 40px; line-height: 1; flex-shrink: 0;">👩</span>
+                    <p style="font-size: 1rem; line-height: 1.35; margin: 0; font-weight: 500;">
+                      <em style="font-style: italic; font-weight: 600;">Parents</em> mentioned lack of clarity, still
+                      preferring standard symbols like coins/fruits to improve recognition.
+                    </p>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-1 pb-3">
+            <div class="justify-content-center row">
+              <div class="col-md-12 col-12 pt-0 text-left">
+                <h3 class="text-left main-content4 pb-4 pt-3">
+                  <b style="color: #07846b; font-weight: 500; font-size:18px">🗣️ Presentation to leadership</b>
+                  <br /><br />
+                  I presented these synthesised insights and data-driven slides to the CEO during our weekly huddle.
+                  Supported by the guerilla user testing data showing user confusion with "Books", I proposed pivoting
+                  to
+                  a <b style="font-weight:550;">coins-based system</b>. The team aligned on this direction.
+                </h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="row justify-content-center pb-5 pt-0">
+            <div class="col-md-10 col-12 p-1 pb-3 text-center">
+              <img class="images img-fluid" src="images/Mandai X/f.png" alt="worm" />
+            </div>
+          </div>
+
+
+          <div class="challenge-box-light">
+            <div class="challenge-label">Final Outcomes 👍</div>
+            <p class="main-content4 pt-2 pb-2">
+              🛍️ <b style="font-weight:550;">For Partners:</b> Increased family foot traffic to partners’
+              physical
+              retail stores for reward redemption, driven by awareness from a centralised reward hub.
+            </p>
+            <p class="main-content4 pt-2 pb-2">
+              👥 <b style="font-weight:550;">For the Public:</b> Boosted mission completion rates by eliminating
+              post-activity user drop-off. Created a continuous incentive loop that kept children motivated to
+              complete every required activity.
+            </p>
+          </div>
+
+      </section>
+
+
+      <div id="fab-button" class="fab-container">
+        <div class="fab">
+          <svg xmlns="http://www.w3.org/2000/svg" height="42px" viewBox="0 -960 960 960" width="42px" fill="gray">
+            <path d="M480-545.33 287.33-352.67 240-400l240-240 240 240-47.33 47.33L480-545.33Z" />
+          </svg>
+        </div>
+      </div>
+
+      <div class="row justify-content-center pb-5 pt-5" style="background-color: #f3f8f6;">
+        <div class="col-md-8 col-12 text-center pt-5 pb-5">
+          <h3 class="mb-4" style="color: #555; font-size: 18px">
+            View other works 👀
+          </h3>
+          <div class="d-flex flex-wrap justify-content-center gap-3">
+            <a href="MandaiX.html" class="btn btn-outline-work">Mandai X</a>
+            <a href="GovTech.html" class="btn btn-outline-work">GovTech a11y Playground</a>
+            <a href="Enhancing Fei Yang Band.html" class="btn btn-outline-work">Enhancing Fei Yang Band</a>
+            <a href="TheBeeCrisis.html" class="btn btn-outline-work">The Bee Crisis</a>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
   </div>
 
   <!-- EXACT SYNCED FOOTER OUTSIDE CONTAINER STRUCTURE -->
   <footer class="footer-dark">
     <div class="container">
-      <div class="footer-text">⤷ Let's work together ⋆.˚</div>
+      <div class="footer-text">⤷ Let's create together ⋆.˚</div>
 
       <div class="social-icons">
         <a href="mailto:jochanxt@gmail.com" target="_blank">
           <img src="images/Work/Icon1_Email.svg" alt="Email" />
         </a>
-        <a href="https://linkedin.com/in/josiechan" target="_blank">
+        <a href="https://linkedin.com/in/josiechanxt" target="_blank">
           <img src="images/Work/Icon2_Linkedin.svg" alt="LinkedIn" />
         </a>
         <a href="https://instagram.com/jo.cgraphics" target="_blank">
@@ -1417,6 +2425,16 @@
   </footer>
 
   <script>
+    function toggleActivityDropdown(btn) {
+      btn.classList.toggle('active');
+      const content = btn.previousElementSibling;
+      if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
+    }
+
     document.addEventListener("DOMContentLoaded", function () {
       var fader = document.getElementById("fader");
 
@@ -1458,6 +2476,45 @@
             }
           });
         }
+      }
+
+      // Rolling Number Counter Animation Logic
+      const counters = document.querySelectorAll('.counter');
+      let animated = false;
+
+      function runCounters() {
+        counters.forEach(counter => {
+          const target = +counter.getAttribute('data-target');
+          const suffix = counter.getAttribute('data-suffix') || '';
+          let count = 0;
+          const speed = 70; // lower is faster
+          const increment = target / speed;
+
+          const updateCount = () => {
+            count += increment;
+            if (count < target) {
+              counter.innerText = Math.ceil(count) + suffix;
+              setTimeout(updateCount, 15);
+            } else {
+              counter.innerText = target + suffix;
+            }
+          };
+          updateCount();
+        });
+      }
+
+      const statsSection = document.getElementById('statsSection');
+      if (statsSection && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting && !animated) {
+              runCounters();
+              animated = true;
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.3 });
+        observer.observe(statsSection);
       }
     });
 
@@ -1547,9 +2604,9 @@
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    integrity="sha384-ApNbgh9B+Y1QXtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
     crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
 
@@ -1633,18 +2690,27 @@
       const heroWrapper = document.getElementById("heroImageWrapper");
       const heroImg = document.getElementById("heroHeaderImg");
 
-      window.addEventListener("scroll", function () {
-        if (window.innerWidth > 768) {
-          let scrollPos = window.scrollY;
-          let progress = Math.min(scrollPos / 150, 1);
-
-          let currentPadding = 40 * (1 - progress);
-          heroWrapper.style.padding = `${currentPadding}px ${currentPadding}px 0 ${currentPadding}px`;
-
-          let currentRadius = 20 * (1 - progress);
-          heroImg.style.borderRadius = `${currentRadius}px`;
+      const updateHeroOnScroll = () => {
+        if (window.innerWidth <= 768) {
+          heroWrapper.style.removeProperty("padding");
+          heroImg.style.removeProperty("border-radius");
+          heroImg.style.removeProperty("transform");
+          return;
         }
-      });
+
+        const progress = Math.max(0, Math.min(window.scrollY / 150, 1));
+        const currentSidePadding = 5 * (1 - progress);
+        const currentBottomPadding = 3 * (1 - progress);
+        const currentRadius = 20 * (1 - progress);
+
+        heroWrapper.style.padding = `${currentSidePadding}rem ${currentSidePadding}rem ${currentBottomPadding}rem ${currentSidePadding}rem`;
+        heroImg.style.setProperty("border-radius", progress >= 1 ? "0px" : `${currentRadius}px`, "important");
+        heroImg.style.transform = `scale(${1 + (0.025 * progress)})`;
+      };
+
+      window.addEventListener("scroll", updateHeroOnScroll);
+      window.addEventListener("resize", updateHeroOnScroll);
+      updateHeroOnScroll();
     });
   </script>
 </body>

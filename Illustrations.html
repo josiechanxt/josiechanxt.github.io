@@ -8,29 +8,37 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Carattere&family=IBM+Plex+Sans:ital,wdth,wght@0,75..100,100..700;1,75..100,100..700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;700&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Carattere&family=IBM+Plex+Sans:ital,wdth,wght@0,75..100,100..700;1,75..100,100..700&display=swap"
+    rel="stylesheet" />
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+  <link rel="icon" type="image/svg+xml" href="images/Logo1.svg" />
   <style>
     /* --- CUSTOM BLUE SCROLLBAR COHESION --- */
     /* For WebKit browsers (Chrome, Safari, Edge) */
     ::-webkit-scrollbar {
       width: 10px;
     }
-    
+
     ::-webkit-scrollbar-track {
-      background: #1a1a1a; /* Matches the dark background theme underneath */
+      background: #1a1a1a;
+      /* Matches the dark background theme underneath */
     }
-    
+
     ::-webkit-scrollbar-thumb {
-      background: #007bff; /* Signature Blue */
+      background: #007bff;
+      /* Signature Blue */
       border-radius: 5px;
     }
-    
+
     ::-webkit-scrollbar-thumb:hover {
-      background: #0056b3; /* Darker blue on hover */
+      background: #0056b3;
+      /* Darker blue on hover */
     }
 
     /* For Firefox */
@@ -130,7 +138,8 @@
       font-weight: 500;
       letter-spacing: -0.02em;
       margin-bottom: 1rem;
-      color: #303030
+      color: #303030;
+      font-family: "IBM Plex Sans", sans-serif;
     }
 
     .hero-subtitle {
@@ -138,7 +147,8 @@
       color: #555;
       font-weight: 400;
       line-height: 1.4;
-      letter-spacing: -0.025rem
+      letter-spacing: -0.025rem;
+      font-family: "IBM Plex Sans", sans-serif;
     }
 
     .main-content3 {
@@ -146,6 +156,9 @@
       font-weight: 500;
       margin-bottom: 0.5rem;
       letter-spacing: -0.04rem;
+      color: #303030 !important;
+      text-align: left !important;
+      font-family: "IBM Plex Sans", sans-serif;
     }
 
     .main-content4 {
@@ -153,7 +166,16 @@
       letter-spacing: 0.1em;
       font-size: 0.9rem;
       font-weight: 700;
-      color: #007bff;
+      color: #007bff !important;
+      margin-bottom: 2rem;
+      text-align: left !important;
+      font-family: "IBM Plex Sans", sans-serif;
+    }
+
+    /* Border bottom utility line matching motiongraphics.html */
+    .borderbottom {
+      border-bottom: 1px solid #e0e0e0;
+      margin-top: 1.5rem;
       margin-bottom: 3rem;
     }
 
@@ -161,19 +183,6 @@
     .images {
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-    }
-
-    /* Scroll Reveal Framework */
-    .reveal-row {
-      opacity: 0;
-      transform: translateY(45px);
-      transition: opacity 1.1s cubic-bezier(0.25, 1, 0.5, 1), transform 1.1s cubic-bezier(0.25, 1, 0.5, 1);
-      will-change: transform, opacity;
-    }
-
-    .reveal-row.revealed {
-      opacity: 1;
-      transform: translateY(0);
     }
 
     /* Page Transition Overlay */
@@ -197,19 +206,25 @@
       opacity: 1;
     }
 
-    /* Main Container over-scroll styling */
-    .main-scroll-container {
+    /* Main Container over-scroll styling matched to motiongraphics.html */
+    .container-fluid {
       flex: 1 0 auto;
       position: relative;
       z-index: 10;
       background-color: #ffffff;
-      /* background-image: url("images/Dots.svg"); */
       background-attachment: fixed;
       background-size: 70%;
       background-repeat: repeat;
+      min-height: 150vh;
       border-bottom-left-radius: 80px;
       border-bottom-right-radius: 80px;
       overflow: hidden;
+    }
+
+    .main-scroll-container {
+      flex: 1 0 auto;
+      display: flex;
+      flex-direction: column;
     }
 
     /* Footer Design Frame */
@@ -256,6 +271,7 @@
       color: #999;
       font-size: 0.85rem;
       opacity: 0.8;
+      font-family: "IBM Plex Sans", sans-serif;
     }
 
     .copyright-bar p {
@@ -292,9 +308,10 @@
   <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
       <a class="navbar-brand" href="index.html">
-        <img src="images/Logo2.svg" alt="Josie Logo" height="50" />
+        <img src="images/Logo2.svg" alt="Josie Logo" height="30" />
       </a>
-      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="toggler-icon"></span>
       </button>
 
@@ -304,7 +321,7 @@
             <a class="nav-link px-3" href="index.html">Work</a>
           </li>
           <li class="nav-item nav-button-active active">
-            <a class="nav-link px-3" href="Others.html">Others</a>
+            <a class="nav-link px-3" href="Playground.html">Playground</a>
           </li>
           <li class="nav-item">
             <a class="nav-link px-3" href="About.html">About</a>
@@ -315,183 +332,232 @@
   </nav>
 
   <div class="main-scroll-container">
-    <div class="container-fluid pt-4">
-      
-      <div class="row justify-content-center pt-md-5 pb-5">
-        <div class="col-md-10 col-11 text-center pt-3">
-          <h1 class="projecttitle pb-3">Illustrations</h1>
-          <p class="hero-subtitle mx-auto">
-            In my free time, I like to think up of random ideas and express them on paper 🎨 (and ipad).
-          </p>
-        </div>
-      </div>
+    <div class="container-fluid pb-5 px-0">
 
-      <div class="row justify-content-center pt-1 pb-5 reveal-row">
-        <div class="col-md-7 col-12">
-          <div class="row">
-            <div class="col-md-6 col-12 pb-3">
-              <img class="images w-100" src="images/Illustrations/Digital/Ah_Yi_Taiwan.jpg" alt="Ah Yi Taiwan" />
-            </div>
-            <div class="col-md-6 col-12 pb-3">
-              <img class="images w-100" src="images/Illustrations/Traditional/D_3.webp" alt="Traditional Scene" />
-            </div>
+      <!-- Header Section -->
+      <div class="container">
+        <div class="row justify-content-center pt-md-5 pb-5">
+          <div class="col-md-12 col-11 text-center pt-3">
+            <h1 class="projecttitle pb-3">Illustrations</h1>
+            <p class="hero-subtitle mx-auto">
+              In my free time, I like to think up of random ideas and express them on paper 🎨 (and ipad).
+            </p>
           </div>
         </div>
       </div>
 
-      <div class="row justify-content-center pt-3 reveal-row">
-        <div class="col-md-7 col-12">
-          <h3 class="main-content3">Singaporean Local Delights</h3>
-          <h4 class="main-content4">Drawn on Procreate</h4>
-        </div>
-      </div>
-
-      <div class="row justify-content-center mb-5 reveal-row">
-        <div class="col-md-7 col-12">
-          <div class="row">
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Digital/Morning_Breakfast.jpg" alt="Breakfast" />
-            </div>
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Digital/Retro_Snacks.jpg" alt="Snacks" />
-            </div>
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Digital/SG_Local_Food.jpg" alt="Local Food" />
+      <!-- Illustrations Group 1 -->
+      <div class="container">
+        <div class="row justify-content-center pt-1 pb-3">
+          <div class="col-md-12 col-12">
+            <div class="row">
+              <div class="col-md-6 col-12 pb-3">
+                <img class="images w-100" src="images/Illustrations/Digital/Ah_Yi_Taiwan.jpg" alt="Ah Yi Taiwan" />
+              </div>
+              <div class="col-md-6 col-12 pb-3">
+                <img class="images w-100" src="images/Illustrations/Traditional/D_3.webp" alt="Traditional Scene" />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="row justify-content-center pt-3 reveal-row">
-        <div class="col-md-7 col-12">
-          <h3 class="main-content3">Froot (Original Character)</h3>
-          <h4 class="main-content4">I like pineapples</h4>
+        <!-- Divider Line -->
+        <div class="row justify-content-center">
+          <div class="col-md-12 col-12 p-1 borderbottom"></div>
         </div>
       </div>
 
-      <div class="row justify-content-center mb-1 reveal-row">
-        <div class="col-md-7 col-12">
-          <div class="row">
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Digital/Pinelope_Drumming.jpg" alt="Drumming" />
-            </div>
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Digital/Pinelope_Sticker.jpg" alt="Sticker" />
-            </div>
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Digital/Phantom_Of_The_Opera.jpg" alt="Phantom" />
+      <!-- Singaporean Local Delights -->
+      <div class="container">
+        <div class="row justify-content-center pt-1">
+          <div class="col-md-12 col-12">
+            <h3 class="main-content3">Singaporean Local Delights</h3>
+            <h4 class="main-content4">Drawn on Procreate</h4>
+          </div>
+        </div>
+
+        <div class="row justify-content-center pb-3">
+          <div class="col-md-12 col-12">
+            <div class="row">
+              <div class="col-md-4 col-6 pb-3">
+                <img class="images w-100" src="images/Illustrations/Digital/Morning_Breakfast.jpg" alt="Breakfast" />
+              </div>
+              <div class="col-md-4 col-6 pb-3">
+                <img class="images w-100" src="images/Illustrations/Digital/Retro_Snacks.jpg" alt="Snacks" />
+              </div>
+              <div class="col-md-4 col-6 pb-3">
+                <img class="images w-100" src="images/Illustrations/Digital/SG_Local_Food.jpg" alt="Local Food" />
+              </div>
             </div>
           </div>
         </div>
+        <!-- Divider Line -->
+        <div class="row justify-content-center">
+          <div class="col-md-12 col-12 p-1 borderbottom"></div>
+        </div>
       </div>
 
-      <div class="row justify-content-center mb-5 reveal-row">
-        <div class="col-md-7 col-12">
-          <div class="row">
-            <div class="col-md-7 col-12 pb-3">
-              <img class="images w-100 h-120" style="object-fit: cover" src="images/Illustrations/Digital/Froots_Horoscope.jpg" alt="Froots Horoscope" />
+      <!-- Froot (Original Character) -->
+      <div class="container">
+        <div class="row justify-content-center pt-1">
+          <div class="col-md-12 col-12">
+            <h3 class="main-content3">Froot (Original Character)</h3>
+            <h4 class="main-content4">I like pineapples</h4>
+          </div>
+        </div>
+
+        <div class="row justify-content-center mb-1">
+          <div class="col-md-12 col-12">
+            <div class="row">
+              <div class="col-md-4 col-6 pb-3">
+                <img class="images w-100" src="images/Illustrations/Digital/Pinelope_Drumming.jpg" alt="Drumming" />
+              </div>
+              <div class="col-md-4 col-6 pb-3">
+                <img class="images w-100" src="images/Illustrations/Digital/Pinelope_Sticker.jpg" alt="Sticker" />
+              </div>
+              <div class="col-md-4 col-6 pb-3">
+                <img class="images w-100" src="images/Illustrations/Digital/Phantom_Of_The_Opera.jpg" alt="Phantom" />
+              </div>
             </div>
-            <div class="col-md-5 col-12">
-              <div class="row">
-                <div class="col-6 col-md-12 pb-3">
-                  <img class="images w-100" src="images/Illustrations/Digital/Persi.jpg" alt="Persi" />
-                </div>
-                <div class="col-6 col-md-12 pb-3">
-                  <img class="images w-100" src="images/Illustrations/Digital/Pom_Pom.jpg" alt="Pom_Pom" />
+          </div>
+        </div>
+
+        <div class="row justify-content-center pb-3">
+          <div class="col-md-12 col-12">
+            <div class="row">
+              <div class="col-md-7 col-12 pb-3">
+                <img class="images w-100 h-120" style="object-fit: cover"
+                  src="images/Illustrations/Digital/Froots_Horoscope.jpg" alt="Froots Horoscope" />
+              </div>
+              <div class="col-md-5 col-12">
+                <div class="row">
+                  <div class="col-6 col-md-12 pb-3">
+                    <img class="images w-100" src="images/Illustrations/Digital/Persi.jpg" alt="Persi" />
+                  </div>
+                  <div class="col-6 col-md-12 pb-3">
+                    <img class="images w-100" src="images/Illustrations/Digital/Pom_Pom.jpg" alt="Pom_Pom" />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="row justify-content-center pt-3 reveal-row">
-        <div class="col-md-7 col-12">
-          <h3 class="main-content3">Kitchen Robots</h3>
-          <h4 class="main-content4">Pen, Watercolour on paper</h4>
+        <!-- Divider Line -->
+        <div class="row justify-content-center">
+          <div class="col-md-12 col-12 p-1 borderbottom"></div>
         </div>
       </div>
 
-      <div class="row justify-content-center mb-5 reveal-row">
-        <div class="col-md-7 col-12">
-          <div class="row">
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Traditional/KR_1.webp" alt="KR 1" />
-            </div>
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Traditional/KR_2.webp" alt="KR 2" />
-            </div>
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Traditional/KR_3.webp" alt="KR 3" />
+      <!-- Kitchen Robots -->
+      <div class="container">
+        <div class="row justify-content-center pt-1">
+          <div class="col-md-12 col-12">
+            <h3 class="main-content3">Kitchen Robots</h3>
+            <h4 class="main-content4">Pen, Watercolour on paper</h4>
+          </div>
+        </div>
+
+        <div class="row justify-content-center pb-3">
+          <div class="col-md-12 col-12">
+            <div class="row">
+              <div class="col-md-4 col-6 pb-3">
+                <img class="images w-100" src="images/Illustrations/Traditional/KR_1.webp" alt="KR 1" />
+              </div>
+              <div class="col-md-4 col-6 pb-3">
+                <img class="images w-100" src="images/Illustrations/Traditional/KR_2.webp" alt="KR 2" />
+              </div>
+              <div class="col-md-4 col-6 pb-3">
+                <img class="images w-100" src="images/Illustrations/Traditional/KR_3.webp" alt="KR 3" />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="row justify-content-center pt-3 reveal-row">
-        <div class="col-md-7 col-12">
-          <h3 class="main-content3">Mind dump</h3>
-          <h4 class="main-content4">Pen, Watercolour on paper</h4>
+        <!-- Divider Line -->
+        <div class="row justify-content-center">
+          <div class="col-md-12 col-12 p-1 borderbottom"></div>
         </div>
       </div>
 
-      <div class="row justify-content-center mb-5 reveal-row">
-        <div class="col-md-7 col-12">
-          <div class="row">
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Traditional/D_6.webp" alt="D 6" />
-            </div>
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Traditional/D_4.webp" alt="D 4" />
-            </div>
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Traditional/D_5.webp" alt="D 5" />
+      <!-- Mind dump -->
+      <div class="container">
+        <div class="row justify-content-center pt-1">
+          <div class="col-md-12 col-12">
+            <h3 class="main-content3">Mind dump</h3>
+            <h4 class="main-content4">Pen, Watercolour on paper</h4>
+          </div>
+        </div>
+
+        <div class="row justify-content-center pb-3">
+          <div class="col-md-12 col-12">
+            <div class="row">
+              <div class="col-md-4 col-6 pb-3">
+                <img class="images w-100" src="images/Illustrations/Traditional/D_6.webp" alt="D 6" />
+              </div>
+              <div class="col-md-4 col-6 pb-3">
+                <img class="images w-100" src="images/Illustrations/Traditional/D_4.webp" alt="D 4" />
+              </div>
+              <div class="col-md-4 col-6 pb-3">
+                <img class="images w-100" src="images/Illustrations/Traditional/D_5.webp" alt="D 5" />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="row justify-content-center pt-3 reveal-row">
-        <div class="col-md-7 col-12">
-          <h3 class="main-content3">Black & White</h3>
-          <h4 class="main-content4">Black Calligraphy Pen on paper</h4>
+        <!-- Divider Line -->
+        <div class="row justify-content-center">
+          <div class="col-md-12 col-12 p-1 borderbottom"></div>
         </div>
       </div>
 
-      <div class="row justify-content-center mb-5 reveal-row">
-        <div class="col-md-7 col-12">
-          <div class="row">
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Traditional/BW_1.webp" alt="B&W 1" />
-            </div>
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Traditional/BW_2.webp" alt="B&W 2" />
-            </div>
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Traditional/BW_3.webp" alt="B&W 3" />
+      <!-- Black & White -->
+      <div class="container">
+        <div class="row justify-content-center pt-1">
+          <div class="col-md-12 col-12">
+            <h3 class="main-content3">Black & White</h3>
+            <h4 class="main-content4">Black Calligraphy Pen on paper</h4>
+          </div>
+        </div>
+
+        <div class="row justify-content-center pb-3">
+          <div class="col-md-12 col-12">
+            <div class="row">
+              <div class="col-md-4 col-6 pb-3">
+                <img class="images w-100" src="images/Illustrations/Traditional/BW_1.webp" alt="B&W 1" />
+              </div>
+              <div class="col-md-4 col-6 pb-3">
+                <img class="images w-100" src="images/Illustrations/Traditional/BW_2.webp" alt="B&W 2" />
+              </div>
+              <div class="col-md-4 col-6 pb-3">
+                <img class="images w-100" src="images/Illustrations/Traditional/BW_3.webp" alt="B&W 3" />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="row justify-content-center pt-3 reveal-row">
-        <div class="col-md-7 col-12">
-          <h3 class="main-content3">Pencil</h3>
-          <h4 class="main-content4">Graphite Pencil on paper</h4>
+        <!-- Divider Line -->
+        <div class="row justify-content-center">
+          <div class="col-md-12 col-12 p-1 borderbottom"></div>
         </div>
       </div>
 
-      <div class="row justify-content-center mb-5 pb-5 reveal-row">
-        <div class="col-md-7 col-12">
-          <div class="row">
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Traditional/G_1.jpg" alt="G 1" />
-            </div>
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Traditional/G_2.jpg" alt="G 2" />
-            </div>
-            <div class="col-md-4 col-6 pb-3">
-              <img class="images w-100" src="images/Illustrations/Traditional/G_3.jpg" alt="G 3" />
+      <!-- Pencil -->
+      <div class="container">
+        <div class="row justify-content-center pt-1">
+          <div class="col-md-12 col-12">
+            <h3 class="main-content3">Pencil</h3>
+            <h4 class="main-content4">Graphite Pencil on paper</h4>
+          </div>
+        </div>
+
+        <div class="row justify-content-center pb-5">
+          <div class="col-md-12 col-12">
+            <div class="row">
+              <div class="col-md-4 col-6 pb-3">
+                <img class="images w-100" src="images/Illustrations/Traditional/G_1.jpg" alt="G 1" />
+              </div>
+              <div class="col-md-4 col-6 pb-3">
+                <img class="images w-100" src="images/Illustrations/Traditional/G_2.jpg" alt="G 2" />
+              </div>
+              <div class="col-md-4 col-6 pb-3">
+                <img class="images w-100" src="images/Illustrations/Traditional/G_3.jpg" alt="G 3" />
+              </div>
             </div>
           </div>
         </div>
@@ -502,13 +568,13 @@
 
   <footer class="footer-dark">
     <div class="container">
-      <div class="footer-text">⤷ Let's work together ⋆.˚</div>
+      <div class="footer-text">⤷ Let's create together ⋆.˚</div>
 
       <div class="social-icons">
         <a href="mailto:jochanxt@gmail.com" target="_blank">
           <img src="images/Work/Icon1_Email.svg" alt="Email" />
         </a>
-        <a href="https://linkedin.com/in/josiechan" target="_blank">
+        <a href="https://linkedin.com/in/josiechanxt" target="_blank">
           <img src="images/Work/Icon2_Linkedin.svg" alt="LinkedIn" />
         </a>
         <a href="https://instagram.com/jo.cgraphics" target="_blank">
@@ -569,26 +635,6 @@
           });
         }
       }
-
-      var observerOptions = {
-        root: null,
-        rootMargin: "0px 0px -80px 0px",
-        threshold: 0.10
-      };
-
-      var rowObserver = new IntersectionObserver(function (entries, observer) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("revealed");
-            observer.unobserve(entry.target);
-          }
-        });
-      }, observerOptions);
-
-      var revealRows = document.querySelectorAll(".reveal-row");
-      revealRows.forEach(function (row) {
-        rowObserver.observe(row);
-      });
     });
   </script>
 </body>

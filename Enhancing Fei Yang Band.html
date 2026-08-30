@@ -1,1349 +1,1241 @@
 <!doctype html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Carattere&family=IBM+Plex+Sans:ital,wdth,wght@0,75..100,100..700;1,75..100,100..700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="stylesheet" href="styles.css" />
-    <style>
-      .wf-loading * {
-        opacity: 0;
-      }
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;700&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Carattere&family=IBM+Plex+Sans:ital,wdth,wght@0,75..100,100..700;1,75..100,100..700&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
 
-      /* Navigation */
-      .navbar {
-        padding: 0.8rem 0.8rem;
-        background: #ffffff;
-        border-bottom: 1px solid #eaeaea;
-        z-index: 1030;
-      }
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/svg+xml" href="images/Logo1.svg" />
+  <style>
+    .wf-loading * {
+      opacity: 0;
+    }
 
-      .nav-link {
-        color: #c3c3c3 !important;
-        font-family: "caveat", cursive;
-        font-weight: 550;
-        font-size: 1.5rem;
-        transition: color 0.2s ease;
-      }
+    /* Page Fade Transition Overlay */
+    #fader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #ffffff;
+      z-index: 999999;
+      pointer-events: none;
+      opacity: 1;
+      transition: opacity 0.4s ease-in-out;
+    }
 
-      .nav-link:hover,
-      .nav-button-active .nav-link {
-        color: #007bff !important;
-      }
+    #fader.fade-out {
+      opacity: 0;
+    }
 
-      /* Hamburger to X Animation */
-      .navbar-toggler {
-        border: none;
-        padding: 10px 10px;
-        outline: none !important;
-      }
+    /* Navigation */
+    .navbar {
+      padding: 0.8rem 0.8rem;
+      background: #ffffff;
+      border-bottom: 1px solid #eaeaea;
+      z-index: 1030;
+    }
 
-      .toggler-icon {
-        width: 24px;
-        height: 2px;
-        background-color: #007bff;
-        display: block;
-        transition: all 0.3s ease-in-out;
-        position: relative;
-      }
+    .nav-link {
+      color: #c3c3c3 !important;
+      font-family: "caveat", cursive;
+      font-weight: 550;
+      font-size: 1.5rem;
+      transition: color 0.2s ease;
+    }
 
-      .toggler-icon::before,
-      .toggler-icon::after {
-        content: "";
-        width: 24px;
-        height: 2px;
-        background-color: #007bff;
-        display: block;
-        transition: all 0.3s ease-in-out;
-        position: absolute;
-      }
+    .nav-link:hover,
+    .nav-button-active .nav-link {
+      color: #007bff !important;
+    }
 
-      .toggler-icon::before {
-        top: -8px;
-      }
+    /* Hamburger to X Animation */
+    .navbar-toggler {
+      border: none;
+      padding: 10px 10px;
+      outline: none !important;
+    }
 
-      .toggler-icon::after {
-        bottom: -8px;
-      }
+    .toggler-icon {
+      width: 24px;
+      height: 2px;
+      background-color: #007bff;
+      display: block;
+      transition: all 0.3s ease-in-out;
+      position: relative;
+    }
 
-      .navbar-toggler:not(.collapsed) .toggler-icon {
-        background-color: transparent;
-      }
+    .toggler-icon::before,
+    .toggler-icon::after {
+      content: "";
+      width: 24px;
+      height: 2px;
+      background-color: #007bff;
+      display: block;
+      transition: all 0.3s ease-in-out;
+      position: absolute;
+    }
 
-      .navbar-toggler:not(.collapsed) .toggler-icon::before {
-        transform: rotate(45deg);
-        top: 0;
-      }
+    .toggler-icon::before {
+      top: -8px;
+    }
 
-      .navbar-toggler:not(.collapsed) .toggler-icon::after {
-        transform: rotate(-45deg);
-        bottom: 0;
-      }
+    .toggler-icon::after {
+      bottom: -8px;
+    }
 
-      body {
-        height: 100%;
-        margin: 0;
-        cursor: url("images/Pencil.png"), auto;
-        font-family: "IBM Plex Sans", sans-serif;
-        color: #303030;
-        background-color: #1a1a1a;
-        display: flex;
-        flex-direction: column;
-        letter-spacing: -0.02rem;
-        padding: 0;
-      }
+    .navbar-toggler:not(.collapsed) .toggler-icon {
+      background-color: transparent;
+    }
 
-      /* Footer Styles */
-      .footer-dark {
-        font-family: "IBM Plex Sans", sans-serif;
-        flex-shrink: 0;
-        background-color: #1a1a1a;
-        padding: 6.5rem 0 6.5rem;
-        text-align: center;
-        color: #007bff;
-        position: sticky;
-        bottom: 0;
-        z-index: 1;
-      }
+    .navbar-toggler:not(.collapsed) .toggler-icon::before {
+      transform: rotate(45deg);
+      top: 0;
+    }
 
-      .footer-text {
-        font-size: 3.8rem;
-        font-weight: 500;
-        margin-bottom: 1.5rem;
-        font-family: "caveat", cursive;
-        color: #f0f0f0;
-      }
+    .navbar-toggler:not(.collapsed) .toggler-icon::after {
+      transform: rotate(-45deg);
+      bottom: 0;
+    }
 
-      .social-icons a {
-        margin: 0 12px;
-        text-decoration: none;
-        display: inline-block;
-        transition: opacity 0.2s ease;
-      }
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      cursor: url("images/Pencil.png"), auto;
+      font-family: "IBM Plex Sans", sans-serif;
+      color: #303030;
+      background-color: #1a1a1a;
+      letter-spacing: -0.02rem;
+      padding: 0;
+    }
 
-      .social-icons a:hover {
-        opacity: 0.6;
-        transform: translateY(-5px);
-      }
+    /* Footer Styles */
+    .footer-dark {
+      font-family: "IBM Plex Sans", sans-serif;
+      flex-shrink: 0;
+      background-color: #1a1a1a;
+      padding: 6.5rem 0 6.5rem;
+      text-align: center;
+      color: #007bff;
+      position: sticky;
+      bottom: 0;
+      z-index: 1;
+    }
 
-      .social-icons img {
-        width: 45px;
-        height: 45px;
-      }
+    .footer-text {
+      font-size: 3.8rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      font-family: "caveat", cursive;
+      color: #f0f0f0;
+    }
 
-      .copyright-bar {
-        margin-top: 2rem;
-        padding-top: 1.5rem;
-        color: #999;
-        font-size: 0.85rem;
-        opacity: 0.8;
-      }
+    .social-icons a {
+      margin: 0 12px;
+      text-decoration: none;
+      display: inline-block;
+      transition: opacity 0.2s ease;
+    }
 
-      .copyright-bar p {
-        margin-bottom: 0;
-      }
+    .social-icons a:hover {
+      opacity: 0.6;
+      transform: translateY(-5px);
+    }
 
-      /* Pill Buttons */
-      .btn-outline-work {
-        padding: 8px 16px;
-        margin: 8px;
-        border-radius: 50px !important;
-        font-size: 0.9rem;
-        font-weight: 500;
-        color: #ffffff !important;
-        text-decoration: none !important;
-        display: inline-block;
-        border: none;
-      }
+    .social-icons img {
+      width: 45px;
+      height: 45px;
+    }
 
-      .btn-outline-work:nth-child(1) {
-        background-color: #07846b;
-      }
-      .btn-outline-work:nth-child(2) {
-        background-color: #785ef0;
-      }
-      .btn-outline-work:nth-child(3) {
-        background-color: #9d7e51;
-      }
-      .btn-outline-work:nth-child(4) {
-        background-color: #e68700;
-      }
-      .btn-outline-work:nth-child(5) {
-        background-color: #ea474a;
-      }
-      .btn-outline-work:nth-child(6) {
-        background-color: #2B6B90;
-      }
-      .btn-outline-work:nth-child(7) {
-        background-color: #a04d31;
-      }
+    .copyright-bar {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      color: #999;
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
 
-      .btn-outline-work:hover {
-        transform: translateY(-2px);
-        filter: brightness(80%);
-        color: #ffffff !important;
-      }
+    .copyright-bar p {
+      margin-bottom: 0;
+    }
 
-      .gap-3 {
-        gap: 1rem;
-      }
+    /* Pill Buttons */
+    .btn-outline-work {
+      padding: 8px 16px;
+      margin: 8px;
+      border-radius: 50px !important;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #ffffff !important;
+      text-decoration: none !important;
+      display: inline-block;
+      border: none;
+    }
 
-      .accordion-body {
-        padding: 0;
-        font-size: 14px;
-        font-weight: 350;
-        line-height: 1.3;
-        color: #666;
-        font-family: "IBM Plex Sans", sans-serif;
-        font-style: italic;
-      }
+    .btn-outline-work:focus:not(:focus-visible) {
+      outline: none;
+      box-shadow: none !important;
+    }
 
-      /* Custom Color Section Styling tailored for Enhancing Feel Young */
-      .hero-purple-section {
-        background-color: #d63d3f;
-        color: #ffffff;
-        font-family: "IBM Plex Sans", sans-serif;
-        text-align: center;
-        padding: 1.5rem 2rem 3rem 2rem;
-      }
+    .btn-outline-work:nth-child(1) {
+      background-color: #07846b;
+    }
 
-      .hero-purple-title {
-        font-size: 3rem;
-        font-weight: 600;
-        margin-bottom: 1.5rem;
-        letter-spacing: -0.03rem;
-      }
+    .btn-outline-work:nth-child(2) {
+      background-color: #715ad8;
+    }
 
-      .tag-container {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 0.75rem;
-        margin-bottom: 2.5rem;
-      }
+    .btn-outline-work:nth-child(3) {
+      background-color: #d63d3f;
+    }
 
-      .tag {
-        background-color: #ffffff;
-        color: #d63d3f;
-        padding: 0.4rem 1.2rem;
-        border-radius: 50px;
-        font-size: 0.9rem;
-        font-weight: 600;
-      }
+    .btn-outline-work:nth-child(4) {
+      background-color: #dd8203;
+    }
 
-      .hero-purple-quote {
-        font-size: 1.6rem;
-        font-weight: 400;
-        font-style: italic;
-        max-width: 850px;
-        margin: 0 auto;
-        line-height: 1.4;
+    .btn-outline-work:nth-child(5) {
+      background-color: #ea474a;
+    }
+
+    .btn-outline-work:nth-child(6) {
+      background-color: #2B6B90;
+    }
+
+    .btn-outline-work:nth-child(7) {
+      background-color: #a04d31;
+    }
+
+    .btn-outline-work:hover {
+      transform: translateY(-2px);
+      filter: brightness(80%);
+      color: #ffffff !important;
+    }
+
+    .gap-3 {
+      gap: 1rem;
+    }
+
+    .accordion-body {
+      padding: 0;
+      font-size: 14px;
+      font-weight: 350;
+      line-height: 1.3;
+      color: #666;
+      font-family: "IBM Plex Sans", sans-serif;
+      font-style: italic;
+    }
+
+    .images-light {
+      border: 1px solid #eaeaea;
+      border-radius: 12px;
+    }
+
+    /* Hero & Structure Layout Rules EXACTLY Matching GovTech */
+    .hero-purple-section {
+      background-color: #d63d3f;
+      color: #ffffff;
+      font-family: "IBM Plex Sans", sans-serif;
+      text-align: center;
+      padding: 1.5rem 2rem 3rem 2rem;
+    }
+
+    .hero-purple-title {
+      font-size: 3rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.03rem;
+    }
+
+    .tag-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 0rem;
+    }
+
+    .tag {
+      background-color: #ffffff;
+      color: #d63d3f;
+      padding: 0.4rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .hero-purple-quote {
+      font-size: 1.8rem;
+      font-weight: 450;
+      font-family: "IBM Plex Sans", sans-serif;
+      color: #d63d3f;
+      max-width: 900px;
+      margin: 0 auto;
+      line-height: 1.1;
+    }
+
+    .hero-image-wrapper {
+      width: 100%;
+      overflow: hidden;
+      background-color: #d63d3f;
+      padding: 5rem 5rem 3rem 5rem;
+      transition: padding 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .hero-image-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 20px;
+      transform-origin: center;
+      transition: border-radius 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .main-scroll-container {
+      flex: 1 0 auto;
+      position: relative;
+      z-index: 10;
+      margin-top: 0;
+      background-color: #ffffff;
+      display: block;
+      border-bottom-left-radius: 80px;
+      border-bottom-right-radius: 80px;
+      overflow: hidden;
+    }
+
+    /* Enforced Global Mobile Settings */
+    @media (max-width: 768px) {
+      .main-scroll-container {
+        border-bottom-left-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
       }
 
       .hero-image-wrapper {
-        width: 100%;
-        overflow: hidden;
-        background-color: #d63d3f;
-        padding: 5rem 5rem 3rem 5rem;
-        transition: padding 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        padding: 0 !important;
       }
 
       .hero-image-wrapper img {
-        width: 100%;
-        height: auto;
-        display: block;
-        border-radius: 20px;
-        transition: border-radius 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        border-radius: 0 !important;
       }
 
-      .main-scroll-container {
-        flex: 1 0 auto;
-        position: relative;
-        z-index: 10;
-        margin-top: 0;
-        background-color: #ffffff;
-        display: block;
-        border-bottom-left-radius: 80px;
-        border-bottom-right-radius: 80px;
-        overflow: hidden;
+      .hero-purple-section {
+        padding: 2rem 1.25rem 2.5rem 1.25rem !important;
       }
 
-      @media (max-width: 768px) {
-        .hero-image-wrapper {
-          padding: 1.5rem 15px 0 15px !important;
-        }
-        .hero-image-wrapper img {
-          border-radius: 12px !important;
-          transform: scale(1.05);
-          transform-origin: center top;
-        }
-        .hero-purple-section {
-          padding: 1.5rem 15px 3rem 15px !important;
-        }
-        .hero-purple-title {
-          font-size: 2.2rem;
-        }
-        .hero-purple-quote {
-          font-size: 1.25rem;
-        }
-        .container {
-          padding-left: 15px !important;
-          padding-right: 15px !important;
-        }
+      .hero-purple-title {
+        font-size: 2.2rem;
       }
 
-      #faderhome {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: white;
-        z-index: 9999;
-        pointer-events: none;
-        transition: opacity 0.5s ease-in-out;
+      .hero-purple-quote {
+        font-size: 1.25rem;
       }
 
-      .fade-out {
-        opacity: 0;
-      }
-      .fade-in {
-        opacity: 1;
+      .container {
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
       }
 
-      .reveal,
-      .port-card {
-        opacity: 0;
-        transform: translateY(40px);
-        transition:
-          opacity 1.1s cubic-bezier(0.25, 1, 0.5, 1),
-          transform 1.1s cubic-bezier(0.25, 1, 0.5, 1);
-        will-change: transform, opacity;
+      .container-fluid {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
       }
 
-      .reveal.active,
-      .port-card.revealed {
-        opacity: 1;
-        transform: translateY(0);
+      .row {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
       }
-    </style>
-    <title>Enhancing Feel Young (飞扬) Band</title>
-    <style>
-      :root {
-        --scrollbar-color: #ea474a;
-        --scrollbar-hover: #bb383b;
+
+      .col-12,
+      .col-md-10,
+      .col-md-12 {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
       }
-    </style>
-  </head>
 
-  <body>
-    <div id="faderhome"></div>
-    <svg id="fader"></svg>
+      .case-study-title {
+        font-size: 1.75rem;
+      }
+    }
 
-    <!-- Nav bar -->
-    <nav class="navbar navbar-expand-lg sticky-top">
-      <div class="container">
-        <a class="navbar-brand" href="index.html">
-          <img src="images/Logo2.svg" alt="Josie Logo" height="50" />
-        </a>
-        <button
-          class="navbar-toggler collapsed"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="toggler-icon"></span>
-        </button>
+    /* Case Study Labels & Cards */
+    .case-study-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #d63d3f;
+      letter-spacing: 0.05rem;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+      font-family: "IBM Plex Sans", sans-serif;
+    }
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item nav-button-active active">
-              <a class="nav-link px-3" href="index.html">Work</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link px-3" href="Others.html">Others</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link px-3" href="About.html">About</a>
-            </li>
-          </ul>
+    .case-study-title {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      letter-spacing: -0.04rem;
+      margin-bottom: 1.5rem;
+      font-family: 'IBM Plex Sans', sans-serif;
+    }
+
+    .challenge-box-dark {
+      border: 1px solid #eaeaea;
+      border-left: 5px solid #d63d3f;
+      border-radius: 8px;
+      padding: 1.5rem 2rem;
+      background-color: #fff3f3;
+      margin-bottom: 2rem;
+    }
+
+    .challenge-box-light {
+      border: 1px solid #eaeaea;
+      border-left: 5px solid #d63d3f;
+      border-radius: 8px;
+      padding: 1.5rem 2rem;
+      background-color: #ffffff;
+      margin-bottom: 2rem;
+    }
+
+
+    .challenge-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #d63d3f;
+      letter-spacing: 0.05rem;
+      margin-bottom: 0.5rem;
+      font-family: "IBM Plex Sans", sans-serif;
+      text-transform: uppercase;
+    }
+
+    .challenge-text {
+      font-size: 1.1rem;
+      font-weight: 550;
+      line-height: 1.45;
+      color: #2b2b2b;
+      font-family: "IBM Plex Sans", sans-serif;
+    }
+
+    .cs-card {
+      border-radius: 12px;
+      padding: 2rem;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .cs-card-light {
+      border: 1px solid #eaeaea;
+      background-color: #fff3f3;
+      color: #d63d3f;
+    }
+
+    .cs-card-number {
+      font-family: "caveat", cursive;
+      font-size: 2.0rem;
+      font-weight: 550;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .cs-card-light .cs-card-number {
+      color: #d63d3f;
+    }
+
+    .cs-card-title {
+      font-size: 1.25rem;
+      font-weight: 550;
+      margin-bottom: 0.5rem;
+      font-family: "IBM Plex Sans", sans-serif;
+      color: #1a1a1a;
+    }
+
+    .cs-card-text {
+      font-size: 0.95rem;
+      line-height: 1.3;
+      margin-bottom: 0;
+      color: #4a4a4a;
+    }
+
+    .card {
+      border: 1px solid #eaeaea !important;
+    }
+
+    .reveal,
+    .port-card {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1.1s cubic-bezier(0.25, 1, 0.5, 1), transform 1.1s cubic-bezier(0.25, 1, 0.5, 1);
+      will-change: transform, opacity;
+    }
+
+    .reveal.active,
+    .port-card.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+  <title>Enhancing Feel Young (飞扬) Band</title>
+  <style>
+    :root {
+      --scrollbar-color: #ea474a;
+      --scrollbar-hover: #bb383b;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Page Fade Transition Overlay -->
+  <div id="fader"></div>
+
+  <!-- Nav bar -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="images/Logo2.svg" alt="Josie Logo" height="30" />
+      </a>
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item nav-button-active active">
+            <a class="nav-link px-3" href="index.html">Work</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-3" href="Playground.html">Playground</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-3" href="About.html">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Scroll Container Structure -->
+  <div class="main-scroll-container">
+
+    <!-- Hero Section Layout matching govtech.html padding exactly -->
+    <div class="hero-image-wrapper" id="heroImageWrapper">
+      <img src="images/Enhancing Feel Young/Enhancing Feel Young_Thumbnail.png" id="heroHeaderImg"
+        alt="Enhancing Feel Young Thumbnail" />
+    </div>
+
+    <!-- Hero Text Branding Area matching govtech.html padding exactly -->
+    <div class="hero-purple-section">
+      <h1 class="hero-purple-title">Enhancing Feel Young (飞扬) Band</h1>
+      <div class="row justify-content-center pb-2 pt-2 mx-0">
+        <div class="tag-container">
+          <span class="tag">Design for Community</span>
+          <span class="tag">Service Design</span>
+          <span class="tag">Branding</span>
+          <span class="tag">2025</span>
         </div>
       </div>
-    </nav>
+    </div>
 
-    <!-- Main Scroll Container Structure -->
-    <div class="main-scroll-container">
-      <!-- Top Animated Hero Image Wrapper Layout -->
-      <div class="hero-image-wrapper" id="heroImageWrapper">
-        <img
-          src="images/Enhancing Feel Young/Enhancing Feel Young_Thumbnail.png"
-          id="heroHeaderImg"
-          alt="Enhancing Feel Young Thumbnail"
-        />
-      </div>
+    <section class="container-fluid py-5" style="background-color: #ffffff;">
+      <div class="container pt-4 pb-4">
+        <div class="row">
+          <div class="col-12 text-left">
 
-      <!-- Hero Text Branding Area -->
-      <div class="hero-purple-section">
-        <h1 class="hero-purple-title">Enhancing Feel Young (飞扬) Band</h1>
-        <div class="row justify-content-center pb-2 pt-2 mx-0">
-          <div class="tag-container">
-            <span class="tag">Service Design</span>
-            <span class="tag">Branding</span>
-            <span class="tag">Community</span>
-            <span class="tag">2025</span>
+            <!-- Row 1: PROJECT OVERVIEW Label Only -->
+            <div class="row">
+              <div class="col-12 text-left mb-3">
+                <div class="case-study-label"
+                  style="font-size: 0.85rem; font-weight: 700; color: #d63d3f; letter-spacing: 0.05rem;">
+                  PROJECT OVERVIEW
+                </div>
+              </div>
+            </div>
+
+            <!-- Top Overview & Card Row -->
+            <div class="row align-items-stretch">
+
+              <!-- Left Column: Overview Quote & Description -->
+              <div class="col-md-6 col-12 pr-md-5 text-left d-flex flex-column justify-content-center">
+                <h3 class="hero-purple-quote"
+                  style="line-height: 1.1; margin: 0 auto; max-width: 900px; font-size: 1.8rem; color: #d63d3f;">
+                  "Co-designing with seniors in the community to turn daily friction into shared street culture."
+                </h3>
+
+                <h3 class="main-content4">
+                  We observed daily routines in Chinatown to spot community friction points. By directly involving local
+                  elders in co-design sessions, we crafted solutions that solve their challenges while fitting
+                  seamlessly into their environment.
+                </h3>
+              </div>
+
+              <!-- Right Column: My Contributions Box -->
+              <div class="col-md-6 col-12 mt-4 mt-md-0 text-left">
+                <div
+                  style="border: 2px solid #d63d3f; background-color: #fff3f3; padding: 28px; border-radius: 12px; height: fit-content;">
+                  <h3 class="case-study-label text-left pt-0 pb-3"
+                    style="color: #d63d3f; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05rem;">
+                    My contributions
+                  </h3>
+                  <ul
+                    style="list-style: none; padding-left: 0; margin-bottom: 0; color: #4a4a4a; font-size: 0.95rem; font-weight: 350;">
+                    <i>
+                      <li class="mb-2">• Acted as main art director establishing branding assets & visual direction.
+                      </li>
+                      <li class="mb-2">• Conducted weekly engagement & co-creation workshops with Feel Young Band.</li>
+                      <li class="mb-2">• Handcrafted physical deliverables and captured photography and videography.
+                      </li>
+                      <li>• Edited and produced the final project story video using Premiere Pro.</li>
+                    </i>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Divider Line -->
+            <hr style="border-top: 1px solid #e0e0e0; margin-top: 3rem; margin-bottom: 3rem;" />
+
+            <!-- Bottom Metadata Row: Timeline & Team -->
+            <div class="row">
+              <div class="col-md-3 col-6 text-left">
+                <div class="case-study-label"
+                  style="color: #d63d3f; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05rem;">Timeline</div>
+                <div style="color: #555; font-weight: 350;"><i>13 Weeks</i></div>
+              </div>
+              <div class="col-md-9 col-6 text-left">
+                <div class="case-study-label"
+                  style="color: #d63d3f; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05rem;">Team</div>
+                <div style="color: #555; font-weight: 350;"><i>Damian Lim, Carina Yak (Under Prof. Dr. Christian Gilles
+                    Boucharenc)</i></div>
+              </div>
+            </div>
+
           </div>
         </div>
-        <p class="hero-purple-quote">
-          "Observing and identifying daily friction points to develop design-led
-          improvements.”
-        </p>
       </div>
+    </section>
 
-      <div class="container-fluid px-0">
-        <div class="container py-5">
+    <div class="container-fluid px-0">
+
+      <section class="container-fluid px-0" style="background-color: #fff3f3;">
+        <div class="container py-3 pt-4 pb-4 pt-5">
           <div class="row justify-content-center">
-            <div class="col-md-10 col-12 text-left">
-              <div class="row">
-                <!-- Left Text Column -->
-                <div class="col-md-6 col-12 pr-md-4 text-left">
-                  <h2
-                    class="text-left pb-3 pt-0"
-                    style="
-                      font-size: 24px;
-                      font-weight: 600;
-                      color: #d63d3f;
-                      font-family: &quot;IBM Plex Sans&quot;, sans-serif;
-                    "
-                  >
-                    Overview
-                  </h2>
-                  <h3
-                    class="text-left main-content4 pb-3 pt-0"
-                    style="font-family: &quot;IBM Plex Sans&quot;, sans-serif"
-                  >
-                    We were tasked with identifying friction points in daily
-                    life and applying design thinking to improve them. Through
-                    acute observation of societal behaviors and routines, we
-                    developed holistic solutions to address our targeted
-                    challenges.
+            <div class="col-md-12 col-12 text-left">
+              <h3 class="main-content6 text-left"
+                style="color: #d63d3f; font-weight: 550; font-size: 2rem; padding-top: 1.5rem; padding-bottom: 0.5rem; margin-bottom: 0;">
+                Featuring "Feel Young (飞扬) Band"
+              </h3>
+              <h3 class="text-left main-content4 pb-1 pt-3">
+                Every week at 6:30 pm, a humble group of seniors gathers behind Chinatown Exit A. Together, they
+                play instruments, sing, and dance, displaying a vibrant community spirit. While passersbys might see
+                them
+                at dinnertime, there is a much deeper story behind this group. We spent ten weeks with the band every
+                Saturday, learning about their values of aging gracefully and <b style="font-weight: 550;">incorporating
+                  a brand identity into
+                  their everyday routine</b> that captures who they are.
+              </h3>
+            </div>
+          </div>
+
+          <div class="row justify-content-center pb-4 pt-3">
+            <div class="col-md-12 col-xs-12 p-2" style="aspect-ratio: 16/9">
+              <iframe width="100%" height="100%" src="https://www.youtube.com/embed/9Q3pka0t8qY?si=KE5aBVGc53-MoAVj"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="border-radius: 12px;"></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container-fluid px-0" style="background-color: #fff3f3;">
+
+        <div class="container pt-4 pb-4">
+
+          <div class="row justify-content-center pt-1">
+            <div class="col-md-12 col-12 p-1 borderbottom"></div>
+          </div>
+
+          <div class="row justify-content-center pt-5 pb-0">
+            <div class="col-md-12 col-12 text-left">
+              <div class="case-study-label">[ OPPORTUNITY FINDING & RESEARCH ]</div>
+              <h2 class="case-study-title">Conducting field research to observe seniors' routines</h2>
+              <h3 class="text-left main-content4 pb-1 pt-3">
+                We chose Chinatown to begin our research as it is known for it's heritage and being a
+                popular
+                senior hangout spot. We observed senior
+                routines, identifying areas to work on. Chatting with various seniors helped us
+                understand the delicate balance they maintain between their hobbies, families, and past careers.
+              </h3>
+
+
+              <div class="row justify-content-center my-4">
+                <div class="col-md-12 col-12 p-2 text-center mb-3">
+                  <img class="images img-fluid w-100" src="images/Enhancing Feel Young/1_EFY.png"
+                    alt="Initial Observation" style="border-radius: 12px;" />
+                </div>
+                <div class="col-md-12 col-12 p-2 text-center mb-3">
+                  <img class="images img-fluid w-100" src="images/Enhancing Feel Young/2_EFY.png"
+                    alt="Initial Observation" style="border-radius: 12px;" />
+                </div>
+              </div>
+
+              <div class="row justify-content-center">
+                <div class="col-md-12 col-12 text-left">
+
+                  <h3 class="main-content6 text-left"
+                    style="color: #d63d3f; font-weight: 550; font-size: 2rem; padding-top: 1.5rem; padding-bottom: 0.5rem; margin-bottom: 0;">
+                    Persona crafting: At-a-glance of seniors' values
+                  </h3>
+                  <h3 class="text-left main-content4 pb-1 pt-3">
+                    Senior's routines, motivations and values were jotted down in form of personas, for an easy view of what they
+                    hold important.
                   </h3>
                 </div>
+              </div>
 
-                <!-- Right Box Column -->
-                <div class="col-md-6 col-12 mt-4 mt-md-0 text-left">
-                  <div
-                    style="
-                      border: 2px solid #d63d3f;
-                      padding: 25px;
-                      border-radius: 10px;
-                    "
-                  >
-                    <h3
-                      class="text-left main-content4 pt-0 pb-2"
-                      style="
-                        font-size: 16px;
-                        color: #d63d3f;
-                        font-family: &quot;IBM Plex Sans&quot;, sans-serif;
-                      "
-                    >
-                      <b style="font-weight: 550">My Contributions</b>
-                    </h3>
-                    <ul
-                      class="text-left accordion-body pb-3 pt-0 pl-3"
-                      style="list-style-type: disc"
-                    >
-                      <li>
-                        Acted as the main art director, establishing the art
-                        direction and designed branding assets for the project
-                      </li>
-                      <li>Aided in concept ideation process brainstorming</li>
-                      <li>
-                        Talking to the Feel Young Band every Saturday to iterate
-                        on concept and engage in photography/videography
-                      </li>
-                      <li>Hands-on making of physical deliverables</li>
-                      <li>Edited the final video in Premiere Pro</li>
-                    </ul>
+              <div class="row justify-content-center my-4">
+                <div class="col-md-12 col-12 p-2 text-center mb-3">
+                  <img class="images img-fluid w-100" src="images/Enhancing Feel Young/3_EFY.png"
+                    alt="Initial Observation" style="border-radius: 12px;" />
+                </div>
+              </div>
 
-                    <div class="row pt-2">
-                      <div class="col-6 text-left">
-                        <h3
-                          class="text-left main-content4 pt-0 pb-2"
-                          style="
-                            font-size: 16px;
-                            color: #d63d3f;
-                            font-family: &quot;IBM Plex Sans&quot;, sans-serif;
-                          "
-                        >
-                          <b style="font-weight: 550">Timeline</b>
-                        </h3>
-                        <ul
-                          class="text-left accordion-body pb-0 pt-0 pl-3"
-                          style="list-style-type: disc"
-                        >
-                          <li>13 Weeks</li>
-                        </ul>
-                      </div>
-                      <div class="col-6 text-left">
-                        <h3
-                          class="text-left main-content4 pt-0 pb-2"
-                          style="
-                            font-size: 16px;
-                            color: #d63d3f;
-                            font-family: &quot;IBM Plex Sans&quot;, sans-serif;
-                          "
-                        >
-                          <b style="font-weight: 550">Team Members</b>
-                        </h3>
-                        <ul
-                          class="text-left accordion-body pb-0 pt-0 pl-3"
-                          style="list-style-type: disc"
-                        >
-                          <li>Damian Lim, Carina Yak</li>
-                          <li>
-                            Under the supervision of Professor Dr. Christian
-                            Gilles Boucharenc
-                          </li>
-                        </ul>
-                      </div>
+
+              <div class="row justify-content-center">
+                <div class="col-md-12 col-12 pt-0 pb-2 text-left">
+                  <h3 class="main-content6 text-left"
+                    style="color: #d63d3f; font-weight: 550; font-size: 2rem; padding-top: 1.5rem; padding-bottom: 0.5rem; margin-bottom: 0;">
+                    Seniors value graceful ageing and finding community
+                  </h3>
+                </div>
+              </div>
+
+              <div class="challenge-box-light" style="margin-top: 2.5rem; margin-bottom: 2.5rem;">
+                <!-- <div class="challenge-label">GRACEFUL AGING 👵</div> -->
+                <div class="challenge-text">
+                  Insight: "Seniors maintain their dignity by staying active and finding community, which in turn allows them to
+                  step back and give their adult children space to grow."
+                </div>
+              </div>
+
+              <!-- Custom Feature Cards Section matching GovTech styling -->
+              <div class="row my-4">
+                <!-- Card 1 -->
+                <div class="col-md-4 col-12 mb-4 mb-md-0">
+                  <div class="card h-100 border-0 rounded-4 overflow-hidden"
+                    style="background-color: #ffffff; border-radius: 12px;">
+                    <img src="images/Enhancing Feel Young/4_EFYa.png" class="card-img-top" alt="National Debut"
+                      style="height: 220px; object-fit: cover; border-top-left-radius: 12px; border-top-right-radius: 12px;">
+                    <div class="card-body p-4 text-center">
+                      <h5 class="card-title mb-3" style="color: #d63d3f; font-size: 1.15rem; font-weight: 550;">
+                        Seniors maintain dignity through active routines.
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col-md-4 col-12 mb-4 mb-md-0">
+                  <div class="card h-100 border-0 rounded-4 overflow-hidden"
+                    style="background-color: #ffffff; border-radius: 12px;">
+                    <img src="images/Enhancing Feel Young/4_EFYb.png" class="card-img-top" alt="Streamlined Workflows"
+                      style="height: 220px; object-fit: cover; border-top-left-radius: 12px; border-top-right-radius: 12px;">
+                    <div class="card-body p-4 text-center">
+                      <h5 class="card-title font-weight-550 mb-3"
+                        style="color: #d63d3f; font-size: 1.15rem; font-weight: 550;">
+                        A sense of community fills the gap of a busy family.
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-md-4 col-12 mb-4 mb-md-0">
+                  <div class="card h-100 border-0 rounded-4 overflow-hidden"
+                    style="background-color: #ffffff; border-radius: 12px;">
+                    <img src="images/Enhancing Feel Young/4_EFYc.png" class="card-img-top" alt="Sharing with UX Designers"
+                      style="height: 220px; object-fit: cover; border-top-left-radius: 12px; border-top-right-radius: 12px;">
+                    <div class="card-body p-4 text-center">
+                      <h5 class="card-title font-weight-550 mb-3"
+                        style="color: #d63d3f; font-size: 1.15rem; font-weight: 550;">
+                        They have a desire for independence & self-worth.
+                      </h5>
                     </div>
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
+      </section>
 
-        <div class="container py-3">
-          <div class="row justify-content-center pt-1">
-            <div class="col-md-10 col-12 pt-0 pb-5 text-left">
-              <h3 class="text-center main-content3" style="color: #d63d3f">
-                Featuring "Feel Young (飞扬) Band"...
-              </h3>
-            </div>
-          </div>
+      <section class="container-fluid px-0 pb-5 pt-5" style="background-color: #ffffff;">
+        <div class="container pt-4 pb-4">
 
-          <div class="row justify-content-center px-3">
-            <div class="col-md-10 col-12 text-left">
-              <h3
-                class="main-content4 pb-4 pt-0"
-                style="font-family: &quot;IBM Plex Sans&quot;, sans-serif"
-              >
-                Every week at 6:30 pm, a humble group of seniors congregates
-                behind Chinatown Exit A. They gather to play instruments, sing,
-                and dance, displaying a vibrant community spirit. While
-                passersby might see them at dinnertime, there is a much deeper
-                story behind this group. We spent ten weeks with the band every
-                Saturday. We followed them, going from strangers, learning about
-                their values of aging gracefully to being part of their
-                community. We were deeply moved by their hospitality and
-                openness, allowing us to collaborate closely with them on
-                prototypes and concept iterations, ultimately
-                <u
-                  >incorporating a brand identity into their everyday routine</u
-                >
-                that truly captures who they are.
-              </h3>
-            </div>
-          </div>
-
-          <div class="row justify-content-center pb-5 pt-3">
-            <div class="col-md-12 col-xs-12 p-1" style="aspect-ratio: 16/9">
-              <iframe
-                width="100%"
-                height="100%"
-                src="https://www.youtube.com/embed/9Q3pka0t8qY?si=KE5aBVGc53-MoAVj"
-                title="YouTube video player"
-                frameborder="0"
-                allow="
-                  accelerometer;
-                  autoplay;
-                  clipboard-write;
-                  encrypted-media;
-                  gyroscope;
-                  picture-in-picture;
-                  web-share;
-                "
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-              ></iframe>
-            </div>
-          </div>
-        </div>
-
-        <section class="container-fluid px-0" style="background-color: #f4f4f4">
-          <div class="container py-5">
-            <div class="row justify-content-center pt-1">
-              <div class="col-md-10 col-12 pt-0 pb-5 text-left">
-                <h3 class="text-center main-content3" style="color: #d63d3f">
-                  Initial observation of seniors' routines
-                </h3>
-              </div>
-            </div>
-
-            <div class="row justify-content-center">
-              <div class="col-md-10 col-12 text-left">
-                <h3
-                  class="main-content4 pb-4 pt-0"
-                  style="font-family: &quot;IBM Plex Sans&quot;, sans-serif"
-                >
-                  We began with a brainstorming session to shortlist everyday
-                  scenarios where design could make an impact. Our initial ideas
-                  were diverse, ranging from product design projects like
-                  improving the hygienic function of dog pee trays. Ultimately,
-                  we were drawn to the lives of the seniors, a poignant and
-                  relevant topic, as ageing is often overlooked. To identify
-                  specific opportunities, we headed to Chinatown, a place known
-                  for its vibrant heritage, and a favourite gathering spot for
-                  seniors where we could observe their routines. This fieldwork
-                  allowed us to identify authentic opportunities for
-                  improvement.
-                </h3>
-              </div>
-            </div>
-
-            <div class="row justify-content-center pb-5 pt-3">
-              <div class="col-md-12 col-12 p-2 text-center">
-                <img
-                  class="images img-fluid w-100"
-                  src="images/Enhancing Feel Young/1_EFY.png"
-                  alt="Initial Observation"
-                />
-              </div>
-            </div>
-
-            <div class="row justify-content-center py-4">
-              <div class="col-md-12 col-12 text-left">
-                <div class="row align-items-center">
-                  <div class="col-md-5 col-12 pr-md-4 text-left">
-                    <h3
-                      class="main-content6 text-left pb-0"
-                      style="color: #d63d3f"
-                    >
-                      Chatting with seniors, learning about their values and
-                      routines
-                    </h3>
-                    <h3
-                      class="main-content4 text-left pt-3"
-                      style="font-family: &quot;IBM Plex Sans&quot;, sans-serif"
-                    >
-                      We spent time chatting with various seniors, who welcomed
-                      us with stories and life lessons. These interviews helped
-                      us understand the delicate balance they maintain between
-                      their hobbies, families, and past careers. We translated
-                      these conversations into categorised personas, using their
-                      quotes and routines to ground our design process in
-                      authentic human experience.
-                  </h3>
-                  </div>
-                  <div class="col-md-7 col-12 text-center px-0">
-                    <img
-                      class="images img-fluid w-100"
-                      src="images/Enhancing Feel Young/2_EFY.png"
-                      alt="Seniors Chatting"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row justify-content-center pb-3 pt-4">
-              <div class="col-md-12 col-12 p-1 text-center">
-                <img
-                  class="images img-fluid w-100"
-                  src="images/Enhancing Feel Young/3_EFY.png"
-                  alt="Personas"
-                />
-              </div>
-            </div>
-
-            <div class="row justify-content-center pt-0">
-              <div class="col-md-10 col-12 pt-0 pb-4 text-left">
-                <h3 class="text-center main-content3" style="color: #d63d3f">
-                  Insight: A daily routine for ageing gracefully
-                </h3>
-              </div>
-            </div>
-
-            <div class="row justify-content-center pt-0">
-              <div class="col-md-10 col-12 text-left pt-0">
-                <h3
-                  class="main-content4 text-left"
-                  style="font-family: &quot;IBM Plex Sans&quot;, sans-serif"
-                >
-                  Our interviews revealed that
-                  <b style="font-weight: 550">'ageing gracefully'</b> is
-                  reflected in daily routines. Seniors maintain their dignity by
-                  staying active and finding community, which in turn allows
-                  them to step back and give their adult children the space to
-                  grow.
-                </h3>
-              </div>
-            </div>
-
-            <div class="row justify-content-center pb-3 pt-2">
-              <div class="col-md-12 col-12 p-1 text-center">
-                <img
-                  class="images img-fluid w-100"
-                  src="images/Enhancing Feel Young/4_EFY.png"
-                  alt="Graceful Ageing Insights"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <div class="container py-5">
           <div class="row justify-content-center">
-            <div class="row justify-content-center pt-1">
-              <div class="col-md-10 col-12 pt-0 pb-4 text-left">
-                <h3 class="text-center main-content3" style="color: #d63d3f">
-                  The “Chinatown Band” is a community of passionate seniors.
-                </h3>
+            <div class="col-md-12 col-12 text-left">
+              <div class="case-study-label">[ Storytelling ]</div>
+
+              <h3 class="main-content6 text-left"
+                style="color: #d63d3f; font-weight: 550; font-size: 2rem; padding-top: 1.5rem; padding-bottom: 0.5rem; margin-bottom: 0;">
+                The “Chinatown Band” is a community of passionate seniors
+              </h3>
+              <h3 class="text-left main-content4 pb-1 pt-3">
+                A local senior, Mr. Lok, introduced us to the retiree band performing at Chinatown Exit A. Watching them
+                share
+                food and care for one another revealed a strong community spirit. We joined them weekly on their
+                performance
+                days to get to know them better, and uncover opportunities that we could incorporate into their routines
+                with design.
+              </h3>
+            </div>
+          </div>
+
+          <div class="row justify-content-center my-4">
+            <div class="col-md-12 col-12 p-2 text-center mb-3">
+              <img class="images img-fluid w-100" src="images/Enhancing Feel Young/Band photo.png"
+                alt="Band Performance" style="border-radius: 12px;" />
+            </div>
+            <!-- <div class="col-md-12 col-12 p-2 text-center mb-3">
+              <img class="images img-fluid w-100" src="images/Enhancing Feel Young/EFY_pic4.png" alt="Band Setup"
+                style="border-radius: 12px;" />
+            </div> -->
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-md-12 col-12 text-left">
+              <h3 class="main-content6 text-left"
+                style="color: #d63d3f; font-weight: 550; font-size: 2rem; padding-top: 1.5rem; padding-bottom: 0.5rem; margin-bottom: 0;">
+                The “Feel Young”(飞扬) Spirit: Spreading joy to others through music
+              </h3>
+              <h3 class="text-left main-content4 pb-1 pt-3">
+                Each week, members take on small roles, such as setting up instruments, taping stage boundaries, and
+                welcoming crowd
+                members.
+              </h3>
+            </div>
+          </div>
+
+          <div class="challenge-box-dark" style="margin-top: 1.5rem; margin-bottom: 2.5rem;">
+            <!-- <div class="challenge-label">GRACEFUL AGING 👵</div> -->
+            <div class="challenge-text">
+              Insight: Their performances prioritise joy and connection over perfection, turning passersby into
+              participants and bringing community to local old folks homes.
+            </div>
+          </div>
+          <div class="row justify-content-center my-4">
+            <div class="col-md-12 col-12 p-2 text-center mb-3">
+              <img class="images img-fluid w-100" src="images/Enhancing Feel Young/5_EFY.png" alt="Gathering Spirit"
+                style="border-radius: 12px;" />
+            </div>
+            <!-- <div class="col-md-12 col-12 p-2 text-center mb-3">
+              <img class="images img-fluid w-100" src="images/Enhancing Feel Young/6_EFY.png" alt="Interactions"
+                style="border-radius: 12px;" />
+            </div> -->
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-md-12 col-12 text-left">
+              <h3 class="main-content6 text-left"
+                style="color: #d63d3f; font-weight: 550; font-size: 2rem; padding-top: 1.5rem; padding-bottom: 0.5rem; margin-bottom: 0;">
+                The Conflict: Misunderstood as noisemakers
+              </h3>
+              <h3 class="text-left main-content4 pb-1 pt-3">
+                During our fieldwork, police arrived following a noise complaint. Despite the band using smaller
+                speakers, they were asked to pack up, revealing <b style="font-weight: 550;">a gap between their positive intent and public
+                perception.</b>
+              </h3>
+            </div>
+          </div>
+
+          <div class="row justify-content-center my-4">
+            <div class="col-md-12 col-12 p-2 text-center mb-3">
+              <img class="images img-fluid w-100" src="images/Enhancing Feel Young/7_EFY.png" alt="Police Intervention"
+                style="border-radius: 12px;" />
+            </div>
+            <!-- <div class="col-md-12 col-12 p-2 text-center mb-3">
+              <img class="images img-fluid w-100" src="images/Enhancing Feel Young/8_EFY.png"
+                alt="Addressing Challenges" style="border-radius: 12px;" />
+            </div> -->
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-md-12 col-12 text-left">
+              <h3 class="main-content6 text-left"
+                style="color: #d63d3f; font-weight: 550; font-size: 2rem; padding-top: 1.5rem; padding-bottom: 0.5rem; margin-bottom: 0;">
+                Their goal was just to make others happy, and that’s it
+              </h3>
+              <h3 class="text-left main-content4 pb-1 pt-3">
+                Band co-leader Mr. Poh shared how hurtful it was to be dismissed as "noisemakers." This inspired us to
+                help them <b style="font-weight:550;">communicate who they truly are through thoughtful design.</b>
+              </h3>
+            </div>
+          </div>
+
+          <div class="row justify-content-center my-4">
+            <div class="col-md-12 col-12 p-2 text-center mb-3">
+              <img class="images img-fluid w-100" src="images/Enhancing Feel Young/9_EFY.png" alt="Interviewing Mr Poh"
+                style="border-radius: 12px;" />
+            </div>
+          </div>
+
+          <div class="row justify-content-center pt-1">
+            <div class="col-md-12 col-12 p-1 borderbottom"></div>
+          </div>
+
+          <div class="row justify-content-center pt-1">
+            <div class="col-md-12 col-12 text-left">
+              <div class="case-study-label pt-5">[ Co-design ]</div>
+              <h3 class="main-content6 text-left"
+                style="color: #d63d3f; font-weight: 550; font-size: 2rem; padding-top: 1.5rem; padding-bottom: 0.5rem; margin-bottom: 0;">
+                Opportunity: Co-creation of band identity
+              </h3>
+              <h3 class="text-left main-content4 pb-1 pt-3">
+                We saw an opportunity to co-design a clear band identity so <b style="font-weight:550;">onlookers
+                  instantly recognise their purpose,
+                  building respect and preventing misunderstandings.</b>
+              </h3>
+            </div>
+          </div>
+
+          <div class="row justify-content-center my-4">
+            <div class="col-md-12 col-12 p-2 text-center mb-3">
+              <img class="images img-fluid w-100" src="images/Enhancing Feel Young/Cocreation.png"
+                alt="Co-creation Workshop" style="border-radius: 12px;" />
+            </div>
+          </div>
+
+          <div class="row justify-content-center pt-3 pb-0">
+            <div class="col-md-12 col-12 text-left">
+              <h3 class="main-content6 text-left"
+                style="color: #d63d3f; font-weight: 550; font-size: 2rem; padding-top: 1.5rem; padding-bottom: 0.5rem; margin-bottom: 0;">
+                The <u>individuality</u> of each member
+              </h3>
+              <h3 class="main-content4 pt-3">
+                In our workshops, we asked each member to pick their favorite flowers and colors. These chosen blooms
+                became personal symbols representing their individual personalities. We then paired each flower with custom motifs reflecting the member's <b style="font-weight:550;">unique
+                  role and musical talent</b> in
+                the group.
+              </h3>
+            </div>
+          </div>
+
+          <div class="col-md-12 col-12 text-center my-4">
+            <div class="row justify-content-center">
+              <div class="col-md-12 col-12 px-1 mb-3">
+                <img class="images img-fluid w-100" src="images/Enhancing Feel Young/10_EFY.svg"
+                  alt="Individual Flowers Layout" style="border-radius: 12px;" />
               </div>
             </div>
-
-            <div class="col-md-10 col-12 text-left">
-              <h3
-                class="main-content4 text-left"
-                style="font-family: &quot;IBM Plex Sans&quot;, sans-serif"
-              >
-                After one of the interviews with Mr Lok, he mentioned he liked
-                to go listen to the senior band at 5.30pm, hence we followed him
-                there as we were curious. It was a memorable sight, with a group
-                of senior musicians playing instruments at Chinatown Exit A. We
-                found this significant because, upon further observation, we saw
-                them displaying great community spirit, such as buying food for
-                one another. Over the following weeks, we decided to work with
-                them to discover how design could aid them and their routines.
-                They told us they have a name, though not known to public: “Feel
-                Young (飞扬) Band.”
-              </h3>
-            </div>
           </div>
 
-          <div class="row justify-content-center pb-1 pt-1">
-            <div class="col-md-12 col-12 p-1 text-center">
-              <img
-                class="images img-fluid w-100"
-                src="images/Enhancing Feel Young/Band photo.png"
-                alt="Band Performance"
-              />
-            </div>
-          </div>
-
-          <div class="row justify-content-center pb-4 pt-1">
-            <div class="col-md-12 col-12 p-1 text-center">
-              <img
-                class="images img-fluid w-100"
-                src="images/Enhancing Feel Young/EFY_pic4.png"
-                alt="Band Setup"
-              />
-            </div>
-          </div>
-
-          <div class="row justify-content-center pt-1">
-            <div class="col-md-10 col-12 pt-0 pb-0 text-left">
-              <h3 class="text-center main-content3" style="color: #d63d3f">
-                The “Feel Young”(飞扬) Spirit: Spreading Joy to Others Through
-                Music.
-              </h3>
-            </div>
-          </div>
-
-          <div class="row justify-content-center pt-3">
-            <div class="col-md-8 col-12 text-center py-2">
-              <h3
-                class="text-center main-content6 italic pb-3"
-                style="
-                  font-style: italic;
-                  color: #303030;
-                  font-family: &quot;IBM Plex Sans&quot;, sans-serif;
-                "
-              >
-                “ We perform here every week to spread joy to other seniors, so
-                they can join us in having fun too. Sometimes we perform in Old
-                Folks homes or Temples too to bring them happiness. ”
-                <br /><br />- Wendy Lai (Co-Leader of Feel Young)
-              </h3>
-            </div>
-            <div class="col-md-10 col-12 text-left pt-3">
-              <h3
-                class="main-content4 text-left"
-                style="font-family: &quot;IBM Plex Sans&quot;, sans-serif"
-              >
-                As the sun sets, the band gathers. No fancy stage, just shared
-                laughter, and a love for making people smile. Everyone
-                contributes, in small ways that mean everything, such as buying
-                food for each other, or simply pasting the tape on the floor
-                before performing. They are not there for fame or money, but to
-                bring joy to the people around them, which includes other senior
-                or passerbys.
-              </h3>
-            </div>
-          </div>
-
-          <div class="row justify-content-center pb-2 pt-1">
-            <div class="col-md-12 col-12 p-1 text-center">
-              <img
-                class="images img-fluid w-100"
-                src="images/Enhancing Feel Young/5_EFY.png"
-                alt="Gathering Spirit"
-              />
-            </div>
-          </div>
-          <div class="row justify-content-center pb-4 pt-1">
-            <div class="col-md-12 col-12 p-1 text-center">
-              <img
-                class="images img-fluid w-100"
-                src="images/Enhancing Feel Young/6_EFY.png"
-                alt="Interactions"
-              />
-            </div>
-          </div>
-
-          <div class="row justify-content-center pt-1">
-            <div class="col-md-10 col-12 pt-0 pb-0 text-left">
-              <h3 class="text-center main-content3" style="color: #d63d3f">
-                The Conflict: Misunderstood as Noisemakers.
-              </h3>
-            </div>
-          </div>
-
-          <div class="row justify-content-center pt-4">
-            <div class="col-md-10 col-12 text-left">
-              <h3
-                class="main-content4 text-left"
-                style="font-family: &quot;IBM Plex Sans&quot;, sans-serif"
-              >
-                Yet, sometimes joy is misunderstood. One evening, the police
-                were called over a noise complaint. They told us it was not the
-                first time they had come. They even tried compromising, by
-                switching to smaller, quieter speakers, but they were told to
-                leave.
-              </h3>
-            </div>
-          </div>
-
-          <div class="row justify-content-center pb-2 pt-1">
-            <div class="col-md-12 col-12 p-1 text-center">
-              <img
-                class="images img-fluid w-100"
-                src="images/Enhancing Feel Young/7_EFY.png"
-                alt="Police Intervention"
-              />
-            </div>
-          </div>
-          <div class="row justify-content-center pb-4 pt-1">
-            <div class="col-md-12 col-12 p-1 text-center">
-              <img
-                class="images img-fluid w-100"
-                src="images/Enhancing Feel Young/8_EFY.png"
-                alt="Addressing Challenges"
-              />
-            </div>
-          </div>
-
-          <div class="row justify-content-center pt-1">
-            <div class="col-md-10 col-12 pt-0 pb-0 text-left">
-              <h3 class="text-center main-content3" style="color: #d63d3f">
-                Their goal was just to make others happy, and that’s it.
-              </h3>
-            </div>
-          </div>
-
-          <div class="row justify-content-center pt-4">
-            <div class="col-md-10 col-12 text-left">
-              <h3
-                class="main-content4 text-left"
-                style="font-family: &quot;IBM Plex Sans&quot;, sans-serif"
-              >
-                We interviewed Mr Poh, a Co-Leader of Feel Young, and he
-                emotionally mentioned they only wanted to have a fun time with
-                each other, by playing music together and sharing this passion
-                and joy to the people around them. They felt wronged that they
-                were treated as "noisemakers".
-              </h3>
-            </div>
-          </div>
-          <div class="row justify-content-center pb-3 pt-1">
-            <div class="col-md-12 col-12 p-1 text-center">
-              <img
-                class="images img-fluid w-100"
-                src="images/Enhancing Feel Young/9_EFY.png"
-                alt="Interviewing Mr Poh"
-              />
-            </div>
-          </div>
-
-          <div class="row justify-content-center pt-1">
-            <div class="col-md-10 col-12 pt-0 pb-0 text-left">
-              <h3 class="text-center main-content3" style="color: #d63d3f">
-                Opportunity: Co-creation of Band Identity.
-              </h3>
-            </div>
-          </div>
-
-          <div class="row justify-content-center pt-4">
-            <div class="col-md-10 col-12 text-left">
-              <h3
-                class="main-content4 text-left"
-                style="font-family: &quot;IBM Plex Sans&quot;, sans-serif"
-              >
-                As designers, we thought this presented a valuable opportunity,
-                where we could <b style="font-weight:550">improve their public recognition by creating a
-                strong band identity that articulates their value.</b> An identity
-                that embodies their spirit, so onlookers would know who they are
-                and what they stand for at first glance, reducing
-                misunderstanding.
-              </h3>
-            </div>
-          </div>
-
-          <div class="row justify-content-center pb-3 pt-1">
-            <div class="col-md-12 col-12 p-1 text-center">
-              <img
-                class="images img-fluid w-100"
-                src="images/Enhancing Feel Young/Cocreation.png"
-                alt="Co-creation Workshop"
-              />
-            </div>
-          </div>
-
-          <div class="row justify-content-center pt-5">
-            <div class="col-md-10 col-12 text-left">
-              <h3
-                class="main-content6 text-left pl-0"
-                style="
-                  color: #d63d3f;
-                  font-size: 24px;
-                  font-weight: 550;
-                  font-family: &quot;IBM Plex Sans&quot;, sans-serif;
-                "
-              >
-                The <u>individuality</u> of each member.
-              </h3>
-              <h3
-                class="main-content4 text-left pt-3"
-                style="font-family: &quot;IBM Plex Sans&quot;, sans-serif"
-              >
-                We settled on flowers, a symbol that deeply resonates with them,
-                which is also a
-                <b style="font-weight: 550"
-                  >metaphor for personality and a blossoming community.</b
-                >
-                Each member chose a flower that reflected who they are, their
-                personality, their character and their spirit.
-              </h3>
-            </div>
-          </div>
-          <div class="row justify-content-center pb-4 pt-1">
-            <div class="col-md-12 col-12 p-1 text-center">
-              <img
-                class="images img-fluid w-100"
-                src="images/Enhancing Feel Young/10_EFY.svg"
-                alt="Individual Flowers Layout"
-              />
-            </div>
-          </div>
-
-          <div class="row justify-content-center pt-4">
-            <div class="col-md-10 col-12 text-left">
-              <h3
-                class="main-content4 text-left"
-                style="font-family: &quot;IBM Plex Sans&quot;, sans-serif"
-              >
-                Each member also contributes their
-                <b style="font-weight: 550">passion and talent</b> in the band.
-                A variation of secondary motifs were designed to complement the
-                flower chosen.
-              </h3>
-            </div>
-          </div>
-          <div class="row justify-content-center pb-5 pt-4">
-            <div class="col-md-12 col-12 p-1 text-center">
-              <img
-                class="images img-fluid w-100"
-                src="images/Enhancing Feel Young/11_EFY.png"
-                alt="Secondary Motifs"
-              />
+        
+          <div class="row justify-content-center my-4">
+            <div class="col-md-12 col-12 p-2 text-center mb-3">
+              <img class="images img-fluid w-100" src="images/Enhancing Feel Young/11_EFY.png" alt="Secondary Motifs"
+                style="border-radius: 12px;" />
             </div>
           </div>
 
           <div class="row justify-content-center pt-2">
             <div class="col-md-12 col-12 text-left">
-              <h3
-                class="main-content6 text-left pl-0"
-                style="
-                  color: #d63d3f;
-                  font-size: 24px;
-                  font-weight: 550;
-                  font-family: &quot;IBM Plex Sans&quot;, sans-serif;
-                "
-              >
-                A <u>bouquet</u> of individuals.
+              <h3 class="main-content6 text-left"
+                style="color: #d63d3f; font-weight: 550; font-size: 2rem; padding-top: 1.5rem; padding-bottom: 0.5rem; margin-bottom: 0;">
+                A <u>bouquet</u> of individuals
               </h3>
-              <h3
-                class="main-content4 text-left pt-3"
-                style="font-family: &quot;IBM Plex Sans&quot;, sans-serif"
-              >
-                Together, they form a
-                <b style="font-weight: 550">cohesive visual identity</b> that
-                celebrates both individual spirit and collective joy, each motif
-                holding a personal story.
+              <h3 class="main-content4 text-left pt-3">
+                Together, these individual elements form a "bouquet", a <b style="font-weight:550;">unified brand
+                  identity celebrating both
+                  individual stories and their collective spirit.</b>
               </h3>
             </div>
           </div>
-          <div class="row justify-content-center pb-4 pt-1">
-            <div class="col-md-8 col-12 p-1 text-center">
-              <img
-                class="images img-fluid w-100"
-                src="images/Enhancing Feel Young/12_EFY.svg"
-                alt="Collective Bouquet Identity"
-              />
+          <div class="row justify-content-center my-4">
+            <div class="col-md-10 col-12 p-2 text-center mb-3">
+              <img class="images img-fluid w-100" src="images/Enhancing Feel Young/12_EFY.svg"
+                alt="Collective Bouquet Identity" style="border-radius: 12px;" />
             </div>
           </div>
+        </div>
+      </section>
 
-          <div class="row justify-content-center pt-1">
-            <div class="col-md-10 col-12 pt-0 pb-0 text-left">
-              <h3 class="text-center main-content3" style="color: #d63d3f">
-                Creating low-cost, familiar, high-impact items.
+      <section class="container-fluid px-0 pb-5" style="background-color: #ffffff;">
+        <div class="container pt-0 pb-4">
+          <div class="row justify-content-center pt-0 pb-0">
+            <div class="col-md-12 col-12 text-left">
+              <h3 class="main-content6 text-left"
+                style="color: #d63d3f; font-weight: 550; font-size: 2rem; padding-bottom: 0.5rem; margin-bottom: 0;">
+                Creating low-cost, familiar, high-impact items from their routine
+              </h3>
+              <h3 class="text-left main-content4 pb-1 pt-3">
+                We designed directly for their routine by <b style="font-weight:550;">applying their new identity to
+                  familiar items,</b>
+                such as the trolley, fans and maracas. We kept the look vintage and subtle so the products <b
+                  style="font-weight:550;">elevate
+                  their identity while blending naturally into the Chinatown streetscape.</b>
               </h3>
             </div>
           </div>
 
-          <div class="row justify-content-center pt-3">
-            <div class="col-md-10 col-12 text-left">
-              <h3
-                class="main-content4 text-left"
-                style="font-family: &quot;IBM Plex Sans&quot;, sans-serif"
-              >
-                We designed from their routine, and identified familiar and
-                recognisable everyday objects that they already use in their
-                performances. We translated their identity onto these items we
-                created and kept it vintage, ensuring our design belongs
-                naturally in their hands and environment.
-              </h3>
+
+
+
+
+
+
+          <div class="row justify-content-center my-4">
+            <div class="col-md-12 col-12 p-2 text-center mb-3">
+              <img class="images img-fluid w-100" src="images/Enhancing Feel Young/13_EFY.png" alt="Secondary Motifs"
+                style="border-radius: 12px;" />
             </div>
           </div>
-          <div class="row justify-content-center pb-2 pt-2">
-            <div class="col-md-12 col-12 p-1 text-center">
-              <img
-                class="images img-fluid w-100"
-                src="images/Enhancing Feel Young/13_EFY.png"
-                alt="Object Mockups"
-              />
-            </div>
-          </div>
-          <div class="row justify-content-center pb-5 pt-2">
-            <div class="col-md-12 col-12 p-1 text-center">
-              <img
-                class="images img-fluid w-100"
-                src="images/Enhancing Feel Young/New Products.png"
-                alt="New Identity Products"
-              />
+          <div class="row justify-content-center my-4">
+            <div class="col-md-12 col-12 p-2 text-center mb-3">
+              <img class="images img-fluid w-100" src="images/Enhancing Feel Young/New Products.png"
+                alt="Secondary Motifs" style="border-radius: 12px;" />
             </div>
           </div>
 
-          <div class="row justify-content-center pt-1">
-            <div class="col-md-10 col-12 pt-0 pb-5 text-left">
-              <h3 class="text-center main-content3" style="color: #d63d3f">
-                Our designs in the environment.
+          <div class="row justify-content-center pt-4 pb-2">
+            <div class="col-md-12 col-12 text-left">
+              <h3 class="main-content6 text-left"
+                style="color: #d63d3f; font-weight: 550; font-size: 2rem; padding-top: 1.5rem; padding-bottom: 0.5rem; margin-bottom: 0;">
+                Our designs in the environment
               </h3>
             </div>
           </div>
 
-          <div class="row justify-content-center pb-0 pt-0">
-            <div class="col-md-6 col-12 p-1 text-center">
-              <img
-                class="images img-fluid w-100"
-                src="images/Enhancing Feel Young/Pic 1.png"
-                alt="In use 1"
-              />
+          <!-- Environmental Images 2x2 Grid with Exact GovTech Spacing -->
+          <div class="row my-4">
+            <div class="col-12 col-md-6 mb-3">
+              <div class="overflow-hidden h-100">
+                <img class="images img-fluid w-100 d-block" src="images/Enhancing Feel Young/Pic 1.png" alt="In use 1"
+                  style="border-radius: 12px;" />
+              </div>
             </div>
-            <div class="col-md-6 col-12 p-1 text-center">
-              <img
-                class="images img-fluid w-100"
-                src="images/Enhancing Feel Young/Pic 2.png"
-                alt="In use 2"
-              />
+            <div class="col-12 col-md-6 mb-3">
+              <div class="overflow-hidden h-100">
+                <img class="images img-fluid w-100 d-block" src="images/Enhancing Feel Young/Pic 2.png" alt="In use 2"
+                  style="border-radius: 12px;" />
+              </div>
             </div>
-          </div>
-          <div class="row justify-content-center pb-5 pt-2">
-            <div class="col-md-6 col-12 p-1 text-center">
-              <img
-                class="images img-fluid w-100"
-                src="images/Enhancing Feel Young/Pic 3.png"
-                alt="In use 3"
-              />
+            <div class="col-12 col-md-6 mb-3 mb-md-0">
+              <div class="overflow-hidden h-100">
+                <img class="images img-fluid w-100 d-block" src="images/Enhancing Feel Young/Pic 3.png" alt="In use 3"
+                  style="border-radius: 12px;" />
+              </div>
             </div>
-            <div class="col-md-6 col-12 p-1 text-center">
-              <img
-                class="images img-fluid w-100"
-                src="images/Enhancing Feel Young/Pic 4.png"
-                alt="In use 4"
-              />
+            <div class="col-12 col-md-6 mb-3 mb-md-0">
+              <div class="overflow-hidden h-100">
+                <img class="images img-fluid w-100 d-block" src="images/Enhancing Feel Young/Pic 4.png" alt="In use 4"
+                  style="border-radius: 12px;" />
+              </div>
             </div>
           </div>
 
           <div id="fab-button" class="fab-container">
             <div class="fab">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="42px"
-                viewBox="0 -960 960 960"
-                width="42px"
-                fill="gray"
-              >
-                <path
-                  d="M480-545.33 287.33-352.67 240-400l240-240 240 240-47.33 47.33L480-545.33Z"
-                />
+              <svg xmlns="http://www.w3.org/2000/svg" height="42px" viewBox="0 -960 960 960" width="42px" fill="gray">
+                <path d="M480-545.33 287.33-352.67 240-400l240-240 240 240-47.33 47.33L480-545.33Z" />
               </svg>
             </div>
           </div>
+        </div>
+      </section>
 
-          <!-- Pagination Routing -->
-          <div class="row justify-content-center pb-5 pt-5">
-            <div class="col-md-8 col-12 text-center pt-5 pb-5">
-              <h3 class="mb-4" style="color: #555; font-size: 18px">
-                View other works 👀
-              </h3>
-              <div class="d-flex flex-wrap justify-content-center gap-3">
-                <a href="MandaiX.html" class="btn btn-outline-work">Mandai X</a>
-                <a href="GovTech.html" class="btn btn-outline-work">GovTech a11y Playground</a>
-                <a href="SproutSwap.html" class="btn btn-outline-work">SproutSwap</a>
-                <a href="TheBeeCrisis.html" class="btn btn-outline-work">The Bee Crisis</a>
-                <a href="Enhancing Fei Yang Band.html" class="btn btn-outline-work">Enhancing Fei Yang Band</a>
-                <a href="GoKakis.html" class="btn btn-outline-work">GoKakis</a>
-              </div>
-            </div>
+      <div class="row justify-content-center pb-5 pt-5" style="background-color: #ffffff;">
+        <div class="col-md-8 col-12 text-center pt-5 pb-5">
+          <h3 class="mb-4" style="color: #555; font-size: 18px">
+            View other works 👀
+          </h3>
+          <div class="d-flex flex-wrap justify-content-center gap-3">
+            <a href="MandaiX.html" class="btn btn-outline-work">Mandai X</a>
+            <a href="GovTech.html" class="btn btn-outline-work">GovTech a11y Playground</a>
+            <a href="Enhancing Fei Yang Band.html" class="btn btn-outline-work">Enhancing Fei Yang Band</a>
+            <a href="TheBeeCrisis.html" class="btn btn-outline-work">The Bee Crisis</a>
           </div>
         </div>
       </div>
+
     </div>
+  </div>
 
-    <!-- Synced Footer Context -->
-    <footer class="footer-dark">
-      <div class="container">
-        <div class="footer-text">⤷ Let's work together ⋆.˚</div>
+  <!-- Synced Footer Context -->
+  <footer class="footer-dark">
+    <div class="container">
+      <div class="footer-text">⤷ Let's work together ⋆.˚</div>
 
-        <div class="social-icons">
-          <a href="mailto:jochanxt@gmail.com" target="_blank">
-            <img src="images/Work/Icon1_Email.svg" alt="Email" />
-          </a>
-          <a href="https://linkedin.com/in/josiechan" target="_blank">
-            <img src="images/Work/Icon2_Linkedin.svg" alt="LinkedIn" />
-          </a>
-          <a href="https://instagram.com/jo.cgraphics" target="_blank">
-            <img src="images/Work/Icon3_Instagram.svg" alt="Instagram" />
-          </a>
-        </div>
-
-        <div class="copyright-bar">
-          <p>Copyright © 2026 Josie Chan</p>
-        </div>
+      <div class="social-icons">
+        <a href="mailto:jochanxt@gmail.com" target="_blank">
+          <img src="images/Work/Icon1_Email.svg" alt="Email" />
+        </a>
+        <a href="https://linkedin.com/in/josiechan" target="_blank">
+          <img src="images/Work/Icon2_Linkedin.svg" alt="LinkedIn" />
+        </a>
+        <a href="https://instagram.com/jo.cgraphics" target="_blank">
+          <img src="images/Work/Icon3_Instagram.svg" alt="Instagram" />
+        </a>
       </div>
-    </footer>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var fader = document.getElementById("fader");
+      <div class="copyright-bar">
+        <p>Copyright © 2026 Josie Chan</p>
+      </div>
+    </div>
+  </footer>
 
-        function revealPage() {
-          if (fader) {
-            setTimeout(function () {
-              fader.classList.remove("fade-in");
-              fader.classList.add("fade-out");
-            }, 100);
-          }
-        }
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
 
-        revealPage();
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const fader = document.getElementById("fader");
 
-        window.addEventListener("pageshow", function (event) {
-          if (event.persisted) {
-            revealPage();
-          }
-        });
+      // Reveal page on load
+      if (fader) {
+        fader.classList.add("fade-out");
+      }
 
-        var anchors = document.getElementsByTagName("a");
-        for (var i = 0; i < anchors.length; i++) {
-          if (
-            anchors[i].hostname === window.location.hostname &&
-            anchors[i].pathname !== window.location.pathname &&
-            anchors[i].target !== "_blank"
-          ) {
-            anchors[i].addEventListener("click", function (event) {
-              event.preventDefault();
-              var href = this.href;
-              if (fader) {
-                fader.classList.remove("fade-out");
-                fader.classList.add("fade-in");
-                setTimeout(function () {
-                  window.location = href;
-                }, 500);
-              } else {
-                window.location = href;
-              }
-            });
-          }
+      // Handle pageshow event to fix back-forward cache (bfcache) issues
+      window.addEventListener("pageshow", function (event) {
+        if (event.persisted && fader) {
+          fader.classList.add("fade-out");
         }
       });
 
+      // Smooth Page Fade Out on link click
+      document.querySelectorAll("a").forEach(function (anchor) {
+        anchor.addEventListener("click", function (e) {
+          const href = this.getAttribute("href");
+
+          // Ignore empty links, anchors, external links, and JavaScript links
+          if (
+            !href ||
+            href.startsWith("#") ||
+            href.startsWith("javascript:") ||
+            this.target === "_blank" ||
+            e.ctrlKey ||
+            e.metaKey
+          ) {
+            return;
+          }
+
+          e.preventDefault();
+
+          if (fader) {
+            fader.classList.remove("fade-out");
+            setTimeout(function () {
+              window.location.href = href;
+            }, 400);
+          } else {
+            window.location.href = href;
+          }
+        });
+      });
+
+      // Scroll Reveal Animations
+      var revealTargets = document.querySelectorAll(".reveal, .port-card");
+      if ("IntersectionObserver" in window) {
+        var revealObserver = new IntersectionObserver(
+          function (entries, observer) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add(
+                  entry.target.classList.contains("port-card")
+                    ? "revealed"
+                    : "active"
+                );
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            root: null,
+            rootMargin: "0px 0px -80px 0px",
+            threshold: 0.15,
+          }
+        );
+
+        revealTargets.forEach(function (target) {
+          revealObserver.observe(target);
+        });
+      } else {
+        revealTargets.forEach(function (target) {
+          target.classList.add(
+            target.classList.contains("port-card") ? "revealed" : "active"
+          );
+        });
+      }
+
+      // FAB Back to Top Button
       const fabButton = document.getElementById("fab-button");
       const SCROLL_THRESHOLD = 300;
 
       const toggleFabVisibility = () => {
         if (window.scrollY > SCROLL_THRESHOLD) {
-          fabButton.classList.remove("fab-hidden");
+          fabButton?.classList.remove("fab-hidden");
         } else {
-          fabButton.classList.add("fab-hidden");
+          fabButton?.classList.add("fab-hidden");
         }
       };
 
       window.addEventListener("scroll", toggleFabVisibility);
 
-      fabButton.addEventListener("click", () => {
+      fabButton?.addEventListener("click", () => {
         window.scrollTo({
           top: 0,
           behavior: "smooth",
         });
       });
-    </script>
 
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"
-    ></script>
+      const heroWrapper = document.getElementById("heroImageWrapper");
+      const heroImg = document.getElementById("heroHeaderImg");
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var fader = document.getElementById("faderhome");
-
-        function revealPage() {
-          if (fader) {
-            setTimeout(function () {
-              fader.classList.remove("fade-in");
-              fader.classList.add("fade-out");
-            }, 100);
-          }
+      const updateHeroOnScroll = () => {
+        if (window.innerWidth <= 768) {
+          heroWrapper.style.removeProperty("padding");
+          heroImg.style.removeProperty("border-radius");
+          heroImg.style.removeProperty("transform");
+          return;
         }
 
-        revealPage();
+        const progress = Math.max(0, Math.min(window.scrollY / 150, 1));
+        const currentSidePadding = 5 * (1 - progress);
+        const currentBottomPadding = 3 * (1 - progress);
+        const currentRadius = 20 * (1 - progress);
 
-        window.addEventListener("pageshow", function (event) {
-          if (event.persisted) {
-            revealPage();
-          }
-        });
+        heroWrapper.style.padding = `${currentSidePadding}rem ${currentSidePadding}rem ${currentBottomPadding}rem ${currentSidePadding}rem`;
+        heroImg.style.setProperty("border-radius", progress >= 1 ? "0px" : `${currentRadius}px`, "important");
+        heroImg.style.transform = `scale(${1 + (0.025 * progress)})`;
+      };
 
-        var anchors = document.getElementsByTagName("a");
-        for (var i = 0; i < anchors.length; i++) {
-          if (
-            anchors[i].hostname === window.location.hostname &&
-            anchors[i].pathname !== window.location.pathname &&
-            anchors[i].target !== "_blank"
-          ) {
-            anchors[i].addEventListener("click", function (event) {
-              event.preventDefault();
-              var href = this.href;
-              if (fader) {
-                fader.classList.remove("fade-out");
-                fader.classList.add("fade-in");
-                setTimeout(function () {
-                  window.location = href;
-                }, 500);
-              } else {
-                window.location = href;
-              }
-            });
-          }
-        }
+      window.addEventListener("scroll", updateHeroOnScroll);
+      window.addEventListener("resize", updateHeroOnScroll);
+      updateHeroOnScroll();
+    });
+  </script>
+</body>
 
-        var revealTargets = document.querySelectorAll(".reveal, .port-card");
-        if ("IntersectionObserver" in window) {
-          var revealObserver = new IntersectionObserver(
-            function (entries, observer) {
-              entries.forEach(function (entry) {
-                if (entry.isIntersecting) {
-                  entry.target.classList.add(
-                    entry.target.classList.contains("port-card")
-                      ? "revealed"
-                      : "active",
-                  );
-                  observer.unobserve(entry.target);
-                }
-              });
-            },
-            {
-              root: null,
-              rootMargin: "0px 0px -80px 0px",
-              threshold: 0.15,
-            },
-          );
-
-          revealTargets.forEach(function (target) {
-            revealObserver.observe(target);
-          });
-        } else {
-          revealTargets.forEach(function (target) {
-            target.classList.add(
-              target.classList.contains("port-card") ? "revealed" : "active",
-            );
-          });
-        }
-
-        /* Scroll Animation for the Hero Header Image */
-        const heroWrapper = document.getElementById("heroImageWrapper");
-        const heroImg = document.getElementById("heroHeaderImg");
-
-        window.addEventListener("scroll", function () {
-          if (window.innerWidth > 768) {
-            let scrollPos = window.scrollY;
-            let progress = Math.min(scrollPos / 150, 1);
-
-            let currentPadding = 40 * (1 - progress);
-            heroWrapper.style.padding = `${currentPadding}px ${currentPadding}px 0 ${currentPadding}px`;
-
-            let currentRadius = 20 * (1 - progress);
-            heroImg.style.borderRadius = `${currentRadius}px`;
-          }
-        });
-      });
-    </script>
-  </body>
 </html>

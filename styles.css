@@ -148,6 +148,7 @@ nav {
 .images {
   width: 100%;
   border-radius: 12px;
+  /* padding: 3pt; */
 }
 
 .images-header {
@@ -742,7 +743,7 @@ ul {
 }
 
 .accordion-item {
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1.5px solid #dddddd;
   transition: all 0.3s ease;
 }
 
@@ -755,10 +756,13 @@ ul {
 }
 
 .accordion-logo-placeholder {
+  /* border-color: #eaeaea; */
+  /* border-style: solid; */
+  /* border-width: 1.5px; */
   width: 60px;
   height: 60px;
-  background: #f5f5f5;
-  border-radius: 12px;
+  /* background: #f5f5f5; */
+  border-radius: 8px;
   margin-right: 24px;
   flex-shrink: 0;
   overflow: hidden;
@@ -776,7 +780,7 @@ ul {
 
 .accordion-title {
   font-size: 1.5rem;
-  font-weight: 500;
+  font-weight: 550;
   color: #1a1a1a;
   display: block;
   margin-bottom: 4px;

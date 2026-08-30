@@ -176,17 +176,22 @@
         border: none;
       }
 
+      .btn-outline-work:focus:not(:focus-visible) {
+        outline: none;
+        box-shadow: none !important;
+      }
+
       .btn-outline-work:nth-child(1) {
         background-color: #07846b;
       }
       .btn-outline-work:nth-child(2) {
-        background-color: #785ef0;
+        background-color: #715ad8;
       }
       .btn-outline-work:nth-child(3) {
-        background-color: #4270ce;
+        background-color: #d63d3f;
       }
       .btn-outline-work:nth-child(4) {
-        background-color: #e68700;
+        background-color: #dd8203;
       }
       .btn-outline-work:nth-child(5) {
         background-color: #ea474a;
@@ -273,7 +278,8 @@
         height: auto;
         display: block;
         border-radius: 20px;
-        transition: border-radius 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        transform-origin: center;
+        transition: border-radius 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
       }
 
       .main-scroll-container {
@@ -372,7 +378,7 @@
     <nav class="navbar navbar-expand-lg sticky-top">
       <div class="container">
         <a class="navbar-brand" href="index.html">
-          <img src="images/Logo2.svg" alt="Josie Logo" height="50" />
+          <img src="images/Logo2.svg" alt="Josie Logo" height="30" />
         </a>
         <button
           class="navbar-toggler collapsed"
@@ -392,7 +398,7 @@
               <a class="nav-link px-3" href="index.html">Work</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link px-3" href="Others.html">Others</a>
+              <a class="nav-link px-3" href="Playground.html">Playground</a>
             </li>
             <li class="nav-item">
               <a class="nav-link px-3" href="About.html">About</a>
@@ -816,26 +822,15 @@
               <div class="d-flex flex-wrap justify-content-center gap-3">
                 <a href="MandaiX.html" class="btn btn-outline-work">Mandai X</a>
                 <a href="GovTech.html" class="btn btn-outline-work"
-                  >GovTech Singapore</a
-                >
-                <a href="Animations.html" class="btn btn-outline-work"
-                  >Motion Graphics</a
-                >
-                <a href="TheBeeCrisis.html" class="btn btn-outline-work"
-                  >The Bee Crisis</a
+                  >GovTech a11y Playground</a
                 >
                 <a
                   href="Enhancing Fei Yang Band.html"
                   class="btn btn-outline-work"
                   >Enhancing Fei Yang Band</a
                 >
-                <a href="misscarry.html" class="btn btn-outline-work"
-                  >miss carry D.I.Y.</a
-                >
-                <a
-                  href="underratedtrashsnackers.html"
-                  class="btn btn-outline-work"
-                  >Underrated Trash Snackers</a
+                <a href="TheBeeCrisis.html" class="btn btn-outline-work"
+                  >The Bee Crisis</a
                 >
               </div>
             </div>
@@ -847,7 +842,7 @@
     <!-- Synced Footer Context Element -->
     <footer class="footer-dark">
       <div class="container">
-        <div class="footer-text">⤷ Let's work together ⋆.˚</div>
+        <div class="footer-text">⤷ Let's create together ⋆.˚</div>
 
         <div class="social-icons">
           <a href="mailto:jochanxt@gmail.com" target="_blank">
@@ -1030,18 +1025,27 @@
         const heroWrapper = document.getElementById("heroImageWrapper");
         const heroImg = document.getElementById("heroHeaderImg");
 
-        window.addEventListener("scroll", function () {
-          if (window.innerWidth > 768) {
-            let scrollPos = window.scrollY;
-            let progress = Math.min(scrollPos / 150, 1);
-
-            let currentPadding = 40 * (1 - progress);
-            heroWrapper.style.padding = `${currentPadding}px ${currentPadding}px 0 ${currentPadding}px`;
-
-            let currentRadius = 20 * (1 - progress);
-            heroImg.style.borderRadius = `${currentRadius}px`;
+        const updateHeroOnScroll = () => {
+          if (window.innerWidth <= 768) {
+            heroWrapper.style.removeProperty("padding");
+            heroImg.style.removeProperty("border-radius");
+            heroImg.style.removeProperty("transform");
+            return;
           }
-        });
+
+          const progress = Math.max(0, Math.min(window.scrollY / 150, 1));
+          const currentSidePadding = 5 * (1 - progress);
+          const currentBottomPadding = 3 * (1 - progress);
+          const currentRadius = 20 * (1 - progress);
+
+          heroWrapper.style.padding = `${currentSidePadding}rem ${currentSidePadding}rem ${currentBottomPadding}rem ${currentSidePadding}rem`;
+          heroImg.style.setProperty("border-radius", progress >= 1 ? "0px" : `${currentRadius}px`, "important");
+          heroImg.style.transform = `scale(${1 + (0.025 * progress)})`;
+        };
+
+        window.addEventListener("scroll", updateHeroOnScroll);
+        window.addEventListener("resize", updateHeroOnScroll);
+        updateHeroOnScroll();
       });
     </script>
   </body>

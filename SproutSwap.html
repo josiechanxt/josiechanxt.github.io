@@ -25,6 +25,7 @@
     />
 
     <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/svg+xml" href="images/Logo1.svg" />
     <style>
       .wf-loading * {
         opacity: 0;
@@ -176,17 +177,22 @@
         border: none;
       }
 
+      .btn-outline-work:focus:not(:focus-visible) {
+        outline: none;
+        box-shadow: none !important;
+      }
+
       .btn-outline-work:nth-child(1) {
         background-color: #07846b;
       }
       .btn-outline-work:nth-child(2) {
-        background-color: #785ef0;
+        background-color: #715ad8;
       }
       .btn-outline-work:nth-child(3) {
-        background-color: #9d7e51;
+        background-color: #d63d3f;
       }
       .btn-outline-work:nth-child(4) {
-        background-color: #e68700;
+        background-color: #dd8203;
       }
       .btn-outline-work:nth-child(5) {
         background-color: #ea474a;
@@ -461,7 +467,8 @@
         height: auto;
         display: block;
         border-radius: 20px;
-        transition: border-radius 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        transform-origin: center;
+        transition: border-radius 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
       }
 
       .main-scroll-container {
@@ -638,7 +645,7 @@
     <nav class="navbar navbar-expand-lg sticky-top">
       <div class="container">
         <a class="navbar-brand" href="index.html">
-          <img src="images/Logo2.svg" alt="Josie Logo" height="50" />
+          <img src="images/Logo2.svg" alt="Josie Logo" height="30" />
         </a>
         <button
           class="navbar-toggler collapsed"
@@ -658,7 +665,7 @@
               <a class="nav-link px-3" href="index.html">Work</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link px-3" href="Others.html">Others</a>
+              <a class="nav-link px-3" href="Playground.html">Playground</a>
             </li>
             <li class="nav-item">
               <a class="nav-link px-3" href="About.html">About</a>
@@ -683,7 +690,7 @@
         <h1 class="hero-green-title">SproutSwap</h1>
         <div class="row justify-content-center pb-2 pt-2 mx-0">
           <div class="tag-container">
-            <span class="tag">UX/UI</span>
+            <span class="tag">UI/UX</span>
             <span class="tag">Design System</span>
             <span class="tag">2026</span>
           </div>
@@ -1386,10 +1393,8 @@
               <div class="d-flex flex-wrap justify-content-center gap-3">
                 <a href="MandaiX.html" class="btn btn-outline-work">Mandai X</a>
                 <a href="GovTech.html" class="btn btn-outline-work">GovTech a11y Playground</a>
-                <a href="SproutSwap.html" class="btn btn-outline-work">SproutSwap</a>
-                <a href="TheBeeCrisis.html" class="btn btn-outline-work">The Bee Crisis</a>
                 <a href="Enhancing Fei Yang Band.html" class="btn btn-outline-work">Enhancing Fei Yang Band</a>
-                <a href="GoKakis.html" class="btn btn-outline-work">GoKakis</a>
+                <a href="TheBeeCrisis.html" class="btn btn-outline-work">The Bee Crisis</a>
               </div>
             </div>
           </div>
@@ -1400,13 +1405,13 @@
     <!-- EXACT SYNCED FOOTER FROM MANDAIX.HTML -->
     <footer class="footer-dark">
       <div class="container">
-        <div class="footer-text">⤷ Let's work together ⋆.˚</div>
+        <div class="footer-text">⤷ Let's create together ⋆.˚</div>
 
         <div class="social-icons">
           <a href="mailto:jochanxt@gmail.com" target="_blank">
             <img src="images/Work/Icon1_Email.svg" alt="Email" />
           </a>
-          <a href="https://linkedin.com/in/josiechan" target="_blank">
+          <a href="https://linkedin.com/in/josiechanxt" target="_blank">
             <img src="images/Work/Icon2_Linkedin.svg" alt="LinkedIn" />
           </a>
           <a href="https://instagram.com/jo.cgraphics" target="_blank">
@@ -1665,18 +1670,27 @@
         const heroWrapper = document.getElementById("heroImageWrapper");
         const heroImg = document.getElementById("heroHeaderImg");
 
-        window.addEventListener("scroll", function () {
-          if (window.innerWidth > 768) {
-            let scrollPos = window.scrollY;
-            let progress = Math.min(scrollPos / 150, 1);
-
-            let currentPadding = 40 * (1 - progress);
-            heroWrapper.style.padding = `${currentPadding}px ${currentPadding}px 0 ${currentPadding}px`;
-
-            let currentRadius = 20 * (1 - progress);
-            heroImg.style.borderRadius = `${currentRadius}px`;
+        const updateHeroOnScroll = () => {
+          if (window.innerWidth <= 768) {
+            heroWrapper.style.removeProperty("padding");
+            heroImg.style.removeProperty("border-radius");
+            heroImg.style.removeProperty("transform");
+            return;
           }
-        });
+
+          const progress = Math.max(0, Math.min(window.scrollY / 150, 1));
+          const currentSidePadding = 5 * (1 - progress);
+          const currentBottomPadding = 3 * (1 - progress);
+          const currentRadius = 20 * (1 - progress);
+
+          heroWrapper.style.padding = `${currentSidePadding}rem ${currentSidePadding}rem ${currentBottomPadding}rem ${currentSidePadding}rem`;
+          heroImg.style.setProperty("border-radius", progress >= 1 ? "0px" : `${currentRadius}px`, "important");
+          heroImg.style.transform = `scale(${1 + (0.025 * progress)})`;
+        };
+
+        window.addEventListener("scroll", updateHeroOnScroll);
+        window.addEventListener("resize", updateHeroOnScroll);
+        updateHeroOnScroll();
       });
     </script>
   </body>
