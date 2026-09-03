@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#007bff" />
+    <title>Josie Chan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Carattere&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <style>
+      :root { --blue: #007bff; }
+      * { box-sizing: border-box; }
+      html, body { height: 100%; margin: 0; }
+      body { display: flex; flex-direction: column; background: var(--blue); overflow: hidden; font-family: "IBM Plex Sans", sans-serif; letter-spacing: -.02rem; }
+
+      /* Identical navbar sizing and behavior to the other site pages. */
+      .navbar { flex: 0 0 auto; padding: .4rem .8rem; background: #fff; border-bottom: 1px solid #eaeaea; }
+      .nav-link { color: #c3c3c3 !important; font-family: "Caveat", cursive; font-weight: 550; font-size: 1.5rem; transition: color .2s ease; }
+      .nav-link:hover, .nav-button-active .nav-link { color: var(--blue) !important; }
+      .navbar-toggler { border: none; padding: 10px 10px; outline: none !important; }
+      .toggler-icon { width: 24px; height: 2px; background-color: var(--blue); display: block; transition: all .3s ease-in-out; position: relative; }
+      .toggler-icon::before, .toggler-icon::after { content: ""; width: 24px; height: 2px; background-color: var(--blue); display: block; transition: all .3s ease-in-out; position: absolute; }
+      .toggler-icon::before { top: -8px; }
+      .toggler-icon::after { bottom: -8px; }
+      .navbar-toggler:not(.collapsed) .toggler-icon { background-color: transparent; }
+      .navbar-toggler:not(.collapsed) .toggler-icon::before { transform: rotate(45deg); top: 0; }
+      .navbar-toggler:not(.collapsed) .toggler-icon::after { transform: rotate(-45deg); bottom: 0; }
+
+      .landing-page {
+        position: relative;
+        flex: 1 1 auto;
+        min-height: 0;
+        overflow: hidden;
+        isolation: isolate;
+        background: var(--blue);
+      }
+
+      .name {
+        position: absolute;
+        z-index: 1;
+        top: 5.25%;
+        left: 50%;
+        width: max-content;
+        margin: 0;
+        transform: translateX(-50%);
+        color: #fff;
+        font-family: "Caveat", cursive;
+        font-size: 22.25vw;
+        font-weight: 600;
+        line-height: .94;
+        letter-spacing: -.04em;
+        white-space: nowrap;
+        user-select: none;
+      }
+
+      .character-button {
+        position: absolute;
+        z-index: 6;
+        top: 34%;
+        left: 50%;
+        width: 34.65vw;
+        height: min(1230px, 150vh);
+        padding: 0;
+        border: 0;
+        background: transparent;
+        transform: translateX(-50%);
+        cursor: pointer;
+      }
+      .character-button img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+        transition: opacity 170ms ease-out;
+        pointer-events: none;
+      }
+      .character-button .character-looking { opacity: 0; }
+      .character-button:hover .character-looking,
+      .character-button:focus-visible .character-looking { opacity: 1; }
+      .character-button:hover .character-default,
+      .character-button:focus-visible .character-default { opacity: 0; }
+      .character-button:focus-visible { outline: 3px solid #fff; outline-offset: 8px; border-radius: 50%; }
+
+      .scribble { position: absolute; z-index: 7; width: auto; height: auto; pointer-events: none; }
+      .scribble-top-right { top: 13%; right: 10.1%; width: 3.24vw; transform: rotate(-14.56deg); }
+      .scribble-bottom-right { top: 18%; right: 6.2%; width: 4.03vw; transform: rotate(13.62deg); }
+      .scribble-top-left { top: 14%; left: 11.5%; width: 3.24vw; transform: scaleY(-1) rotate(-178.94deg); }
+      .scribble-bottom-left { top: 20%; left: 7.4%; width: 4.03vw; transform: scaleY(-1) rotate(179.21deg); }
+      .scribble-left-hand { top: 43%; left: 19%; width: 8.42vw; transform: rotate(165.03deg); }
+
+      .ticker {
+        position: absolute;
+        z-index: 3;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 9.5%;
+        overflow: hidden;
+        background: #fff;
+        color: var(--blue);
+        display: flex;
+        align-items: center;
+      }
+      .ticker-track {
+        display: flex;
+        width: max-content;
+        animation: ticker-scroll 18s linear infinite;
+        will-change: transform;
+      }
+      .ticker-group {
+        flex: none;
+        padding-right: 1.5rem;
+        font-family: "IBM Plex Sans", sans-serif;
+        font-size: 3.97vw;
+        font-stretch: 100%;
+        font-weight: 600;
+        letter-spacing: -.04em;
+        line-height: 1;
+        white-space: nowrap;
+      }
+      @keyframes ticker-scroll { to { transform: translateX(-50%); } }
+      @media (prefers-reduced-motion: reduce) { .ticker-track { animation-play-state: paused; } .character-button img { transition: none; } }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img src="images/Logo2.svg" alt="Josie Logo" height="30" />
+        </a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item nav-button-active active"><a class="nav-link px-3" href="index.html">Work</a></li>
+            <li class="nav-item"><a class="nav-link px-3" href="Playground.html">Playground</a></li>
+            <li class="nav-item"><a class="nav-link px-3" href="About.html">About</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main class="landing-page">
+      <h1 class="name">Josie Chan</h1>
+
+      <img class="scribble scribble-top-right" src="images/Home/scribble-top-right.svg" alt="" />
+      <img class="scribble scribble-bottom-right" src="images/Home/scribble-bottom-right.svg" alt="" />
+      <img class="scribble scribble-top-left" src="images/Home/scribble-top-left.svg" alt="" />
+      <img class="scribble scribble-bottom-left" src="images/Home/scribble-bottom-left.svg" alt="" />
+      <img class="scribble scribble-left-hand" src="images/Home/scribble-left-hand.svg" alt="" />
+
+      <button class="character-button" type="button" aria-label="Say hello to Josie">
+        <img class="character-default" src="images/Home/character-default.svg" alt="An illustration of Josie" />
+        <img class="character-looking" src="images/Home/character-hover.svg" alt="" />
+      </button>
+
+      <section class="ticker" aria-label="Josie's disciplines">
+        <div class="ticker-track">
+          <div class="ticker-group">Creator&nbsp; • &nbsp;Designer&nbsp; • &nbsp;Thinker&nbsp; • &nbsp;Empathy&nbsp; • &nbsp;Illustrator&nbsp; • &nbsp;Motion Graphics.&nbsp; Vibe coder&nbsp; • &nbsp;</div>
+          <div class="ticker-group" aria-hidden="true">Creator&nbsp; • &nbsp;Designer&nbsp; • &nbsp;Thinker&nbsp; • &nbsp;Empathy&nbsp; • &nbsp;Illustrator&nbsp; • &nbsp;Motion Graphics.&nbsp; Vibe coder&nbsp; • &nbsp;</div>
+        </div>
+      </section>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

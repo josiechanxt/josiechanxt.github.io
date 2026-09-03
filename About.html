@@ -80,7 +80,7 @@
 
       /* Navigation */
       .navbar {
-        padding: 0.8rem 0.8rem;
+        padding: 0.4rem 0.8rem;
         background: #ffffff;
         border-bottom: 1px solid #eaeaea;
       }
@@ -144,6 +144,18 @@
         max-width: 450px;
         width: 100%;
         cursor: pointer;
+      }
+
+      @media (min-width: 992px) {
+        /* Scale the artwork independently so its Bootstrap column keeps its size. */
+        .about-image-wrapper {
+          transform: scale(1.08);
+          transform-origin: top center;
+        }
+
+        .hero-copy {
+          margin-top: 40px;
+        }
       }
 
       .about-image-wrapper::before {
@@ -411,7 +423,7 @@
 
       /* --- ENHANCED ACCORDION ANIMATION STYLES --- */
       .experience-section {
-        padding: 50px 0 50px;
+        padding: 20px 0 40px;
       }
 
       .experience-accordion {
@@ -895,7 +907,7 @@
       <!-- Hero Section -->
       <div>
         <div class="container">
-          <div class="row hero-container align-items-center">
+          <div class="row hero-container align-items-start">
             <div
               class="col-lg-5 col-12 text-center text-lg-left mb-5 mb-lg-0 reveal"
             >
@@ -908,32 +920,42 @@
               </div>
             </div>
 
-            <div class="col-lg-7 col-12 px-lg-5 reveal reveal-delay-1">
+            <div
+              class="col-lg-7 col-12 px-lg-5 reveal reveal-delay-1 hero-copy"
+            >
               <h1 class="hero-title pb-4">
                 Hi, I'm <span class="intro-name-script">Josie</span>
               </h1>
               <h3
                 class="lead mb-4"
                 style="
+                  font-size: 1.15rem;
                   font-weight: 400;
                   color: #555;
-                  line-height: 1.3;
+                  line-height: 1.4;
                   letter-spacing: -0.03rem;
                 "
               >
                 A <b style="font-weight: 600">Product Designer</b> dedicated to
-                making people’s daily lives easier, one thoughtful experience at
-                a time. From art direction and motion graphics to data-driven
-                design, I love
+                enhancing people's daily life through
+                <b style="font-weight: 600">research-grounded solutions</b> rooted in
+                <b style="font-weight: 600">user empathy</b>. My journey began
+                in advertising, where I honed a sharp eye for
+                <b style="font-weight: 600">art direction</b> and
+                <b style="font-weight: 600">storytelling</b>. Eventually, I
+                expanded into
+                <b style="font-weight: 600">UI/UX and service design</b>,
+                bridging the gap between digital interfaces and real-world
+                touchpoints. By combining my multidisciplinary background with
                 <b style="font-weight: 600"
-                  >blending creativity with problem-solving</b
-                >
-                to build meaningful products that
-                <b style="font-weight: 600">delight users.</b>
+                  >creative and strategic problem-solving</b
+                >, I build meaningful products for diverse users while
+                <b style="font-weight: 600">thoughtfully integrating AI</b>
+                to streamline my workflows. ☺
               </h3>
               <h3
                 style="
-                  font-size: 1.2rem;
+                  font-size: 1.15rem;
                   font-weight: 400;
                   line-height: 1.3;
                   color: #007bff;
@@ -1255,7 +1277,8 @@
                 <div class="skill-category">
                   <span class="accordion-title">Tech</span>
                   <span class="accordion-company"
-                    >HTML, CSS, AI Prompt Engineering, ChatGPT, Codex, MCP, Google Stitch, Figma Make</span
+                    >HTML, CSS, AI Prompt Engineering, ChatGPT, Codex, MCP,
+                    Google Stitch, Figma Make</span
                   >
                 </div>
               </div>
