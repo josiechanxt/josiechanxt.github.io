@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <script src="navigation-cursor.js" defer></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Josie Chan | Product Designer</title>
@@ -42,17 +43,21 @@
         transition:
           transform 0.2s cubic-bezier(0.25, 1, 0.5, 1),
           background-color 0.2s ease;
-        mix-blend-mode: multiply;
-        opacity: 0.9;
+        mix-blend-mode: normal;
+        opacity: 0.85;
       }
 
       .custom-cursor.active {
         transform: translate(-50%, -50%) scale(1);
       }
 
-      /* Standard cursor override when hovering image wrapper */
-      .img-wrapper,
-      .img-wrapper img {
+      .custom-cursor.active.pressed {
+        transform: translate(-50%, -50%) scale(1.2);
+      }
+
+      /* Each project uses its border colour for the custom cursor. */
+      .port-card a,
+      .port-card a * {
         cursor: none !important;
       }
 
@@ -464,10 +469,10 @@
         </div>
       </div>
 
-      <div class="container pb-5">
+      <div class="container pb-5" data-custom-circle-cursor>
         <div class="row pt-4">
           <div class="col-md-6 port-card pr-md-4">
-            <a href="MandaiX.html">
+            <a href="MandaiX.html" data-cursor-color="#07846b">
               <div class="img-wrapper" style="border-color: #07846b">
                 <img
                   src="images/Mandai X/Mandai X_Thumbnail.jpg"
@@ -494,7 +499,7 @@
           </div>
 
           <div class="col-md-6 port-card pl-md-4">
-            <a href="GovTech.html">
+            <a href="GovTech.html" data-cursor-color="#715ad8">
               <div class="img-wrapper" style="border-color: #715ad8">
                 <img src="images/Govtech_Thumbnail.jpg" alt="GovTech" />
               </div>
@@ -520,7 +525,7 @@
 
         <div class="row pt-3">
           <div class="col-md-6 port-card pr-md-4">
-            <a href="Enhancing Fei Yang Band.html">
+            <a href="Enhancing Fei Yang Band.html" data-cursor-color="#d63d3f">
               <div class="img-wrapper" style="border-color: #d63d3f">
                 <img
                   src="images/Enhancing Feel Young/Feel Young_Thumbnail_White.jpg"
@@ -547,7 +552,7 @@
           </div>
 
           <div class="col-md-6 port-card pl-md-4">
-            <a href="TheBeeCrisis.html">
+            <a href="TheBeeCrisis.html" data-cursor-color="#dd8203">
               <div class="img-wrapper" style="border-color: #dd8203">
                 <img
                   src="images/The Bee Crisis/TheBeeCrisis_Thumbnail.jpg"
@@ -635,7 +640,7 @@
         </div>
 
         <div class="copyright-bar">
-          <p>Copyright © 2026 Josie Chan</p>
+          <p>© 2026 Designed and built by Josie Chan</p>
         </div>
       </div>
     </footer>
@@ -719,22 +724,36 @@
 
         // Interactive Dynamic Circle Cursor Implementation
         var cursor = document.getElementById("customCursor");
-        var imgWrappers = document.querySelectorAll(".img-wrapper");
+        var projectLinks = document.querySelectorAll(".port-card a");
 
         document.addEventListener("mousemove", function (e) {
           cursor.style.left = e.clientX + "px";
           cursor.style.top = e.clientY + "px";
         });
 
-        imgWrappers.forEach(function (wrapper) {
-          wrapper.addEventListener("mouseenter", function () {
-            var borderColor = window.getComputedStyle(wrapper).borderColor;
-            cursor.style.backgroundColor = borderColor;
+        document.addEventListener("mousedown", function () {
+          if (cursor.classList.contains("active")) {
+            cursor.classList.add("pressed");
+          }
+        });
+
+        document.addEventListener("mouseup", function () {
+          cursor.classList.remove("pressed");
+        });
+
+        window.addEventListener("blur", function () {
+          cursor.classList.remove("pressed");
+        });
+
+        projectLinks.forEach(function (projectLink) {
+          projectLink.addEventListener("mouseenter", function () {
+            cursor.style.backgroundColor = projectLink.dataset.cursorColor;
             cursor.classList.add("active");
           });
 
-          wrapper.addEventListener("mouseleave", function () {
+          projectLink.addEventListener("mouseleave", function () {
             cursor.classList.remove("active");
+            cursor.classList.remove("pressed");
           });
         });
       });

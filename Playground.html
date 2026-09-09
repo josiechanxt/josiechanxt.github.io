@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <script src="navigation-cursor.js" defer></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Josie Chan | UI/UX Designer</title>
@@ -42,11 +43,15 @@
         transform: translate(-50%, -50%) scale(0);
         transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
         mix-blend-mode: multiply;
-        opacity: 0.9;
+        opacity: 0.85;
       }
 
       .custom-cursor.active {
         transform: translate(-50%, -50%) scale(1);
+      }
+
+      .custom-cursor.active.pressed {
+        transform: translate(-50%, -50%) scale(1.2);
       }
 
       /* Standard cursor override when hovering image wrapper */
@@ -449,7 +454,7 @@
         </div>
 
         <div class="copyright-bar">
-          <p>Copyright © 2026 Josie Chan</p>
+          <p>© 2026 Designed and built by Josie Chan</p>
         </div>
       </div>
     </footer>
@@ -534,6 +539,20 @@
           cursor.style.top = e.clientY + "px";
         });
 
+        document.addEventListener("mousedown", function () {
+          if (cursor.classList.contains("active")) {
+            cursor.classList.add("pressed");
+          }
+        });
+
+        document.addEventListener("mouseup", function () {
+          cursor.classList.remove("pressed");
+        });
+
+        window.addEventListener("blur", function () {
+          cursor.classList.remove("pressed");
+        });
+
         imgWrappers.forEach(function (wrapper) {
           wrapper.addEventListener("mouseenter", function () {
             cursor.classList.add("active");
@@ -541,6 +560,7 @@
 
           wrapper.addEventListener("mouseleave", function () {
             cursor.classList.remove("active");
+            cursor.classList.remove("pressed");
           });
         });
       });

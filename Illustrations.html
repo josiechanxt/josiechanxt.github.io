@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  <script src="navigation-cursor.js" defer></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Josie Chan | Traditional Drawings</title>
@@ -225,6 +226,37 @@
       flex: 1 0 auto;
       display: flex;
       flex-direction: column;
+    }
+
+    /* Scroll-to-top FAB — matches the main project pages. */
+    .fab-container {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1000;
+    }
+
+    .fab {
+      width: 60px;
+      height: 60px;
+      background-color: lightgray;
+      opacity: 0.5;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2em;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .fab:hover {
+      opacity: 0.8;
+    }
+
+    .fab-hidden {
+      display: none;
     }
 
     /* Footer Design Frame */
@@ -566,6 +598,14 @@
     </div>
   </div>
 
+  <div id="fab-button" class="fab-container fab-hidden">
+    <div class="fab">
+      <svg xmlns="http://www.w3.org/2000/svg" height="42px" viewBox="0 -960 960 960" width="42px" fill="gray">
+        <path d="M480-545.33 287.33-352.67 240-400l240-240 240 240-47.33 47.33L480-545.33Z" />
+      </svg>
+    </div>
+  </div>
+
   <footer class="footer-dark">
     <div class="container">
       <div class="footer-text">⤷ Let's create together ⋆.˚</div>
@@ -583,7 +623,7 @@
       </div>
 
       <div class="copyright-bar">
-        <p>Copyright © 2026 Josie Chan</p>
+        <p>© 2026 Designed and built by Josie Chan</p>
       </div>
     </div>
   </footer>
@@ -606,6 +646,23 @@
       }
 
       revealPage();
+
+      var fabButton = document.getElementById("fab-button");
+      var SCROLL_THRESHOLD = 300;
+
+      function toggleFabVisibility() {
+        if (window.scrollY > SCROLL_THRESHOLD) {
+          fabButton.classList.remove("fab-hidden");
+        } else {
+          fabButton.classList.add("fab-hidden");
+        }
+      }
+
+      window.addEventListener("scroll", toggleFabVisibility);
+
+      fabButton.addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
 
       window.addEventListener("pageshow", function (event) {
         if (event.persisted) {
