@@ -648,6 +648,36 @@
       .activity-title {
         font-size: 1.25rem;
       }
+
+      .case-study-nav {
+        top: auto;
+        right: 16px;
+        bottom: max(16px, env(safe-area-inset-bottom));
+        left: 16px;
+        flex-direction: row;
+        justify-content: center;
+        gap: 18px;
+        padding: 10px 14px;
+        border: 1px solid rgba(7, 132, 107, 0.25);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.92);
+        box-shadow: 0 6px 20px rgba(7, 132, 107, 0.14);
+        backdrop-filter: blur(10px);
+        transform: translateY(12px);
+      }
+
+      .case-study-nav.is-visible {
+        transform: translateY(0);
+      }
+
+      .case-study-nav__item {
+        color: #07846b;
+        padding: 0;
+      }
+
+      .case-study-nav__item[aria-pressed="true"] {
+        transform: none;
+      }
     }
 
     /* Scroll animations structure sync */
@@ -694,6 +724,213 @@
       text-transform: uppercase;
       margin-bottom: 0.75rem;
       font-family: 'IBM Plex Sans', sans-serif;
+    }
+
+    /* Case-study navigator: it enters once the hero has passed and stays out
+       of the footer, leaving the closing area unobstructed. */
+    .case-study-nav {
+      position: fixed;
+      top: 50%;
+      left: 0;
+      z-index: 1020;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 10px 12px 10px 10px;
+      /* border: 1px solid rgba(7, 132, 107, 0.18); */
+      border-left: 0;
+      border-radius: 0;
+      background: #ffffff;
+      box-shadow: 5px 7px 20px rgba(7, 132, 107, 0.10);
+      transform: translateY(-50%) translateX(-100%);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+    }
+
+    .case-study-nav.is-visible {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(-50%) translateX(0);
+    }
+
+    /* When collapsed, only the full-height arrow tab remains on-screen. */
+    .case-study-nav.is-visible.is-collapsed {
+      transform: translateY(-50%) translateX(-100%);
+    }
+
+    .case-study-nav__toggle {
+      position: absolute;
+      top: 0;
+      right: -32px;
+      bottom: 0;
+      display: grid;
+      width: 32px;
+      height: auto;
+      padding: 0;
+      place-items: center;
+      border: 0;
+      border-radius: 0 16px 16px 0;
+      background: #ffffff;
+      box-shadow: 6px 4px 14px rgba(7, 132, 107, 0.10);
+      color: #07846b;
+      cursor: pointer;
+      outline: none !important;
+      box-shadow: 6px 4px 14px rgba(7, 132, 107, 0.10) !important;
+    }
+
+    .case-study-nav__toggle:focus,
+    .case-study-nav__toggle:focus-visible {
+      outline: none !important;
+      box-shadow: 6px 4px 14px rgba(7, 132, 107, 0.10) !important;
+    }
+
+    .case-study-nav__toggle::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-top: 2px solid currentColor;
+      border-right: 2px solid currentColor;
+      transform: rotate(-135deg);
+      transition: transform 0.2s ease;
+    }
+
+    .case-study-nav.is-collapsed .case-study-nav__toggle::before {
+      transform: rotate(45deg);
+    }
+
+    .case-study-nav__toggle:hover {
+      background: #effaf7;
+    }
+
+    .case-study-nav__toggle:active {
+      background: #d7eee8;
+    }
+
+    .case-study-nav__item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: max-content;
+      padding: 6px 3px;
+      border: 0;
+      background: transparent;
+      color: #07846b;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      line-height: 1;
+      text-transform: uppercase;
+      cursor: pointer;
+      opacity: 0.62;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .case-study-nav__marker {
+      width: 11px;
+      height: 11px;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      transition: background-color 0.2s ease;
+    }
+
+    .case-study-nav__item:hover,
+    .case-study-nav__item:focus-visible,
+    .case-study-nav__item[aria-pressed="true"] {
+      opacity: 1;
+      outline: none;
+      transform: translateX(3px);
+    }
+
+    .case-study-nav__item[aria-pressed="true"] .case-study-nav__marker {
+      background: currentColor;
+    }
+
+    /* Match the portfolio's compact rail before the desktop-side position
+       would crowd medium-width screens. */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .case-study-nav {
+        top: auto;
+        right: 16px;
+        bottom: 16px;
+        left: 16px;
+        flex-direction: row;
+        justify-content: center;
+        gap: 18px;
+        padding: 10px 14px;
+        border: 1px solid rgba(7, 132, 107, 0.25);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.92);
+        box-shadow: 0 6px 20px rgba(7, 132, 107, 0.14);
+        backdrop-filter: blur(10px);
+        transform: translateY(12px);
+      }
+
+      .case-study-nav__item {
+        color: #07846b;
+        padding: 0;
+      }
+
+      .case-study-nav.is-visible {
+        transform: translateY(0);
+      }
+
+      .case-study-nav.is-visible.is-collapsed {
+        transform: translateY(0);
+      }
+
+      .case-study-nav__toggle {
+        display: none;
+      }
+
+      .case-study-nav__item[aria-pressed="true"] {
+        transform: none;
+      }
+    }
+
+    /* This comes after the desktop tag rules so the fixed element never
+       inherits the desktop top/left sizing on tablets or phones. */
+    @media (max-width: 768px) {
+      .case-study-nav {
+        top: auto;
+        right: 16px;
+        bottom: max(16px, env(safe-area-inset-bottom));
+        left: 16px;
+        height: auto;
+        flex-direction: row;
+        justify-content: center;
+        gap: 18px;
+        padding: 10px 14px;
+        border: 1px solid rgba(7, 132, 107, 0.25);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.94);
+        box-shadow: 0 6px 20px rgba(7, 132, 107, 0.14);
+        transform: translateY(12px);
+      }
+
+      .case-study-nav.is-visible {
+        transform: translateY(0);
+      }
+
+      .case-study-nav.is-visible.is-collapsed {
+        transform: translateY(0);
+      }
+
+      .case-study-nav__toggle {
+        display: none;
+      }
+
+      .case-study-nav__item {
+        color: #07846b;
+        padding: 0;
+      }
+
+      .case-study-nav__item[aria-pressed="true"] {
+        transform: none;
+      }
     }
 
     .case-study-title {
@@ -1234,6 +1471,7 @@
   <title>Mandai X</title>
   <style>
     :root {
+      --selection-color: #07846b;
       --scrollbar-color: #07846b;
       --scrollbar-hover: #05614e;
     }
@@ -1268,7 +1506,6 @@
             <a class="nav-link px-3" href="index.html">Work</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link px-3" href="Playground.html">Playground</a>
           </li>
           <li class="nav-item">
             <a class="nav-link px-3" href="About.html">About</a>
@@ -1279,7 +1516,7 @@
   </nav>
 
   <!-- Main Scroll Container Structure containing the Inline Header Image and Sections -->
-  <div class="main-scroll-container">
+  <div class="main-scroll-container" id="mandaiContent">
 
     <div class="hero-image-wrapper" id="heroImageWrapper">
       <img src="images/Mandai X/MandaiX_Header4.png" id="heroHeaderImg" alt="Mandai X Header Image" />
@@ -1300,8 +1537,7 @@
       </div>
     </div>
 
-
-    <section class="container-fluid py-5" style="background-color: #ffffff;">
+    <section class="container-fluid py-5" id="mainContentStart" style="background-color: #ffffff;">
       <div class="container pt-4 pb-4">
         <div class="row">
           <div class="col-12 text-left">
@@ -1421,7 +1657,7 @@
         <div class="container pt-4 pb-4">
           <div class="row justify-content-center pt-5 pb-0">
             <div class="col-md-12 col-12 text-left">
-              <div class="case-study-label">[ CASE STUDY 01 ]</div>
+              <div class="case-study-label" id="case-study-01">[ CASE STUDY 01 ]</div>
 
               <h2 class="case-study-title">Creating the “Polar Melt Patrol” Mission</h2>
               <div class="row justify-content-center">
@@ -1434,7 +1670,7 @@
                 </div>
               </div>
               <h3 class="main-content4">
-                This mission was done for our mall partner, Paya Lebar Quarter (PLQ) Parkside. As the sole designer, I
+                This mission was done for our mall partner, <b style="font-weight: 550;">Paya Lebar Quarter (PLQ) Parkside</b>. As the sole designer, I
                 did the end-to-end design process of crafting the narrative, designing phygital
                 activities, copywriting and crafting screens to make every step feel intuitive.
               </h3>
@@ -1981,7 +2217,7 @@
         <div class="container pt-4 pb-4">
           <div class="row justify-content-center pt-5 pb-0">
             <div class="col-md-12 col-12 text-left">
-              <div class="case-study-label">[ CASE STUDY 02 ]</div>
+              <div class="case-study-label" id="case-study-02">[ CASE STUDY 02 ]</div>
               <h2 class="case-study-title">Validating the core reward loop</h2>
               <h3 class="main-content4">
                 I led the validation and iterations of a new rewards-system MVP for the Ranger Buddies web app. With
@@ -2410,6 +2646,18 @@
 
   </div>
 
+  <nav class="case-study-nav" aria-label="Case study navigation">
+    <button class="case-study-nav__toggle" type="button" aria-expanded="true" aria-label="Collapse case study navigation"></button>
+    <button class="case-study-nav__item" type="button" data-section-target="case-study-01" aria-pressed="true">
+      <span class="case-study-nav__marker" aria-hidden="true"></span>
+      <span>[ 01 Creating a Mission ]</span>
+    </button>
+    <button class="case-study-nav__item" type="button" data-section-target="case-study-02" aria-pressed="false">
+      <span class="case-study-nav__marker" aria-hidden="true"></span>
+      <span>[ 02 Validating core reward loop]</span>
+    </button>
+  </nav>
+
   <!-- EXACT SYNCED FOOTER OUTSIDE CONTAINER STRUCTURE -->
   <footer class="footer-dark">
     <div class="container">
@@ -2720,6 +2968,70 @@
       window.addEventListener("scroll", updateHeroOnScroll);
       window.addEventListener("resize", updateHeroOnScroll);
       updateHeroOnScroll();
+
+      // Keep the green case-study rail between the hero and the footer only.
+      var caseStudyNav = document.querySelector(".case-study-nav");
+      var caseStudyNavToggle = document.querySelector(".case-study-nav__toggle");
+      var caseStudyItems = document.querySelectorAll(".case-study-nav__item");
+      var caseStudyStart = document.getElementById("mainContentStart");
+      var mandaiContent = document.getElementById("mandaiContent");
+      var caseStudySections = document.querySelectorAll(".case-study-label[id]");
+
+      function setActiveCaseStudy(sectionId) {
+        caseStudyItems.forEach(function (item) {
+          item.setAttribute("aria-pressed", String(item.dataset.sectionTarget === sectionId));
+        });
+      }
+
+      function setCaseStudyNavCollapsed(isCollapsed) {
+        if (!caseStudyNav || !caseStudyNavToggle) return;
+        caseStudyNav.classList.toggle("is-collapsed", isCollapsed);
+        caseStudyNavToggle.setAttribute("aria-expanded", String(!isCollapsed));
+        caseStudyNavToggle.setAttribute(
+          "aria-label",
+          isCollapsed ? "Expand case study navigation" : "Collapse case study navigation"
+        );
+      }
+
+      function updateCaseStudyNav() {
+        if (!caseStudyNav || !caseStudyStart || !mandaiContent) return;
+
+        var heroHasPassed = caseStudyStart.getBoundingClientRect().top <= 58;
+        var footerHasNotStarted = mandaiContent.getBoundingClientRect().bottom > window.innerHeight;
+        caseStudyNav.classList.toggle("is-visible", heroHasPassed && footerHasNotStarted);
+
+        if (heroHasPassed && footerHasNotStarted) {
+          var activeSection = caseStudySections[0];
+          caseStudySections.forEach(function (section) {
+            if (section.getBoundingClientRect().top <= window.innerHeight * 0.5) {
+              activeSection = section;
+            }
+          });
+          if (activeSection) setActiveCaseStudy(activeSection.id);
+        }
+      }
+
+      caseStudyItems.forEach(function (item) {
+        item.addEventListener("click", function () {
+          var section = document.getElementById(item.dataset.sectionTarget);
+          if (section) {
+            section.scrollIntoView({ behavior: "smooth", block: "start" });
+            setActiveCaseStudy(section.id);
+            item.blur();
+          }
+        });
+      });
+
+      if (caseStudyNavToggle) {
+        caseStudyNavToggle.addEventListener("click", function () {
+          setCaseStudyNavCollapsed(!caseStudyNav.classList.contains("is-collapsed"));
+          caseStudyNavToggle.blur();
+        });
+      }
+
+      window.addEventListener("scroll", updateCaseStudyNav, { passive: true });
+      window.addEventListener("resize", updateCaseStudyNav);
+      updateCaseStudyNav();
     });
   </script>
 </body>

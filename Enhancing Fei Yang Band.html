@@ -507,8 +507,10 @@
     <title>Enhancing Feel Young (飞扬) Band</title>
     <style>
       :root {
+        --selection-color: #d63d3f;
         --scrollbar-color: #ea474a;
         --scrollbar-hover: #bb383b;
+        --case-study-nav-color: #d63d3f;
       }
     </style>
     <style>
@@ -548,7 +550,6 @@
               <a class="nav-link px-3" href="index.html">Work</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link px-3" href="Playground.html">Playground</a>
             </li>
             <li class="nav-item">
               <a class="nav-link px-3" href="About.html">About</a>
@@ -807,7 +808,7 @@
 
             <div class="row justify-content-center pt-5 pb-0">
               <div class="col-md-12 col-12 text-left">
-                <div class="case-study-label">
+                <div class="case-study-label" id="case-study-01">
                   [ OPPORTUNITY FINDING & RESEARCH ]
                 </div>
                 <h2 class="case-study-title">
@@ -1015,7 +1016,7 @@
           <div class="container pt-4 pb-4">
             <div class="row justify-content-center">
               <div class="col-md-12 col-12 text-left">
-                <div class="case-study-label">[ OBSERVATIONS & INSIGHTS ]</div>
+                <div class="case-study-label" id="case-study-02">[ OBSERVATIONS & INSIGHTS ]</div>
 
                 <h3
                   class="main-content6 text-left"
@@ -1206,7 +1207,7 @@
 
             <div class="row justify-content-center pt-1">
               <div class="col-md-12 col-12 text-left">
-                <div class="case-study-label pt-5">
+                <div class="case-study-label pt-5" id="case-study-03">
                   [ PARTICIPATORY / CO-DESIGN ]
                 </div>
                 <h3
@@ -1494,6 +1495,12 @@
       </div>
     </div>
 
+    <nav class="case-study-nav" aria-label="Case study navigation">
+      <button class="case-study-nav__item" type="button" data-section-target="case-study-01" aria-pressed="true"><span class="case-study-nav__marker" aria-hidden="true"></span><span>[ Research ]</span></button>
+      <button class="case-study-nav__item" type="button" data-section-target="case-study-02" aria-pressed="false"><span class="case-study-nav__marker" aria-hidden="true"></span><span>[ Insights ]</span></button>
+      <button class="case-study-nav__item" type="button" data-section-target="case-study-03" aria-pressed="false"><span class="case-study-nav__marker" aria-hidden="true"></span><span>[ Co-design ]</span></button>
+    </nav>
+
     <!-- Synced Footer Context -->
     <footer class="footer-dark">
       <div class="container">
@@ -1662,6 +1669,39 @@
         window.addEventListener("scroll", updateHeroOnScroll);
         window.addEventListener("resize", updateHeroOnScroll);
         updateHeroOnScroll();
+      });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var nav = document.querySelector(".case-study-nav");
+        var items = document.querySelectorAll(".case-study-nav__item");
+        var sections = document.querySelectorAll(".case-study-label[id^='case-study-']");
+        var hero = document.querySelector(".hero-purple-section");
+        var footer = document.querySelector(".footer-dark");
+        if (!nav || !items.length || !sections.length) return;
+
+        function setActive(id) {
+          items.forEach(function (item) { item.setAttribute("aria-pressed", String(item.dataset.sectionTarget === id)); });
+        }
+        function updateNav() {
+          var hasReachedCaseStudies = !hero || hero.getBoundingClientRect().bottom <= 58;
+          var isBeforeFooter = !footer || footer.getBoundingClientRect().top > window.innerHeight;
+          nav.classList.toggle("is-visible", hasReachedCaseStudies && isBeforeFooter);
+          if (!hasReachedCaseStudies || !isBeforeFooter) return;
+          var closest = Array.prototype.reduce.call(sections, function (best, section) {
+            return Math.abs(section.getBoundingClientRect().top - window.innerHeight * 0.42) < Math.abs(best.getBoundingClientRect().top - window.innerHeight * 0.42) ? section : best;
+          });
+          setActive(closest.id);
+        }
+        items.forEach(function (item) {
+          item.addEventListener("click", function () {
+            var section = document.getElementById(item.dataset.sectionTarget);
+            if (section) section.scrollIntoView({ behavior: "smooth", block: "start" });
+          });
+        });
+        window.addEventListener("scroll", updateNav, { passive: true });
+        window.addEventListener("resize", updateNav);
+        updateNav();
       });
     </script>
   </body>

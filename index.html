@@ -29,6 +29,16 @@
     <link rel="icon" type="image/svg+xml" href="images/Logo1.svg" />
 
     <style>
+      ::selection {
+        color: #ffffff;
+        background-color: #007bff;
+      }
+
+      ::-moz-selection {
+        color: #ffffff;
+        background-color: #007bff;
+      }
+
       /* Custom Circle Cursor Elements */
       .custom-cursor {
         position: fixed;
@@ -177,7 +187,7 @@
 
       /* Hero Section */
       .hero-section {
-        padding: 6rem 0 2.3rem;
+        padding: 6rem 0 2.5rem;
       }
 
       .hero-title {
@@ -195,6 +205,7 @@
         max-width: 620px;
         line-height: 1.4;
         letter-spacing: -0.03rem;
+        margin-bottom: 0;
       }
 
       /* Marquee Banner */
@@ -255,7 +266,7 @@
         border-radius: 16px;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
         background-color: #f4f4f4;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
         aspect-ratio: 4/3;
         border-width: 3px;
         border-style: solid;
@@ -270,6 +281,37 @@
 
       .port-card:hover .img-wrapper img {
         transform: scale(1.1);
+      }
+
+      /* Compact links to the creative-work collections. */
+      .creative-work-card .img-wrapper {
+        border: 0;
+        border-radius: 12px;
+        box-shadow: none;
+        background-color: transparent;
+      }
+
+      /* Creative collections are grouped in a distinct, soft-gray panel. */
+      .creative-work-section {
+        margin-top: 1rem;
+        padding: 2rem;
+        /* background: #ededed;
+        border: 1px solid #dedede; */
+        border-radius: 16px;
+      }
+
+      .creative-work-section .port-card {
+        margin-bottom: 0;
+      }
+
+      @media (max-width: 767.98px) {
+        .creative-work-section {
+          padding: 1.5rem;
+        }
+
+        .creative-work-section .port-card:not(:last-child) {
+          margin-bottom: 1.5rem;
+        }
       }
 
       .project-title {
@@ -394,6 +436,34 @@
       .copyright-bar p {
         margin-bottom: 0;
       }
+
+      .borderbottom {
+        flex: 1;
+        min-width: 16rem;
+        height: 2px;
+        border: 0;
+        background: radial-gradient(circle, #c6c6c6 1px, transparent 1.5px)
+          repeat-x;
+        background-size: 8.4px 2px;
+      }
+
+      /* Align the section label with the divider. */
+      .divider-spacing {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .selected-works-label {
+        display: inline-flex;
+        align-items: center;
+        margin: 0;
+        color: #a3a3a3;
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
     </style>
   </head>
 
@@ -424,7 +494,6 @@
               <a class="nav-link px-3" href="index.html">Work</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link px-3" href="Playground.html">Playground</a>
             </li>
             <li class="nav-item">
               <a class="nav-link px-3" href="About.html">About</a>
@@ -464,13 +533,18 @@
             A Product Designer blending
             <b style="font-weight: 600">user-centered research</b> with
             <b style="font-weight: 600">visual design</b> to create high-impact
-            digital experiences.
+            digital experiences. ☆
           </h3>
         </div>
       </div>
 
-      <div class="container pb-5" data-custom-circle-cursor>
-        <div class="row pt-4">
+      <div class="container pb-5">
+        <!-- <div class="pt-0 pb-4 divider-spacing" id="featured-works">
+          <p class="selected-works-label">☆ Featured Works</p>
+          <div class="borderbottom"></div>
+        </div> -->
+
+        <div class="row pt-4" data-custom-circle-cursor>
           <div class="col-md-6 port-card pr-md-4">
             <a href="MandaiX.html" data-cursor-color="#07846b">
               <div class="img-wrapper" style="border-color: #07846b">
@@ -492,8 +566,8 @@
               </div>
               <p class="project-desc">
                 Led the end-to-end design of a "phygital" mission from concept
-                to launch. Validated app features through prototyping, on-site
-                testing, rapid iterations, and executive presentations.
+                to launch and validated app features through rapid prototyping
+                and on-site testing.
               </p>
             </a>
           </div>
@@ -517,13 +591,13 @@
               <p class="project-desc">
                 Designed visual identity and custom animations for a PWD
                 accessibility site. Leveraged user research interviews to refine
-                the site's experience for digital service professionals.
+                the site's experience.
               </p>
             </a>
           </div>
         </div>
 
-        <div class="row pt-3">
+        <div class="row pt-0" data-custom-circle-cursor>
           <div class="col-md-6 port-card pr-md-4">
             <a href="Enhancing Fei Yang Band.html" data-cursor-color="#d63d3f">
               <div class="img-wrapper" style="border-color: #d63d3f">
@@ -573,6 +647,67 @@
                 Created visual narratives on bee population decline through
                 graphic storytelling, featured during Singapore Design Week
                 2025.
+              </p>
+            </a>
+          </div>
+        </div>
+
+        <!-- <div class="pt-4 pb-4 divider-spacing" id="featured-works">
+          <p class="selected-works-label">☆ Playground</p>
+          <div class="borderbottom"></div>
+        </div> -->
+
+        <div class="row pt-3 pb-4 text-center text-md-left">
+          <div class="col-12">
+            <h3 class="hero-subtitle mx-auto mx-md-0 pt-2">
+              Check out my other
+              <b style="font-weight: 600">design ventures.</b> ☺
+            </h3>
+          </div>
+        </div>
+
+        <div class="row pt-3" data-custom-circle-cursor>
+          <div class="col-md-4 port-card creative-work-card">
+            <a href="AI Experiments.html" data-cursor-color="#007bff">
+              <div class="img-wrapper">
+                <img
+                  src="images/Others/ai_Thumbnail.svg"
+                  alt="AI experiments illustration"
+                />
+              </div>
+              <h3 class="project-title">AI Experiments</h3>
+              <p class="project-desc">
+                Exploring GenAI tools and prompt engineering.
+              </p>
+            </a>
+          </div>
+
+          <div class="col-md-4 port-card creative-work-card">
+            <a href="Motion Graphics.html" data-cursor-color="#007bff">
+              <div class="img-wrapper">
+                <img
+                  src="images/Others/MotionGraphics_Thumbnail.svg"
+                  alt="Motion graphics illustration"
+                />
+              </div>
+              <h3 class="project-title">Motion Graphics</h3>
+              <p class="project-desc">
+                Adding movement, story, and micro-interactions.
+              </p>
+            </a>
+          </div>
+
+          <div class="col-md-4 port-card creative-work-card">
+            <a href="Illustrations.html" data-cursor-color="#007bff">
+              <div class="img-wrapper">
+                <img
+                  src="images/Others/Illustration_Thumbnail.svg"
+                  alt="Illustrations palette and paintbrush"
+                />
+              </div>
+              <h3 class="project-title">Illustrations</h3>
+              <p class="project-desc">
+                My hand-drawn graphics and visuals.
               </p>
             </a>
           </div>

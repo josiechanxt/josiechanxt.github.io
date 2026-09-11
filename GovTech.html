@@ -932,8 +932,10 @@
     <title>GovTech</title>
     <style>
       :root {
+        --selection-color: #715ad8;
         --scrollbar-color: #715ad8;
         --scrollbar-hover: #5a45b8;
+        --case-study-nav-color: #715ad8;
       }
     </style>
     <style>
@@ -941,6 +943,131 @@
       h3.main-content6 + h3.main-content4 {
         margin-top: 1.25rem;
         padding-top: 1rem !important;
+      }
+
+      /* Kept in this page so the rail is not affected by its legacy section
+         nesting or a cached shared stylesheet. */
+      .govtech-case-study-nav {
+        position: fixed !important;
+        top: 50% !important;
+        left: 0 !important;
+        z-index: 1000000 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 6px !important;
+        padding: 10px 12px 10px 10px !important;
+        border-left: 0 !important;
+        border-radius: 0 !important;
+        background: #fff !important;
+        box-shadow: 5px 7px 20px rgba(113, 90, 216, 0.1) !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        transform: translateY(-50%) translateX(-100%) !important;
+      }
+
+      .govtech-case-study-nav.is-visible {
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+        transform: translateY(-50%) translateX(0) !important;
+      }
+
+      /* When collapsed, only the full-height arrow tab remains on-screen. */
+      .govtech-case-study-nav.is-visible.is-collapsed {
+        transform: translateY(-50%) translateX(-100%) !important;
+      }
+
+      .govtech-case-study-nav .case-study-nav__toggle {
+        position: absolute !important;
+        top: 0 !important;
+        right: -32px !important;
+        bottom: 0 !important;
+        display: grid !important;
+        width: 32px !important;
+        height: auto !important;
+        padding: 0 !important;
+        place-items: center !important;
+        border: 0 !important;
+        border-radius: 0 16px 16px 0 !important;
+        background: #fff !important;
+        box-shadow: 6px 4px 14px rgba(113, 90, 216, 0.1) !important;
+        color: #715ad8 !important;
+        cursor: pointer !important;
+        outline: none !important;
+      }
+
+      .govtech-case-study-nav .case-study-nav__toggle::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-top: 2px solid currentColor;
+        border-right: 2px solid currentColor;
+        transform: rotate(-135deg);
+        transition: transform 0.2s ease;
+      }
+
+      .govtech-case-study-nav.is-collapsed .case-study-nav__toggle::before {
+        transform: rotate(45deg);
+      }
+
+      .govtech-case-study-nav .case-study-nav__toggle:focus,
+      .govtech-case-study-nav .case-study-nav__toggle:focus-visible {
+        outline: none !important;
+        box-shadow: 6px 4px 14px rgba(113, 90, 216, 0.1) !important;
+      }
+
+      .govtech-case-study-nav .case-study-nav__toggle:hover {
+        background: #f2effd !important;
+      }
+
+      .govtech-case-study-nav .case-study-nav__toggle:active {
+        background: #ddd6f5 !important;
+      }
+
+      .govtech-case-study-nav .case-study-nav__item {
+        color: #715ad8 !important;
+      }
+
+      .govtech-case-study-nav .case-study-nav__item[aria-pressed="true"] {
+        opacity: 1 !important;
+        transform: translateX(3px) !important;
+      }
+
+      .govtech-case-study-nav .case-study-nav__item[aria-pressed="true"] .case-study-nav__marker {
+        background: currentColor !important;
+      }
+
+      @media (max-width: 1024px) {
+        .govtech-case-study-nav {
+          top: auto !important;
+          right: 16px !important;
+          bottom: max(16px, env(safe-area-inset-bottom)) !important;
+          left: 16px !important;
+          flex-direction: row !important;
+          justify-content: center !important;
+          gap: 18px !important;
+          padding: 10px 14px !important;
+          border: 1px solid rgba(113, 90, 216, 0.25) !important;
+          border-radius: 999px !important;
+          transform: translateY(12px) !important;
+        }
+
+        .govtech-case-study-nav.is-visible {
+          transform: translateY(0) !important;
+        }
+
+        .govtech-case-study-nav.is-visible.is-collapsed {
+          transform: translateY(0) !important;
+        }
+
+        .govtech-case-study-nav .case-study-nav__toggle {
+          display: none !important;
+        }
+
+        .govtech-case-study-nav .case-study-nav__item {
+          padding: 0 !important;
+        }
       }
     </style>
   </head>
@@ -973,7 +1100,6 @@
               <a class="nav-link px-3" href="index.html">Work</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link px-3" href="Playground.html">Playground</a>
             </li>
             <li class="nav-item">
               <a class="nav-link px-3" href="About.html">About</a>
@@ -981,6 +1107,13 @@
           </ul>
         </div>
       </div>
+    </nav>
+
+    <nav class="case-study-nav govtech-case-study-nav" aria-label="Case study navigation">
+      <button class="case-study-nav__toggle" type="button" aria-expanded="true" aria-label="Collapse case study navigation"></button>
+      <button class="case-study-nav__item" type="button" data-section-target="case-study-01" aria-pressed="true"><span class="case-study-nav__marker" aria-hidden="true"></span><span>[ 01 Setting Art Direction ]</span></button>
+      <button class="case-study-nav__item" type="button" data-section-target="case-study-02" aria-pressed="false"><span class="case-study-nav__marker" aria-hidden="true"></span><span>[ 02 Building Digital Screens]</span></button>
+      <button class="case-study-nav__item" type="button" data-section-target="case-study-03" aria-pressed="false"><span class="case-study-nav__marker" aria-hidden="true"></span><span>[ 03 Usability Test & Synthesis ]</span></button>
     </nav>
 
     <!-- Main Scroll Container Structure containing the Inline Header Image and Sections -->
@@ -1014,7 +1147,7 @@
         </div>
       </div>
 
-      <section class="container-fluid py-5" style="background-color: #ffffff">
+      <section id="mainContentStart" class="container-fluid py-5" style="background-color: #ffffff">
         <div class="container pt-4 pb-4">
           <div class="row">
             <div class="col-12 text-left">
@@ -1356,7 +1489,7 @@
           <div class="container pt-4 pb-4">
             <div class="row justify-content-center pt-5 pb-0">
               <div class="col-md-12 col-12 text-left">
-                <div class="case-study-label">[ CASE STUDY 01 ]</div>
+                <div class="case-study-label" id="case-study-01">[ CASE STUDY 01 ]</div>
                 <h2 class="case-study-title">
                   Setting art direction with illustrations
                 </h2>
@@ -1948,7 +2081,7 @@
           <div class="container pt-4 pb-4">
             <div class="row justify-content-center pt-5 pb-0">
               <div class="col-md-12 col-12 text-left">
-                <div class="case-study-label">[ CASE STUDY 02 ]</div>
+                <div class="case-study-label" id="case-study-02">[ CASE STUDY 02 ]</div>
                 <h2 class="case-study-title">
                   Building digital screens for accessibility checklist articles
                 </h2>
@@ -2090,7 +2223,7 @@
               <div class="container pt-4 pb-4">
                 <div class="row justify-content-center pt-5 pb-0">
                   <div class="col-md-12 col-12 text-left">
-                    <div class="case-study-label">[CASE STUDY 03 ]</div>
+                    <div class="case-study-label" id="case-study-03">[CASE STUDY 03 ]</div>
                     <h2 class="case-study-title">
                       Conducting usability testing and synthesis
                     </h2>
@@ -2894,5 +3027,72 @@
           </div>
         </section>
       </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Mirrors the case-study navigation behaviour in MandaiX.html.
+        var caseStudyNav = document.querySelector(".govtech-case-study-nav");
+        var caseStudyNavToggle = document.querySelector(".govtech-case-study-nav .case-study-nav__toggle");
+        var caseStudyItems = document.querySelectorAll(".govtech-case-study-nav .case-study-nav__item");
+        var caseStudyStart = document.getElementById("mainContentStart");
+        var govTechContent = document.querySelector(".main-scroll-container");
+        var caseStudySections = document.querySelectorAll(".case-study-label[id^='case-study-']");
+
+        if (!caseStudyNav || !caseStudyItems.length || !caseStudyStart || !govTechContent || !caseStudySections.length) return;
+
+        function setActiveCaseStudy(sectionId) {
+          caseStudyItems.forEach(function (item) {
+            item.setAttribute("aria-pressed", String(item.dataset.sectionTarget === sectionId));
+          });
+        }
+
+        function setCaseStudyNavCollapsed(isCollapsed) {
+          if (!caseStudyNav || !caseStudyNavToggle) return;
+          caseStudyNav.classList.toggle("is-collapsed", isCollapsed);
+          caseStudyNavToggle.setAttribute("aria-expanded", String(!isCollapsed));
+          caseStudyNavToggle.setAttribute(
+            "aria-label",
+            isCollapsed ? "Expand case study navigation" : "Collapse case study navigation"
+          );
+        }
+
+        function updateCaseStudyNav() {
+          var heroHasPassed = caseStudyStart.getBoundingClientRect().top <= 58;
+          var footerHasNotStarted = govTechContent.getBoundingClientRect().bottom > window.innerHeight;
+          caseStudyNav.classList.toggle("is-visible", heroHasPassed && footerHasNotStarted);
+
+          if (heroHasPassed && footerHasNotStarted) {
+            var activeSection = caseStudySections[0];
+            caseStudySections.forEach(function (section) {
+              if (section.getBoundingClientRect().top <= window.innerHeight * 0.5) {
+                activeSection = section;
+              }
+            });
+            setActiveCaseStudy(activeSection.id);
+          }
+        }
+
+        caseStudyItems.forEach(function (item) {
+          item.addEventListener("click", function () {
+            var section = document.getElementById(item.dataset.sectionTarget);
+            if (section) {
+              section.scrollIntoView({ behavior: "smooth", block: "start" });
+              setActiveCaseStudy(section.id);
+              item.blur();
+            }
+          });
+        });
+
+        if (caseStudyNavToggle) {
+          caseStudyNavToggle.addEventListener("click", function () {
+            setCaseStudyNavCollapsed(!caseStudyNav.classList.contains("is-collapsed"));
+            caseStudyNavToggle.blur();
+          });
+        }
+
+        window.addEventListener("scroll", updateCaseStudyNav, { passive: true });
+        window.addEventListener("resize", updateCaseStudyNav);
+        updateCaseStudyNav();
+      });
+    </script>
   </body>
 </html>

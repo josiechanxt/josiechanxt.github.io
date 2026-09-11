@@ -12,6 +12,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Carattere&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
     <style>
+      ::selection {
+        color: #ffffff;
+        background-color: #007bff;
+      }
+
+      ::-moz-selection {
+        color: #ffffff;
+        background-color: #007bff;
+      }
+
       :root { --blue: #007bff; }
       * { box-sizing: border-box; }
       html, body { height: 100%; margin: 0; }
@@ -139,7 +149,6 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item nav-button-active active"><a class="nav-link px-3" href="index.html">Work</a></li>
-            <li class="nav-item"><a class="nav-link px-3" href="Playground.html">Playground</a></li>
             <li class="nav-item"><a class="nav-link px-3" href="About.html">About</a></li>
           </ul>
         </div>

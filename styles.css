@@ -3,6 +3,17 @@
   src: url(Font/Inter-VariableFont_opsz,wght.ttf);
 }
 
+/* Keep text selection consistent across the site. */
+::selection {
+  color: #ffffff;
+  background-color: var(--selection-color, #007bff);
+}
+
+::-moz-selection {
+  color: #ffffff;
+  background-color: var(--selection-color, #007bff);
+}
+
 @font-face {
   font-family: Delius;
   src: url(Font/Delius-Regular.ttf);
@@ -30,6 +41,105 @@ html {
 
 nav {
   z-index: 999999;
+}
+
+/* Case-study rail shared by project pages. Page-specific accent colours are
+   supplied through --case-study-nav-color. */
+.case-study-nav {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  z-index: 1020;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 13px 18px 13px 12px;
+  border-radius: 0 16px 16px 0;
+  background: #ffffff;
+  box-shadow: 5px 7px 20px color-mix(in srgb, var(--case-study-nav-color, #07846b) 10%, transparent);
+  transform: translateY(-50%) translateX(-100%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+}
+
+.case-study-nav.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(-50%) translateX(0);
+}
+
+.case-study-nav__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: max-content;
+  padding: 6px 3px;
+  border: 0;
+  background: transparent;
+  color: var(--case-study-nav-color, #07846b);
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  text-transform: uppercase;
+  cursor: pointer;
+  opacity: 0.62;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.case-study-nav__marker {
+  width: 11px;
+  height: 11px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.case-study-nav__item:hover,
+.case-study-nav__item:focus-visible,
+.case-study-nav__item[aria-pressed="true"] {
+  opacity: 1;
+  outline: none;
+  transform: translateX(3px);
+}
+
+.case-study-nav__item[aria-pressed="true"] .case-study-nav__marker {
+  background: currentColor;
+}
+
+@media (max-width: 1024px) {
+  .case-study-nav {
+    top: auto;
+    right: 16px;
+    bottom: max(16px, env(safe-area-inset-bottom));
+    left: 16px;
+    flex-direction: row;
+    justify-content: center;
+    gap: 18px;
+    padding: 10px 14px;
+    border: 1px solid color-mix(in srgb, var(--case-study-nav-color, #07846b) 25%, transparent);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 6px 20px color-mix(in srgb, var(--case-study-nav-color, #07846b) 14%, transparent);
+    backdrop-filter: blur(10px);
+    transform: translateY(12px);
+  }
+
+  .case-study-nav.is-visible {
+    transform: translateY(0);
+  }
+
+  .case-study-nav__item {
+    padding: 0;
+  }
+
+  .case-study-nav__item[aria-pressed="true"] {
+    transform: none;
+  }
 }
 
 #faderhome {
