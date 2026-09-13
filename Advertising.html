@@ -4,7 +4,7 @@
     <script src="navigation-cursor.js" defer></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Josie Chan | Motion Graphics</title>
+    <title>Josie Chan | Advertising</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -193,6 +193,48 @@
         letter-spacing: -0.02rem;
       }
 
+      .text-link {
+        color: #1a1a1a;
+        font-style: italic;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        transition: color 0.2s ease;
+      }
+
+      .text-link:hover,
+      .text-link:focus-visible {
+        color: #007bff;
+        text-decoration: underline;
+      }
+
+      /* Blue challenge callout */
+      .challenge-box-blue {
+        border: 1px solid #d8e9ff;
+        border-left: 5px solid #007bff;
+        border-radius: 8px;
+        padding: 1.5rem 2rem;
+        background-color: #eef6ff;
+        margin-bottom: 2rem;
+      }
+
+      .challenge-label {
+        margin-bottom: 0.5rem;
+        color: #007bff;
+        font-family: "IBM Plex Sans", sans-serif;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.05rem;
+        text-transform: uppercase;
+      }
+
+      .challenge-text {
+        color: #2b2b2b;
+        font-family: "IBM Plex Sans", sans-serif;
+        font-size: 1rem;
+        font-weight: 350;
+        line-height: 1.2;
+      }
+
       /* Image & Video Styling */
       .images {
         border-radius: 12px;
@@ -212,9 +254,6 @@
         border-bottom: 1px solid #e0e0e0;
         margin-top: 1.5rem;
         margin-bottom: 1.5rem;
-        /* Keep divider edges aligned with the padded project content. */
-        /* margin-left: 15px;
-        margin-right: 15px; */
       }
 
       /* Page Transition Overlay */
@@ -362,6 +401,21 @@
         .main-content3 {
           font-size: 1.4rem;
         }
+
+        .challenge-box-blue {
+          padding: 1.25rem 1.5rem;
+        }
+
+        .challenge-text {
+          font-size: 1.05rem;
+        }
+      }
+    </style>
+    <style>
+      /* Consistent separation between section headings and their body copy. */
+      h3.main-content6 + h3.main-content4 {
+        margin-top: 1.25rem;
+        padding-top: 1rem !important;
       }
     </style>
   </head>
@@ -391,8 +445,7 @@
             <li class="nav-item">
               <a class="nav-link px-3" href="index.html">Work</a>
             </li>
-            <li class="nav-item nav-button-active active">
-            </li>
+            <li class="nav-item nav-button-active active"></li>
             <li class="nav-item">
               <a class="nav-link px-3" href="About.html">About</a>
             </li>
@@ -407,11 +460,11 @@
         <div class="container">
           <div class="row justify-content-center pt-md-5 pb-5">
             <div class="col-md-12 col-11 text-center pt-3">
-              <h1 class="projecttitle pb-3">Motion Graphics</h1>
+              <h1 class="projecttitle pb-3">Advertising</h1>
 
               <p class="hero-subtitle mx-auto">
-                Conceptualised and executed motion graphics for various projects
-                (UI/UX, advertising). 🖋️
+                Blending creative strategy with art direction into compelling
+                brand campaigns. 📢
               </p>
             </div>
           </div>
@@ -448,24 +501,16 @@
                       "
                     >
                       <div style="text-align: center; min-width: 64px">
-                        <img src="images/Logo/After effects.png" alt="Adobe After Effects logo" style="width: 36px; height: 36px; object-fit: contain; display: block; margin: 0 auto 0.35rem" />
-                        <span>After Effects</span>
+                        <img src="images/Logo/Photoshop.png" alt="Adobe Photoshop logo" style="width: 36px; height: 36px; object-fit: contain; display: block; margin: 0 auto 0.35rem" />
+                        <span>Photoshop</span>
                       </div>
                       <div style="text-align: center; min-width: 64px">
                         <img src="images/Logo/Illustrator.png" alt="Adobe Illustrator logo" style="width: 36px; height: 36px; object-fit: contain; display: block; margin: 0 auto 0.35rem" />
                         <span>Illustrator</span>
                       </div>
                       <div style="text-align: center; min-width: 64px">
-                        <img src="images/Logo/Photoshop.png" alt="Adobe Photoshop logo" style="width: 36px; height: 36px; object-fit: contain; display: block; margin: 0 auto 0.35rem" />
-                        <span>Photoshop</span>
-                      </div>
-                      <div style="text-align: center; min-width: 64px">
-                        <img src="images/Logo/Procreate.png" alt="Procreate logo" style="width: 36px; height: 36px; object-fit: contain; display: block; margin: 0 auto 0.35rem" />
-                        <span>Procreate</span>
-                      </div>
-                      <div style="text-align: center; min-width: 64px">
-                        <img src="images/Logo/Lottiefile.png" alt="LottieFiles logo" style="width: 36px; height: 36px; object-fit: contain; display: block; margin: 0 auto 0.35rem" />
-                        <span>LottieFiles</span>
+                        <img src="images/Logo/After effects.png" alt="Adobe After Effects logo" style="width: 36px; height: 36px; object-fit: contain; display: block; margin: 0 auto 0.35rem" />
+                        <span>After Effects</span>
                       </div>
                     </div>
                   </div>
@@ -478,266 +523,225 @@
           </div>
         </div>
 
-        <!-- Project 1: GovTech -->
-        <div class="container">
-          <div class="row justify-content-center pt-0 pb-0">
-            <div class="col-md-12 col-12">
-              <h3 class="main-content3">GovTech Search Bar microinteraction</h3>
-              <h4 class="subheader">Industry Project • 2025</h4>
-            </div>
-          </div>
+        <div class="container-fluid px-0">
+          <div class="px-0" style="background-color: #ffffff">
+            <div class="container py-3 pt-0 pb-4">
+              <div class="row justify-content-center pt-0 pb-0">
+                <div class="col-md-12 col-12 text-left">
+                  <!-- <div class="subheader">[ Project 1 ]</div> -->
 
-          <div class="row justify-content-center pb-3 align-items-start">
-            <div class="col-md-7 col-12">
-              <h3 class="main-content4">
-                At GovTech, I
-                <b style="font-weight: 550"
-                  >hand-drew and animated a responsive custom
-                  micro-interaction</b
-                >
-                for an internal staff directory. To ensure optimal performance,
-                I designed the assets in Procreate and Illustrator, animated
-                them in After Effects, and exported them as a scalable Lottie
-                JSON file via Bodymovin.
+                  <h2 class="case-study-title">Underrated Trash Snackers</h2>
+                  <h4 class="subheader">Project 1 • 2021</h4>
+                  <div class="row justify-content-center">
+                    <div class="col-md-12 col-12 pt-0 pb-2 text-left">
+                      <!-- <h3 class="main-content6 text-left"
+                      style="color: #007bff; font-weight: 550; font-size: 2rem; padding-top: 1.5rem; padding-bottom: 0.5rem; margin-bottom: 0;">
+                      xxx
+                    </h3> -->
+                    </div>
+                  </div>
+                  <h3 class="main-content4">
+                    The Underrated Trash Snackers is a passion project campaign
+                    to make food waste reduction fun and educational for all
+                    ages. I envisioned a cute, sustainable art direction, using
+                    paper textures to break the perception that worms are
+                    disgusting. All assets and the case video were created by
+                    me.
+                    <br /><br />
+                    <b style="font-weight: 550"
+                      >🏆 This project won 4 Silvers, 2 Bronzes & 1 Finalist at
+                      the Crowbar Awards 2021.</b
+                    >
+                  </h3>
 
-                <br /><br />
-                <b style="font-weight: 550; color: #007bff">Hover:</b> The
-                character turns to face the user, creating an inviting "hello"
-                moment.<br /><br />
-                <b style="font-weight: 550; color: #007bff">Unhover:</b> She
-                spins back to her original position.<br /><br />
-                <b style="font-weight: 550; color: #007bff">Typing:</b> She
-                looks down at the search bar, as the user types.<br /><br />
-                <b style="font-weight: 550; color: #007bff">Idle:</b> She looks
-                back up, ready for the next interaction. <br /><br />
-                This project has reached over
-                <strong style="color: #007bff"
-                  ><span class="counter" data-target="4000" data-suffix="+"
-                    >0</span
-                  ></strong
-                >
-                <b style="font-weight: 550">employees</b>, teaching me how
-                thoughtful, "quirky" details can humanise a digital interface
-                and delight users at scale.
-              </h3>
-            </div>
-            <div
-              class="col-md-5 col-12 text-center mt-4 mt-md-0"
-              id="statsSection"
-            >
-              <img
-                class="images img-fluid"
-                src="images/Animations/GIF/Govmirrorport.gif"
-                alt="GovTech Animation GIF"
-              />
-            </div>
-          </div>
+                  <div class="challenge-box-blue">
+                    <div class="challenge-label">THE Narrative 📖</div>
+                    <div class="challenge-text">
+                      With food waste making up 11% of Singapore's total waste
+                      (NEA), many want to help but lack guidance. The campaign
+                      introduces the adorable Squiggles family to lead
+                      households through vermicomposting, using worms to recycle
+                      food scraps, proving that anyone can easily turn everyday
+                      leftovers into valuable resources (e.g fertiliser for
+                      plants)
+                    </div>
+                  </div>
 
-          <!-- Divider Line -->
-          <div class="row justify-content-center">
-            <div class="col-md-12 col-12 p-1 borderbottom"></div>
-          </div>
-        </div>
-
-        <!-- Project 3: Gokakis -->
-        <div class="container">
-          <div class="row justify-content-center pt-3 pb-0">
-            <div class="col-md-12 col-12">
-              <h3 class="main-content3">Gokakis Games Interface Animation</h3>
-              <h4 class="subheader">Collaboration Project • 2025</h4>
-            </div>
-          </div>
-
-          <div class="row justify-content-center pb-2">
-            <div class="col-md-12 col-12">
-              <h3 class="main-content4">
-                Gokakis is a concept interactive projector used in
-                rehabilitation centres, designed for elderly users to enjoy a
-                fun physiotherapy experience during their waiting times. I
-                designed the assets and animated the interface elements for the
-                various games inspired by Singaporean childhood activities.
-              </h3>
-            </div>
-          </div>
-
-          <div class="row justify-content-center pb-4 pt-0">
-            <div class="col-md-12 col-12 text-center">
-              <img
-                class="images img-fluid w-100"
-                src="images/GoKakis/8.gif"
-                alt="worm"
-                style="display: block"
-              />
-            </div>
-          </div>
-
-          <div class="row justify-content-center pb-3 pt-0">
-            <div class="col-md-6 col-12 text-center">
-              <img
-                class="images img-fluid w-100"
-                src="images/GoKakis/9.gif"
-                alt="worm"
-                style="display: block"
-              />
-            </div>
-            <div class="col-md-6 col-12 text-center">
-              <img
-                class="images img-fluid w-100"
-                src="images/GoKakis/10.gif"
-                alt="worm"
-                style="display: block"
-              />
-            </div>
-          </div>
-
-          <!-- Divider Line -->
-          <div class="row justify-content-center">
-            <div class="col-md-12 col-12 p-1 borderbottom"></div>
-          </div>
-        </div>
-
-        <!-- Project 2: Singlife -->
-        <div class="container">
-          <div class="row justify-content-center pt-3 pb-0">
-            <div class="col-md-12 col-12">
-              <h3 class="main-content3">Singlife Logo Animation</h3>
-              <h4 class="subheader">Industry Project • 2022</h4>
-            </div>
-          </div>
-
-          <div class="row justify-content-center pb-3 align-items-start">
-            <div class="col-md-7 col-12">
-              <h3 class="main-content4">
-                I animated the closing logo sequence for a series of
-                Singlife brand videos. I focused on creating a smooth, fluid
-                motion of the thumbprint morphing into the Singlife logo,
-                providing a professional finish for their assets.
-              </h3>
-            </div>
-            <div
-              class="col-md-5 col-12 text-center mt-4 mt-md-0"
-              id="statsSection"
-            >
-              <img
-                class="images img-fluid"
-                src="images/Animations/GIF/Singlife animation.gif"
-                alt="Singlife animation"
-              />
-            </div>
-          </div>
-
-          <!-- Divider Line -->
-          <div class="row justify-content-center">
-            <div class="col-md-12 col-12 p-1 borderbottom"></div>
-          </div>
-        </div>
-
-        <!-- Project 3: Maybank -->
-        <!-- <div class="container">
-          <div class="row justify-content-center pt-3 pb-0">
-            <div class="col-md-12 col-12">
-              <h3 class="main-content3">Maybank Anti-Scam TVC</h3>
-              <h4 class="subheader">Industry Project • 2022</h4>
-            </div>
-          </div>
-
-          <div class="row justify-content-center pb-2">
-            <div class="col-md-12 col-12">
-              <h3 class="main-content4">
-                I laid out the storyboard and animated a 30-second video for
-                Maybank to educate their customers on how to avoid scams. Since
-                it was information-heavy, I focused on pacing the animation such
-                that it was easily digestible.
-              </h3>
-            </div>
-          </div>
-
-          <div class="row justify-content-center mb-5">
-            <div class="col-md-12 col-12" style="aspect-ratio: 16/9">
-              <iframe
-                class="images"
-                width="100%"
-                height="100%"
-                src="https://www.youtube.com/embed/dJuwrkRL3aI?si=3dyfDMwVixsQUcI2"
-                title="YouTube video player"
-                frameborder="0"
-                allow="
-                  accelerometer;
-                  autoplay;
-                  clipboard-write;
-                  encrypted-media;
-                  gyroscope;
-                  picture-in-picture;
-                  web-share;
-                "
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-              ></iframe>
-            </div>
-          </div>
-
-      
-          <div class="row justify-content-center">
-            <div class="col-md-12 col-12 p-1 borderbottom"></div>
-          </div>
-        </div> -->
-
-        <!-- Project 4: Social Media Posts -->
-        <div class="container">
-          <div class="row justify-content-center pt-3 pb-0">
-            <div class="col-md-12 col-12">
-              <h3 class="main-content3">Social Media Posts</h3>
-              <h4 class="subheader">Industry Project • 2022</h4>
-            </div>
-          </div>
-
-          <div class="row justify-content-center pb-4">
-            <div class="col-md-12 col-12">
-              <h3 class="main-content4">
-                Animated high-energy social content for global brands like Red
-                Bull under tight deadlines (normally done in 30m–1.5h). I turned
-                layers in static Photoshop and Illustrator files into punchy,
-                10-second animations designed for fast pacing and clear copy
-                legibility for higher viewer engagement on social media.
-              </h3>
-            </div>
-          </div>
-
-          <div class="row justify-content-center mb-3">
-            <div class="col-md-2 col-4 text-center pb-3">
-              <img
-                class="img-fluid"
-                src="images/Animations/RedBullEnergyDrinklogo.svg"
-                alt="Red Bull Logo"
-              />
-            </div>
-          </div>
-
-          <div class="row justify-content-center mb-5">
-            <div class="col-md-12 col-12">
-              <div class="row">
-                <div class="col-md-4 col-6 pb-3 text-center">
-                  <img
-                    class="images w-100"
-                    src="images/Animations/GIF/Red Bull_Tetris social post.gif"
-                    alt="Red Bull Tetris"
-                  />
+                  <!-- <div class="challenge-box-dark">
+                  <div class="challenge-label">THE CHALLENGE 🏁</div>
+                  <div class="challenge-text">
+                    "How might we turn a static interface into a polished, interactive prototype quickly?"
+                    "How might we turn a static interface into a polished, interactive prototype quickly?"
+                  </div>
+                </div> -->
                 </div>
-                <div class="col-md-4 col-6 pb-3 text-center">
+              </div>
+
+              <div class="row justify-content-center pb-1 pt-0">
+                <div class="col-md-12 col-12 p-2 text-center">
                   <img
-                    class="images w-100"
-                    src="images/Animations/GIF/Redbull_bashthrough.gif"
-                    alt="Red Bull Bash Through"
-                  />
-                </div>
-                <div class="col-md-4 col-6 pb-3 text-center">
-                  <img
-                    class="images w-100"
-                    src="images/Animations/GIF/Redbull_hari Raya.gif"
-                    alt="Red Bull Hari Raya"
+                    class="images img-fluid"
+                    src="images/Advertising/Underrated Trash Snackers.jpg"
+                    alt="worm"
                   />
                 </div>
               </div>
+
+              <div class="row justify-content-center pb-1 pt-2">
+                <div class="col-md-12 col-12 p-2 text-center">
+                  <div class="embed-responsive embed-responsive-16by9">
+                    <iframe
+                      class="embed-responsive-item"
+                      src="https://www.youtube.com/embed/AvWuJZHOjo0?si=vw94mAyvz_ep9Tro"
+                      title="Underrated Trash Snackers campaign video"
+                      allow="
+                        accelerometer;
+                        autoplay;
+                        clipboard-write;
+                        encrypted-media;
+                        gyroscope;
+                        picture-in-picture;
+                        web-share;
+                      "
+                      allowfullscreen
+                      style="border-radius: 12px"
+                    ></iframe>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row justify-content-center pt-3">
+                <div class="col-md-12 col-12 p-1 borderbottom"></div>
+              </div>
+
+              <!-- miss carry -->
+
+              <div class="row justify-content-center pt-3 pb-0">
+                <div class="col-md-12 col-12 text-left">
+                  <!-- <div class="subheader">[ Project 1 ]</div> -->
+
+                  <h2 class="case-study-title">miss carry</h2>
+                  <h4 class="subheader">Project 2 • 2024</h4>
+                  <div class="row justify-content-center">
+                    <div class="col-md-12 col-12 pt-0 pb-2 text-left">
+                      <!-- <h3 class="main-content6 text-left"
+                      style="color: #007bff; font-weight: 550; font-size: 2rem; padding-top: 1.5rem; padding-bottom: 0.5rem; margin-bottom: 0;">
+                      xxx
+                    </h3> -->
+                    </div>
+                  </div>
+                  <h3 class="main-content4">
+                    During my internship at The Secret Little Agency (TSLA), I
+                    worked with a copywriter intern to tackle a "Mother Brief",
+                    where we created a campaign concept to raise awareness of
+                    ongoing attacks on women’s freedom, for which I designed all
+                    visual assets.
+                  </h3>
+
+                  <div class="challenge-box-blue">
+                    <div class="challenge-label">THE Narrative 📖</div>
+                    <div class="challenge-text">
+                      Following the U.S. Supreme Court’s overturning of abortion
+                      rights, access to safe procedures has drastically
+                      diminished. Our campaign uses biting satire to spark a
+                      deeper conversation on reproductive rights, leaning into
+                      the grim irony of "D.I.Y." healthcare to expose the
+                      dangerous reality women face when denied essential medical
+                      care and left to take matters into their own hands.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row justify-content-center pb-0 pt-0">
+                <div class="col-md-12 col-12 p-2 text-center">
+                  <img
+                    class="images img-fluid"
+                    src="images/Advertising/misscarry.jpg"
+                    alt="worm"
+                  />
+                </div>
+              </div>
+
+              <div class="row justify-content-center pt-3">
+                <div class="col-md-12 col-12 p-1 borderbottom"></div>
+              </div>
+
+              <!-- NHB -->
+
+              <div class="row justify-content-center pt-3 pb-0">
+                <div class="col-md-12 col-12 text-left">
+                  <!-- <div class="subheader">[ Project 1 ]</div> -->
+
+                  <h2 class="case-study-title">
+                    National Heritage Board IG Posts
+                  </h2>
+                  <h4 class="subheader">Project 3 • 2024</h4>
+                  <div class="row justify-content-center">
+                    <div class="col-md-12 col-12 pt-0 pb-2 text-left">
+                      <!-- <h3 class="main-content6 text-left"
+                      style="color: #007bff; font-weight: 550; font-size: 2rem; padding-top: 1.5rem; padding-bottom: 0.5rem; margin-bottom: 0;">
+                      xxx
+                    </h3> -->
+                    </div>
+                  </div>
+                  <h3 class="main-content4">
+                    Designed engaging Instagram collage posts for the National
+                    Heritage Board, educating Singapore’s diverse heritage in a
+                    fun, visual way. I collaborated with a copywriter to
+                    conceptualise the posts, using images sourced from the
+                    <a class="text-link" href="https://www.roots.gov.sg/" target="_blank" rel="noopener noreferrer">Roots.gov.sg</a>
+                    website for visual storytelling.
+                  </h3>
+                </div>
+              </div>
+
+              <div class="row justify-content-center pb-0 pt-0">
+                <div class="col-md-3 col-12 p-2 text-center">
+                  <img
+                    class="images img-fluid"
+                    src="images/Advertising/NHB.gif"
+                    alt="worm"
+                  />
+                </div>
+                <div class="col-md-3 col-12 p-2 text-center">
+                  <img
+                    class="images img-fluid"
+                    src="images/Advertising/NHB3.gif"
+                    alt="worm"
+                  />
+                </div>
+                <div class="col-md-3 col-12 p-2 text-center">
+                  <img
+                    class="images img-fluid"
+                    src="images/Advertising/NHB2.gif"
+                    alt="worm"
+                  />
+                </div>
+                <div class="col-md-3 col-12 p-2 text-center">
+                  <img
+                    class="images img-fluid"
+                    src="images/Advertising/NHB4.gif"
+                    alt="worm"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="fab-button" class="fab-container">
+            <div class="fab">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="42px"
+                viewBox="0 -960 960 960"
+                width="42px"
+                fill="gray"
+              >
+                <path
+                  d="M480-545.33 287.33-352.67 240-400l240-240 240 240-47.33 47.33L480-545.33Z"
+                />
+              </svg>
             </div>
           </div>
         </div>

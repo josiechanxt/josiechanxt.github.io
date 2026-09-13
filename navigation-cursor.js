@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ".navbar-brand", "a[href]", "button", "[role='button']",
     "input[type='button']", "input[type='submit']", "input[type='reset']",
     "input[type='checkbox']", "input[type='radio']", "select", "summary",
-    ".slider-arrow", ".dot", ".fab", ".accordion-header", ".hover-float",
+    ".slider-arrow", ".dot", ".fab", ".accordion-header",
     "[data-custom-circle-cursor]"
   ].join(",");
   var navbarSelector = ".navbar .navbar-brand, .navbar .nav-link, .navbar .navbar-toggler";

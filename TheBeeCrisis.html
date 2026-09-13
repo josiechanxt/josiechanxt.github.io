@@ -3,6 +3,7 @@
   <head>
     <script src="navigation-cursor.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Josie Chan | The Bee Crisis</title>
 
     <link
       rel="stylesheet"
@@ -751,8 +752,7 @@
             <li class="nav-item nav-button-active active">
               <a class="nav-link px-3" href="index.html">Work</a>
             </li>
-            <li class="nav-item">
-            </li>
+            <li class="nav-item"></li>
             <li class="nav-item">
               <a class="nav-link px-3" href="About.html">About</a>
             </li>
@@ -939,7 +939,9 @@
         <div class="container pt-4 pb-4">
           <div class="row justify-content-center">
             <div class="col-md-12 col-12 text-left">
-              <div class="case-study-label" id="case-study-01">[ EXHIBITION ]</div>
+              <div class="case-study-label" id="case-study-01">
+                [ EXHIBITION ]
+              </div>
               <h2 class="case-study-title">
                 Exhibited at Singapore Design Week 2025
               </h2>
@@ -998,7 +1000,9 @@
           <div class="container pt-4 pb-4">
             <div class="row justify-content-center pt-5 pb-0">
               <div class="col-md-12 col-12 text-left">
-                <div class="case-study-label" id="case-study-02">[ Storytelling ]</div>
+                <div class="case-study-label" id="case-study-02">
+                  [ Storytelling ]
+                </div>
                 <h2 class="case-study-title">A sequential visual narrative</h2>
                 <h3 class="text-left main-content4 pb-1 pt-3">
                   I've chosen to focus on the bee crisis, highlighting the
@@ -1160,7 +1164,9 @@
           <div class="container pt-5 pb-4">
             <div class="row justify-content-center">
               <div class="col-md-12 col-12 text-left">
-                <div class="case-study-label pt-4" id="case-study-03">[ Final Outcome ]</div>
+                <div class="case-study-label pt-4" id="case-study-03">
+                  [ Final Outcome ]
+                </div>
                 <h2 class="case-study-title">Final Poster Set</h2>
                 <h3 class="text-left main-content4 pb-1 pt-3">
                   A <b style="font-weight: 550">SEQUENTIAL</b> visual narrative
@@ -1217,7 +1223,9 @@
           <div class="container pt-5 pb-4">
             <div class="row justify-content-center">
               <div class="col-md-12 col-12 text-left">
-                <div class="case-study-label pt-4" id="case-study-04">[ Design Process ]</div>
+                <div class="case-study-label pt-4" id="case-study-04">
+                  [ Design Process ]
+                </div>
                 <h2 class="case-study-title">
                   Research, concepts &amp; iterations
                 </h2>
@@ -1258,8 +1266,8 @@
             </div>
 
             <div class="row justify-content-center pt-5">
-            <div class="col-md-12 col-12 p-1 borderbottom"></div>
-          </div>
+              <div class="col-md-12 col-12 p-1 borderbottom"></div>
+            </div>
 
             <div class="row justify-content-center">
               <div class="col-md-12 col-12 text-left pt-4">
@@ -1766,10 +1774,42 @@
     </div>
 
     <nav class="case-study-nav" aria-label="Case study navigation">
-      <button class="case-study-nav__item" type="button" data-section-target="case-study-01" aria-pressed="true"><span class="case-study-nav__marker" aria-hidden="true"></span><span>[ Exhibition ]</span></button>
-      <button class="case-study-nav__item" type="button" data-section-target="case-study-02" aria-pressed="false"><span class="case-study-nav__marker" aria-hidden="true"></span><span>[ Storytelling ]</span></button>
-      <button class="case-study-nav__item" type="button" data-section-target="case-study-03" aria-pressed="false"><span class="case-study-nav__marker" aria-hidden="true"></span><span>[ Final Outcome ]</span></button>
-      <button class="case-study-nav__item" type="button" data-section-target="case-study-04" aria-pressed="false"><span class="case-study-nav__marker" aria-hidden="true"></span><span>[ Process ]</span></button>
+      <button
+        class="case-study-nav__item"
+        type="button"
+        data-section-target="case-study-01"
+        aria-pressed="true"
+      >
+        <span class="case-study-nav__marker" aria-hidden="true"></span
+        ><span>[ Exhibition ]</span>
+      </button>
+      <button
+        class="case-study-nav__item"
+        type="button"
+        data-section-target="case-study-02"
+        aria-pressed="false"
+      >
+        <span class="case-study-nav__marker" aria-hidden="true"></span
+        ><span>[ Storytelling ]</span>
+      </button>
+      <button
+        class="case-study-nav__item"
+        type="button"
+        data-section-target="case-study-03"
+        aria-pressed="false"
+      >
+        <span class="case-study-nav__marker" aria-hidden="true"></span
+        ><span>[ Final Outcome ]</span>
+      </button>
+      <button
+        class="case-study-nav__item"
+        type="button"
+        data-section-target="case-study-04"
+        aria-pressed="false"
+      >
+        <span class="case-study-nav__marker" aria-hidden="true"></span
+        ><span>[ Process ]</span>
+      </button>
     </nav>
 
     <!-- Synced Footer Context -->
@@ -2024,28 +2064,51 @@
       document.addEventListener("DOMContentLoaded", function () {
         var nav = document.querySelector(".case-study-nav");
         var items = document.querySelectorAll(".case-study-nav__item");
-        var sections = document.querySelectorAll(".case-study-label[id^='case-study-']");
+        var sections = document.querySelectorAll(
+          ".case-study-label[id^='case-study-']",
+        );
         var hero = document.querySelector(".hero-purple-section");
         var footer = document.querySelector(".footer-dark");
         if (!nav || !items.length || !sections.length) return;
 
         function setActive(id) {
-          items.forEach(function (item) { item.setAttribute("aria-pressed", String(item.dataset.sectionTarget === id)); });
+          items.forEach(function (item) {
+            item.setAttribute(
+              "aria-pressed",
+              String(item.dataset.sectionTarget === id),
+            );
+          });
         }
         function updateNav() {
-          var hasReachedCaseStudies = !hero || hero.getBoundingClientRect().bottom <= 58;
-          var isBeforeFooter = !footer || footer.getBoundingClientRect().top > window.innerHeight;
-          nav.classList.toggle("is-visible", hasReachedCaseStudies && isBeforeFooter);
+          var hasReachedCaseStudies =
+            !hero || hero.getBoundingClientRect().bottom <= 58;
+          var isBeforeFooter =
+            !footer || footer.getBoundingClientRect().top > window.innerHeight;
+          nav.classList.toggle(
+            "is-visible",
+            hasReachedCaseStudies && isBeforeFooter,
+          );
           if (!hasReachedCaseStudies || !isBeforeFooter) return;
-          var closest = Array.prototype.reduce.call(sections, function (best, section) {
-            return Math.abs(section.getBoundingClientRect().top - window.innerHeight * 0.42) < Math.abs(best.getBoundingClientRect().top - window.innerHeight * 0.42) ? section : best;
-          });
+          var closest = Array.prototype.reduce.call(
+            sections,
+            function (best, section) {
+              return Math.abs(
+                section.getBoundingClientRect().top - window.innerHeight * 0.42,
+              ) <
+                Math.abs(
+                  best.getBoundingClientRect().top - window.innerHeight * 0.42,
+                )
+                ? section
+                : best;
+            },
+          );
           setActive(closest.id);
         }
         items.forEach(function (item) {
           item.addEventListener("click", function () {
             var section = document.getElementById(item.dataset.sectionTarget);
-            if (section) section.scrollIntoView({ behavior: "smooth", block: "start" });
+            if (section)
+              section.scrollIntoView({ behavior: "smooth", block: "start" });
           });
         });
         window.addEventListener("scroll", updateNav, { passive: true });

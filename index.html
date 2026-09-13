@@ -291,6 +291,51 @@
         background-color: transparent;
       }
 
+      .creative-work-card > a {
+        position: relative;
+        isolation: isolate;
+      }
+
+      .creative-work-card > a::before {
+        content: "";
+        position: absolute;
+        top: 35%;
+        left: 50%;
+        width: 80%;
+        aspect-ratio: 1;
+        z-index: -1;
+        border-radius: 50%;
+        background: repeating-conic-gradient(
+          rgba(0, 123, 255, 0.12) 0deg 7deg,
+          transparent 7deg 17deg
+        );
+        -webkit-mask-image: radial-gradient(
+          circle,
+          #000 0 30%,
+          rgba(0, 0, 0, 0.7) 50%,
+          rgba(0, 0, 0, 0.3) 72%,
+          rgba(0, 0, 0, 0) 100%
+        );
+        mask-image: radial-gradient(
+          circle,
+          #000 0 30%,
+          rgba(0, 0, 0, 0.7) 50%,
+          rgba(0, 0, 0, 0.3) 72%,
+          rgba(0, 0, 0, 0) 100%
+        );
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.75) rotate(-12deg);
+        transition:
+          opacity 0.45s ease,
+          transform 0.7s ease;
+        pointer-events: none;
+      }
+
+      .creative-work-card > a:hover::before {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1) rotate(12deg);
+      }
+
       /* Creative collections are grouped in a distinct, soft-gray panel. */
       .creative-work-section {
         margin-top: 1rem;
@@ -493,8 +538,7 @@
             <li class="nav-item nav-button-active active">
               <a class="nav-link px-3" href="index.html">Work</a>
             </li>
-            <li class="nav-item">
-            </li>
+            <li class="nav-item"></li>
             <li class="nav-item">
               <a class="nav-link px-3" href="About.html">About</a>
             </li>
@@ -667,7 +711,7 @@
         </div>
 
         <div class="row pt-3" data-custom-circle-cursor>
-          <div class="col-md-4 port-card creative-work-card">
+          <div class="col-md-3 port-card creative-work-card">
             <a href="AI Experiments.html" data-cursor-color="#007bff">
               <div class="img-wrapper">
                 <img
@@ -682,7 +726,7 @@
             </a>
           </div>
 
-          <div class="col-md-4 port-card creative-work-card">
+          <div class="col-md-3 port-card creative-work-card">
             <a href="Motion Graphics.html" data-cursor-color="#007bff">
               <div class="img-wrapper">
                 <img
@@ -692,12 +736,27 @@
               </div>
               <h3 class="project-title">Motion Graphics</h3>
               <p class="project-desc">
-                Adding movement, story, and micro-interactions.
+                Adding movement and micro-interactions.
               </p>
             </a>
           </div>
 
-          <div class="col-md-4 port-card creative-work-card">
+          <div class="col-md-3 port-card creative-work-card">
+            <a href="Advertising.html" data-cursor-color="#007bff">
+              <div class="img-wrapper">
+                <img
+                  src="images/Others/Advertising_Thumbnail.svg"
+                  alt="Advertising illustration"
+                />
+              </div>
+              <h3 class="project-title">Advertising</h3>
+              <p class="project-desc">
+                Integrated campaigns, art direction, and creative strategy.
+              </p>
+            </a>
+          </div>
+
+          <div class="col-md-3 port-card creative-work-card">
             <a href="Illustrations.html" data-cursor-color="#007bff">
               <div class="img-wrapper">
                 <img
@@ -706,9 +765,7 @@
                 />
               </div>
               <h3 class="project-title">Illustrations</h3>
-              <p class="project-desc">
-                My hand-drawn graphics and visuals.
-              </p>
+              <p class="project-desc">My hand-drawn artworks.</p>
             </a>
           </div>
         </div>

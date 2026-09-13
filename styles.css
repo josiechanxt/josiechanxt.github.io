@@ -424,6 +424,21 @@ nav {
   letter-spacing: -0.02rem;
 }
 
+/* Inline links within body copy */
+.text-link {
+  color: #1a1a1a;
+  font-style: italic;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease;
+}
+
+.text-link:hover,
+.text-link:focus-visible {
+  color: #007bff;
+  text-decoration: underline;
+}
+
 .main-content4a {
   padding-top: 2rem;
   font-family: "IBM Plex Sans", sans-serif;
