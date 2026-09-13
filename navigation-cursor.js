@@ -1,4 +1,4 @@
-/* Replaces the pointer with a project-coloured circle over interactive UI. */
+/* Adds a project-coloured ring around the standard pointer over interactive UI. */
 document.addEventListener("DOMContentLoaded", function () {
   if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
     return;
@@ -27,8 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var style = document.createElement("style");
   style.textContent =
-    ".project-circle-cursor{position:fixed;top:0;left:0;width:25px;height:25px;border-radius:50%;background:var(--project-cursor-color,#007bff);pointer-events:none;z-index:9999999;opacity:.85;mix-blend-mode:normal;transform:translate(-50%,-50%) scale(0);transition:transform .2s cubic-bezier(.25,1,.5,1)}.project-circle-cursor.active{transform:translate(-50%,-50%) scale(1)}.project-circle-cursor.active.pressed{transform:translate(-50%,-50%) scale(1.2)}" +
-    interactiveSelector + "{cursor:none!important}";
+    ".project-circle-cursor{position:fixed;top:0;left:0;width:32px;height:32px;box-sizing:border-box;border:2px solid currentColor;border-radius:50%;color:var(--project-cursor-color,#007bff);pointer-events:none;z-index:9999999;transform:translate(-50%,-50%) scale(0);transition:transform .2s cubic-bezier(.25,1,.5,1)}.project-circle-cursor::before{content:'';position:absolute;inset:0;border-radius:inherit;background:currentColor;opacity:.15}.project-circle-cursor.active{transform:translate(-50%,-50%) scale(1)}.project-circle-cursor.active.pressed{transform:translate(-50%,-50%) scale(1.2)}" +
+    interactiveSelector + "{cursor:pointer!important}";
   document.head.appendChild(style);
 
   function targetFor(element) {
@@ -65,9 +65,9 @@ document.addEventListener("DOMContentLoaded", function () {
         window.getComputedStyle(target).getPropertyValue("--project-cursor-color").trim() ||
         "";
       if (cursorColor) {
-        cursor.style.backgroundColor = cursorColor;
+        cursor.style.color = cursorColor;
       } else {
-        cursor.style.removeProperty("background-color");
+        cursor.style.removeProperty("color");
       }
       cursor.classList.add("active");
     }

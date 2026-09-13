@@ -112,7 +112,7 @@
         height: 100%;
         margin: 0;
         --project-cursor-color: #715ad8;
-        cursor: url("images/Pencil.png"), auto;
+        cursor: url("images/Pencil.svg"), auto;
         font-family: "IBM Plex Sans", sans-serif;
         color: #303030;
         background-color: #1a1a1a;
@@ -379,21 +379,37 @@
       }
 
       .slider-arrow:hover {
-        background: white;
+        background: #f4f2fc;
         transform: scale(1.1);
         box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
       }
 
+      .slider-arrow:focus:not(:focus-visible) {
+        outline: none;
+      }
+
+      .slider-arrow-left::after,
+      .slider-arrow-right::after {
+        content: "";
+        width: 8px;
+        height: 14px;
+        background-color: currentColor;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        -webkit-mask-size: contain;
+        mask-repeat: no-repeat;
+        mask-position: center;
+        mask-size: contain;
+      }
+
       .slider-arrow-left::after {
-        content: "\2039";
-        font-size: 32px;
-        margin-right: 3px;
+        -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 20'%3E%3Cpath d='M8.8 3.2L3.2 10L8.8 16.8' fill='none' stroke='black' stroke-width='5.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 20'%3E%3Cpath d='M8.8 3.2L3.2 10L8.8 16.8' fill='none' stroke='black' stroke-width='5.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
       }
 
       .slider-arrow-right::after {
-        content: "\203a";
-        font-size: 32px;
-        margin-left: 3px;
+        -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 20'%3E%3Cpath d='M3.2 3.2L8.8 10L3.2 16.8' fill='none' stroke='black' stroke-width='5.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 20'%3E%3Cpath d='M3.2 3.2L8.8 10L3.2 16.8' fill='none' stroke='black' stroke-width='5.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
       }
 
       .slider-dots {
@@ -413,13 +429,17 @@
       .dot {
         width: 12px;
         height: 12px;
+        min-width: 12px;
+        padding: 0;
+        flex: 0 0 12px;
+        aspect-ratio: 1;
+        box-sizing: border-box;
         border-radius: 50%;
         background: rgba(255, 255, 255, 0.55);
         cursor: pointer;
         border: none;
         transition: all 0.3s ease;
         box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-        flex-shrink: 0;
       }
 
       .dot.active {
@@ -430,6 +450,10 @@
 
       .dot:hover {
         background: #715ad8;
+      }
+
+      .dot:focus:not(:focus-visible) {
+        outline: none;
       }
 
       .slider-slide {
@@ -589,6 +613,8 @@
         .dot {
           width: 8px;
           height: 8px;
+          min-width: 8px;
+          flex-basis: 8px;
         }
       }
 

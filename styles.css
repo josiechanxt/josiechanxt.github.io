@@ -25,7 +25,7 @@
 }
 
 html {
-  cursor: url("images/Pencil.png"), auto;
+  cursor: url("images/Pencil.svg"), auto;
   font-family: "IBM Plex Sans", sans-serif;
 }
 
@@ -92,8 +92,10 @@ nav {
 }
 
 .case-study-nav__marker {
+  flex: 0 0 11px;
   width: 11px;
   height: 11px;
+  aspect-ratio: 1;
   border: 1px solid currentColor;
   border-radius: 50%;
   transition: background-color 0.2s ease;

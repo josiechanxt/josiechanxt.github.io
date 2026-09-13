@@ -44,17 +44,28 @@
         position: fixed;
         top: 0;
         left: 0;
-        width: 25px;
-        height: 25px;
+        width: 32px;
+        height: 32px;
+        box-sizing: border-box;
+        border: 2px solid currentColor;
         border-radius: 50%;
+        color: #007bff;
         pointer-events: none;
         z-index: 99999;
         transform: translate(-50%, -50%) scale(0);
         transition:
           transform 0.2s cubic-bezier(0.25, 1, 0.5, 1),
-          background-color 0.2s ease;
+          color 0.2s ease;
         mix-blend-mode: normal;
-        opacity: 0.85;
+      }
+
+      .custom-cursor::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: currentColor;
+        opacity: 0.15;
       }
 
       .custom-cursor.active {
@@ -68,7 +79,7 @@
       /* Each project uses its border colour for the custom cursor. */
       .port-card a,
       .port-card a * {
-        cursor: none !important;
+        cursor: pointer !important;
       }
 
       /* --- CUSTOM BLUE SCROLLBAR --- */
@@ -104,7 +115,7 @@
       body {
         height: 100%;
         margin: 0;
-        cursor: url("images/Pencil.png"), auto;
+        cursor: url("images/Pencil.svg"), auto;
         font-family: "IBM Plex Sans", sans-serif;
         color: #303030;
         background-color: #1a1a1a;
@@ -939,7 +950,7 @@
 
         projectLinks.forEach(function (projectLink) {
           projectLink.addEventListener("mouseenter", function () {
-            cursor.style.backgroundColor = projectLink.dataset.cursorColor;
+            cursor.style.color = projectLink.dataset.cursorColor;
             cursor.classList.add("active");
           });
 
