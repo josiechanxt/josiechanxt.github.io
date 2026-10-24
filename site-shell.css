@@ -1,0 +1,148 @@
+/* Shared mobile navigation and footer.
+   Keep this stylesheet last in <head> so page-level styles cannot make the
+   site shell drift between pages. Desktop presentation remains page-owned. */
+@media (max-width: 991.98px) {
+  .navbar.navbar-expand-lg {
+    box-sizing: border-box;
+    min-height: 53px;
+    padding: 0.4rem 0.8rem !important;
+    background: #ffffff;
+    border-bottom: 1px solid #eaeaea;
+    z-index: 1030;
+  }
+
+  .navbar.navbar-expand-lg > .container {
+    width: 100%;
+    max-width: none;
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+  }
+
+  .navbar.navbar-expand-lg .navbar-brand {
+    margin-right: 1rem;
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+  }
+
+  .navbar.navbar-expand-lg .navbar-brand img {
+    display: block;
+    width: auto;
+    height: 30px;
+  }
+
+  .navbar.navbar-expand-lg .navbar-toggler {
+    padding: 10px;
+    border: 0;
+    border-radius: 0;
+    outline: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .navbar.navbar-expand-lg .toggler-icon,
+  .navbar.navbar-expand-lg .toggler-icon::before,
+  .navbar.navbar-expand-lg .toggler-icon::after {
+    width: 24px;
+    height: 2px;
+    background-color: #007bff;
+  }
+
+  /* Keep only the two diagonal strokes when the menu is open. This needs to
+     live after the shared colour rule above so the middle bar stays hidden. */
+  .navbar.navbar-expand-lg
+    .navbar-toggler:not(.collapsed)
+    .toggler-icon {
+    background-color: transparent;
+  }
+
+  .navbar.navbar-expand-lg .navbar-collapse {
+    background: #ffffff;
+    border-bottom-right-radius: 24px;
+    border-bottom-left-radius: 24px;
+    margin-right: calc(-15px - 0.8rem);
+    margin-left: calc(-15px - 0.8rem);
+    padding-right: calc(15px + 0.8rem);
+    padding-left: calc(15px + 0.8rem);
+  }
+
+  .navbar.navbar-expand-lg .navbar-nav {
+    padding: 0.5rem 0 0.75rem;
+  }
+
+  .navbar.navbar-expand-lg .nav-link {
+    padding: 0.5rem 1rem !important;
+    color: #c3c3c3 !important;
+    font-family: "Caveat", cursive;
+    font-size: 1.5rem;
+    font-weight: 550;
+    line-height: 1.5;
+  }
+
+  .navbar.navbar-expand-lg .nav-link:hover,
+  .navbar.navbar-expand-lg .nav-link:focus,
+  .navbar.navbar-expand-lg .nav-button-active .nav-link {
+    color: #007bff !important;
+  }
+
+  /* Preserve the desktop reveal: the light content sheet curves over the
+     dark footer instead of ending in a straight horizontal edge. */
+  body > .main-scroll-container,
+  body > .main-content-scroll-wrapper,
+  body > .container-fluid,
+  body > .main-scroll-container > .container-fluid {
+    border-bottom-left-radius: 80px !important;
+    border-bottom-right-radius: 80px !important;
+    overflow: hidden;
+  }
+
+  .footer-dark {
+    box-sizing: border-box;
+    flex-shrink: 0;
+    padding: 5rem 0 !important;
+    background-color: #1a1a1a !important;
+    color: #007bff;
+    font-family: "IBM Plex Sans", sans-serif;
+    text-align: center;
+  }
+
+  .footer-dark > .container {
+    width: 100%;
+    max-width: none;
+    padding-right: 31px !important;
+    padding-left: 31px !important;
+  }
+
+  .footer-dark .footer-text {
+    margin-bottom: 1.5rem;
+    color: #f0f0f0;
+    font-family: "Caveat", cursive;
+    font-size: clamp(2.35rem, 10.5vw, 3.8rem);
+    font-weight: 500;
+    line-height: 1.1;
+  }
+
+  .footer-dark .social-icons a {
+    display: inline-block;
+    margin: 0 12px;
+    text-decoration: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .footer-dark .social-icons img {
+    display: block;
+    width: 45px;
+    height: 45px;
+  }
+
+  .footer-dark .copyright-bar {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    color: #999;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 0.85rem;
+    opacity: 0.8;
+  }
+
+  .footer-dark .copyright-bar p {
+    margin-bottom: 0;
+  }
+}

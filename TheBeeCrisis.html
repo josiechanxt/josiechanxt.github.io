@@ -262,8 +262,36 @@
       }
 
       .images-light {
+        width: 100%;
         border: 1px solid #eaeaea;
         border-radius: 12px;
+      }
+
+      .row.justify-content-center.my-2 {
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      .row.justify-content-center.my-2 > .col-md-12.text-center {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+
+      .row.justify-content-center.my-2 > .col-md-6:first-child {
+        padding-left: 0 !important;
+        padding-right: 0.25rem !important;
+      }
+
+      .row.justify-content-center.my-2 > .col-md-6:last-child {
+        padding-left: 0.25rem !important;
+        padding-right: 0 !important;
+      }
+
+      @media (max-width: 767.98px) {
+        .row.justify-content-center.my-2 > .col-md-6 {
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+        }
       }
 
       /* Image slider */
@@ -750,6 +778,7 @@
         padding-top: 1rem !important;
       }
     </style>
+    <link rel="stylesheet" href="site-shell.css" />
   </head>
 
   <body>
@@ -1848,7 +1877,7 @@
           <a href="mailto:jochanxt@gmail.com" target="_blank">
             <img src="images/Work/Icon1_Email.svg" alt="Email" />
           </a>
-          <a href="https://linkedin.com/in/josiechan" target="_blank">
+          <a href="https://linkedin.com/in/josiechanxt" target="_blank">
             <img src="images/Work/Icon2_Linkedin.svg" alt="LinkedIn" />
           </a>
           <a href="https://instagram.com/jo.cgraphics" target="_blank">

@@ -520,7 +520,18 @@
         letter-spacing: 0.1em;
         text-transform: uppercase;
       }
+
+      @media (max-width: 991px) {
+        body > .container-fluid {
+          /* Keep the grid at its desktop scale; 70% makes the dots
+             sub-pixel and nearly invisible on narrow screens. */
+          background-size: 62.5rem auto;
+          background-position: top center;
+          background-attachment: fixed;
+        }
+      }
     </style>
+    <link rel="stylesheet" href="site-shell.css" />
   </head>
 
   <body>

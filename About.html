@@ -779,6 +779,14 @@
 
       /* Mobile Responsive Layout */
       @media (max-width: 991px) {
+        .main-content-scroll-wrapper {
+          /* Keep the dot grid at roughly its desktop scale. Using 70% here
+             makes every dot sub-pixel on narrow screens and nearly invisible. */
+          background-size: 62.5rem auto;
+          background-position: top center;
+          background-attachment: fixed;
+        }
+
         .arc-section {
           min-height: auto;
           padding: 40px 0;
@@ -856,6 +864,7 @@
         }
       }
     </style>
+    <link rel="stylesheet" href="site-shell.css" />
   </head>
 
   <body>
@@ -1091,6 +1100,12 @@
 
           <div class="experience-grid">
             <article class="experience-card reveal">
+              <img
+                class="experience-card-hover-image"
+                src="images/About/Card1_CHANGIAIRPORT.jpg"
+                alt=""
+                aria-hidden="true"
+              />
               <div class="experience-card-logo">
                 <img
                   src="images/About/Changiairport.png"
